@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <h:head>
+      <title>#{msgs.title}</title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body>
+      <h:form>
+	      <b:container>
+	      	<b:row>
+	      		<b:column col-md="4" col-sm="3" col-xs="2"></b:column>
+	      		<b:column col-md="4" col-sm="6" col-xs="8" styleClass="padAround">
+	      			<h2 id="loginStyle">Clockr Login</h2><br/>
+	      			<p>Username:</p>
+	      			<b:inputText styleClass="sizeInput"></b:inputText>
+	      			<p>Password:</p>
+	      			<b:inputText styleClass="sizeInput"></b:inputText>
+	      			<b:selectBooleanCheckbox caption="Remember password?"></b:selectBooleanCheckbox>
+	      			<b:navLink value="Forgot password?"></b:navLink><br/>
+	      			<b:button value="Login" look="primary"></b:button>
+	      			<p></p>
+	      		</b:column>
+	      		<b:column col-md="4" col-sm="3" col-xs="2"></b:column>
+	      	</b:row>
+	      </b:container>
+      </h:form>
+   </h:body>
+</html>

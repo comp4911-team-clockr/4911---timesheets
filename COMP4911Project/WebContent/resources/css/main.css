@@ -1,0 +1,107 @@
+/*=============LOGIN PAGE CSS========================*/
+//Used to round input textarea corners
+.roundCorners {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.bgImage {
+	background-image: url(/COMP4911Project/resources/images/clock.gif);
+}
+
+//Used to make checkbox bigger
+.checkboxBigger {
+  /* All browsers except webkit*/
+  transform: scale(10);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(10);
+}
+
+//Used to make move submit button to the right side
+.submit {
+	text-align: right;
+}
+
+#arial {
+    font-family: "arial";
+}
+
+#moveText {
+	position: relative;
+	top: 10px;
+}
+
+#clockrColor {
+	position: relative;
+    background-color: #0e1c80;
+    border: 2px solid black;
+    width: 100%;
+    height: 2em;
+    right: 2px;
+    border-radius: 5px;
+    text-align: center;
+    transform: translateY(-80%);
+    color: #eeeeff;
+    font-size: 30px;
+    font-family: "arial";
+}
+
+#paddingBot {
+	position: relative;
+	top: 3px;
+}
+
+#bgColor {
+	background-color: #eeeeff;
+	border: 2px solid black;
+    width: 60%;
+    margin: auto;
+    border-radius: 5px;
+    position: relative;
+    top:50%;
+    transform: translateY(50%);
+    text-align: center;
+    height: 18em;
+}
+
+#textColor {
+	color: #0000ff;
+}
+
+#moveLeft {
+	text-align: left;
+}
+
+/*=============END LOGIN PAGE CSS========================*/
+
+.sizeInput {
+	width: 300px;
+}
+
+.padAround {
+	position: relative;
+	transform: translateY(50%);
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: #eeeeff;
+}
+
+#loginStyle {
+	color: #0e1c80;
+	text-align: center;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
