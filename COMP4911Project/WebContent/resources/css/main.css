@@ -7,7 +7,11 @@
 }
 
 .bgImage {
-	background-image: url(/COMP4911Project/resources/images/clock.gif);
+	background-image: url(/COMP4911Project/resources/images/capitalr.png);
+}
+
+#bgImage2 {
+	background-image: url(/COMP4911Project/resources/images/city.png);
 }
 
 //Used to make checkbox bigger
@@ -80,20 +84,43 @@
 	width: 300px;
 }
 
-.padAround {
-	position: relative;
-	transform: translateY(50%);
-	border: 2px solid black;
+#padAround {
+	border: 2px solid #629298;
 	border-radius: 10px;
 	background-color: #eeeeff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
-#loginStyle {
-	color: #0e1c80;
+.loginStyle {
+	color: #033138;
 	text-align: center;	
 }
 
+.title {
+	position: relative;
+	transform: translateY(10%);		
+}
 
+#titleMove {
+	position: relative;
+	transform: translateY(60%);
+}
+
+.fillWidth {
+	width: 100%;
+}
+
+.centerImage {
+	display: block;
+	margin: 0 auto;
+}
+
+.clockrBg {
+	background-color: #e3eff0;	
+}
 
 
 
