@@ -15,6 +15,8 @@ public class Credential implements Serializable {
 	
 	private String role;
 	
+	private String digSign;
+	
 	public Credential() {}
 	
 	public Credential(String userId, String password, String role){
@@ -45,6 +47,14 @@ public class Credential implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getDigSign() {
+		return digSign;
+	}
+
+	public void setDigSign(String digSign) {
+		this.digSign = digSign;
 	}
 	
 }
