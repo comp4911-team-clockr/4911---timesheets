@@ -18,7 +18,7 @@ import comp4911.models.Employee;
  *<p>The class will attempt to handle create, reead, update, delete.
  */
 public class EmployeeManager implements Serializable {
-	@PersistenceContext(unitName="clockr") EntityManager em;
+	@PersistenceContext(unitName="COMP4911ClockrProjectDatabase") EntityManager em;
 
 	/**
 	 *<p>Some Random SerialVersionUID.</p> 
