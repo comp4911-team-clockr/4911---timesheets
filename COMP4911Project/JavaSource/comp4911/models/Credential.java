@@ -2,6 +2,15 @@ package comp4911.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+
+@Entity
+@Table(name="Credentials")
 public class Credential implements Serializable {
 
 	/**
@@ -9,12 +18,17 @@ public class Credential implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="UserId")
 	private String userId;
 	
+	@Column(name="Password")
 	private String password;
 	
+	@Column(name="UserRole")
 	private String role;
 	
+	@Transient
 	private String digSign;
 	
 	public Credential() {}
