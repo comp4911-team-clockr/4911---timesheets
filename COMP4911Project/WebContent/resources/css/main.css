@@ -92,6 +92,9 @@
 	padding-bottom: 15px;
 	padding-right: 15px;
 	padding-left: 15px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .loginStyle {
@@ -122,10 +125,15 @@
 	background-color: #e3eff0;	
 }
 
+.dropdownstyle {
+	list-style-type: none;
+	clear: right;
+}
 
-
-
-
+.floatclear {
+	float: left;
+	padding-right: 15px;
+}
 
 
 
