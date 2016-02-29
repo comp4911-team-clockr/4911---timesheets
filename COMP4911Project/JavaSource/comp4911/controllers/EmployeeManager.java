@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import comp4911.models.Employee;
 
@@ -41,5 +42,27 @@ public class EmployeeManager implements Serializable {
 		employee = find(employee.getEmpNumber());
 		em.remove(employee);
 	}
+	
+    public Employee[] getByEmployeeId(int employeeID) {
+        TypedQuery<Employee> query = em.createQuery("select e from " +
+                   "Employee e where e.empNumber = " + employeeID, Employee.class); 
+        java.util.List<Employee> employees = query.getResultList();
+        Employee[] empArray = new Employee[employees.size()];
+        for (int i=0; i < empArray.length; i++) {
+        	empArray[i] = employees.get(i);
+        }
+        return empArray;
+    }
+	
+	 public Employee[] getAll() {
+	        TypedQuery<Employee> query = em.createQuery("select e from Employee e",
+	                Employee.class); 
+	        java.util.List<Employee> employees = query.getResultList();
+	        Employee[] empArray = new Employee[employees.size()];
+	        for (int i=0; i < empArray.length; i++) {
+	            empArray[i] = employees.get(i);
+	        }
+	        return empArray;
+	    }
 	
 }
