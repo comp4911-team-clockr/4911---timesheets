@@ -20,6 +20,10 @@ import comp4911.models.Credential;
  *<p>The class will attempt to handle create, read, update, delete.
  */
 public class CredentialManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@PersistenceContext(unitName="COMP4911ClockrProjectDatabase") EntityManager em;
 
 	public Credential find(String id) {
@@ -39,6 +43,12 @@ public class CredentialManager implements Serializable {
 		em.remove(credential);
 	}
 	
+	public Credential getByCredentialId(String credentialID) {
+		Credential credential = em.find(Credential.class, credentialID);
+		return credential;
+	}
+	
+	/*
     public Credential[] getByCredentialId(String credentialID) {
         TypedQuery<Credential> query = em.createQuery("select c from " +
                    "Credential c where c.userID = " + credentialID, Credential.class); 
@@ -49,6 +59,7 @@ public class CredentialManager implements Serializable {
         }
         return credArray;
     }
+	*/
 	
 	 public Credential[] getAll() {
 	        TypedQuery<Credential> query = em.createQuery("select c from Credential c",

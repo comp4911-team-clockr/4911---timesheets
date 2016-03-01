@@ -31,6 +31,7 @@ public class Credential implements Serializable {
 	@Transient
 	private String digSign;
 	
+	@Column(name="Email")
 	private String email;
 	
 	public Credential() {}
