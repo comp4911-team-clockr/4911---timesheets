@@ -3,7 +3,7 @@ CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'P@$$w0rd';
 CREATE DATABASE clockr;
 
 GRANT ALL PRIVILEGES ON clockr.* TO dbadmin@localhost IDENTIFIED by 'P@$$w0rd';
-GRANT ALL PRIVILEGES ON clockr.* TO dbadmin@"%" IDENTIFIED by 'P@$$w0rd';
+GRANT ALL PRIVILEGES ON clockr.* TO dbadmin@'%' IDENTIFIED by 'P@$$w0rd';
 
 USE clockr;
 

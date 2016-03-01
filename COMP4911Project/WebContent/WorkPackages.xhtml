@@ -7,24 +7,29 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
    <h:head>
-      <title>#{msgs.title}</title>
+      <title></title>
       <h:outputStylesheet library="css" name="main.css"  /> 
    </h:head>
    <h:body id="bgImage2">
       <h:form>
 	      <b:container>
+			<div id="header">
 			<ui:insert name="header">
 				<ui:include src="commonHeader.xhtml"/>
 			</ui:insert>
-		    <div>
-		     	<!--<h2 class="loginStyle">The bad news is time flies. The good <br/> news is you're the pilot.</h2>-->
-			</div>			
-	      	<b:row>
-	      		<b:column col-lg="12" col-md="12" col-sm="12" col-xs="12">
-	      			<h1 class="loginStyle" id="titleMove">Welcome, User!</h1>
-	      		</b:column>
-	      	</b:row>			
+			</div>		
 	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container>
+      		<h1>Work Packages</h1><br/>
+      		<!-- add a datatable or bootsfaces equivalent here later -->
+      		<b:navLink value="Work Package 1" href ="TimeSheetSelect.xhtml"></b:navLink>
+      		<b:navLink value="Work Package 2" href ="TimeSheetSelect.xhtml"></b:navLink>
+      		<b:navLink value="Work Package 3" href ="TimeSheetSelect.xhtml"></b:navLink>
+      		<b:navLink value="Work Package 4" href ="TimeSheetSelect.xhtml"></b:navLink>
+      		<b:navLink value="Work Package 5" href ="TimeSheetSelect.xhtml"></b:navLink>
+      	</b:container>
       </h:form>
    </h:body>
 </html>

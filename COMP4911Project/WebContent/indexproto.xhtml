@@ -15,11 +15,16 @@
 	      	<b:row>
 	      		<b:column col-md="4" col-sm="3" col-xs="2"></b:column>
 	      		<b:column styleClass="title" col-md="4" col-sm="6" col-xs="8">
-	      			<!-- <img class="centerImage" src="/COMP4911Project/resources/images/capitalr.png"></img>-->
+	      			<img class="centerImage" src="/COMP4911Project/resources/images/aclock.png"/>
 	      			<h2 class="loginStyle">Clockr Login</h2><br/>
 	      			<div id="padAround">
+<<<<<<< HEAD
 	      			<b:inputText placeholder="User ID" styleClass="sizeInput" value="#{user.credential.userId}"></b:inputText>
 	      			<b:inputText placeholder="Password" styleClass="sizeInput" value="#{user.credential.password}"></b:inputText>
+=======
+	      			<b:inputText placeholder="User ID" styleClass="sizeInput"></b:inputText>
+	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput"></b:inputText>
+>>>>>>> fcf7f77590640103082a1e21d74f64c48c262b6a
 	      			<b:navLink value="Forgot password?"></b:navLink><br/>
 	      			<b:commandButton styleClass="fillWidth" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary"></b:commandButton>
 	      			<p></p>
