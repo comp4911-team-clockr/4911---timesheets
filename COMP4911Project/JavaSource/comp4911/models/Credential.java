@@ -17,12 +17,15 @@ public class Credential implements Serializable {
 	
 	private String digSign;
 	
+	private String email;
+	
 	public Credential() {}
 	
-	public Credential(String userId, String password, String role){
+	public Credential(String userId, String password, String role, String email){
 		this.setUserId(userId);
 		this.setPassword(password);
 		this.setRole(role);
+		this.setEmail(email);
 	}
 
 	public String getUserId() {
@@ -57,4 +60,11 @@ public class Credential implements Serializable {
 		this.digSign = digSign;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
