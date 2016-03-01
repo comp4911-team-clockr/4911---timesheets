@@ -16,7 +16,7 @@ import comp4911.models.Employee;
 /**
  * <p>Basic CRUD Manager</p>
  * @author jackee
- *<p>The class will attempt to handle create, reead, update, delete.
+ *<p>The class will attempt to handle create, read, update, delete.
  */
 public class EmployeeManager implements Serializable {
 	@PersistenceContext(unitName="COMP4911ClockrProjectDatabase") EntityManager em;
@@ -41,11 +41,6 @@ public class EmployeeManager implements Serializable {
 	public void remove(Employee employee) {
 		employee = find(employee.getEmpNumber());
 		em.remove(employee);
-	}
-	
-	public Employee getByEmployeeId(int employeeID) {
-		Employee employee = em.find(Employee.class, employeeID);
-		return employee;
 	}
 	
 	public Employee[] getAll() {

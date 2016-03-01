@@ -43,11 +43,6 @@ public class CredentialManager implements Serializable {
 		em.remove(credential);
 	}
 	
-	public Credential getByCredentialId(String credentialID) {
-		Credential credential = em.find(Credential.class, credentialID);
-		return credential;
-	}
-	
 	public Credential[] getAll() {
 	        TypedQuery<Credential> query = em.createQuery("select c from Credential c",
 	                Credential.class); 
