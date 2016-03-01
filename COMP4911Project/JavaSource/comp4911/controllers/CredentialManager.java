@@ -17,7 +17,7 @@ import comp4911.models.Credential;
 /**
  * <p>Basic CRUD Manager</p>
  * @author jackee
- *<p>The class will attempt to handle create, read, update, delete.
+ *<p>The class will attempt to handle create, read, update, delete.</p>
  */
 public class CredentialManager implements Serializable {
 	/**
@@ -48,7 +48,7 @@ public class CredentialManager implements Serializable {
 		return credential;
 	}
 	
-	 public Credential[] getAll() {
+	public Credential[] getAll() {
 	        TypedQuery<Credential> query = em.createQuery("select c from Credential c",
 	                Credential.class); 
 	        java.util.List<Credential> credentials = query.getResultList();

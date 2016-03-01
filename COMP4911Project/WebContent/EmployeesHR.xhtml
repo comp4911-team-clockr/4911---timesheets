@@ -24,7 +24,7 @@
       	<b:container>
       		<h1>Employees</h1><br/>
       		<!-- add a datatable or bootsfaces equivalent here later -->
-      		<p class="floatclear">Employee 1
+      		<!-- p class="floatclear">Employee 1
       			<b:dropMenu class="dropdownstyle" value="Assign">
 			        <b:navLink value="Project 1" href="WorkPackages.xhtml"></b:navLink>
 			        <b:navLink value="Project 2" href="WorkPackages.xhtml"></b:navLink>
@@ -59,7 +59,15 @@
 		            <b:navLink value="Project 3" href="WorkPackages.xhtml"></b:navLink>
 	            </b:dropMenu>
 	        </p>    
-      		<br/>
+      		<br/-->
+      		<h:outputLabel value="First Name" />
+      		<b:inputText value="#{user.employee.firstName}" ></b:inputText>
+      		<h:outputLabel value="Last Name" />
+      		<b:inputText value="#{user.employee.lastName}"></b:inputText>
+      		<h:outputLabel value="Email" />
+      		<b:inputText value="#{user.credential.email}"></b:inputText>
+      		<h:outputLabel value="User Role" />
+      		<b:inputText value="#{user.credential.role}"></b:inputText>
       		<b:button value="Add Employee"></b:button>
       	</b:container>
       </h:form>

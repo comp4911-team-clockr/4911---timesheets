@@ -68,21 +68,21 @@ public class EmployeeList implements Serializable {
 		this.credential = credential;
 	}
 
-//	public Employee getEmployee() {
-//		return employee;
-//	}
-//
-//	public void setEmployee(Employee employee) {
-//		this.employee = employee;
-//	}
+	public Employee getEmployee() {
+		return employee;
+	}
+ 
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
-//	public EmployeeManager getEmployeeManager() {
-//		return employeeManager;
-//	}
-//
-//	public void setEmployeeManager(EmployeeManager employeeManager) {
-//		this.employeeManager = employeeManager;
-//	}
+	public EmployeeManager getEmployeeManager() {
+		return employeeManager;
+	}
+
+	public void setEmployeeManager(EmployeeManager employeeManager) {
+		this.employeeManager = employeeManager;
+	}
 
 	public CredentialManager getCredentialManager() {
 		return credentialManager;
