@@ -18,10 +18,10 @@
 	      			<img class="centerImage" src="/COMP4911Project/resources/images/aclock.png"/>
 	      			<h2 class="loginStyle">Clockr Login</h2><br/>
 	      			<div id="padAround">
-	      			<b:inputText placeholder="User ID" styleClass="sizeInput"></b:inputText>
-	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput"></b:inputText>
+	      			<b:inputText placeholder="User ID" styleClass="sizeInput" value="#{user.credential.userId}"></b:inputText>
+	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput" value="#{user.credential.password}"></b:inputText>
 	      			<b:navLink value="Forgot password?"></b:navLink><br/>
-	      			<b:button styleClass="fillWidth" value="Login" look="primary"></b:button>
+	      			<b:commandButton styleClass="fillWidth" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary"></b:commandButton>
 	      			<p></p>
 	      			</div>
 	      		</b:column>
