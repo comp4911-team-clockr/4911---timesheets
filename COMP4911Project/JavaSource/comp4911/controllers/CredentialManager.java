@@ -48,19 +48,6 @@ public class CredentialManager implements Serializable {
 		return credential;
 	}
 	
-	/*
-    public Credential[] getByCredentialId(String credentialID) {
-        TypedQuery<Credential> query = em.createQuery("select c from " +
-                   "Credential c where c.userID = " + credentialID, Credential.class); 
-        java.util.List<Credential> credentials = query.getResultList();
-        Credential[] credArray = new Credential[credentials.size()];
-        for (int i=0; i < credArray.length; i++) {
-        	credArray[i] = credentials.get(i);
-        }
-        return credArray;
-    }
-	*/
-	
 	 public Credential[] getAll() {
 	        TypedQuery<Credential> query = em.createQuery("select c from Credential c",
 	                Credential.class); 
