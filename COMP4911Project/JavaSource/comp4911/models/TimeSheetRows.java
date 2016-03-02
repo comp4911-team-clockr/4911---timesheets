@@ -11,21 +11,49 @@ import javax.persistence.Table;
 @Table(name="TimeSheetRow")
 public class TimeSheetRows implements Serializable {
     
+    /**
+     * Default serial version ID;
+     */
+    private static final long serialVersionUID = 1L;
+    
     @Id
-    @Column(name="TimeSheetRowID")
+    @Column(name="rowID")
     private int timeSheetRowId;
     
     @Column(name="projectID")
     private int projectId;
     
-    @Column(name="workpackID")
+    @Column(name="wpID")
     private int workpackId;
     
-    @Column(name="hours")
-    private int hours;
+    @Column(name="weekTotalHrs")
+    private double weekTotalHrs;
     
-    @Column(name="dayofWeek")
-    private int day;
+    @Column(name="satHrs")
+    private double satHrs;
+    
+    @Column(name="sunHrs")
+    private double sunHrs;
+    
+    @Column(name="monHrs")
+    private double monHrs;
+    
+    @Column(name="tuesHrs")
+    private double tuesHrs;
+    
+    @Column(name="wedHrs")
+    private double wedHrs;
+    
+    @Column(name="thursHrs")
+    private double thursHrs;
+    
+    @Column(name="friHrs")
+    private double friHrs;
+    
+    @Column(name="notes")
+    private String notes;
+    
+    public TimeSheetRows(){}
     
     public int getTimeSheetRowId() {
         return timeSheetRowId;
@@ -49,19 +77,79 @@ public class TimeSheetRows implements Serializable {
         this.workpackId = workpackId;
     }
     
-    public int getHours() {
-        return hours;
+    public double getSatHrs() {
+        return satHrs;
     }
 
-    public void setHours(int hours) {
-        this.hours = hours;
+    public void setSatHrs(double satHrs) {
+        this.satHrs = satHrs;
     }
-    public int getDay() {
-        return day;
+    public double getSunHrs() {
+        return sunHrs;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setSunHrs(double sunHrs) {
+        this.sunHrs = sunHrs;
+    }
+    
+    public double getMonHrs() {
+        return monHrs;
+    }
+
+    public void setMonHrs(double monHrs) {
+        this.monHrs = monHrs;
+    }
+    
+    public double getTuesHrs() {
+        return tuesHrs;
+    }
+
+    public void setTuesHrs(double tuesHrs) {
+        this.tuesHrs = tuesHrs;
+    }
+    
+    public double getWedHrs() {
+        return wedHrs;
+    }
+
+    public void setWedHrs(double wedHrs) {
+        this.wedHrs = wedHrs;
+    }
+    
+    public double getThursHrs() {
+        return thursHrs;
+    }
+
+    public void setThursHrs(double thursHrs) {
+        this.thursHrs = thursHrs;
+    }
+    
+    public double getFriHrs() {
+        return friHrs;
+    }
+
+    public void setFriHrs(double friHrs) {
+        this.friHrs = friHrs;
+    }
+    
+    public double getWeekTotalHrs() {
+        return weekTotalHrs;
+    }
+
+    public void setWeekTotalHrs(double weekTotalHrs) {
+        this.weekTotalHrs = weekTotalHrs;
+    }
+    
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
     
 }
