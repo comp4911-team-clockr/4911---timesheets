@@ -8,8 +8,15 @@
 	<navigation-rule>
 		<from-view-id>/indexproto.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>success</from-outcome>
+			<from-outcome>loggedin</from-outcome>
 			<to-view-id>/loggedin.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/EmployeesHR.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>AddEmployee</from-outcome>
+			<to-view-id>/AddEmployee.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

@@ -57,7 +57,7 @@ public class EmployeeList implements Serializable {
 				return "loggedin";
 			}
 		}
-		return "indexproto";
+		return "indexproto?faces-redirect=true";
 	}
 
 	public Credential getCredential() {
@@ -71,7 +71,7 @@ public class EmployeeList implements Serializable {
 	public Employee getEmployee() {
 		return employee;
 	}
- 
+
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
@@ -91,5 +91,7 @@ public class EmployeeList implements Serializable {
 	public void setCredentialManager(CredentialManager credentialManager) {
 		this.credentialManager = credentialManager;
 	}
-		
+	public String addEmployeeButton(){
+		return "AddEmployee";
+	}
 }
