@@ -14,5 +14,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/JC/git/New folder/4911---timesheets/COMP4911Project/WebContent/WEB-INF/lib/BootsFaces-OSP-0.8.1-dist-default.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JC/wildfly-9.0.1.Final/modules/system/layers/base/javax/persistence/api/main/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="output" path="JavaSource"/>
 </classpath>
