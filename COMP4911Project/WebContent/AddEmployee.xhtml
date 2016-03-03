@@ -24,14 +24,14 @@
       	<b:container>
       		<h1>New Employee</h1><br/>
       		<h:outputLabel value="First Name" />
-      		<b:inputText value="#{user.employee.firstName}" ></b:inputText>
+      		<h:inputText value="#{user.employee.firstName}"/> <br/>
       		<h:outputLabel value="Last Name" />
-      		<b:inputText value="#{user.employee.lastName}"></b:inputText>
+      		<h:inputText value="#{user.employee.lastName}"/> <br/>
       		<h:outputLabel value="Email" />
-      		<b:inputText value="#{user.credential.email}"></b:inputText>
+      		<h:inputText value="#{user.credToAdd.email}"/> <br/>
       		<h:outputLabel value="User Role" />
-      		<b:inputText value="#{user.credential.role}"></b:inputText>
-      		<b:button value="Add Employee"></b:button>   
+      		<h:inputText value="#{user.credToAdd.role}"/> <br/>
+      		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
       		<b:button value="Cancel"></b:button>
       	</b:container>
       </h:form>

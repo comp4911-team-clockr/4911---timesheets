@@ -7,24 +7,30 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
    <h:head>
-      <title>#{msgs.title}</title>
+      <title></title>
       <h:outputStylesheet library="css" name="main.css"  /> 
    </h:head>
    <h:body id="bgImage2">
       <h:form>
 	      <b:container>
+			<div id="header">
 			<ui:insert name="header">
 				<ui:include src="commonHeader.xhtml"/>
 			</ui:insert>
-		    <div>
-		     	<!--<h2 class="loginStyle">The bad news is time flies. The good <br/> news is you're the pilot.</h2>-->
-			</div>			
-	      	<b:row>
-	      		<b:column col-lg="12" col-md="12" col-sm="12" col-xs="12">
-	      			<h1 class="loginStyle" id="titleMove">Welcome, #{user.currentEmployee.firstName}!</h1>
-	      		</b:column>
-	      	</b:row>			
+			</div>		
 	      </b:container>
       </h:form>
+      
+   	<b:container>
+   		<h:form>
+	   		<h:outputLabel value="First Name: " />
+	   		<h:inputText value="#{user.currentEmployee.firstName}" /><br />
+	   		<h:outputLabel value="Last Name: " />
+	   		<h:inputText value="#{user.currentEmployee.lastName}" /><br />
+	   		<h:outputLabel value="Email: " /> 
+	   		<h:inputText value="#{user.credential.email}" ></h:inputText>
+   		</h:form>
+   	</b:container>
+   
    </h:body>
 </html>

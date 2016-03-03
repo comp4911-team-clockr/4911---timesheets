@@ -24,9 +24,13 @@ public class EmployeeList implements Serializable {
 
 	@Inject private Employee employee;
 	
+	@Inject private Employee currentEmployee;
+	
 	@Inject private EmployeeManager employeeManager;
 	
 	@Inject private Credential credential;
+	
+	@Inject private Credential credToAdd;
 	
 	@Inject private CredentialManager credentialManager;
 	
@@ -34,7 +38,7 @@ public class EmployeeList implements Serializable {
 	
 	List<Credential>credList;
 	
-	public List<Employee> getList() {
+	public List<Employee> getEmpList() {
 		if (empList == null) {
 			refreshList();
 		}
@@ -42,10 +46,10 @@ public class EmployeeList implements Serializable {
 	}
 	
 	public void refreshList() {
-		Employee[] employees = employeeManager.getAll();
+		empList = employeeManager.getAll();
 	}
 	
-	public void setList(List<Employee> e) {
+	public void setEmpList(List<Employee> e) {
 		empList = e;
 	}
 	
@@ -54,12 +58,19 @@ public class EmployeeList implements Serializable {
 		
 		for(int i = 0; i < credList.size(); i++){
 			if(credList.get(i).getUserId().equals(id) && credList.get(i).getPassword().equals(password)){
+				currentEmployee = employeeManager.findByUserId(id);
+				setCredential(credentialManager.find(id));
+				refreshList();
 				return "loggedin";
 			}
 		}
 		return "indexproto?faces-redirect=true";
 	}
 
+	public Employee getCurrentEmployee() {
+		return currentEmployee;
+	}
+	
 	public Credential getCredential() {
 		return credential;
 	}
@@ -93,5 +104,47 @@ public class EmployeeList implements Serializable {
 	}
 	public String addEmployeeButton(){
 		return "AddEmployee";
+	}
+	
+	public Credential getCredToAdd() {
+		return credToAdd;
+	}
+	
+	public void setCredToAdd(Credential c) {
+		credToAdd = c;
+	}
+	
+	public String addEmployee() {
+		Employee temp = new Employee();
+		Credential tempCred = new Credential();
+		Integer empNumber = empList.size() + 1;
+		String userID = empNumber.toString();
+		
+		for (int i = userID.length(); i < 6; i++)
+			userID = '0' + userID;
+		
+		temp.setFirstName(employee.getFirstName());
+		temp.setLastName(employee.getLastName());
+		temp.setActive(true);
+		temp.setEmpNumber(empNumber);
+		temp.setUserId(userID);
+		
+		tempCred.setUserId(userID);
+		tempCred.setPassword("cafebabe");
+		tempCred.setEmail(credToAdd.getEmail());
+		tempCred.setRole(credToAdd.getRole());
+		
+		temp.setCredential(tempCred);
+		
+		credentialManager.persist(tempCred);
+		employeeManager.persist(temp);
+		
+		refreshList();
+		
+		//any better way to "reset" the fields after it's used?
+		setEmployee(new Employee());
+		setCredToAdd(new Credential());
+		
+		return "displayEmployeeList";
 	}
 }
