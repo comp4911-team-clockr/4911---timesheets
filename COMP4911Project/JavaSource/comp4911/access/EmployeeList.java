@@ -49,15 +49,19 @@ public class EmployeeList implements Serializable {
 		empList = employeeManager.getAll();
 	}
 	
+	public void refreshCurrentEmployee() {
+		currentEmployee = employeeManager.findByUserId(credential.getUserId());
+	}
+	
 	public void setEmpList(List<Employee> e) {
 		empList = e;
 	}
 	
 	public String checkLogin(String id, String password) {
-		credList = Arrays.asList(credentialManager.getAll());
+		Credential cred;
 		
-		for(int i = 0; i < credList.size(); i++){
-			if(credList.get(i).getUserId().equals(id) && credList.get(i).getPassword().equals(password)){
+		if ((cred = credentialManager.find(id)) != null) {
+			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
 				setCredential(credentialManager.find(id));
 				refreshList();
@@ -148,6 +152,8 @@ public class EmployeeList implements Serializable {
 		return "displayEmployeeList";
 	}
 	
+	
+	
 	public boolean showDelete(Employee e) {
 		if (currentEmployee.getEmpNumber() == e.getEmpNumber())
 			return false;
@@ -161,5 +167,23 @@ public class EmployeeList implements Serializable {
 		refreshList();
 		
 		return "displayEmployeeList";
+	}
+	
+	public String updateProfile() {
+		Employee temp = currentEmployee;
+		Credential tempCred = credential;
+		
+		tempCred.setEmail(credToAdd.getEmail());
+		temp.setFirstName(employee.getFirstName());
+		temp.setLastName(employee.getLastName());
+		temp.setCredential(tempCred);
+		
+		credentialManager.merge(tempCred);
+		employeeManager.merge(temp);
+		
+		refreshCurrentEmployee();
+		refreshList();
+		
+		return "userProfile";
 	}
 }
