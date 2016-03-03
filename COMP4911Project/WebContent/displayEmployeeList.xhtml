@@ -36,6 +36,11 @@
 					<f:facet name="header">Last Name</f:facet>
 					<h:outputText value="#{emp.lastName}" />
 				</h:column>
+				<h:column>
+					<h:commandButton value="Delete"
+						action="#{user.deleteEmployee(emp)}"
+						rendered="#{user.showDelete(emp)}" />
+				</h:column>
       		</h:dataTable>    
       		<br/>
       		<b:button outcome="#{user.addEmployeeButton()}" value="Add Employee"></b:button>

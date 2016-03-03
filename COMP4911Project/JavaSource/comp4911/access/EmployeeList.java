@@ -147,4 +147,19 @@ public class EmployeeList implements Serializable {
 		
 		return "displayEmployeeList";
 	}
+	
+	public boolean showDelete(Employee e) {
+		if (currentEmployee.getEmpNumber() == e.getEmpNumber())
+			return false;
+		return true;
+	}
+	
+	public String deleteEmployee(Employee e) {
+		credentialManager.remove(credentialManager.find(e.getUserId()));
+		employeeManager.remove(e);
+		
+		refreshList();
+		
+		return "displayEmployeeList";
+	}
 }
