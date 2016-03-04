@@ -44,7 +44,7 @@ public class EmployeeManager implements Serializable {
 	}
 	
 	public Employee findByUserId(String id) {
-		TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e WHERE e.userId = :userID ", Employee.class);
+		TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e WHERE e.credential.userId = :userID ", Employee.class);
 		query.setParameter("userID", id);
 		java.util.List<Employee> results = query.getResultList(); 
 		Employee emp = results.get(0);

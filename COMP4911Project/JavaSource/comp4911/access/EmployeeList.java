@@ -131,7 +131,7 @@ public class EmployeeList implements Serializable {
 		temp.setLastName(employee.getLastName());
 		temp.setActive(true);
 		temp.setEmpNumber(empNumber);
-		temp.setUserId(userID);
+		//temp.setUserId(userID);
 		
 		tempCred.setUserId(userID);
 		tempCred.setPassword("cafebabe");
@@ -161,8 +161,8 @@ public class EmployeeList implements Serializable {
 	}
 	
 	public String deleteEmployee(Employee e) {
-		credentialManager.remove(credentialManager.find(e.getUserId()));
-		employeeManager.remove(e);
+		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
+		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
 		
 		refreshList();
 		

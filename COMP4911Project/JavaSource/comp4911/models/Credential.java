@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 //import javax.persistence.Transient;
 
@@ -36,6 +37,9 @@ public class Credential implements Serializable {
 	
 	@Column(name="Email")
 	private String email;
+	
+	@OneToOne(mappedBy="credential")
+	private Employee employee;
 	
 	public Credential() {}
 	
@@ -93,5 +97,13 @@ public class Credential implements Serializable {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 }
