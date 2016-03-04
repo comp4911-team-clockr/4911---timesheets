@@ -1,6 +1,9 @@
 package comp4911.models;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,6 +35,27 @@ public class Employee implements Serializable {
 	@Column(name="EmpLname")
 	private String lastName;
 	
+	@Column(name="SickDays")
+	private int sickDays;
+	
+	@Column(name="VacDays")
+	private int vacationDays;
+	
+	@Column(name="FlexStart")
+	private Time flexStart;
+	
+	@Column(name="FlexEnd")
+	private Time flexEnd;
+	
+	@Column(name="HireDate")
+	private Date hireDate;
+	
+	@Column(name="Email")
+	private String email;
+	
+	@Column(name="PayRateId")
+	private String payRateId;
+
 	@Transient
 	private boolean active;
 	
@@ -83,6 +107,62 @@ public class Employee implements Serializable {
 	
 	public void setUserId(String userid) {
 		this.userId = userid;
+	}
+
+	public int getSickDays() {
+		return sickDays;
+	}
+
+	public void setSickDays(int sickDays) {
+		this.sickDays = sickDays;
+	}
+
+	public int getVacationDays() {
+		return vacationDays;
+	}
+
+	public void setVacationDays(int vacationDays) {
+		this.vacationDays = vacationDays;
+	}
+
+	public Time getFlexStart() {
+		return flexStart;
+	}
+
+	public void setFlexStart(Time flexStart) {
+		this.flexStart = flexStart;
+	}
+
+	public Time getFlexEnd() {
+		return flexEnd;
+	}
+
+	public void setFlexEnd(Time flexEnd) {
+		this.flexEnd = flexEnd;
+	}
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
+	}
+
+	public String getPayRateId() {
+		return payRateId;
+	}
+
+	public void setPayRateId(String payRateId) {
+		this.payRateId = payRateId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
