@@ -43,15 +43,19 @@ public class EmployeeManager implements Serializable {
 		em.remove(employee);
 	}
 	
-	public Employee[] getAll() {
+	public Employee findByUserId(String id) {
+		TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e WHERE e.credential.userId = :userID ", Employee.class);
+		query.setParameter("userID", id);
+		java.util.List<Employee> results = query.getResultList(); 
+		Employee emp = results.get(0);
+		return emp;
+	}
+	
+	public java.util.List<Employee> getAll() {
 	        TypedQuery<Employee> query = em.createQuery("select e from Employee e",
 	                Employee.class); 
 	        java.util.List<Employee> employees = query.getResultList();
-	        Employee[] empArray = new Employee[employees.size()];
-	        for (int i=0; i < empArray.length; i++) {
-	            empArray[i] = employees.get(i);
-	        }
-	        return empArray;
+	        return employees;
 	    }
 	
 }

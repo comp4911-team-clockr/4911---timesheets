@@ -8,15 +8,17 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <body>
 	    <ui:composition>
-			<b:navBar brand="Clockr" brandHref="index.xhtml">
+			<b:navBar brand="Clockr" brandHref="#">
 			     <b:navbarLinks>
 			         <b:navLink value="Home" href="loggedin.xhtml" iconAwesome="folder-open"></b:navLink>
+			         <b:navLink value="My Projects"></b:navLink>
 			         <b:navLink value="Projects" href="projects.xhtml" iconAwesome="cog"></b:navLink>
 			         <b:navLink value="Employees" href="EmployeesHR.xhtml" iconAwesome="arrow-left"></b:navLink>
+			         <b:navLink value="Employees" href="EmployeesPM.xhtml" iconAwesome="arrow-left"></b:navLink>
 			         <b:dropMenu value="Profile" iconAwesome="birthday-cake">
-			             <b:navLink value="Reset Password" href="#"></b:navLink>
-			             <b:navLink value="View Details" href="#"></b:navLink>
-			             <b:navLink value="Sign Out" href="#"></b:navLink>
+			             <b:navLink value="Update Profile" href="ResetCreds.xhtml"></b:navLink>
+			             <b:navLink value="View Details" href="ViewDetails.xhtml"></b:navLink>
+			             <b:navLink value="Sign Out" href="indexproto.xhtml"></b:navLink>
 			         </b:dropMenu>
 			     </b:navbarLinks>
 			</b:navBar>			

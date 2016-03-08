@@ -19,4 +19,18 @@
 			<to-view-id>/AddEmployee.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/projects.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>addProject</from-outcome>
+			<to-view-id>/AddProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	<navigation-rule>
+		<from-view-id>/WorkPackages.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>addWP</from-outcome>
+			<to-view-id>/AddWorkPackage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>		
 </faces-config>

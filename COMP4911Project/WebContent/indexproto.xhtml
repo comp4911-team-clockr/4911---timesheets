@@ -20,7 +20,7 @@
 	      			<div id="padAround">
 	      			<b:inputText placeholder="User ID" styleClass="sizeInput" value="#{user.credential.userId}"></b:inputText>
 	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput" value="#{user.credential.password}"></b:inputText>
-	      			<b:navLink value="Forgot password?"></b:navLink><br/>
+	      			<b:navLink class="removeDot" value="Forgot password?"></b:navLink><br/>
 	      			<b:commandButton styleClass="fillWidth" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary"></b:commandButton>
 	      			<p></p>
 	      			</div>

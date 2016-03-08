@@ -5,8 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+//import javax.persistence.Transient;
 
 
 @Entity
@@ -25,20 +26,27 @@ public class Credential implements Serializable {
 	@Column(name="Password")
 	private String password;
 	
+	@Column(name="RoleId")
+	private int roleId;
+
 	@Column(name="UserRole")
 	private String role;
 	
-	@Transient
-	private String digSign;
+	@Column(name="DigiSign")
+	private String digiSign;
 	
 	@Column(name="Email")
 	private String email;
 	
+	@OneToOne(mappedBy="credential")
+	private Employee employee;
+	
 	public Credential() {}
 	
-	public Credential(String userId, String password, String role, String email){
+	public Credential(String userId, String password, int roleId, String role, String email){
 		this.setUserId(userId);
 		this.setPassword(password);
+		this.setRoleId(roleId);
 		this.setRole(role);
 		this.setEmail(email);
 	}
@@ -58,6 +66,14 @@ public class Credential implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
 
 	public String getRole() {
 		return role;
@@ -68,11 +84,11 @@ public class Credential implements Serializable {
 	}
 
 	public String getDigSign() {
-		return digSign;
+		return digiSign;
 	}
 
-	public void setDigSign(String digSign) {
-		this.digSign = digSign;
+	public void setDigSign(String digiSign) {
+		this.digiSign = digiSign;
 	}
 	
 	public String getEmail() {
@@ -81,5 +97,13 @@ public class Credential implements Serializable {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="commonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container>
+      		<h1>Employees</h1><br/>
+      		<h:dataTable value="#{user.empList}" var="emp">
+      			<h:column>
+					<f:facet name="header">Employee Number</f:facet>
+					<h:outputText value="#{emp.empNumber}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">First Name</f:facet>
+					<h:outputText value="#{emp.firstName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Last Name</f:facet>
+					<h:outputText value="#{emp.lastName}" />
+				</h:column>
+				<h:column>
+					<h:commandButton value="Delete"
+						action="#{user.deleteEmployee(emp)}"
+						rendered="#{user.showDelete(emp)}" />
+				</h:column>
+      		</h:dataTable>    
+      		<br/>
+      		<b:button outcome="#{user.addEmployeeButton()}" value="Add Employee"></b:button>
+      	</b:container>
+      </h:form>
+   </h:body>
+</html>

@@ -130,6 +130,10 @@
 	clear: right;
 }
 
+.removeDot {
+	list-style-type: none;
+}
+
 .floatclear {
 	float: left;
 	padding-right: 15px;
