@@ -186,13 +186,12 @@ public class EmployeeList implements Serializable {
 		
 		return "userProfile";
 	}
-<<<<<<< HEAD
+	
 	public String AddProject(){
 		return "addProject";
 	}
+	
 	public String AddWorkPackage(){
 		return "addWP";
 	}
-=======
->>>>>>> 7f457aa6079d4eb0dbb006e4a4b40bb61702ff04
 }
