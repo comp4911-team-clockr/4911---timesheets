@@ -26,6 +26,8 @@ public class EmployeeList implements Serializable {
 	
 	@Inject private Employee currentEmployee;
 	
+	@Inject private Employee editEmployee;
+	
 	@Inject private EmployeeManager employeeManager;
 	
 	@Inject private Credential credential;
@@ -85,6 +87,10 @@ public class EmployeeList implements Serializable {
 
 	public Employee getEmployee() {
 		return employee;
+	}
+	
+	public Employee getEditEmployee() {
+		return editEmployee;
 	}
 
 	public void setEmployee(Employee employee) {
@@ -152,6 +158,28 @@ public class EmployeeList implements Serializable {
 		return "displayEmployeeList";
 	}
 	
+	public String showEmployeeToEdit(Employee emp) {
+		editEmployee = emp;
+		credToAdd = emp.getCredential();
+		return "EditEmployee";
+	}
+	
+	
+	public String updateEmployee(int id) {
+		Employee temp = employeeManager.find(id);
+		
+		temp.setFirstName(editEmployee.getFirstName());
+		temp.setLastName(editEmployee.getLastName());
+		temp.getCredential().setEmail(credToAdd.getEmail());
+		temp.getCredential().setRole(credToAdd.getRole());
+		
+		credentialManager.merge(temp.getCredential());
+		employeeManager.merge(temp);
+		
+		refreshCurrentEmployee();
+		refreshList();
+		return "displayEmployeeList";
+	}
 	
 	
 	public boolean showDelete(Employee e) {
