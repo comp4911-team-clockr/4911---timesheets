@@ -139,11 +139,24 @@ public class EmployeeList implements Serializable {
 		temp.setEmpNumber(empNumber);
 		//temp.setUserId(userID);
 		
+		String deFaultPW = "cafebabe";
+		
 		tempCred.setUserId(userID);
-		tempCred.setPassword("cafebabe");
+		tempCred.setPassword(deFaultPW);
 		tempCred.setEmail(credToAdd.getEmail());
 		tempCred.setRole(credToAdd.getRole());
 		
+		int hashFN = employee.getFirstName().hashCode();
+		int hashLN = employee.getLastName().hashCode();
+		//int hashPW = tempCred.getPassword().hashCode();
+		int hashPW = tempCred.getPassword().hashCode();
+		
+		int cal = hashFN + hashLN + hashPW;
+		
+		String hashCode =  Integer.toString(cal);
+		
+		tempCred.setDigiSign(hashCode);
+		System.out.println(hashCode);
 		temp.setCredential(tempCred);
 		
 		credentialManager.persist(tempCred);
