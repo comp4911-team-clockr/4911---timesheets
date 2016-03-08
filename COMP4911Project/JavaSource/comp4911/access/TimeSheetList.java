@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+//import javax.transaction.Transactional;
 import javax.transaction.Transactional;
 
 import comp4911.controllers.TimeSheetManager;
@@ -50,7 +51,7 @@ public class TimeSheetList implements Serializable{
 		this.timesheetManager = timesheetManager;
 	}
 	
-	@Transactional
+	//@Transactional
 	public TimeSheet getTimesheet() {
 		if(timesheet.getTimeSID() == 0) {
 			System.out.println("Timesheet is null");

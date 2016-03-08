@@ -83,11 +83,11 @@ public class Credential implements Serializable {
 		this.role = role;
 	}
 
-	public String getDigSign() {
+	public String getDigiSign() {
 		return digiSign;
 	}
 
-	public void setDigSign(String digiSign) {
+	public void setDigiSign(String digiSign) {
 		this.digiSign = digiSign;
 	}
 	

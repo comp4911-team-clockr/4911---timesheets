@@ -62,7 +62,7 @@ public class TimeSheetRow implements Serializable {
         return timeSheetRowId;
     }
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "TimeSheetId")
     private TimeSheet timesheet;
     

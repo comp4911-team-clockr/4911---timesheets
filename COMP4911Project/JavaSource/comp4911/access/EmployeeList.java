@@ -7,6 +7,7 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+//import javax.transaction.Transactional;
 
 import comp4911.controllers.CredentialManager;
 import comp4911.controllers.EmployeeManager;
@@ -26,6 +27,8 @@ public class EmployeeList implements Serializable {
 	
 	@Inject private Employee currentEmployee;
 	
+	@Inject private Employee editEmployee;
+	
 	@Inject private EmployeeManager employeeManager;
 	
 	@Inject private Credential credential;
@@ -34,6 +37,10 @@ public class EmployeeList implements Serializable {
 	
 	@Inject private CredentialManager credentialManager;
 	
+//	@Inject private TimeSheetManager timesheetManager;
+//	
+//	@Inject private TimeSheet timesheet;
+
 	List<Employee> empList;
 	
 	List<Credential>credList;
@@ -60,6 +67,13 @@ public class EmployeeList implements Serializable {
 	public String checkLogin(String id, String password) {
 		Credential cred;
 		
+		//Timesheet test
+//		timesheet = timesheetManager.getAll()[0];
+//		System.out.println(timesheet.toString());
+//		for(int i = 0; i < timesheet.getTimeSheetRows().size(); i++) {
+//			System.out.println(timesheet.getTimeSheetRows().toArray()[i].toString());
+//		}
+		
 		if ((cred = credentialManager.find(id)) != null) {
 			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
@@ -68,6 +82,7 @@ public class EmployeeList implements Serializable {
 				return "loggedin";
 			}
 		}
+		
 		return "indexproto?faces-redirect=true";
 	}
 
@@ -85,6 +100,10 @@ public class EmployeeList implements Serializable {
 
 	public Employee getEmployee() {
 		return employee;
+	}
+	
+	public Employee getEditEmployee() {
+		return editEmployee;
 	}
 
 	public void setEmployee(Employee employee) {
@@ -118,6 +137,7 @@ public class EmployeeList implements Serializable {
 		credToAdd = c;
 	}
 	
+	//DigiSign
 	public String addEmployee() {
 		Employee temp = new Employee();
 		Credential tempCred = new Credential();
@@ -133,11 +153,24 @@ public class EmployeeList implements Serializable {
 		temp.setEmpNumber(empNumber);
 		//temp.setUserId(userID);
 		
+		String deFaultPW = "cafebabe";
+		
 		tempCred.setUserId(userID);
-		tempCred.setPassword("cafebabe");
+		tempCred.setPassword(deFaultPW);
 		tempCred.setEmail(credToAdd.getEmail());
 		tempCred.setRole(credToAdd.getRole());
 		
+		int hashFN = employee.getFirstName().hashCode();
+		int hashLN = employee.getLastName().hashCode();
+		//int hashPW = tempCred.getPassword().hashCode();
+		int hashPW = tempCred.getPassword().hashCode();
+		
+		int cal = hashFN + hashLN + hashPW;
+		
+		String hashCode =  Integer.toString(cal);
+		
+		tempCred.setDigiSign(hashCode);
+		System.out.println(hashCode);
 		temp.setCredential(tempCred);
 		
 		credentialManager.persist(tempCred);
@@ -152,6 +185,29 @@ public class EmployeeList implements Serializable {
 		return "displayEmployeeList";
 	}
 	
+	public String showEmployeeToEdit(Employee emp) {
+		editEmployee = emp;
+		credToAdd = emp.getCredential();
+		return "EditEmployee";
+	}
+	
+	
+	public String updateEmployee(int id) {
+		Employee temp = employeeManager.find(id);
+		
+		temp.setFirstName(editEmployee.getFirstName());
+		temp.setLastName(editEmployee.getLastName());
+		temp.getCredential().setEmail(credToAdd.getEmail());
+		temp.getCredential().setRole(credToAdd.getRole());
+		
+		credentialManager.merge(temp.getCredential());
+		employeeManager.merge(temp);
+		
+		refreshCurrentEmployee();
+		refreshList();
+		credToAdd = new Credential();
+		return "displayEmployeeList";
+	}
 	
 	
 	public boolean showDelete(Employee e) {
@@ -186,4 +242,12 @@ public class EmployeeList implements Serializable {
 		
 		return "userProfile";
 	}
+	
+//	public TimeSheet getTimesheet() {
+//		return timesheet;
+//	}
+//
+//	public void setTimesheet(TimeSheet timesheet) {
+//		this.timesheet = timesheet;
+//	}
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -71,7 +72,7 @@ public class TimeSheet implements Serializable {
 	@Column(name="Approval")
 	private String approval;
 	
-	@OneToMany(mappedBy = "timesheet")
+	@OneToMany(mappedBy = "timesheet", fetch = FetchType.EAGER)
 	private List<TimeSheetRow> timesheetrows;
 	
 	public List<TimeSheetRow> getTimeSheetRows(){
