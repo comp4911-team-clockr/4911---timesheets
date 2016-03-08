@@ -24,6 +24,7 @@
       	<b:container>
       		<h1>New Employee</h1><br/>
       		<h:outputLabel value="First Name" />
+<<<<<<< HEAD
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
       		<b:inputText styleClass="smallerTextInput" value="#{user.employee.firstName}" ></b:inputText>
@@ -53,6 +54,16 @@
             </b:column>
             </b:row><br/>
       		<b:button value="Add Employee" action="#{user.addEmployee()}"></b:button><p></p> 
+=======
+      		<h:inputText value="#{user.employee.firstName}"/> <br/>
+      		<h:outputLabel value="Last Name" />
+      		<h:inputText value="#{user.employee.lastName}"/> <br/>
+      		<h:outputLabel value="Email" />
+      		<h:inputText value="#{user.credToAdd.email}"/> <br/>
+      		<h:outputLabel value="User Role" />
+      		<h:inputText value="#{user.credToAdd.role}"/> <br/>
+      		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
+>>>>>>> 7f457aa6079d4eb0dbb006e4a4b40bb61702ff04
       		<b:button value="Cancel"></b:button>
       	</b:container>
       </h:form>
