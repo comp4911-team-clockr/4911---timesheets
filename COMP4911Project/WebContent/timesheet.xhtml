@@ -11,7 +11,7 @@
    </h:head>
    <h:body>
       <h:form>
-	      <b:container>
+	      <!--<b:container>
 	        <b:panelGrid colSpans="1,1,1,1,1,1,1,1,1,1,2">
 	        	<h:outputLabel value="Project"></h:outputLabel>
 	        	<h:outputLabel value="WP"></h:outputLabel>
@@ -38,7 +38,10 @@
 	      		<b:column col-md="1" col-sm="1" col-xs="1">Fri</b:column>
 	      		<b:column col-md="2" col-sm="2" col-xs="2">Notes</b:column>
 	      	</b:row>
-	      </b:container>
+	      </b:container>-->
+	      <h:dataTable value="#{test.timesheet.timeSheetRows}" var="item">
+			
+		  </h:dataTable>	
       </h:form>
    </h:body>
 </html>

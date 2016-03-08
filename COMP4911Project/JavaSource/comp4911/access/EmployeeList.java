@@ -7,11 +7,14 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import comp4911.controllers.CredentialManager;
 import comp4911.controllers.EmployeeManager;
+import comp4911.controllers.TimeSheetManager;
 import comp4911.models.Credential;
 import comp4911.models.Employee;
+import comp4911.models.TimeSheet;
 
 @Named("user")
 @SessionScoped
@@ -34,6 +37,10 @@ public class EmployeeList implements Serializable {
 	
 	@Inject private CredentialManager credentialManager;
 	
+//	@Inject private TimeSheetManager timesheetManager;
+//	
+//	@Inject private TimeSheet timesheet;
+
 	List<Employee> empList;
 	
 	List<Credential>credList;
@@ -60,6 +67,13 @@ public class EmployeeList implements Serializable {
 	public String checkLogin(String id, String password) {
 		Credential cred;
 		
+		//Timesheet test
+//		timesheet = timesheetManager.getAll()[0];
+//		System.out.println(timesheet.toString());
+//		for(int i = 0; i < timesheet.getTimeSheetRows().size(); i++) {
+//			System.out.println(timesheet.getTimeSheetRows().toArray()[i].toString());
+//		}
+		
 		if ((cred = credentialManager.find(id)) != null) {
 			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
@@ -68,6 +82,7 @@ public class EmployeeList implements Serializable {
 				return "loggedin";
 			}
 		}
+		
 		return "indexproto?faces-redirect=true";
 	}
 
@@ -186,4 +201,12 @@ public class EmployeeList implements Serializable {
 		
 		return "userProfile";
 	}
+	
+//	public TimeSheet getTimesheet() {
+//		return timesheet;
+//	}
+//
+//	public void setTimesheet(TimeSheet timesheet) {
+//		this.timesheet = timesheet;
+//	}
 }
