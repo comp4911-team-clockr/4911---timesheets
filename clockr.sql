@@ -107,3 +107,9 @@ INSERT INTO WorkPackage VALUES(1, 1, "Project Set-Up", "TEK Solutions", "A003216
 INSERT INTO WorkPackage VALUES(2, 2, "Ongoing Update", "Microsoft", "A00321654", "P1", 54, 20, 1);	
 
 
+<<<<<<< HEAD
+=======
+INSERT INTO Credentials VALUES ("A00123456", "password", 001, "Employee", "aa@aa.aa", "1504678463");
+INSERT INTO Credentials VALUES ("A00465123", "iamPM", 002, "ProjectManager", "bb@bb.bb" , "-1889844622");
+INSERT INTO Credentials VALUES ("A00654321", "admin", 003, "SystemAdmin", "cc@cc.cc" , "-58714991");
+>>>>>>> 7624417f7b83455650a188cba8323260c01f1911

@@ -29,6 +29,8 @@ public class EmployeeList implements Serializable {
 	
 	@Inject private Employee currentEmployee;
 	
+	@Inject private Employee editEmployee;
+	
 	@Inject private EmployeeManager employeeManager;
 	
 	@Inject private Credential credential;
@@ -101,6 +103,10 @@ public class EmployeeList implements Serializable {
 	public Employee getEmployee() {
 		return employee;
 	}
+	
+	public Employee getEditEmployee() {
+		return editEmployee;
+	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
@@ -148,11 +154,24 @@ public class EmployeeList implements Serializable {
 		temp.setEmpNumber(empNumber);
 		//temp.setUserId(userID);
 		
+		String deFaultPW = "cafebabe";
+		
 		tempCred.setUserId(userID);
-		tempCred.setPassword("cafebabe");
+		tempCred.setPassword(deFaultPW);
 		tempCred.setEmail(credToAdd.getEmail());
 		tempCred.setRole(credToAdd.getRole());
 		
+		int hashFN = employee.getFirstName().hashCode();
+		int hashLN = employee.getLastName().hashCode();
+		//int hashPW = tempCred.getPassword().hashCode();
+		int hashPW = tempCred.getPassword().hashCode();
+		
+		int cal = hashFN + hashLN + hashPW;
+		
+		String hashCode =  Integer.toString(cal);
+		
+		tempCred.setDigiSign(hashCode);
+		System.out.println(hashCode);
 		temp.setCredential(tempCred);
 		
 		credentialManager.persist(tempCred);
@@ -167,6 +186,29 @@ public class EmployeeList implements Serializable {
 		return "displayEmployeeList";
 	}
 	
+	public String showEmployeeToEdit(Employee emp) {
+		editEmployee = emp;
+		credToAdd = emp.getCredential();
+		return "EditEmployee";
+	}
+	
+	
+	public String updateEmployee(int id) {
+		Employee temp = employeeManager.find(id);
+		
+		temp.setFirstName(editEmployee.getFirstName());
+		temp.setLastName(editEmployee.getLastName());
+		temp.getCredential().setEmail(credToAdd.getEmail());
+		temp.getCredential().setRole(credToAdd.getRole());
+		
+		credentialManager.merge(temp.getCredential());
+		employeeManager.merge(temp);
+		
+		refreshCurrentEmployee();
+		refreshList();
+		credToAdd = new Credential();
+		return "displayEmployeeList";
+	}
 	
 	
 	public boolean showDelete(Employee e) {
