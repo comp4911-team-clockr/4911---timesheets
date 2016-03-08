@@ -178,6 +178,7 @@ public class EmployeeList implements Serializable {
 		
 		refreshCurrentEmployee();
 		refreshList();
+		credToAdd = new Credential();
 		return "displayEmployeeList";
 	}
 	
