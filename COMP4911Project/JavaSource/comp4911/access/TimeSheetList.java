@@ -54,9 +54,9 @@ public class TimeSheetList implements Serializable{
 	//@Transactional
 	public TimeSheet getTimesheet() {
 		if(timesheet.getTimeSID() == 0) {
-			System.out.println("Timesheet is null");
+			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll().get(0);
-			System.out.println(timesheet.getTimeSheetRows().size());
+			//System.out.println(timesheet.getTimeSheetRows().size());
 		}
 		
 		
