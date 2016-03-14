@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -41,14 +43,18 @@ public class WorkPackage implements Serializable {
 	@Column(name="ManDays")
 	private int manDays;
 	
-	@Column(name="ProjectId")
-	private int projectId;
+//	@Column(name="ProjectId")
+//	private int projectId;
 	
 	@Column(name="EmpNum")
 	private int supervisor;
 	
-	@OneToMany(mappedBy = "workpackage", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="workpackage", fetch=FetchType.EAGER)
 	private List<Employee> empWpList;
+	
+	@ManyToOne()
+	@JoinColumn(name="ProjectId")
+	private Project head;
 
 	public WorkPackage(){}
 	
@@ -108,13 +114,13 @@ public class WorkPackage implements Serializable {
 		this.manDays = manDays;
 	}
 
-	public int getProjectId() {
-		return projectId;
-	}
-
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
-	}
+//	public int getProjectId() {
+//		return projectId;
+//	}
+//
+//	public void setProjectId(int projectId) {
+//		this.projectId = projectId;
+//	}
 
 	public List<Employee> getEmpWpList() {
 		return empWpList;
@@ -123,4 +129,13 @@ public class WorkPackage implements Serializable {
 	public void setEmpWPList(List<Employee> empWpList) {
 		this.empWpList = empWpList;
 	}
+	
+	public Project getHead() {
+		return head;
+	}
+
+	public void setHead(Project head) {
+		this.head = head;
+	}
+
 }

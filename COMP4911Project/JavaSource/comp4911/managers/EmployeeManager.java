@@ -1,4 +1,4 @@
-package comp4911.controllers;
+package comp4911.managers;
 
 import java.io.Serializable;
 

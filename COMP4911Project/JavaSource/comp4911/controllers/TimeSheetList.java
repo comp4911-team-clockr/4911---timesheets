@@ -1,4 +1,4 @@
-package comp4911.access;
+package comp4911.controllers;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 //import javax.transaction.Transactional;
 
-import comp4911.controllers.TimeSheetManager;
+import comp4911.managers.TimeSheetManager;
 import comp4911.models.TimeSheet;
 
 

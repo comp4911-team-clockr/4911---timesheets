@@ -20,7 +20,9 @@ CREATE TABLE Employees(	EmpNum int,
 						FlexEnd time, 
 						HireDate date, 
 						Email TINYTEXT, 
-						PayRateId TINYTEXT);
+						PayRateId TINYTEXT,
+						ProjectId int,
+						WpId int);
 
 DROP TABLE IF EXISTS Credentials;
 CREATE TABLE Credentials( UserId TINYTEXT, 
@@ -30,10 +32,10 @@ CREATE TABLE Credentials( UserId TINYTEXT,
 						  Email TINYTEXT, 
 						  DigiSign VARCHAR(255));
 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1", 10, 1);
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5", 10, 1);
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3", 20, 2);
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3", 20, 2);
 
 
 INSERT INTO Credentials VALUES ("000001", "password", 001, "Employee", "aa@aa.aa", "1504678463");

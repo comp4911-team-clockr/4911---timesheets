@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -28,9 +29,6 @@ public class Employee implements Serializable {
 	@OneToOne
 	@JoinColumn(name="UserId")
 	private Credential credential;
-	
-//	@Column(name="UserId")
-//	private String userId;
 	
 	@Column(name="EmpFname")
 	private String firstName;
@@ -58,6 +56,14 @@ public class Employee implements Serializable {
 	
 	@Column(name="PayRateId")
 	private String payRateId;
+
+	@ManyToOne
+	@JoinColumn(name="ProjectId")
+	private Project project;
+	
+	@ManyToOne
+	@JoinColumn(name="WpId")
+	private WorkPackage workpackage;
 
 	@Transient
 	private boolean active;
@@ -103,14 +109,6 @@ public class Employee implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-//	public String getUserId() {
-//		return this.userId;
-//	}
-//	
-//	public void setUserId(String userid) {
-//		this.userId = userid;
-//	}
 
 	public int getSickDays() {
 		return sickDays;
@@ -166,6 +164,22 @@ public class Employee implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
+	public WorkPackage getWorkpackage() {
+		return workpackage;
+	}
+
+	public void setWorkpackage(WorkPackage workpackage) {
+		this.workpackage = workpackage;
 	}
 	
 }
