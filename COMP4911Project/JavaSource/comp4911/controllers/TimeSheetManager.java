@@ -51,13 +51,10 @@ public class TimeSheetManager implements Serializable {
 		return timeArray;
 	}
 	
-	public TimeSheet[] getAll() {
+	public List<TimeSheet> getAll() {
 		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t", TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();
-		TimeSheet[] timeArray = new TimeSheet[timesheets.size()];
-		for (int i=0; i < timeArray.length; i++){
-			timeArray[i] = timesheets.get(i);
-		}
-		return timeArray;
+		
+		return timesheets;
 	}
 }

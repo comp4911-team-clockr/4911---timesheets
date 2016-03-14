@@ -3,7 +3,9 @@
 	<persistence-unit name="COMP4911ClockrProjectDatabase">
 	    <jta-data-source>java:/COMP4911DS</jta-data-source>
 	    <class>comp4911.models.Credential</class>
-		<class>comp4911.models.Employee</class>  
+		<class>comp4911.models.Employee</class>
+		<class>comp4911.models.TimeSheet</class>
+		<class>comp4911.models.TimeSheetRow</class>  
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
          <property name="hibernate.hbm2ddl.auto" value="validate"/>

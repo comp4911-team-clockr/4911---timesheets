@@ -1,20 +1,17 @@
 package comp4911.access;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+//import javax.transaction.Transactional;
 
 import comp4911.controllers.TimeSheetManager;
-import comp4911.models.Employee;
 import comp4911.models.TimeSheet;
-import comp4911.models.TimeSheetRow;
+
 
 @Named("test")
 @SessionScoped
-
 public class TimeSheetList implements Serializable{
 
 	/**
@@ -22,32 +19,29 @@ public class TimeSheetList implements Serializable{
 	 */
 	private static final long serialVersionUID = -1238841317514571931L;
 	
-	@Inject private TimeSheet timesheet;
+	@Inject 
+	private TimeSheet timesheet;
 	
+	@Inject
 	private TimeSheetManager timesheetManager;
 
-//	List<TimeSheet> timesheetList;
+	//private List<TimeSheet> timesheetList;
 	
 	public TimeSheetList() {
-		timesheetManager = new TimeSheetManager();
-		timesheet = timesheetManager.getAll()[0];
+	}
+/*
+	public void refreshTimeSheet() {
+		timesheetList = timesheetManager.getAll();
 	}
 	
-//	public void refreshTimeSheet() {
-//		TimeSheet[] timesheets = timesheetManager.getAll();
-//	}
-//	
-//	public List<TimeSheet> getTimeSheetList() {
-//		if (timesheetList == null) {
-//			refreshTimeSheet();
-//		}
-//		return timesheetList;
-//	}
-//	
-//	public void refreshTimeSheetRows() {
-//		TimeSheet[] timesheets = timesheetManager.getAll();
-//	}
-	
+	public List<TimeSheet> getTimeSheetList() {
+		if (timesheetList == null) {
+			refreshTimeSheet();
+		}
+		
+		return timesheetList;
+	}
+	*/
 	public TimeSheetManager getTimesheetManager() {
 		return timesheetManager;
 	}
@@ -55,11 +49,19 @@ public class TimeSheetList implements Serializable{
 	public void setTimesheetManager(TimeSheetManager timesheetManager) {
 		this.timesheetManager = timesheetManager;
 	}
-
+	
+	//@Transactional
 	public TimeSheet getTimesheet() {
+		if(timesheet.getTimeSID() == 0) {
+			//System.out.println("Timesheet is null");
+			timesheet = timesheetManager.getAll().get(0);
+			//System.out.println(timesheet.getTimeSheetRows().size());
+		}
+		
+		
 		return timesheet;
 	}
-
+	
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
 	}

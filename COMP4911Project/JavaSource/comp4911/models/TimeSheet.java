@@ -2,16 +2,17 @@ package comp4911.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Collection;
+//import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 //import javax.persistence.Transient;
-import javax.transaction.Transactional;
+
 
 @Entity
 @Table(name="TimeSheet")
@@ -71,10 +72,10 @@ public class TimeSheet implements Serializable {
 	@Column(name="Approval")
 	private String approval;
 	
-	@OneToMany(mappedBy = "timesheet")
-	private Collection<TimeSheetRow> timesheetrows;
+	@OneToMany(mappedBy = "timesheet", fetch = FetchType.EAGER)
+	private List<TimeSheetRow> timesheetrows;
 	
-	public Collection<TimeSheetRow> getTimeSheetRows(){
+	public List<TimeSheetRow> getTimeSheetRows(){
 		return timesheetrows;
 	}
 	public void setTimeSheetRows(List<TimeSheetRow> timesheetrows){

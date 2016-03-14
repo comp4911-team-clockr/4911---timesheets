@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="commonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container>
+      		<h1>New Work Package</h1><br/>
+      		<h:outputLabel value="Project Name" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.employee.firstName}" ></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Project ID" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.employee.lastName}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Work Package Name" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Work Package ID" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>   
+      		<h:outputLabel value="Work Package Responsibility Engineer" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Project Manager" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Supervisor" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>   
+      		<h:outputLabel value="Employees" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		</b:column>
+      		</b:row>         		      		
+      		<h:outputLabel value="Start Date" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">      		
+      		<b:datepicker format="dd/mm/yyyy"></b:datepicker>
+      		</b:column>
+      		</b:row>         		
+			<h:outputLabel value="End Date" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">      		
+      		<b:datepicker format="dd/mm/yyyy"></b:datepicker>
+      		</b:column>
+      		</b:row><br/>			
+      		<b:button value="Add WP"></b:button><p></p> 
+      		<b:button value="Cancel"></b:button>
+      	</b:container>
+      </h:form>
+   </h:body>
+</html>

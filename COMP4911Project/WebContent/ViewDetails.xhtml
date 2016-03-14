@@ -22,14 +22,17 @@
       </h:form>
       <h:form>
       	<b:container>
-      		<h1>Projects</h1><br/>
-      		<!-- add a datatable or bootsfaces equivalent here later -->
-      		<b:navLink value="Project 1" href="WorkPackages.xhtml"></b:navLink>
-      		<b:navLink value="Project 2" href="WorkPackages.xhtml"></b:navLink>
-      		<b:navLink value="Project 3" href="WorkPackages.xhtml"></b:navLink>
-      		<b:navLink value="Project 4" href="WorkPackages.xhtml"></b:navLink>
-      		<b:navLink value="Project 5" href="WorkPackages.xhtml"></b:navLink>
-      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>
+      		<h1>#{user.credential.role}</h1><br/>
+      		<h:outputLabel value="User ID:" />
+			<h:outputText value=" #{user.credential.userId}" /><br/>
+      		<h:outputLabel value="First Name:" />
+			<h:outputText value=" #{user.currentEmployee.firstName}" /><br/>      		
+      		<h:outputLabel value="Last Name:" />
+			<h:outputText value=" #{user.currentEmployee.lastName}" /><br/>
+      		<h:outputLabel value="Employee Number:" />
+			<h:outputText value=" #{user.currentEmployee.empNumber}" /><br/>			
+      		<h:outputLabel value="Email:" />
+      		<h:outputText value=" #{user.currentEmployee.email}" /><br/>
       	</b:container>
       </h:form>
    </h:body>

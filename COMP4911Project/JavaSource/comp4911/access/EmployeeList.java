@@ -7,14 +7,12 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import comp4911.controllers.CredentialManager;
 import comp4911.controllers.EmployeeManager;
-import comp4911.controllers.TimeSheetManager;
 import comp4911.models.Credential;
 import comp4911.models.Employee;
-import comp4911.models.TimeSheet;
 
 @Named("user")
 @SessionScoped
@@ -139,6 +137,7 @@ public class EmployeeList implements Serializable {
 		credToAdd = c;
 	}
 	
+	//DigiSign
 	public String addEmployee() {
 		Employee temp = new Employee();
 		Credential tempCred = new Credential();
@@ -244,6 +243,14 @@ public class EmployeeList implements Serializable {
 		return "userProfile";
 	}
 	
+	public String AddProject(){
+		return "addProject";
+	}
+	
+	public String AddWorkPackage(){
+		return "addWP";
+	}
+	
 //	public TimeSheet getTimesheet() {
 //		return timesheet;
 //	}
@@ -251,4 +258,5 @@ public class EmployeeList implements Serializable {
 //	public void setTimesheet(TimeSheet timesheet) {
 //		this.timesheet = timesheet;
 //	}
+	
 }

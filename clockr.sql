@@ -35,10 +35,11 @@ INSERT INTO Employees VALUES (2, "Jane", "Doe", "A00465123", 10, 10, "8:00:00", 
 INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "A00654321", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3");
 INSERT INTO Employees VALUES (4, "Barry", "Allen", "A00321654", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3");
 
-INSERT INTO Credentials VALUES ("A00123456", "password", 1, "Employee", "aa@aa.aa", "");
-INSERT INTO Credentials VALUES ("A00465123", "iamPM", 2, "ProjectManager", "bb@bb.bb" , "");
-INSERT INTO Credentials VALUES ("A00654321", "admin", 3, "SystemAdmin", "cc@cc.cc" , "");
-INSERT INTO Credentials VALUES ("A00321654", "resp", 4, "ResponsibilityEngineer", "dd@dd.dd" , "");
+
+INSERT INTO Credentials VALUES ("A00123456", "password", 001, "Employee", "aa@aa.aa", "1504678463");
+INSERT INTO Credentials VALUES ("A00465123", "iamPM", 002, "ProjectManager", "bb@bb.bb" , "-1889844622");
+INSERT INTO Credentials VALUES ("A00654321", "admin", 003, "SystemAdmin", "cc@cc.cc" , "-58714991");
+INSERT INTO Credentials VALUES ("A00321654", "resp", 004, "ResponsibilityEngineer", "dd@dd.dd" , "128438349");
 
 
 DROP TABLE IF EXISTS TimeSheet;
@@ -105,11 +106,3 @@ INSERT INTO Project VALUES(20, "Project Beta", "A00456123", 400, 2, 2, "2016-01-
 
 INSERT INTO WorkPackage VALUES(1, 1, "Project Set-Up", "TEK Solutions", "A00321654", "P1", 13, 10, 1);
 INSERT INTO WorkPackage VALUES(2, 2, "Ongoing Update", "Microsoft", "A00321654", "P1", 54, 20, 1);	
-
-
-<<<<<<< HEAD
-=======
-INSERT INTO Credentials VALUES ("A00123456", "password", 001, "Employee", "aa@aa.aa", "1504678463");
-INSERT INTO Credentials VALUES ("A00465123", "iamPM", 002, "ProjectManager", "bb@bb.bb" , "-1889844622");
-INSERT INTO Credentials VALUES ("A00654321", "admin", 003, "SystemAdmin", "cc@cc.cc" , "-58714991");
->>>>>>> 7624417f7b83455650a188cba8323260c01f1911

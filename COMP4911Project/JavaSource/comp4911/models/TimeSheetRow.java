@@ -3,7 +3,7 @@ package comp4911.models;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+//import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -62,7 +62,7 @@ public class TimeSheetRow implements Serializable {
         return timeSheetRowId;
     }
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "TimeSheetId")
     private TimeSheet timesheet;
     

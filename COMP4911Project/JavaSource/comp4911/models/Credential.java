@@ -82,13 +82,13 @@ public class Credential implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	public void setDigiSign(String digiSign) {
-		this.digiSign = digiSign;
-	}
 
 	public String getDigiSign() {
 		return digiSign;
+	}
+
+	public void setDigiSign(String digiSign) {
+		this.digiSign = digiSign;
 	}
 	
 	public String getEmail() {
@@ -106,5 +106,4 @@ public class Credential implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-
 }
