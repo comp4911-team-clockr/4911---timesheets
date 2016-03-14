@@ -30,16 +30,16 @@ CREATE TABLE Credentials( UserId TINYTEXT,
 						  Email TINYTEXT, 
 						  DigiSign VARCHAR(255));
 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "A00123456", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "A00465123", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "A00654321", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "A00321654", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1");
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5");
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3");
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3");
 
 
-INSERT INTO Credentials VALUES ("A00123456", "password", 001, "Employee", "aa@aa.aa", "1504678463");
-INSERT INTO Credentials VALUES ("A00465123", "iamPM", 002, "ProjectManager", "bb@bb.bb" , "-1889844622");
-INSERT INTO Credentials VALUES ("A00654321", "admin", 003, "SystemAdmin", "cc@cc.cc" , "-58714991");
-INSERT INTO Credentials VALUES ("A00321654", "resp", 004, "ResponsibilityEngineer", "dd@dd.dd" , "128438349");
+INSERT INTO Credentials VALUES ("000001", "password", 001, "Employee", "aa@aa.aa", "1504678463");
+INSERT INTO Credentials VALUES ("000002", "iamPM", 002, "ProjectManager", "bb@bb.bb" , "-1889844622");
+INSERT INTO Credentials VALUES ("000003", "iamgod", 003, "SystemAdmin", "cc@cc.cc" , "-58714991");
+INSERT INTO Credentials VALUES ("000004", "f3@rMe", 004, "ResponsibilityEngineer", "dd@dd.dd" , "128438349");
 
 
 DROP TABLE IF EXISTS TimeSheet;
