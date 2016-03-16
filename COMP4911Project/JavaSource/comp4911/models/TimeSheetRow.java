@@ -56,15 +56,11 @@ public class TimeSheetRow implements Serializable {
     @Column(name="Notes")
     private String notes;
     
-    public TimeSheetRow(){}
-    
-    public int getTimeSheetRowId() {
-        return timeSheetRowId;
-    }
-    
     @ManyToOne
-    @JoinColumn(name = "TimeSheetId")
+    @JoinColumn(name="TimeSheetId")
     private TimeSheet timesheet;
+    
+    public TimeSheetRow(){}
     
     public TimeSheet getTimeSheet(){
     	return timesheet;
@@ -72,6 +68,10 @@ public class TimeSheetRow implements Serializable {
     
     public void setTimeSheet(TimeSheet timesheet){
     	this.timesheet = timesheet;
+    }
+    
+    public int getTimeSheetRowId() {
+        return timeSheetRowId;
     }
 
     public void setTimeSheetRowId(int timeSheetRowId) {

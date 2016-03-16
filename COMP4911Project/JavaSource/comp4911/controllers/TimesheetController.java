@@ -1,4 +1,4 @@
-package comp4911.access;
+package comp4911.controllers;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -6,14 +6,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 //import javax.transaction.Transactional;
 
-import comp4911.controllers.TimeSheetManager;
+import comp4911.managers.TimeSheetManager;
 import comp4911.models.TimeSheet;
 import comp4911.models.TimeSheetRow;
 
 
 @Named("test")
 @SessionScoped
-public class TimeSheetList implements Serializable{
+public class TimesheetController implements Serializable{
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class TimeSheetList implements Serializable{
 
 	//private List<TimeSheet> timesheetList;
 	
-	public TimeSheetList() {
+	public TimesheetController() {
 	}
 /*
 	public void refreshTimeSheet() {
@@ -53,6 +53,7 @@ public class TimeSheetList implements Serializable{
 	
 	//@Transactional
 	public TimeSheet getTimesheet() {
+		System.out.println("Get Timesheet called");
 		if(timesheet.getTimeSID() == 0) {
 			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll().get(0);

@@ -72,7 +72,7 @@ public class TimeSheet implements Serializable {
 	@Column(name="Approval")
 	private String approval;
 	
-	@OneToMany(mappedBy = "timesheet", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER)
 	private List<TimeSheetRow> timesheetrows;
 	
 	public List<TimeSheetRow> getTimeSheetRows(){
