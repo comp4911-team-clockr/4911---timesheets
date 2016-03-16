@@ -5,6 +5,7 @@ import java.sql.Date;
 //import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -72,7 +73,7 @@ public class TimeSheet implements Serializable {
 	@Column(name="Approval")
 	private String approval;
 	
-	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<TimeSheetRow> timesheetrows;
 	
 	public List<TimeSheetRow> getTimeSheetRows(){

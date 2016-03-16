@@ -32,12 +32,11 @@ public class TimeSheetManager implements Serializable {
 	}
 	
 	public void persist(TimeSheet timesheet) {
-		em.merge(timesheet);
+		em.persist(timesheet);
 	}
 	
 	public void merge(TimeSheet timesheet) {
-		timesheet = find(timesheet.getTimeSID());
-		em.remove(timesheet);
+		em.merge(timesheet);
 	}
 	
 	public TimeSheet[] getByTimeSheetId(int timesheetID){
