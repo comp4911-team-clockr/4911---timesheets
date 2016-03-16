@@ -9,6 +9,7 @@ import javax.inject.Named;
 //import javax.transaction.Transactional;
 
 import comp4911.managers.TimeSheetManager;
+import comp4911.models.Employee;
 import comp4911.models.TimeSheet;
 import comp4911.models.TimeSheetRow;
 
@@ -22,6 +23,8 @@ public class TimesheetController implements Serializable{
 	 */
 	private static final long serialVersionUID = -1238841317514571931L;
 	
+	private Employee employee;
+	
 	@Inject 
 	private TimeSheet timesheet;
 	
@@ -33,12 +36,18 @@ public class TimesheetController implements Serializable{
 	public TimesheetController() {
 	}
 
-	public void refreshTimeSheet() {
-		timesheetList = timesheetManager.getAll();
-		timesheet = timesheetList.get(0);
+	public void SetEmployee(Employee employee) {
+		this.employee = employee;
+		refreshTimeSheet();
 	}
 	
-	public List<TimeSheet> getTimeSheetList() {
+	public void refreshTimeSheet() {
+		timesheetList = timesheetManager.getAll(employee.getEmpNumber());
+		if (timesheetList.size() > 0)
+			timesheet = timesheetList.get(0);
+	}
+	
+	public List<TimeSheet> getTimesheetList() {
 		if (timesheetList == null) {
 			refreshTimeSheet();
 		}
@@ -58,7 +67,7 @@ public class TimesheetController implements Serializable{
 		System.out.println("Get Timesheet called");
 		if(timesheet.getTimeSID() == 0) {
 			//System.out.println("Timesheet is null");
-			timesheet = timesheetManager.getAll().get(0);
+			timesheet = timesheetManager.getAll(employee.getEmpNumber()).get(0);
 			//System.out.println(timesheet.getTimeSheetRows().size());
 		}
 		
@@ -89,6 +98,17 @@ public class TimesheetController implements Serializable{
 		row.setTimeSheet(timesheet);
 		row.setTimeSheetRowId(timesheet.getTimeSheetRows().size() + 1);
 		timesheet.getTimeSheetRows().add(row);
+		return "EditTimesheet";
+	}
+	
+	public String deleteTimesheet(TimeSheet timesheet) {
+		timesheetManager.remove(timesheet);
+		refreshTimeSheet();
+		return "DisplayTimesheetList";
+	}
+	
+	public String editTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
 		return "EditTimesheet";
 	}
 	
