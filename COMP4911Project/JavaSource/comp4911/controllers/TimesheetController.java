@@ -1,6 +1,8 @@
 package comp4911.controllers;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -26,23 +28,23 @@ public class TimesheetController implements Serializable{
 	@Inject
 	private TimeSheetManager timesheetManager;
 
-	//private List<TimeSheet> timesheetList;
+	private List<TimeSheet> timesheetList;
 	
 	public TimesheetController() {
 	}
-/*
+
 	public void refreshTimeSheet() {
 		timesheetList = timesheetManager.getAll();
+		timesheet = timesheetList.get(0);
 	}
 	
 	public List<TimeSheet> getTimeSheetList() {
 		if (timesheetList == null) {
 			refreshTimeSheet();
 		}
-		
 		return timesheetList;
 	}
-	*/
+	
 	public TimeSheetManager getTimesheetManager() {
 		return timesheetManager;
 	}
@@ -68,13 +70,26 @@ public class TimesheetController implements Serializable{
 		this.timesheet = timesheet;
 	}
 	
+	public String saveChanges() {
+		timesheetManager.merge(timesheet); 
+		return "ViewTimesheet";
+	}
+	
+	public void timesheetInit() {
+		refreshTimeSheet();
+	}
+	
+	public String deleteTimesheetRow(TimeSheetRow tsRow) {
+		timesheet.getTimeSheetRows().remove(tsRow);
+		return "EditTimesheet";
+	}
+	
 	public String createRow() {
 		TimeSheetRow row = new TimeSheetRow();
 		row.setTimeSheet(timesheet);
-		row.setTimeSheetRowId(timesheet.getTimeSID());
 		row.setTimeSheetRowId(timesheet.getTimeSheetRows().size() + 1);
 		timesheet.getTimeSheetRows().add(row);
-		return "timesheet";
+		return "EditTimesheet";
 	}
 	
 }

@@ -1,6 +1,7 @@
 package comp4911.models;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 //import javax.persistence.FetchType;

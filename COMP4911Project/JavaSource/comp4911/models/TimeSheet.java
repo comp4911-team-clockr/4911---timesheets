@@ -5,6 +5,7 @@ import java.sql.Date;
 //import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -72,7 +73,10 @@ public class TimeSheet implements Serializable {
 	@Column(name="Approval")
 	private String approval;
 	
-	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER)
+	@Column(name="IsActive")
+	private boolean isActive;
+	
+	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<TimeSheetRow> timesheetrows;
 	
 	public List<TimeSheetRow> getTimeSheetRows(){
@@ -200,6 +204,14 @@ public class TimeSheet implements Serializable {
 
 	public void setApproval(String approval) {
 		this.approval = approval;
+	}
+	
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	public boolean getIsActive() {
+		return isActive;
 	}
 	
 	public String toString(){
