@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import comp4911.controllers.TimeSheetManager;
 import comp4911.models.TimeSheet;
+import comp4911.models.TimeSheetRow;
 
 
 @Named("test")
@@ -64,6 +65,15 @@ public class TimeSheetList implements Serializable{
 	
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
+	}
+	
+	public String createRow() {
+		TimeSheetRow row = new TimeSheetRow();
+		row.setTimeSheet(timesheet);
+		row.setTimeSheetRowId(timesheet.getTimeSID());
+		row.setTimeSheetRowId(timesheet.getTimeSheetRows().size() + 1);
+		timesheet.getTimeSheetRows().add(row);
+		return "timesheet";
 	}
 	
 }
