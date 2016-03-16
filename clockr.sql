@@ -60,7 +60,8 @@ CREATE TABLE TimeSheet( TimesheetId int,
                         OverallTotalHrs double,
                         OvertimeTotalHrs double,
                         Signature VARCHAR(255),
-                        Approval VARCHAR(255));
+                        Approval VARCHAR(255),
+                        IsActive BOOL);
 						
 DROP TABLE IF EXISTS TimeSheetRow;
 CREATE TABLE TimeSheetRow( TimeSheetRowId int, 
@@ -77,7 +78,7 @@ CREATE TABLE TimeSheetRow( TimeSheetRowId int,
                            FriHrs double, 
                            Notes TINYTEXT);
 
-INSERT INTO TimeSheet VALUES(1, 2, 25, "2016-02-01", 45.5, 20, 21, 32, 4, 4, 6.5, 12, 11, 0, "", "");	
+INSERT INTO TimeSheet VALUES(1, 2, 25, "2016-02-01", 45.5, 20, 21, 32, 4, 4, 6.5, 12, 11, 0, "", "", TRUE);	
 
 INSERT INTO TimeSheetRow VALUES(1, 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "much codin");	
 INSERT INTO TimeSheetRow VALUES(2, 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "such hax");

@@ -39,6 +39,11 @@ public class TimeSheetManager implements Serializable {
 		em.merge(timesheet);
 	}
 	
+	public void remove(TimeSheet timesheet) {
+		timesheet.setIsActive(false);
+		em.merge(timesheet);
+	}
+	
 	public TimeSheet[] getByTimeSheetId(int timesheetID){
 		TypedQuery<TimeSheet> query = em.createQuery("select t from " +
 				"TimeSheet t where t.timeSID = " + timesheetID, TimeSheet.class);
@@ -51,7 +56,7 @@ public class TimeSheetManager implements Serializable {
 	}
 	
 	public List<TimeSheet> getAll() {
-		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t", TimeSheet.class);
+		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where isActive IS TRUE", TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();
 		
 		return timesheets;

@@ -9,7 +9,6 @@ import javax.inject.Named;
 //import javax.transaction.Transactional;
 
 import comp4911.managers.TimeSheetManager;
-import comp4911.managers.TimeSheetRowManager;
 import comp4911.models.TimeSheet;
 import comp4911.models.TimeSheetRow;
 
@@ -73,7 +72,15 @@ public class TimesheetController implements Serializable{
 	
 	public String saveChanges() {
 		timesheetManager.merge(timesheet); 
+		return "ViewTimesheet";
+	}
+	
+	public void timesheetInit() {
 		refreshTimeSheet();
+	}
+	
+	public String deleteTimesheetRow(TimeSheetRow tsRow) {
+		timesheet.getTimeSheetRows().remove(tsRow);
 		return "EditTimesheet";
 	}
 	

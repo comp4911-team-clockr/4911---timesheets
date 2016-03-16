@@ -91,10 +91,14 @@
 					</f:facet>
 					<h:inputText value="#{item.notes}" />
 				</h:column>
+				<h:column>
+					<h:commandButton value="Delete"
+						action="#{test.deleteTimesheetRow(item)}"/>
+				</h:column>
 			</h:dataTable>
 			<h:commandButton value="Add Row" action="#{test.createRow}"></h:commandButton>
 			<h:commandButton value="Save Changes" action="#{test.saveChanges}"></h:commandButton>
-			<b:button value="Cancel" immediate="true" outcome="timesheet"></b:button>
+			<b:button value="Cancel" immediate="true" outcome="ViewTimesheet"></b:button>
 		</b:container>
 	</h:form>
 </h:body>
