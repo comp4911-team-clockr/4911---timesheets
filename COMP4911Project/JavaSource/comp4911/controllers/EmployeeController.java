@@ -22,7 +22,7 @@ import comp4911.models.Employee;
 
 @Named("user")
 @SessionScoped
-public class EmployeeList implements Serializable {
+public class EmployeeController implements Serializable {
 
 	/**
 	 * 
@@ -82,7 +82,7 @@ public class EmployeeList implements Serializable {
 
 	public String checkLogin(String id, String password) {
 		Credential cred;
-
+		System.out.println("Check Login called");
 		if ((cred = credentialManager.find(id)) != null) {
 			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
@@ -148,6 +148,7 @@ public class EmployeeList implements Serializable {
 
 	//DigiSign
 	public String addEmployee() {
+		System.out.println("Add Employee called");
 		Employee temp = new Employee();
 		Credential tempCred = new Credential();
 		Integer empNumber = empList.size() + 1;
@@ -170,7 +171,6 @@ public class EmployeeList implements Serializable {
 
 		int hashFN = employee.getFirstName().hashCode();
 		int hashLN = employee.getLastName().hashCode();
-		//int hashPW = tempCred.getPassword().hashCode();
 		int hashPW = tempCred.getPassword().hashCode();
 
 		int cal = hashFN + hashLN + hashPW;
@@ -194,12 +194,14 @@ public class EmployeeList implements Serializable {
 	}
 
 	public String showEmployeeToEdit(Employee emp) {
+		System.out.println("Edit Employee called");
 		editEmployee = emp;
 		credToAdd = emp.getCredential();
 		return "EditEmployee";
 	}
 
 	public String updateEmployee(int id) {
+		System.out.println("Update Employee called");
 		Employee temp = employeeManager.find(id);
 
 		temp.setFirstName(editEmployee.getFirstName());
@@ -224,6 +226,7 @@ public class EmployeeList implements Serializable {
 	}
 
 	public String deleteEmployee(Employee e) {
+		System.out.println("Delete Employee called");
 		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
 		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
 
@@ -284,14 +287,6 @@ public class EmployeeList implements Serializable {
 	public String AddWorkPackage(){
 		return "addWP";
 	}
-
-	//	public TimeSheet getTimesheet() {
-	//		return timesheet;
-	//	}
-	//
-	//	public void setTimesheet(TimeSheet timesheet) {
-	//		this.timesheet = timesheet;
-	//	}
 
 	//Please change the length of the password to the desired length
 	//This function checks if the new input as new password are valid

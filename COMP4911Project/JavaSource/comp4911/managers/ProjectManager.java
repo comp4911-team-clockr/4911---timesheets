@@ -29,20 +29,20 @@ public class ProjectManager implements Serializable {
 	public Project find(int id) {
 		return em.find(Project.class, id);
 	}
-	
+
 	public void persist(Project project) {
 		em.persist(project);
 	}
-	
+
 	public void merge(Project project) {
 		em.merge(project);
 	}
-	
+
 	public void remove(Project project) {
 		project = find(project.getProjectId());
 		em.remove(project);
 	}
-	
+
 	public Project findByUserId(String id) {
 		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.projectId = :projectId ", Project.class);
 		query.setParameter("projectId", id);
@@ -50,12 +50,13 @@ public class ProjectManager implements Serializable {
 		Project proj = results.get(0);
 		return proj;
 	}
-	
+
 	public java.util.List<Project> getAll() {
-	        TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p",
-	                Project.class); 
-	        java.util.List<Project> projects = query.getResultList();
-	        return projects;
-	    }
-	
+		System.out.println("Is Get All Being called.??????");
+		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p",
+				Project.class); 
+		java.util.List<Project> projects = query.getResultList();
+		return projects;
+	}
+
 }

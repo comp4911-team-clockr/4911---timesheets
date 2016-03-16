@@ -5,7 +5,8 @@
 	    <class>comp4911.models.Credential</class>
 		<class>comp4911.models.Employee</class>
 		<class>comp4911.models.TimeSheet</class>
-		<class>comp4911.models.TimeSheetRow</class>  
+		<class>comp4911.models.TimeSheetRow</class>
+		<class>comp4911.models.Project</class>  
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
          <property name="hibernate.hbm2ddl.auto" value="validate"/>

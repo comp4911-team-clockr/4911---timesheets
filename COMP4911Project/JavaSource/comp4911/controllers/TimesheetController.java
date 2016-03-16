@@ -12,7 +12,7 @@ import comp4911.models.TimeSheet;
 
 @Named("test")
 @SessionScoped
-public class TimeSheetList implements Serializable{
+public class TimesheetController implements Serializable{
 
 	/**
 	 * 
@@ -27,7 +27,7 @@ public class TimeSheetList implements Serializable{
 
 	//private List<TimeSheet> timesheetList;
 	
-	public TimeSheetList() {
+	public TimesheetController() {
 	}
 /*
 	public void refreshTimeSheet() {
@@ -52,6 +52,7 @@ public class TimeSheetList implements Serializable{
 	
 	//@Transactional
 	public TimeSheet getTimesheet() {
+		System.out.println("Get Timesheet called");
 		if(timesheet.getTimeSID() == 0) {
 			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll().get(0);
