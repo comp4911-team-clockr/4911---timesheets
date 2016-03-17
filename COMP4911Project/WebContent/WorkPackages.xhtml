@@ -24,12 +24,28 @@
       	<b:container>
       		<h1>Work Packages</h1><br/>
       		<!-- add a datatable or bootsfaces equivalent here later -->
+      		<!--  
       		<b:navLink value="Work Package 1" href ="TimeSheetSelect.xhtml"></b:navLink>
       		<b:navLink value="Work Package 2" href ="TimeSheetSelect.xhtml"></b:navLink>
       		<b:navLink value="Work Package 3" href ="TimeSheetSelect.xhtml"></b:navLink>
       		<b:navLink value="Work Package 4" href ="TimeSheetSelect.xhtml"></b:navLink>
       		<b:navLink value="Work Package 5" href ="TimeSheetSelect.xhtml"></b:navLink>
       		<b:commandButton action="#{user.AddWorkPackage()}" value="New Work Package"></b:commandButton>
+      		-->
+      		<h:dataTable value="#{workPackControl.workPackList}" var="work">
+      			<h:column>
+					<f:facet name="header">Number</f:facet>
+					<h:outputText value="#{work.wpNum}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Title</f:facet>
+					<b:navLink value="#{work.wpTitle}" href ="TimeSheetSelect.xhtml"></b:navLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Contractor</f:facet>
+					<h:outputText value="#{work.contractor}"/>
+				</h:column>
+      		</h:dataTable>
       	</b:container>
       </h:form>
    </h:body>

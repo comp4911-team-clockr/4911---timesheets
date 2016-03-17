@@ -26,7 +26,6 @@ public class ProjectController implements Serializable {
 	@Inject 
 	private ProjectManager projectManager;
 	
-	
 	private List<Project> projectList;
 	
 	public ProjectController() {
@@ -39,7 +38,6 @@ public class ProjectController implements Serializable {
 		projectList = projectManager.getAll();
 		System.out.println(projectList.size() + " size");
 		return project;
-		
 	}
 
 	public void setProject(Project project) {
@@ -68,5 +66,4 @@ public class ProjectController implements Serializable {
 		this.projectList = projectList;
 	}
 	
-
 }
