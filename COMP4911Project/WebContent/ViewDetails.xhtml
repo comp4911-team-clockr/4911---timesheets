@@ -22,7 +22,9 @@
       </h:form>
       <h:form>
       	<b:container>
-      		<h1>#{user.credential.role}</h1><br/>
+      		<h1>Employee Details</h1><br/>
+      		<h:outputLabel value="User Role:" />
+      		<h:outputText value=" #{user.credential.role}" /><br/>
       		<h:outputLabel value="User ID:" />
 			<h:outputText value=" #{user.credential.userId}" /><br/>
       		<h:outputLabel value="First Name:" />
