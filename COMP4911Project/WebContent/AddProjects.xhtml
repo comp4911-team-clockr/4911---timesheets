@@ -26,41 +26,44 @@
       		<h:outputLabel value="Project Name" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{user.employee.firstName}" ></b:inputText>
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.projName}" ></b:inputText>
       		</b:column>
       		</b:row>
+      		<!--
       		<h:outputLabel value="Project ID" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
       		<b:inputText styleClass="smallerTextInput" value="#{user.employee.lastName}"></b:inputText>
       		</b:column>
       		</b:row>
+      		  -->
       		<h:outputLabel value="Project Manager" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.supervisor}"></b:inputText>
       		</b:column>
       		</b:row>
       		<h:outputLabel value="Project Description" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.email}"></b:inputText>
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.desc}"></b:inputText>
       		</b:column>
-      		</b:row>      		
-      		<h:outputLabel value="Start Date" />
+      		</b:row>
+      		<h:outputLabel value="Man Days" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDays}"></b:inputText>
+      		</b:column>
+      		</b:row>           		
+      		<h:outputLabel value="Issue Date" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">      		
-      		<b:datepicker format="dd/mm/yyyy"></b:datepicker>
+      		<b:datepicker format="dd/mm/yyyy" value="#{projectControl.project.issueDate}"></b:datepicker>
       		</b:column>
       		</b:row>         		
-			<h:outputLabel value="End Date" />
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12">      		
-      		<b:datepicker format="dd/mm/yyyy"></b:datepicker>
-      		</b:column>
-      		</b:row><br/>			
-      		<b:button value="Add Project"></b:button><p></p> 
-      		<b:button value="Cancel"></b:button>
+			<br/>			
+      		<h:commandButton value="Create Project" action="#{projectControl.addProject()}"></h:commandButton><p></p> 
+      		<h:commandButton value="Cancel" action="projects"></h:commandButton>
       	</b:container>
       </h:form>
    </h:body>

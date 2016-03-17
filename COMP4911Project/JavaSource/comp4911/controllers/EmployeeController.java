@@ -82,16 +82,16 @@ public class EmployeeController implements Serializable {
 
 	public String checkLogin(String id, String password) {
 		Credential cred;
-		System.out.println("Check Login called");
 		if ((cred = credentialManager.find(id)) != null) {
 			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
 				setCredential(credentialManager.find(id));
 				refreshList();
-				return "loggedin";
+				System.out.println("Check Login passed");
+				return "loggedin";		
 			}
 		}
-
+		System.out.println("Check Login failed");
 		return "indexproto?faces-redirect=true";
 	}
 
@@ -154,6 +154,7 @@ public class EmployeeController implements Serializable {
 		Integer empNumber = empList.size() + 1;
 		String userID = empNumber.toString();
 
+		//Padding zeroes in front of userId accordingly
 		for (int i = userID.length(); i < 6; i++)
 			userID = '0' + userID;
 

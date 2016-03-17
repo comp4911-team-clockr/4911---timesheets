@@ -32,10 +32,10 @@ CREATE TABLE Credentials( UserId TINYTEXT,
 						  Email TINYTEXT, 
 						  DigiSign VARCHAR(255));
 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1", 10, 1);
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5", 10, 1);
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3", 20, 2);
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3", 20, 2);
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1", 1, 1);
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5", 1, 1);
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, 10, "8:00:00", "17:00:00", "2010-01-01", "cc@cc.cc", "P3", 2, 2);
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, 10, "8:00:00", "17:00:00", "2011-01-01", "dd@dd.dd", "P3", 2, 2);
 
 
 INSERT INTO Credentials VALUES ("000001", "password", 001, "Employee", "aa@aa.aa", "1504678463");
@@ -104,8 +104,8 @@ CREATE TABLE WorkPackage( WpId int,
 						  ProjectId int, 
 						  EmpNum int);
 
-INSERT INTO Project VALUES(10, "Project Alpha", 300, 2, 1, "2016-02-01", "");
-INSERT INTO Project VALUES(20, "Project Beta", 400, 2, 2, "2016-01-31", "");	
+INSERT INTO Project VALUES(1, "Project Alpha", 300, 2, 1, "2016-02-01", "");
+INSERT INTO Project VALUES(2, "Project Beta", 400, 2, 2, "2016-01-31", "");	
 
-INSERT INTO WorkPackage VALUES(1, 1, "Project Set-Up", "TEK Solutions", "000004", "P1", 13, 10, 1);
-INSERT INTO WorkPackage VALUES(2, 2, "Ongoing Update", "Microsoft", "000004", "P1", 54, 20, 1);	
+INSERT INTO WorkPackage VALUES(1, 1, "Project Set-Up", "TEK Solutions", "000004", "P1", 13, 1, 1);
+INSERT INTO WorkPackage VALUES(2, 2, "Ongoing Update", "Microsoft", "000004", "P1", 54, 2, 1);	
