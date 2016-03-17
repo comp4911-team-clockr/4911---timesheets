@@ -61,4 +61,10 @@ public class TimeSheetManager implements Serializable {
 		
 		return timesheets;
 	}
+	public List<TimeSheet> getAll(int id) {
+		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where isActive IS TRUE AND empNumber=" + id, TimeSheet.class);
+		List<TimeSheet> timesheets = query.getResultList();
+		
+		return timesheets;
+	}
 }
