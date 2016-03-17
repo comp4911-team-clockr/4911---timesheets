@@ -7,7 +7,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Timesheet Test</title>
+	<title>Timesheet</title>
 	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body id="bgImage2">
@@ -96,7 +96,7 @@
 						action="#{test.deleteTimesheetRow(item)}"/>
 				</h:column>
 			</h:dataTable>
-			<h:commandButton value="Add Row" action="#{test.createRow}"></h:commandButton>
+			<h:commandButton value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
 			<h:commandButton value="Save Changes" action="#{test.saveChanges}"></h:commandButton>
 			<b:button value="Cancel" immediate="true" outcome="ViewTimesheet"></b:button>
 		</b:container>
