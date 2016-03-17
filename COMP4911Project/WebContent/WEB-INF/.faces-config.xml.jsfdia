@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#indexproto.xhtml" PATH="/indexproto.xhtml"
+ <PROCESS-ITEM NAME="rules:#MainIndex.xhtml" PATH="/MainIndex.xhtml"
   SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#indexproto.xhtml:0" NAME="item"
-   PATH="/indexproto.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="loggedin::#loggedin.xhtml" NAME="output"
-    PATH="/loggedin.xhtml" TARGET="rules:#loggedin.xhtml"
+  <PROCESS-ITEM ID="rules:#MainIndex.xhtml:0" NAME="item"
+   PATH="/MainIndex.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="loggedin::#LoggedIn.xhtml" NAME="output"
+    PATH="/LoggedIn.xhtml" TARGET="rules:#LoggedIn.xhtml"
     TITLE="loggedin" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#loggedin.xhtml" PATH="/loggedin.xhtml"
+ <PROCESS-ITEM NAME="rules:#LoggedIn.xhtml" PATH="/LoggedIn.xhtml"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#EmployeesHR.xhtml" PATH="/EmployeesHR.xhtml"
   SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
@@ -22,13 +22,13 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddEmployee.xhtml" PATH="/AddEmployee.xhtml"
   SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#projects.xhtml" PATH="/projects.xhtml"
-  SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#projects.xhtml:0" NAME="item"
-   PATH="/projects.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="addProject::#AddProjects.xhtml"
-    NAME="output" PATH="/AddProjects.xhtml"
-    TARGET="rules:#AddProjects.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#DisplayProjectList.xhtml"
+  PATH="/DisplayProjectList.xhtml" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#DisplayProjectList.xhtml:0" NAME="item"
+   PATH="/DisplayProjectList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="addProject::#AddProject.xhtml" NAME="output"
+    PATH="/AddProject.xhtml" TARGET="rules:#AddProject.xhtml"
+    TITLE="addProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#WorkPackages.xhtml"
@@ -42,6 +42,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddWorkPackage.xhtml"
   PATH="/AddWorkPackage.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#AddProjects.xhtml" PATH="/AddProjects.xhtml"
+ <PROCESS-ITEM NAME="rules:#AddProject.xhtml" PATH="/AddProject.xhtml"
   SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

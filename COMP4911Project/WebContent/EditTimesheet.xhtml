@@ -15,7 +15,7 @@
 		<b:container>
 			<div id="header">
 				<ui:insert name="header">
-					<ui:include src="commonHeader.xhtml" />
+					<ui:include src="CommonHeader.xhtml" />
 				</ui:insert>
 			</div>
 		</b:container>
@@ -98,7 +98,7 @@
 			</h:dataTable>
 			<h:commandButton value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
 			<h:commandButton value="Save Changes" action="#{test.saveChanges}"></h:commandButton>
-			<b:button value="Cancel" immediate="true" outcome="ViewTimesheet"></b:button>
+			<b:button value="Cancel" immediate="true" outcome="DisplayTimesheetList"></b:button>
 		</b:container>
 	</h:form>
 </h:body>
