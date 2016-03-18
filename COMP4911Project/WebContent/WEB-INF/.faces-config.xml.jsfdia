@@ -31,8 +31,11 @@
     TARGET="rules:#AddProjects.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+<<<<<<< HEAD
  <PROCESS-ITEM NAME="rules:#AddProjects.xhtml" PATH="/AddProjects.xhtml"
   SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+=======
+>>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
  <PROCESS-ITEM NAME="rules:#WorkPackages.xhtml"
   PATH="/WorkPackages.xhtml" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#WorkPackages.xhtml:0" NAME="item"
@@ -44,4 +47,9 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddWorkPackage.xhtml"
   PATH="/AddWorkPackage.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+<<<<<<< HEAD
+=======
+ <PROCESS-ITEM NAME="rules:#AddProjects.xhtml" PATH="/AddProjects.xhtml"
+  SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+>>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
 </PROCESS>

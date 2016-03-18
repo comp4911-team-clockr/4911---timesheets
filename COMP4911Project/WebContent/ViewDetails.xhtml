@@ -22,6 +22,7 @@
       </h:form>
       <h:form>
       	<b:container>
+<<<<<<< HEAD
       		<h1>#{user.employee.lastName}</h1><br/>
       		<h:outputLabel value="User ID:" />
 			<h:outputText value=" #{user.employee.credential.userId}" /><br/>
@@ -33,6 +34,19 @@
 			<h:outputText value=" " /><br/>			
       		<h:outputLabel value="Email:" />
       		<h:outputText value=" #{user.credential.email}" /><br/>
+=======
+      		<h1>#{user.credential.role}</h1><br/>
+      		<h:outputLabel value="User ID:" />
+			<h:outputText value=" #{user.credential.userId}" /><br/>
+      		<h:outputLabel value="First Name:" />
+			<h:outputText value=" #{user.currentEmployee.firstName}" /><br/>      		
+      		<h:outputLabel value="Last Name:" />
+			<h:outputText value=" #{user.currentEmployee.lastName}" /><br/>
+      		<h:outputLabel value="Employee Number:" />
+			<h:outputText value=" #{user.currentEmployee.empNumber}" /><br/>			
+      		<h:outputLabel value="Email:" />
+      		<h:outputText value=" #{user.currentEmployee.email}" /><br/>
+>>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
       	</b:container>
       </h:form>
    </h:body>

@@ -20,8 +20,14 @@
 	      			<div id="padAround">
 	      			<b:inputText placeholder="User ID" styleClass="sizeInput" value="#{user.credential.userId}"></b:inputText>
 	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput" value="#{user.credential.password}"></b:inputText>
+<<<<<<< HEAD
 	      			<b:navLink class="removeDot" value="Forgot password?"></b:navLink><br/>
 	      			<b:commandButton styleClass="fillWidth" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary"></b:commandButton>
+=======
+	      			<b:navLink value="Forgot password?"></b:navLink><br/>
+	      			<b:commandButton styleClass="fillWidth" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary">
+	      			</b:commandButton>
+>>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
 	      			<p></p>
 	      			</div>
 	      		</b:column>

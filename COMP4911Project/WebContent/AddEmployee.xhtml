@@ -23,6 +23,7 @@
       <h:form>
       	<b:container>
       		<h1>New Employee</h1><br/>
+<<<<<<< HEAD
       		<h:outputLabel value="First Name" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
@@ -66,6 +67,22 @@
 		        <f:selectItem itemValue="4" itemLabel="Regular"></f:selectItem>
             </b:selectOneMenu>
       		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
+=======
+      		<h:outputLabel value="First Name" />
+      		<b:inputText value="#{user.employee.firstName}"/> <br/>
+      		<h:outputLabel value="Last Name" />
+      		<b:inputText value="#{user.employee.lastName}"/> <br/>
+      		<h:outputLabel value="Email" />
+      		<b:inputText value="#{user.credToAdd.email}"/> <br/>
+      		<h:outputLabel value="User Role" />
+     		<b:selectOneMenu class="dropdownstyle" value="#{user.credToAdd.role}">
+		        <f:selectItem itemValue="SystemAdmin" itemLabel="System Admin"></f:selectItem>
+		        <f:selectItem itemValue="HumanResources" itemLabel="Human Resources"></f:selectItem>
+		        <f:selectItem itemValue="ProjectManager" itemLabel="Project Manager"></f:selectItem>
+		        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
+            </b:selectOneMenu>
+      		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
+>>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
       		<b:button value="Cancel"></b:button>
       	</b:container>
       </h:form>
