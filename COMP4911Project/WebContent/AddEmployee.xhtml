@@ -15,7 +15,7 @@
 	      <b:container>
 			<div id="header">
 			<ui:insert name="header">
-				<ui:include src="commonHeader.xhtml"/>
+				<ui:include src="CommonHeader.xhtml"/>
 			</ui:insert>
 			</div>		
 	      </b:container>
@@ -23,7 +23,6 @@
       <h:form>
       	<b:container>
       		<h1>New Employee</h1><br/>
-<<<<<<< HEAD
       		<h:outputLabel value="First Name" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
@@ -53,37 +52,8 @@
             </b:selectOneMenu>
             </b:column>
             </b:row><br/>
-      		<b:button value="Add Employee" action="#{user.addEmployee()}"></b:button><p></p>
-      		<b:inputText value="#{user.employee.firstName}"/> <br/>
-      		<h:outputLabel value="Last Name" />
-      		<b:inputText value="#{user.employee.lastName}"/> <br/>
-      		<h:outputLabel value="Email" />
-      		<b:inputText value="#{user.credToAdd.email}"/> <br/>
-      		<h:outputLabel value="User Role" />
-     		<b:selectOneMenu class="dropdownstyle" value="#{user.credToAdd.role}">
-		        <f:selectItem itemValue="1" itemLabel="Admin"></f:selectItem>
-		        <f:selectItem itemValue="2" itemLabel="Human Resources"></f:selectItem>
-		        <f:selectItem itemValue="3" itemLabel="Project Manager"></f:selectItem>
-		        <f:selectItem itemValue="4" itemLabel="Regular"></f:selectItem>
-            </b:selectOneMenu>
-      		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
-=======
-      		<h:outputLabel value="First Name" />
-      		<b:inputText value="#{user.employee.firstName}"/> <br/>
-      		<h:outputLabel value="Last Name" />
-      		<b:inputText value="#{user.employee.lastName}"/> <br/>
-      		<h:outputLabel value="Email" />
-      		<b:inputText value="#{user.credToAdd.email}"/> <br/>
-      		<h:outputLabel value="User Role" />
-     		<b:selectOneMenu class="dropdownstyle" value="#{user.credToAdd.role}">
-		        <f:selectItem itemValue="SystemAdmin" itemLabel="System Admin"></f:selectItem>
-		        <f:selectItem itemValue="HumanResources" itemLabel="Human Resources"></f:selectItem>
-		        <f:selectItem itemValue="ProjectManager" itemLabel="Project Manager"></f:selectItem>
-		        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
-            </b:selectOneMenu>
-      		<h:commandButton value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
->>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
-      		<b:button value="Cancel"></b:button>
+      		<h:commandButton class="btn btn-default" value="Add Employee" action="#{user.addEmployee()}"></h:commandButton>   
+      		<h:commandButton class="btn btn-default" value="Cancel" action="#{user.cancelAddEmp()}"></h:commandButton>
       	</b:container>
       </h:form>
    </h:body>

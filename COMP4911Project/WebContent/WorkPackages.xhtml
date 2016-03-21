@@ -15,7 +15,7 @@
 	      <b:container>
 			<div id="header">
 			<ui:insert name="header">
-				<ui:include src="commonHeader.xhtml"/>
+				<ui:include src="CommonHeader.xhtml"/>
 			</ui:insert>
 			</div>		
 	      </b:container>
@@ -23,17 +23,20 @@
       <h:form>
       	<b:container>
       		<h1>Work Packages</h1><br/>
-      		<!-- add a datatable or bootsfaces equivalent here later -->
-      		<b:navLink value="Work Package 1" href ="TimeSheetSelect.xhtml"></b:navLink>
-      		<b:navLink value="Work Package 2" href ="TimeSheetSelect.xhtml"></b:navLink>
-      		<b:navLink value="Work Package 3" href ="TimeSheetSelect.xhtml"></b:navLink>
-      		<b:navLink value="Work Package 4" href ="TimeSheetSelect.xhtml"></b:navLink>
-      		<b:navLink value="Work Package 5" href ="TimeSheetSelect.xhtml"></b:navLink>
-<<<<<<< HEAD
-      		<b:commandButton action="#{user.AddWorkPackage()}" value="Add Project"></b:commandButton>
-=======
-      		<b:commandButton action="#{user.AddWorkPackage()}" value="New Work Package"></b:commandButton>
->>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
+      		<b:dataTable value="#{workPackControl.workPackList}" var="work">
+      			<h:column>
+					<f:facet name="header">Number</f:facet>
+					<h:outputText value="#{work.wpNum}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Title</f:facet>
+					<b:navLink class="removeDot" value="#{work.wpTitle}" href ="DisplayTimesheetList.xhtml"></b:navLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Contractor</f:facet>
+					<h:outputText value="#{work.contractor}"/>
+				</h:column>
+      		</b:dataTable>
       	</b:container>
       </h:form>
    </h:body>

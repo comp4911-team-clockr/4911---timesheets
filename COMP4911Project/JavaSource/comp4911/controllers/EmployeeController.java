@@ -22,7 +22,7 @@ import comp4911.models.Employee;
 
 @Named("user")
 @SessionScoped
-public class EmployeeList implements Serializable {
+public class EmployeeController implements Serializable {
 
 	/**
 	 * 
@@ -82,16 +82,16 @@ public class EmployeeList implements Serializable {
 
 	public String checkLogin(String id, String password) {
 		Credential cred;
-
 		if ((cred = credentialManager.find(id)) != null) {
 			if (cred.getPassword().equals(password)) {
 				currentEmployee = employeeManager.findByUserId(id);
 				setCredential(credentialManager.find(id));
 				refreshList();
-				return "loggedin";
+				System.out.println("Check Login passed");
+				return "loggedin";		
 			}
 		}
-
+		System.out.println("Check Login failed");
 		return "indexproto?faces-redirect=true";
 	}
 
@@ -148,11 +148,13 @@ public class EmployeeList implements Serializable {
 
 	//DigiSign
 	public String addEmployee() {
+		System.out.println("Add Employee called");
 		Employee temp = new Employee();
 		Credential tempCred = new Credential();
 		Integer empNumber = empList.size() + 1;
 		String userID = empNumber.toString();
 
+		//Padding zeroes in front of userId accordingly
 		for (int i = userID.length(); i < 6; i++)
 			userID = '0' + userID;
 
@@ -170,7 +172,6 @@ public class EmployeeList implements Serializable {
 
 		int hashFN = employee.getFirstName().hashCode();
 		int hashLN = employee.getLastName().hashCode();
-		//int hashPW = tempCred.getPassword().hashCode();
 		int hashPW = tempCred.getPassword().hashCode();
 
 		int cal = hashFN + hashLN + hashPW;
@@ -194,12 +195,14 @@ public class EmployeeList implements Serializable {
 	}
 
 	public String showEmployeeToEdit(Employee emp) {
+		System.out.println("Edit Employee called");
 		editEmployee = emp;
 		credToAdd = emp.getCredential();
 		return "EditEmployee";
 	}
 
 	public String updateEmployee(int id) {
+		System.out.println("Update Employee called");
 		Employee temp = employeeManager.find(id);
 
 		temp.setFirstName(editEmployee.getFirstName());
@@ -224,12 +227,13 @@ public class EmployeeList implements Serializable {
 	}
 
 	public String deleteEmployee(Employee e) {
+		System.out.println("Delete Employee called");
 		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
 		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
 
 		refreshList();
 
-		return "displayEmployeeList";
+		return "DisplayEmployeeList";
 	}
 
 	public void updateEmpInit() {
@@ -284,14 +288,6 @@ public class EmployeeList implements Serializable {
 	public String AddWorkPackage(){
 		return "addWP";
 	}
-
-	//	public TimeSheet getTimesheet() {
-	//		return timesheet;
-	//	}
-	//
-	//	public void setTimesheet(TimeSheet timesheet) {
-	//		this.timesheet = timesheet;
-	//	}
 
 	//Please change the length of the password to the desired length
 	//This function checks if the new input as new password are valid
@@ -365,4 +361,8 @@ public class EmployeeList implements Serializable {
 		return this.resetPassword;
 	}
 	
+	public String cancelAddEmp(){
+		System.out.println("Cancel was called");
+		return "reloadEmpList";
+	}
 }

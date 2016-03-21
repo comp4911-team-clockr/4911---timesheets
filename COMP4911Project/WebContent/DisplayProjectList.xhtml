@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="CommonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container>
+      		<h1>Perilous Projects</h1><br/>
+      		<!-- add a datatable or bootsfaces equivalent here later -->
+      		<!--  
+	      		<b:navLink value="Project 1" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 2" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 3" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 4" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 5" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>
+      		-->
+      		<b:dataTable value="#{projectControl.projectList}" var="proj">
+      			<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{proj.projectId}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<b:navLink class="removeDot" value="#{proj.projName}" href ="WorkPackages.xhtml"></b:navLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Man Days</f:facet>
+					<h:outputText value="#{proj.manDays}"/>
+				</h:column>
+      		</b:dataTable>   
+      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>   	
+      	</b:container>
+      </h:form>
+   </h:body>
+</html>

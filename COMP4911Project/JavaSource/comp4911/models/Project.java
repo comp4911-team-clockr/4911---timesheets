@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,8 +28,8 @@ public class Project implements Serializable{
 	@Column(name="ProjName")
 	private String projName;
 	
-	@Column(name="RoleId")
-	private String roleId;
+//	@Column(name="RoleId")
+//	private String roleId;
 	
 	@Column(name="ManDays")
 	private int manDays;
@@ -39,6 +40,10 @@ public class Project implements Serializable{
 	@Column(name="IssueDate")
 	private Date issueDate;
 	
+	@Lob
+	@Column(name="Descript", columnDefinition = "text", length=512)
+	private String desc;
+
 	@OneToMany(mappedBy="project", fetch=FetchType.EAGER)
 	private List<Employee> empProjList;
 	
@@ -63,13 +68,13 @@ public class Project implements Serializable{
 		this.projName = projName;
 	}
 
-	public String getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(String roleId) {
-		this.roleId = roleId;
-	}
+//	public String getRoleId() {
+//		return roleId;
+//	}
+//
+//	public void setRoleId(String roleId) {
+//		this.roleId = roleId;
+//	}
 
 	public int getManDays() {
 		return manDays;
@@ -111,4 +116,12 @@ public class Project implements Serializable{
 		this.issueDate = issueDate;
 	}
 
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	
 }

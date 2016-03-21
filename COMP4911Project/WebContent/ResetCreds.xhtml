@@ -6,10 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-<<<<<<< HEAD
-=======
       <f:event listener="#{user.updateEmpInit}" type="preRenderView"></f:event>
->>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
    <h:head>
       <title></title>
       <h:outputStylesheet library="css" name="main.css"  /> 
@@ -19,39 +16,25 @@
 	      <b:container>
 			<div id="header">
 			<ui:insert name="header">
-				<ui:include src="commonHeader.xhtml"/>
+				<ui:include src="CommonHeader.xhtml"/>
 			</ui:insert>
 			</div>		
 	      </b:container>
       </h:form>
-<<<<<<< HEAD
-      <h:form>
-      	<b:container>
-      		<h1>#{user.employee.firstName} #{user.employee.lastName}</h1><br/>
-      		<h:outputLabel value="Username" />
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.userId}" ></b:inputText>
-      		</b:column>
-      		</b:row>
-      		<h:outputLabel value="Password" />
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.password}"></b:inputText>
-=======
       <br/>
       <h:form>
       	<b:container>
+      		<h1>Update Profile</h1><br/>
       		<h:outputLabel value="First Name: " />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
-	   		<b:inputText value="#{user.employee.firstName}" /><br />
+	   		<b:inputText value="#{user.employee.firstName}" />
 	   		</b:column>
       		</b:row>
 	   		<h:outputLabel value="Last Name: " />
 	   		<b:row>
       		<b:column col-sm="4" col-xs="12">
-	   		<b:inputText value="#{user.employee.lastName}" /><br />
+	   		<b:inputText value="#{user.employee.lastName}" />
 	   		</b:column>
       		</b:row>
 	   		<h:outputLabel value="Email: " />
@@ -67,7 +50,7 @@
       		</b:row>
       	</b:container>
       </h:form>
-      
+      <br/>
       
       <h:form>
       	<b:container>
@@ -75,21 +58,11 @@
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
       		<b:inputText styleClass="smallerTextInput" value="#{user.credToAdd.password}"></b:inputText>
->>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
       		</b:column>
       		</b:row>
       		<h:outputLabel value="Re-enter Password" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
-<<<<<<< HEAD
-      		<b:inputText styleClass="smallerTextInput" value="#{user.credential.password}"></b:inputText>
-      		</b:column>
-      		</b:row>
-      		<b:button value="Add Employee"></b:button><p>  </p>   
-      		<b:button value="Cancel"></b:button>
-      	</b:container>
-      </h:form>
-=======
       		<b:inputText styleClass="smallerTextInput" value="#{user.resetPassword}"></b:inputText>
       		</b:column>
       		</b:row>
@@ -105,8 +78,5 @@
       		</b:row>
       	</b:container>
       </h:form>
-      
-      
->>>>>>> 0896230407ff2dc2beaa83a57c1629f5a5a546fe
    </h:body>
 </html>

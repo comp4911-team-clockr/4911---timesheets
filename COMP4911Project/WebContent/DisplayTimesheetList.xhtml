@@ -22,13 +22,24 @@
       </h:form>
       <h:form>
       	<b:container>
-      		<h1>Timesheets</h1><br/>
-      		<!-- add a datatable or bootsfaces equivalent here later -->
-      		<b:navLink value="Timesheet 1" href="ViewTimesheet.xhtml"></b:navLink>
-      		<b:navLink value="Timesheet 2" href="ViewTimesheet.xhtml"></b:navLink>
-      		<b:navLink value="Timesheet 3" href="ViewTimesheet.xhtml"></b:navLink>
-      		<b:navLink value="Timesheet 4" href="ViewTimesheet.xhtml"></b:navLink>
-      		<b:navLink value="Timesheet 5" href="ViewTimesheet.xhtml"></b:navLink>
+      		<h1>Troublesome Timesheets</h1><br/>
+      		<h:dataTable value="#{test.timesheetList}" var="timesheet">
+      			
+				<h:column>
+					<f:facet name="header">Week Number</f:facet>
+					<h:outputText value="#{timesheet.weekNumber}"/>
+				</h:column>
+				<h:column>
+					<h:commandButton value="Delete"
+						action="#{test.deleteTimesheet(timesheet)}" />
+				</h:column>
+				<h:column>
+					<h:commandButton value="Edit"
+						action="#{test.editTimesheet(timesheet)}"/>
+				</h:column>
+      		</h:dataTable>    
+      		<br/>
+      		<h:commandButton class="btn btn-default" action="#{test.addTimesheetButton}" value="Create Timesheet"></h:commandButton>
       	</b:container>
       </h:form>
    </h:body>

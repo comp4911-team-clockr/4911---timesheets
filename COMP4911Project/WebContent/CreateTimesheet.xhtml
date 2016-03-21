@@ -7,7 +7,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Timesheet Test</title>
+	<title>New Timesheet</title>
 	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body id="bgImage2">
@@ -15,7 +15,7 @@
 		<b:container>
 			<div id="header">
 				<ui:insert name="header">
-					<ui:include src="commonHeader.xhtml" />
+					<ui:include src="CommonHeader.xhtml" />
 				</ui:insert>
 			</div>
 		</b:container>
@@ -23,7 +23,7 @@
 	<h:form>
 		<b:container>
 			<h1>Timesheets</h1><br/>
-			<h:dataTable id="test" value="#{test.timesheet.timeSheetRows}"
+			<b:dataTable id="test" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>
 					<f:facet name="header">
@@ -35,63 +35,70 @@
 					<f:facet name="header">
 						<h:outputText value="Project Number" />
 					</f:facet>
-					<h:outputText value="#{item.projectId}" />
+					<b:inputText value="#{item.projectId}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Work Package" />
 					</f:facet>
-					<h:outputText value="#{item.workpackId}" />
+					<b:inputText value="#{item.workpackId}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Saturday" />
 					</f:facet>
-					<h:outputText value="#{item.satHrs}" />
+					<b:inputText value="#{item.satHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Sunday" />
 					</f:facet>
-					<h:outputText value="#{item.sunHrs}" />
+					<b:inputText value="#{item.sunHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Monday" />
 					</f:facet>
-					<h:outputText value="#{item.monHrs}" />
+					<b:inputText value="#{item.monHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Tuesday" />
 					</f:facet>
-					<h:outputText value="#{item.tuesHrs}" />
+					<b:inputText value="#{item.tuesHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Wednesday" />
 					</f:facet>
-					<h:outputText value="#{item.wedHrs}" />
+					<b:inputText value="#{item.wedHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Thursday" />
 					</f:facet>
-					<h:outputText value="#{item.thursHrs}" />
+					<b:inputText value="#{item.thursHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Friday" />
 					</f:facet>
-					<h:outputText value="#{item.friHrs}" />
+					<b:inputText value="#{item.friHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Notes" />
 					</f:facet>
-					<h:outputText value="#{item.notes}" />
+					<b:inputText value="#{item.notes}" />
 				</h:column>
-			</h:dataTable>
+				<h:column>
+					<h:commandButton value="Delete"
+						action="#{test.deleteTimesheetRow(item)}"/>
+				</h:column>
+			</b:dataTable>
+			<h:commandButton class="btn btn-default" value="Add Row" action='#{test.createRow("CreateTimesheet")}'></h:commandButton>
+			<h:commandButton class="btn btn-default" value="Save Timesheet" action="#{test.createTimesheet}"></h:commandButton>
+			<b:button value="Cancel" immediate="true" outcome="DisplayTimesheetList"></b:button>
 		</b:container>
 	</h:form>
 </h:body>

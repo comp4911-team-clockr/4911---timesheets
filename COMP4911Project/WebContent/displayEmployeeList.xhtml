@@ -15,15 +15,15 @@
 	      <b:container>
 			<div id="header">
 			<ui:insert name="header">
-				<ui:include src="commonHeader.xhtml"/>
+				<ui:include src="CommonHeader.xhtml"/>
 			</ui:insert>
 			</div>		
 	      </b:container>
       </h:form>
       <h:form>
       	<b:container>
-      		<h1>Employees</h1><br/>
-      		<h:dataTable value="#{user.empList}" var="emp">
+      		<h1>Effervescent Employees</h1><br/>
+      		<b:dataTable value="#{user.empList}" var="emp">
       			<h:column>
 					<f:facet name="header">Employee Number</f:facet>
 					<h:outputText value="#{emp.empNumber}"/>
@@ -45,7 +45,7 @@
 					<h:commandButton value="Edit"
 						action="#{user.showEmployeeToEdit(emp)}"/>
 				</h:column>
-      		</h:dataTable>    
+      		</b:dataTable>    
       		<br/>
       		<b:button outcome="#{user.addEmployeeButton()}" value="Add Employee"></b:button>
       	</b:container>

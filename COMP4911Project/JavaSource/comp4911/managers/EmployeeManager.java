@@ -55,6 +55,7 @@ public class EmployeeManager implements Serializable {
 	        TypedQuery<Employee> query = em.createQuery("select e from Employee e",
 	                Employee.class); 
 	        java.util.List<Employee> employees = query.getResultList();
+	        
 	        return employees;
 	    }
 	
