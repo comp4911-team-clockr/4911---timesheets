@@ -25,11 +25,11 @@
       		<h1>Perilous Projects</h1><br/>
       		<!-- add a datatable or bootsfaces equivalent here later -->
       		<!--  
-	      		<b:navLink value="Project 1" href="WorkPackages.xhtml"></b:navLink>
-	      		<b:navLink value="Project 2" href="WorkPackages.xhtml"></b:navLink>
-	      		<b:navLink value="Project 3" href="WorkPackages.xhtml"></b:navLink>
-	      		<b:navLink value="Project 4" href="WorkPackages.xhtml"></b:navLink>
-	      		<b:navLink value="Project 5" href="WorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 1" href="DisplayWorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 2" href="DisplayWorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 3" href="DisplayWorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 4" href="DisplayWorkPackages.xhtml"></b:navLink>
+	      		<b:navLink value="Project 5" href="DisplayWorkPackages.xhtml"></b:navLink>
 	      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>
       		-->
       		<b:dataTable value="#{projectControl.projectList}" var="proj">
@@ -39,7 +39,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Name</f:facet>
-					<b:navLink class="removeDot" value="#{proj.projName}" href ="WorkPackages.xhtml"></b:navLink>
+					<b:navLink class="removeDot" value="#{proj.projName}" href ="DisplayWorkPackages.xhtml"></b:navLink>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Man Days</f:facet>

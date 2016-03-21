@@ -4,9 +4,8 @@
   SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#MainIndex.xhtml:0" NAME="item"
    PATH="/MainIndex.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="loggedin::#loggedin.xhtml" NAME="output"
-    PATH="/loggedin.xhtml" TARGET="rules:#loggedin.xhtml"
-    TITLE="loggedin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="loggedin::#Splash.xhtml" NAME="output"
+    PATH="/Splash.xhtml" TARGET="rules:#Splash.xhtml" TITLE="loggedin" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#EmployeesHR.xhtml" PATH="/EmployeesHR.xhtml"
@@ -18,19 +17,19 @@
     TARGET="rules:#AddEmployee.xhtml" TITLE="AddEmployee" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#DisplayProjectList.xhtml"
-  PATH="/DisplayProjectList.xhtml" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#DisplayProjectList.xhtml:0" NAME="item"
-   PATH="/DisplayProjectList.xhtml" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#DisplayProjects.xhtml"
+  PATH="/DisplayProjects.xhtml" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#DisplayProjects.xhtml:0" NAME="item"
+   PATH="/DisplayProjects.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="addProject::#AddProject.xhtml" NAME="output"
     PATH="/AddProject.xhtml" TARGET="rules:#AddProject.xhtml"
     TITLE="addProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#WorkPackages.xhtml"
-  PATH="/WorkPackages.xhtml" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#WorkPackages.xhtml:0" NAME="item"
-   PATH="/WorkPackages.xhtml" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#DisplayWorkPackages.xhtml"
+  PATH="/DisplayWorkPackages.xhtml" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#DisplayWorkPackages.xhtml:0" NAME="item"
+   PATH="/DisplayWorkPackages.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="addWP::#AddWorkPackage.xhtml" NAME="output"
     PATH="/AddWorkPackage.xhtml" TARGET="rules:#AddWorkPackage.xhtml"
     TITLE="addWP" model-entity="JSFProcessItemOutput"/>
@@ -42,12 +41,12 @@
   SHAPE="240,257,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#AddProject.xhtml:0" NAME="item"
    PATH="/AddProject.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="projects::#DisplayProjectList.xhtml"
-    NAME="output" PATH="/DisplayProjectList.xhtml"
-    TARGET="rules:#DisplayProjectList.xhtml" TITLE="projects" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="reloadProjects::#DisplayProjectList.xhtml"
-    NAME="output1" PATH="/DisplayProjectList.xhtml"
-    TARGET="rules:#DisplayProjectList.xhtml" TITLE="reloadProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="projects::#DisplayProjects.xhtml"
+    NAME="output" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="projects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="reloadProjects::#DisplayProjects.xhtml"
+    NAME="output1" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="reloadProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddEmployee.xhtml" PATH="/AddEmployee.xhtml"
@@ -55,26 +54,24 @@
   <PROCESS-ITEM ID="rules:#AddEmployee.xhtml:0" NAME="item"
    PATH="/AddEmployee.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="displayEmployeeList::#DisplayEmployeeList.xhtml" NAME="output"
-    PATH="/DisplayEmployeeList.xhtml"
-    TARGET="rules:#DisplayEmployeeList.xhtml"
-    TITLE="displayEmployeeList" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="reloadEmpList::#DisplayEmployeeList.xhtml"
-    NAME="output1" PATH="/DisplayEmployeeList.xhtml"
-    TARGET="rules:#DisplayEmployeeList.xhtml" TITLE="reloadEmpList" model-entity="JSFProcessItemOutput"/>
+    ID="displayEmployeeList::#DisplayEmployees.xhtml" NAME="output"
+    PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="displayEmployeeList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="reloadEmpList::#DisplayEmployees.xhtml"
+    NAME="output1" PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="reloadEmpList" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#loggedin.xhtml" PATH="/loggedin.xhtml"
+ <PROCESS-ITEM NAME="rules:#Splash.xhtml" PATH="/Splash.xhtml"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#DisplayEmployeeList.xhtml"
-  PATH="/DisplayEmployeeList.xhtml" SHAPE="256,513,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#DisplayEmployeeList.xhtml:0" NAME="item"
-   PATH="/DisplayEmployeeList.xhtml" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#DisplayEmployees.xhtml"
+  PATH="/DisplayEmployees.xhtml" SHAPE="256,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#DisplayEmployees.xhtml:0" NAME="item"
+   PATH="/DisplayEmployees.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="DisplayEmployeeList::#DisplayEmployeeList.xhtml" NAME="output"
-    PATH="/DisplayEmployeeList.xhtml"
-    TARGET="rules:#DisplayEmployeeList.xhtml"
-    TITLE="DisplayEmployeeList" model-entity="JSFProcessItemOutput"/>
+    ID="DisplayEmployeeList::#DisplayEmployees.xhtml" NAME="output"
+    PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="DisplayEmployeeList" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
