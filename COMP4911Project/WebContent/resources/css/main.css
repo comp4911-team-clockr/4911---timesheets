@@ -6,12 +6,16 @@
 	border-radius: 5px;
 }
 
+.resizing {
+   display:inline-block;
+}
+
 .bgImage {
 	background-image: url(/COMP4911Project/resources/images/capitalr.png);
 }
 
 #bgImage2 {
-	background-image: url(/COMP4911Project/resources/images/city.png);
+	background-image: url(/COMP4911Project/resources/images/newcity.png);
 }
 
 //Used to make checkbox bigger
@@ -122,7 +126,7 @@
 }
 
 .clockrBg {
-	background-color: #e3eff0;	
+	background-color: #f5f5f8;	
 }
 
 .dropdownstyle {

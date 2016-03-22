@@ -95,7 +95,7 @@ public class TimesheetController implements Serializable{
 	
 	public String deleteTimesheetRow(TimeSheetRow tsRow) {
 		timesheet.getTimeSheetRows().remove(tsRow);
-		return "EditTimesheet";
+		return "CreateTimesheet";
 	}
 	
 	public void createTimesheetRow() {
