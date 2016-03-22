@@ -365,4 +365,32 @@ public class EmployeeController implements Serializable {
 		System.out.println("Cancel was called");
 		return "reloadEmpList";
 	}
+	
+	public boolean isEmployee(int id){
+		Employee temp = employeeManager.find(id);
+		int roleId = temp.getCredential().getRoleId();
+		if(roleId == 1){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isProjectManager(int id){
+			Employee temp = employeeManager.find(id);
+			int roleId = temp.getCredential().getRoleId();
+			if(roleId == 2){
+				return true;
+			}
+			return false;
+		}
+		
+	public boolean isSystemAdmin(int id){
+			Employee temp = employeeManager.find(id);
+			int roleId = temp.getCredential().getRoleId();
+			if(roleId == 3){
+				return true;
+			}
+			return false;
+		}
+
 }

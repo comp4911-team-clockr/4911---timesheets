@@ -6,7 +6,7 @@
   <from-view-id>/MainIndex.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>loggedin</from-outcome>
-   <to-view-id>/loggedin.xhtml</to-view-id>
+   <to-view-id>/Splash.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -17,46 +17,46 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/DisplayProjectList.xhtml</from-view-id>
+  <from-view-id>/DisplayProjects.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>addProject</from-outcome>
    <to-view-id>/AddProject.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/WorkPackages.xhtml</from-view-id>
+  <from-view-id>/DisplayWorkPackages.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>addWP</from-outcome>
    <to-view-id>/AddWorkPackage.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/DisplayEmployeeList.xhtml</from-view-id>
-   <navigation-case>
+  <from-view-id>/DisplayEmployees.xhtml</from-view-id>
+  <navigation-case>
    <from-outcome>DisplayEmployeeList</from-outcome>
-   <to-view-id>/DisplayEmployeeList.xhtml</to-view-id>
+   <to-view-id>/DisplayEmployees.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/AddEmployee.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>displayEmployeeList</from-outcome>
-   <to-view-id>/DisplayEmployeeList.xhtml</to-view-id>
+   <to-view-id>/DisplayEmployees.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>reloadEmpList</from-outcome>
-   <to-view-id>/DisplayEmployeeList.xhtml</to-view-id>
-  </navigation-case>  
+   <to-view-id>/DisplayEmployees.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/AddProject.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>projects</from-outcome>
-   <to-view-id>/DisplayProjectList.xhtml</to-view-id>
+   <to-view-id>/DisplayProjects.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>reloadProjects</from-outcome>
-   <to-view-id>/DisplayProjectList.xhtml</to-view-id>
-  </navigation-case> 
+   <to-view-id>/DisplayProjects.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
 </faces-config>
