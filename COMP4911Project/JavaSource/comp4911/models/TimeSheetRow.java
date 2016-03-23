@@ -22,9 +22,9 @@ public class TimeSheetRow implements Serializable {
     
     @Id
     @Column(name="TimeSheetRowID")
-    private int timeSheetRowId;
-    
-    @Column(name="ProjectID")
+    private String timeSheetRowId;
+
+	@Column(name="ProjectID")
     private int projectId;
     
     @Column(name="WpID")
@@ -71,13 +71,14 @@ public class TimeSheetRow implements Serializable {
     	this.timesheet = timesheet;
     }
     
-    public int getTimeSheetRowId() {
+    public String getTimeSheetRowId() {
         return timeSheetRowId;
     }
 
-    public void setTimeSheetRowId(int timeSheetRowId) {
+    public void setTimeSheetRowId(String timeSheetRowId) {
         this.timeSheetRowId = timeSheetRowId;
     }
+    
     public int getProjectId() {
         return projectId;
     }

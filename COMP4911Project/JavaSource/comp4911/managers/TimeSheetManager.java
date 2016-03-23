@@ -44,7 +44,7 @@ public class TimeSheetManager implements Serializable {
 		em.merge(timesheet);
 	}
 	
-	public TimeSheet[] getByTimeSheetId(int timesheetID){
+	public TimeSheet[] getByTimeSheetId(String timesheetID){
 		TypedQuery<TimeSheet> query = em.createQuery("select t from " +
 				"TimeSheet t where t.timeSID = " + timesheetID, TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();

@@ -26,7 +26,7 @@ public class TimeSheet implements Serializable {
 	
 	@Id
 	@Column(name="TimesheetId")
-	private int timesheetId;
+	private String timesheetId;
 	
 	@Column(name="EmpNum")
 	private int empNumber;
@@ -88,11 +88,11 @@ public class TimeSheet implements Serializable {
 	
 	public TimeSheet(){}
 	
-	public int getTimeSID() {
+	public String getTimeSID() {
 		return timesheetId;
 	}
 
-	public void setTimeSID(int timesheetId) {
+	public void setTimeSID(String timesheetId) {
 		this.timesheetId = timesheetId;
 	}
 

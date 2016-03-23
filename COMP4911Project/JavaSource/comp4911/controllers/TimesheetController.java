@@ -35,15 +35,12 @@ public class TimesheetController implements Serializable{
 
 	private List<TimeSheet> timesheetList;
 	
-	private int numberOfTimesheets;
-	
 	public TimesheetController() {
 	}
 
 	public void SetEmployee(Employee employee) {
 		this.employee = employee;
 		refreshTimeSheet();
-		numberOfTimesheets = timesheetManager.getAll().size();
 	}
 	
 	public void refreshTimeSheet() {
@@ -70,7 +67,7 @@ public class TimesheetController implements Serializable{
 	//@Transactional
 	public TimeSheet getTimesheet() {
 		System.out.println("Get Timesheet called");
-		if(timesheet.getTimeSID() == 0) {
+		if(timesheet.equals(null)) {
 			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll(employee.getEmpNumber()).get(0);
 			//System.out.println(timesheet.getTimeSheetRows().size());
@@ -99,9 +96,17 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public void createTimesheetRow() {
+		
+		int tsRowNum = 1;
+		if (timesheet.getTimeSheetRows().size() > 0) {
+			TimeSheetRow temp = timesheet.getTimeSheetRows().get(timesheet.getTimeSheetRows().size() - 1);
+			tsRowNum = Integer.parseInt(temp.getTimeSheetRowId().substring(temp.getTimeSheetRowId().lastIndexOf('|') + 1));
+			tsRowNum++;
+		}
+		String tsRowId = timesheet.getTimeSID() + "|" + tsRowNum;
 		TimeSheetRow row = new TimeSheetRow();
 		row.setTimeSheet(timesheet);
-		row.setTimeSheetRowId(timesheet.getTimeSheetRows().size() + 1);
+		row.setTimeSheetRowId(tsRowId);
 		timesheet.getTimeSheetRows().add(row);
 	}
 	
@@ -113,7 +118,7 @@ public class TimesheetController implements Serializable{
 	public String deleteTimesheet(TimeSheet timesheet) {
 		timesheetManager.remove(timesheet);
 		refreshTimeSheet();
-		return "DisplayTimesheetList";
+		return "DisplayTimesheets";
 	}
 	
 	public String editTimesheet(TimeSheet timesheet) {
@@ -123,8 +128,17 @@ public class TimesheetController implements Serializable{
 	
 	public String addTimesheetButton() {
 		timesheet = new TimeSheet();
+		int tsNum = 1;
 		
-		timesheet.setTimeSID(numberOfTimesheets + 1);
+		if (timesheetList.size() > 0) {
+			TimeSheet temp = timesheetList.get(timesheetList.size() - 1);
+			tsNum = Integer.parseInt(temp.getTimeSID().substring(temp.getTimeSID().lastIndexOf('|')+ 1));
+			tsNum++;
+		}
+		
+		String tsID = employee.getEmpNumber() + "|" + tsNum;
+		System.out.println(tsID);
+		timesheet.setTimeSID(tsID);
 		timesheet.setEmpNumber(employee.getEmpNumber());
 		timesheet.setIsActive(true);
 		Calendar cal = Calendar.getInstance();
@@ -138,9 +152,12 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String createTimesheet() {
-		numberOfTimesheets++;
 		timesheetManager.persist(timesheet);
 		timesheetList.add(timesheet);
-		return "DisplayTimesheetList";
+		return "DisplayTimesheets";
+	}
+	
+	public String getTimeSheetRowNumber(TimeSheetRow row) {
+		return row.getTimeSheetRowId().substring(row.getTimeSheetRowId().lastIndexOf('|') + 1);
 	}
 }
