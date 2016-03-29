@@ -45,7 +45,7 @@ INSERT INTO Credentials VALUES ("000004", "f3@rMe", 004, "ResponsibilityEngineer
 
 
 DROP TABLE IF EXISTS TimeSheet;
-CREATE TABLE TimeSheet( TimesheetId int, 
+CREATE TABLE TimeSheet( TimesheetId TINYTEXT, 
 						EmpNum int, 
 						WeekNum int,
                         WeekEnding date,
@@ -64,8 +64,8 @@ CREATE TABLE TimeSheet( TimesheetId int,
                         IsActive BOOL);
 						
 DROP TABLE IF EXISTS TimeSheetRow;
-CREATE TABLE TimeSheetRow( TimeSheetRowId int, 
-						   TimeSheetId int,
+CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT, 
+						   TimeSheetId TINYTEXT,
 						   ProjectId int, 
                            WpId int, 
                            WeekTotalHrs double,
@@ -78,11 +78,11 @@ CREATE TABLE TimeSheetRow( TimeSheetRowId int,
                            FriHrs double, 
                            Notes TINYTEXT);
 
-INSERT INTO TimeSheet VALUES(1, 2, 25, "2016-02-01", 45.5, 20, 21, 32, 4, 4, 6.5, 12, 11, 0, "", "", TRUE);	
+INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 45.5, 20, 21, 32, 4, 4, 6.5, 12, 11, 0, "", "", TRUE);	
 
-INSERT INTO TimeSheetRow VALUES(1, 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "much codin");	
-INSERT INTO TimeSheetRow VALUES(2, 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "such hax");
-INSERT INTO TimeSheetRow VALUES(3, 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "very db");	
+INSERT INTO TimeSheetRow VALUES("2|1|1", 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "much codin");	
+INSERT INTO TimeSheetRow VALUES("2|1|2", 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "such hax");
+INSERT INTO TimeSheetRow VALUES("2|1|3", 1, 10, 1, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, "very db");	
 						 
 DROP TABLE IF EXISTS Project;
 CREATE TABLE Project( ProjectId int, 
