@@ -92,7 +92,11 @@ public class EmployeeController implements Serializable {
 			}
 		}
 		System.out.println("Check Login failed");
-		return "indexproto?faces-redirect=true";
+		return "MainIndex?faces-redirect=true";
+	}
+	
+	public String cancelEditEmployee(){
+		return "cancelEditEmployee";
 	}
 
 	public Employee getCurrentEmployee() {
@@ -191,7 +195,7 @@ public class EmployeeController implements Serializable {
 		setEmployee(new Employee());
 		setCredToAdd(new Credential());
 
-		return "displayEmployeeList";
+		return "DisplayEmployees";
 	}
 
 	public String showEmployeeToEdit(Employee emp) {
@@ -216,7 +220,7 @@ public class EmployeeController implements Serializable {
 		refreshCurrentEmployee();
 		refreshList();
 		credToAdd = new Credential();
-		return "displayEmployeeList";
+		return "DisplayEmployees";
 	}
 
 
@@ -233,7 +237,7 @@ public class EmployeeController implements Serializable {
 
 		refreshList();
 
-		return "DisplayEmployeeList";
+		return "DisplayEmployees";
 	}
 
 	public void updateEmpInit() {

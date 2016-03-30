@@ -23,7 +23,7 @@
       <h:form>
       	<b:container>
       		<h1>Troublesome Timesheets</h1><br/>
-      		<h:dataTable value="#{test.timesheetList}" var="timesheet">
+      		<b:dataTable value="#{test.timesheetList}" var="timesheet">
       			
 				<h:column>
 					<f:facet name="header">Week Number</f:facet>
@@ -37,9 +37,9 @@
 					<h:commandButton value="Edit"
 						action="#{test.editTimesheet(timesheet)}"/>
 				</h:column>
-      		</h:dataTable>    
+      		</b:dataTable>    
       		<br/>
-      		<h:commandButton class="btn btn-default" action="#{test.addTimesheetButton}" value="Create Timesheet"></h:commandButton>
+      		<h:commandButton class="btn btn-default" action="#{test.addTimesheetButton}" value="Create Timesheet" />
       	</b:container>
       </h:form>
    </h:body>

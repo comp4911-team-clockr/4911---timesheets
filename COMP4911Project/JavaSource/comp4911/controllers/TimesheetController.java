@@ -73,7 +73,6 @@ public class TimesheetController implements Serializable{
 			//System.out.println(timesheet.getTimeSheetRows().size());
 		}
 		
-		
 		return timesheet;
 	}
 	
@@ -82,17 +81,18 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String saveChanges() {
-		timesheetManager.merge(timesheet); 
-		return "ViewTimesheet";
+		timesheetManager.merge(timesheet);
+		refreshTimeSheet();
+		return "DisplayTimesheets";
 	}
 	
 	public void timesheetInit() {
 		refreshTimeSheet();
 	}
 	
-	public String deleteTimesheetRow(TimeSheetRow tsRow) {
+	public String deleteTimesheetRow(TimeSheetRow tsRow, String outcome) {
 		timesheet.getTimeSheetRows().remove(tsRow);
-		return "CreateTimesheet";
+		return outcome;
 	}
 	
 	public void createTimesheetRow() {
@@ -159,5 +159,17 @@ public class TimesheetController implements Serializable{
 	
 	public String getTimeSheetRowNumber(TimeSheetRow row) {
 		return row.getTimeSheetRowId().substring(row.getTimeSheetRowId().lastIndexOf('|') + 1);
+	}
+	
+	public String editTimeCancel(){
+		return "DisplayTimesheets";
+	}
+	
+	public String cancelCreateTimesheet(){
+		return "cancelCreateTimesheet";
+	}
+	
+	public String cancelEditTimesheet(){
+		return "cancelEditTimesheet";
 	}
 }

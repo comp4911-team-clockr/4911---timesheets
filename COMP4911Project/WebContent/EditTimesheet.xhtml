@@ -93,12 +93,12 @@
 				</h:column>
 				<h:column>
 					<h:commandButton value="Delete"
-						action="#{test.deleteTimesheetRow(item)}"/>
+						action="#{test.deleteTimesheetRow(item, 'EditTimesheet')}"/>
 				</h:column>
 			</h:dataTable>
 			<h:commandButton class="btn btn-default" value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
 			<h:commandButton class="btn btn-default" value="Save Timesheet" action="#{test.saveChanges}"></h:commandButton>
-			<b:button value="Cancel" immediate="true" outcome="DisplayTimesheetList"></b:button>
+			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{test.cancelEditTimesheet}" immediate="true"></h:commandButton>
 		</b:container>
 	</h:form>
 </h:body>

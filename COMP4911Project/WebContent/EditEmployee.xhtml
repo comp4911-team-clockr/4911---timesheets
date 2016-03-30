@@ -36,8 +36,8 @@
 		        <f:selectItem itemValue="ProjectManager" itemLabel="Project Manager"></f:selectItem>
 		        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
             </b:selectOneMenu>
-      		<h:commandButton value="Edit Employee" action="#{user.updateEmployee(user.editEmployee.empNumber)}"></h:commandButton>   
-      		<b:button value="Cancel"></b:button>
+      		<h:commandButton styleClass="btn btn-default" value="Edit Employee" action="#{user.updateEmployee(user.editEmployee.empNumber)}"></h:commandButton>   
+      		<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{user.cancelEditEmployee}" immediate="true"></h:commandButton>
       	</b:container>
       </h:form>
    </h:body>

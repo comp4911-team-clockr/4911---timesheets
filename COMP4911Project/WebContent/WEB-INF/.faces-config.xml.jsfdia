@@ -74,4 +74,60 @@
     TARGET="rules:#DisplayEmployees.xhtml" TITLE="DisplayEmployeeList" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EditEmployee.xhtml"
+  PATH="/EditEmployee.xhtml" SHAPE="64,641,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EditEmployee.xhtml:0" NAME="item"
+   PATH="/EditEmployee.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancelEditEmployee::#DisplayEmployees.xhtml"
+    NAME="output" PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="cancelEditEmployee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="DisplayEmployees::#DisplayEmployees.xhtml"
+    NAME="output1" PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="DisplayEmployees" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#DisplayTimesheets.xhtml"
+  PATH="/DisplayTimesheets.xhtml" SHAPE="32,529,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#DisplayTimesheets.xhtml:0" NAME="item"
+   PATH="/DisplayTimesheets.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="CreateTimesheet::#CreateTimesheet.xhtml"
+    NAME="output" PATH="/CreateTimesheet.xhtml"
+    TARGET="rules:#CreateTimesheet.xhtml" TITLE="CreateTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelCreateTimesheet::#DisplayTimesheets.xhtml" NAME="output1"
+    PATH="/DisplayTimesheets.xhtml"
+    TARGET="rules:#DisplayTimesheets.xhtml"
+    TITLE="cancelCreateTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="EditTimesheet::#EditTimesheet.xhtml"
+    NAME="output2" PATH="/EditTimesheet.xhtml"
+    TARGET="rules:#EditTimesheet.xhtml" TITLE="EditTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="DisplayTimesheets::#DisplayTimesheets.xhtml"
+    NAME="output3" PATH="/DisplayTimesheets.xhtml"
+    TARGET="rules:#DisplayTimesheets.xhtml" TITLE="DisplayTimesheets" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#CreateTimesheet.xhtml"
+  PATH="/CreateTimesheet.xhtml" SHAPE="304,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#CreateTimesheet.xhtml:0" NAME="item"
+   PATH="/CreateTimesheet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelCreateTimesheet::#DisplayTimesheets.xhtml" NAME="output"
+    PATH="/DisplayTimesheets.xhtml"
+    TARGET="rules:#DisplayTimesheets.xhtml"
+    TITLE="cancelCreateTimesheet" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EditTimesheet.xhtml"
+  PATH="/EditTimesheet.xhtml" SHAPE="272,721,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EditTimesheet.xhtml:0" NAME="item"
+   PATH="/EditTimesheet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelEditTimesheet::#DisplayTimesheets.xhtml" NAME="output"
+    PATH="/DisplayTimesheets.xhtml"
+    TARGET="rules:#DisplayTimesheets.xhtml" TITLE="cancelEditTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="EditTimesheetReturn::#EditTimesheet.xhtml"
+    NAME="output1" PATH="/EditTimesheet.xhtml"
+    TARGET="rules:#EditTimesheet.xhtml" TITLE="EditTimesheetReturn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

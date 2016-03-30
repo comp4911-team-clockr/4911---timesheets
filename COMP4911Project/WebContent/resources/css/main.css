@@ -18,6 +18,16 @@
 	background-image: url(/COMP4911Project/resources/images/newcity.png);
 }
 
+.blue {
+	background-color: #3b5998;
+	color: white;
+}
+
+.blue:hover {
+	background-color: #8b9dc3;
+	color: white;
+}
+
 //Used to make checkbox bigger
 .checkboxBigger {
   /* All browsers except webkit*/
