@@ -14,15 +14,18 @@ CREATE TABLE Employees(	EmpNum int,
 						EmpFname TINYTEXT, 
 						EmpLname TINYTEXT,
 						UserId TINYTEXT, 
-						SickDays int, 
-						VacDays int, 
-						FlexStart time, 
-						FlexEnd time, 
-						HireDate date, 
+						
+                        //SickDays int, 
+						//VacDays int, 
+						//FlexStart time, 
+						//FlexEnd time, 
+						
+                        HireDate date, 
 						Email TINYTEXT, 
 						PayRateId TINYTEXT,
-						ProjectId int,
-						WpId int);
+						
+                        //ProjectId int,
+                        //WpId int);
 
 DROP TABLE IF EXISTS Credentials;
 CREATE TABLE Credentials( UserId TINYTEXT, 
@@ -31,6 +34,13 @@ CREATE TABLE Credentials( UserId TINYTEXT,
 						  UserRole TINYTEXT, 
 						  Email TINYTEXT, 
 						  DigiSign VARCHAR(255));
+						  
+DROP TABLE IF EXISTS PayRate;
+CREATE TABLE PayRate( PayRateId TINYTEXT,
+					  CostinMD double,
+					  IntRate double,
+					  ExtRate double,
+                      OvertimeRate double);
 
 INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, 10, "11:30:00", "19:30:00", "2010-10-10", "aa@aa.aa", "P1", 1, 1);
 INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, 10, "8:00:00", "17:00:00", "1995-01-01", "bb@bb.bb", "P5", 1, 1);
@@ -56,9 +66,13 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         WedsTotalHrs double,
                         ThursTotalHrs double,
                         FriTotalHrs double,
-						FlextimeHrs double, 
+						
+                        VacationDays int,
+                        FlextimeHrs double, 
                         OverallTotalHrs double,
-                        OvertimeTotalHrs double,
+                        
+                        //OvertimeTotalHrs double,
+                        
                         Signature VARCHAR(255),
                         Approval VARCHAR(255),
                         IsActive BOOL);
@@ -89,8 +103,25 @@ CREATE TABLE Project( ProjectId int,
 					  ProjName TINYTEXT, 
 					  ManDays int, 
 					  EmpNum int, 
-					  WpId int, 
-					  IssueDate date,
+					  
+                      //WpId int, 
+					  
+                      IssueDate date,
+                      
+                      CostingProposal double,
+                      InitialBudget double,
+                      RO1Budget double,
+                      RO2Budget double,
+                      FinalBudget double,
+                      
+                      MDP1 int,
+                      MDP2 int,
+                      MDP3 int,
+                      MDP4 int,
+                      MDP5 int,
+                      MDDS int,
+                      MDSS int,
+                      
 					  Descript TEXT);	
 
 DROP TABLE IF EXISTS WorkPackage;
@@ -102,7 +133,8 @@ CREATE TABLE WorkPackage( WpId int,
 						  PayRateId TINYTEXT, 
 						  ManDays int, 
 						  ProjectId int, 
-						  EmpNum int);
+						  EmpNum int,
+                          IsActive BOOL);
 
 INSERT INTO Project VALUES(1, "Project Alpha", 300, 2, 1, "2016-02-01", "");
 INSERT INTO Project VALUES(2, "Project Beta", 400, 2, 2, "2016-01-31", "");	

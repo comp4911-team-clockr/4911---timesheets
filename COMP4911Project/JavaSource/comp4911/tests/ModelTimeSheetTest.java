@@ -23,7 +23,7 @@ public class ModelTimeSheetTest {
 		//Dummy Data
 		List<TimeSheetRow> timeSheetRowList = new ArrayList<TimeSheetRow>();
 		
-		final int timeSID = 1;
+		final String timeSID = "1";
 		final int empNum = 2;
 		final int weekNum = 3;
 		final double satHrs = 4.0;
@@ -63,7 +63,7 @@ public class ModelTimeSheetTest {
 		List<TimeSheetRow> testTimeSheetRowList = new ArrayList<TimeSheetRow>();
 		testTimeSheetRowList = ts.getTimeSheetRows();
 		
-		final int testTimeSID = ts.getTimeSID();
+		final String testTimeSID = ts.getTimeSID();
 		final int testEmpNum = ts.getEmpNumber();
 		final int testWeekNum = ts.getWeekNumber();
 		final double testSatHrs = ts.getSatTotalHrs();
@@ -84,7 +84,7 @@ public class ModelTimeSheetTest {
 		List<TimeSheetRow> expTimeSheetRowList = new ArrayList<TimeSheetRow>();
 		expTimeSheetRowList = timeSheetRowList;
 		
-		final int expTimeSID = timeSID;
+		final String expTimeSID = timeSID;
 		final int expEmpNum = empNum;
 		final int expWeekNum = weekNum;
 		final double expSatHrs = satHrs;

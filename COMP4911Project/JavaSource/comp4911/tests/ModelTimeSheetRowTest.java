@@ -23,7 +23,7 @@ public class ModelTimeSheetRowTest {
 		// Dummy Data
 		List<TimeSheetRow> timeSheetRowList = new ArrayList<TimeSheetRow>();
 		
-		final int timeSID = 1;
+		final String timeSID = "1";
 		final int empNum = 2;
 		final int weekNum = 3;
 		final double satTotalHrs = 4.0;
@@ -59,7 +59,7 @@ public class ModelTimeSheetRowTest {
 		ts.setApproval(isApproval);
 		ts.setIsActive(isActive);
 		
-		final int timeSheetRowId = 1;
+		final String timeSheetRowId = "1";
 		final int projId = 2;
 		final int wpId = 4;
 		final double satHrs = 4.0;
@@ -91,7 +91,7 @@ public class ModelTimeSheetRowTest {
 		TimeSheet testTimeSheet = new TimeSheet();
 		testTimeSheet = tsr.getTimeSheet();
 
-		final int testTimeSheetRowId = tsr.getTimeSheetRowId();
+		final String testTimeSheetRowId = tsr.getTimeSheetRowId();
 		final int testProjId = tsr.getProjectId();
 		final int testWpId = tsr.getWorkpackId();
 		final double testSatHrs = tsr.getSatHrs();
@@ -108,7 +108,7 @@ public class ModelTimeSheetRowTest {
 		TimeSheet expTimeSheet = new TimeSheet();
 		expTimeSheet = ts;
 
-		final int expTimeSheetRowId = timeSheetRowId;
+		final String expTimeSheetRowId = timeSheetRowId;
 		final int expProjId = projId;
 		final int expWpId = wpId;
 		final double expSatHrs = satHrs;

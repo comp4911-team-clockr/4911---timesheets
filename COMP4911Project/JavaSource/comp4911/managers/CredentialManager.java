@@ -53,5 +53,4 @@ public class CredentialManager implements Serializable {
 	        }
 	        return credArray;
 	    }
-	
 }
