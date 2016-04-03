@@ -99,8 +99,8 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
 INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", "", TRUE);	
                         
 DROP TABLE IF EXISTS TimeSheetRow;
-CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT, 
-						   TimeSheetId TINYTEXT,
+CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,
+                           TimeSheetId TINYTEXT,
                            ProjectId int, 
                            WpId int, 
                            WeekTotalHrs double,
@@ -122,7 +122,8 @@ INSERT INTO TimeSheetRow VALUES("2|1|3", 1, 10, 1, 40, 0, 0, 0, 8, 8, 8, 8, 1, 0
 DROP TABLE IF EXISTS Project;
 CREATE TABLE Project( ProjectId int NOT NULL, 
 					  ProjName TINYTEXT NOT NULL, 
-					  EmpNum int NOT NULL, 
+					  EmpNum int NOT NULL,
+                      ProjAssistant int,
                       IssueDate date NOT NULL,
                       
                       CostingProposal double,
@@ -140,13 +141,12 @@ CREATE TABLE Project( ProjectId int NOT NULL,
                       MDSS int NOT NULL,                      
 					  Descript TEXT NOT NULL);	
                       
-INSERT INTO Project VALUES(1, "Project Alpha", 2, "2016-02-01", 
+INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", 
                             10000,
                             0,
                             0,
                             0,
                             10000,
-                            
                             100,
                             0,
                             0,
@@ -155,7 +155,7 @@ INSERT INTO Project VALUES(1, "Project Alpha", 2, "2016-02-01",
                             0,
                             0,
                             "");
-INSERT INTO Project VALUES(2, "Project Beta", 2, "2016-01-31", 
+INSERT INTO Project VALUES(2, "Project Beta", 2, 3, "2016-01-31", 
                             10000,
                             0,
                             0,
@@ -216,3 +216,39 @@ INSERT INTO EmployeeWPList VALUES("1|1", 1);
 INSERT INTO EmployeeWPList VALUES("1|1", 2);
 INSERT INTO EmployeeWPList VALUES("2|1", 3);
 INSERT INTO EmployeeWPList VALUES("2|1", 4);
+
+DROP TABLE IF EXISTS StatusReport;
+CREATE TABLE StatusReport(
+                        WPId TINYTEXT,
+                        ReportNum int,
+                        ReportDate date,
+                        DeliverableDoc TINYTEXT,
+                        DeliverableDocNum int,
+                        PlannedCompletionDate date,
+                        ProjectedCompletionDate date,
+                        ActualCompletionDate date,
+                        VariancePercent double,
+                        ProgressToDateMDPlanned int,
+                        ProgressToDateMDActual int,
+                        WorkAccomplishedThisPeriod TINYTEXT,
+                        WorkPlannedNextPerid TINYTEXT,
+                        ProblemsThisPeriod TINYTEXT,
+                        ProblemsAnticipated TINYTEXT
+                        )
+INSERT INTO StatusReport VALUES(
+                        "1|1",
+                        1,
+                        "2016-01-31",
+                        "Test deliverable 1. Test deliverable 2.",
+                        1,
+                        "2016-05-31",
+                        "2016-06-31",
+                        "2016-07-02",
+                        0.3,
+                        100,
+                        150,
+                        "Stuff text 1",
+                        "Stuff text 2",
+                        "Emp A not doing assigned work",
+                        "Emp A slacking off again"
+                        );                 
