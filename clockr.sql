@@ -113,9 +113,9 @@ CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,
                            FlextimeHrs double,
                            Notes TINYTEXT);
 
-INSERT INTO TimeSheetRow VALUES("2|1|1", 1, 10, 40, 0, 0, 8, 8, 8, 8, 8, 0, 0, "much codin");	
-INSERT INTO TimeSheetRow VALUES("2|1|2", 1, 10, 44, 0, 0, 12, 8, 8, 8, 8, 0, 4, "such hax");
-INSERT INTO TimeSheetRow VALUES("2|1|3", 1, 10, 40, 0, 0, 0, 8, 8, 8, 8, 1, 0, "very db");	
+INSERT INTO TimeSheetRow VALUES("2|1|1", 1, 10, 1, 40, 0, 0, 8, 8, 8, 8, 8, 0, 0, "much codin");	
+INSERT INTO TimeSheetRow VALUES("2|1|2", 1, 10, 1, 44, 0, 0, 12, 8, 8, 8, 8, 0, 4, "such hax");
+INSERT INTO TimeSheetRow VALUES("2|1|3", 1, 10, 1, 40, 0, 0, 0, 8, 8, 8, 8, 1, 0, "very db");	
 						 
 DROP TABLE IF EXISTS Project;
 CREATE TABLE Project( ProjectId int NOT NULL, 
@@ -138,12 +138,13 @@ CREATE TABLE Project( ProjectId int NOT NULL,
                       MDSS int NOT NULL,                      
 					  Descript TEXT NOT NULL);	
                       
-INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", 
+INSERT INTO Project VALUES(1, "Project Alpha", 2, "2016-02-01", 
                             10000,
                             0,
                             0,
                             0,
                             10000,
+                            
                             100,
                             0,
                             0,
@@ -152,7 +153,7 @@ INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01",
                             0,
                             0,
                             "");
-INSERT INTO Project VALUES(2, "Project Beta", 2, 2, "2016-01-31", 
+INSERT INTO Project VALUES(2, "Project Beta", 2, "2016-01-31", 
                             10000,
                             0,
                             0,
