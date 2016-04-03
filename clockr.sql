@@ -14,16 +14,17 @@ CREATE TABLE Employees(	EmpNum int,
 						EmpFname TINYTEXT, 
 						EmpLname TINYTEXT,
 						UserId TINYTEXT, 
+                        SupervisorEmpNum int,
 						VacationDays int, 
                         HireDate date, 
 						Email TINYTEXT, 
 						PayRateId TINYTEXT
 						);
                                                 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 10, "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 10, "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 10, "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 10, "2011-01-01", "dd@dd.dd", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 2, 10, "2010-10-10", "aa@aa.aa", "P1");
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 2, 10, "1995-01-01", "bb@bb.bb", "P5");
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 2, 10, "2010-01-01", "cc@cc.cc", "P3");
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 2, 10, "2011-01-01", "dd@dd.dd", "P3");
 
 DROP TABLE IF EXISTS Credentials;
 CREATE TABLE Credentials( UserId TINYTEXT, 
@@ -59,7 +60,8 @@ INSERT INTO Credentials VALUES ("000004", "f3@rMe", 004, "ResponsibilityEngineer
                                 "",
                                 "",
                                 "128438349");
-                          
+
+                                
 DROP TABLE IF EXISTS PayRate;
 CREATE TABLE PayRate( PayRateId TINYTEXT,
 					  CostinMD double,
