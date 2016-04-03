@@ -208,7 +208,7 @@ INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "0
 
 DROP TABLE IF EXISTS EmployeeWPList;
 CREATE TABLE EmployeeWPList(
-                            WPId TINYTEXT,
+                            WpId TINYTEXT,
                             EmpNum int
                             );
                             
@@ -219,7 +219,7 @@ INSERT INTO EmployeeWPList VALUES("2|1", 4);
 
 DROP TABLE IF EXISTS StatusReport;
 CREATE TABLE StatusReport(
-                        WPId TINYTEXT,
+                        WpId TINYTEXT,
                         ReportNum int,
                         ReportDate date,
                         DeliverableDoc TINYTEXT,
@@ -234,7 +234,7 @@ CREATE TABLE StatusReport(
                         WorkPlannedNextPerid TINYTEXT,
                         ProblemsThisPeriod TINYTEXT,
                         ProblemsAnticipated TINYTEXT
-                        )
+                        );
 INSERT INTO StatusReport VALUES(
                         "1|1",
                         1,
@@ -242,7 +242,7 @@ INSERT INTO StatusReport VALUES(
                         "Test deliverable 1. Test deliverable 2.",
                         1,
                         "2016-05-31",
-                        "2016-06-31",
+                        "2016-06-15",
                         "2016-07-02",
                         0.3,
                         100,
