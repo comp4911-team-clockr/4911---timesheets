@@ -115,9 +115,9 @@ CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,
                            FlextimeHrs double,
                            Notes TINYTEXT);
 
-INSERT INTO TimeSheetRow VALUES("2|1|1", 1, 10, 1, 40, 0, 0, 8, 8, 8, 8, 8, 0, 0, "much codin");	
-INSERT INTO TimeSheetRow VALUES("2|1|2", 1, 10, 1, 44, 0, 0, 12, 8, 8, 8, 8, 0, 4, "such hax");
-INSERT INTO TimeSheetRow VALUES("2|1|3", 1, 10, 1, 40, 0, 0, 0, 8, 8, 8, 8, 1, 0, "very db");	
+INSERT INTO TimeSheetRow VALUES("2|1|1", "2|1", 10, 1, 40, 0, 0, 8, 8, 8, 8, 8, 0, 0, "much codin");	
+INSERT INTO TimeSheetRow VALUES("2|1|2", "2|1", 10, 1, 44, 0, 0, 12, 8, 8, 8, 8, 0, 4, "such hax");
+INSERT INTO TimeSheetRow VALUES("2|1|3", "2|1", 10, 1, 40, 0, 0, 0, 8, 8, 8, 8, 1, 0, "very db");	
 						 
 DROP TABLE IF EXISTS Project;
 CREATE TABLE Project( ProjectId int NOT NULL, 

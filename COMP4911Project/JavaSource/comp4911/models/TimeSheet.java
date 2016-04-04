@@ -61,9 +61,6 @@ public class TimeSheet implements Serializable {
 	@Column(name="OverallTotalHrs")
     private double overallTotalHrs;
 	
-	@Column(name="OvertimeTotalHrs")
-    private double overtimeHrs;
-	
 	@Column(name="FlextimeHrs")
     private double flextimeHrs;
 	
@@ -78,6 +75,8 @@ public class TimeSheet implements Serializable {
 	
 	@OneToMany(mappedBy="timesheet", fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<TimeSheetRow> timesheetrows;
+		
+	public TimeSheet(){}
 	
 	public List<TimeSheetRow> getTimeSheetRows(){
 		return timesheetrows;
@@ -85,8 +84,6 @@ public class TimeSheet implements Serializable {
 	public void setTimeSheetRows(List<TimeSheetRow> timesheetrows){
 		this.timesheetrows = timesheetrows;
 	}
-	
-	public TimeSheet(){}
 	
 	public String getTimeSID() {
 		return timesheetId;
@@ -174,13 +171,6 @@ public class TimeSheet implements Serializable {
     public void setOverallTotalHrs(double overallTotalHrs) {
         this.overallTotalHrs = overallTotalHrs;
     }
-    public double getOvertimeHrs() {
-        return overtimeHrs;
-    }
-
-    public void setOvertimeHrs(double overtimeHrs) {
-        this.overtimeHrs = overtimeHrs;
-    }
     
     public double getFlextimeHrs() {
         return flextimeHrs;
@@ -217,6 +207,6 @@ public class TimeSheet implements Serializable {
 	public String toString(){
 		return "" + timesheetId + " " + empNumber + " " + weekNumber + " " + satTotalHrs + " " + sunTotalHrs 
 				+ " " + monTotalHrs + " " + tuesTotalHrs + " " + wedTotalHrs + " " + thursTotalHrs + " " 
-				+ friTotalHrs + " " + overallTotalHrs + " " + overtimeHrs + " " + flextimeHrs;
+				+ friTotalHrs + " " + overallTotalHrs + " " + " " + flextimeHrs;
 	}
 }

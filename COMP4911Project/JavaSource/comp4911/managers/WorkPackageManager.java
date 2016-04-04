@@ -26,7 +26,7 @@ public class WorkPackageManager implements Serializable {
 	 */
 	private static final long serialVersionUID = -7520188301250130738L;
 
-	public WorkPackage find(int id) {
+	public WorkPackage find(String id) {
 		return em.find(WorkPackage.class, id);
 	}
 	

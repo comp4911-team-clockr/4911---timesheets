@@ -74,7 +74,6 @@ public class ProjectController implements Serializable {
 		temp.setProjName(project.getProjName());
 		temp.setSupervisor(project.getSupervisor());
 		temp.setDesc(project.getDesc());
-		temp.setManDays(project.getManDays());
 		
 		projectManager.persist(temp);
 		refreshList();

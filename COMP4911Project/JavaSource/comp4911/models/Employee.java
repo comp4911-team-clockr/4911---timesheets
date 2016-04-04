@@ -34,20 +34,14 @@ public class Employee implements Serializable {
 	private String firstName;
 	
 	@Column(name="EmpLname")
-	private String lastName;
+	private String lastName;	
 	
-	@Column(name="SickDays")
-	private int sickDays;
+	@Column(name="SupervisorEmpNum")
+	private int supNum;
 	
-	@Column(name="VacDays")
-	private int vacationDays;
-	
-	@Column(name="FlexStart")
-	private Time flexStart;
-	
-	@Column(name="FlexEnd")
-	private Time flexEnd;
-	
+	@Column(name="VacationDays")
+	private int vacDays;
+
 	@Column(name="HireDate")
 	private Date hireDate;
 	
@@ -56,14 +50,6 @@ public class Employee implements Serializable {
 	
 	@Column(name="PayRateId")
 	private String payRateId;
-
-	@ManyToOne
-	@JoinColumn(name="ProjectId")
-	private Project project;
-	
-	@ManyToOne
-	@JoinColumn(name="WpId")
-	private WorkPackage workpackage;
 
 	@Transient
 	private boolean active;
@@ -110,38 +96,6 @@ public class Employee implements Serializable {
 		this.active = active;
 	}
 
-	public int getSickDays() {
-		return sickDays;
-	}
-
-	public void setSickDays(int sickDays) {
-		this.sickDays = sickDays;
-	}
-
-	public int getVacationDays() {
-		return vacationDays;
-	}
-
-	public void setVacationDays(int vacationDays) {
-		this.vacationDays = vacationDays;
-	}
-
-	public Time getFlexStart() {
-		return flexStart;
-	}
-
-	public void setFlexStart(Time flexStart) {
-		this.flexStart = flexStart;
-	}
-
-	public Time getFlexEnd() {
-		return flexEnd;
-	}
-
-	public void setFlexEnd(Time flexEnd) {
-		this.flexEnd = flexEnd;
-	}
-
 	public Date getHireDate() {
 		return hireDate;
 	}
@@ -165,22 +119,21 @@ public class Employee implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Project getProject() {
-		return project;
+	
+	public int getSupNum() {
+		return supNum;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setSupNum(int supNum) {
+		this.supNum = supNum;
 	}
 	
-	public WorkPackage getWorkpackage() {
-		return workpackage;
+	public int getVacDays() {
+		return vacDays;
 	}
 
-	public void setWorkpackage(WorkPackage workpackage) {
-		this.workpackage = workpackage;
-	}
-	
+	public void setVacDays(int vacDays) {
+		this.vacDays = vacDays;
+	}	
 }
 

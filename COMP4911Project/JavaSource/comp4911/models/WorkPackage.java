@@ -1,15 +1,10 @@
 package comp4911.models;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,54 +18,62 @@ public class WorkPackage implements Serializable {
 
 	@Id
 	@Column(name="WpId")
-	private int wpId;
+	private String wpId;
 	
 	@Column(name="WpNum")
-	private int wpNum;
+	private String wpNum;
 	
 	@Column(name="WpTitle")
 	private String wpTitle;
 	
-	@Column(name="Contractor")
-	private String contractor;
+	@Column(name="Customer")
+	private String customer;
 	
 	@Column(name="RespEngId")
 	private String respId;
 	
-	@Column(name="PayRateId")
-	private String payRateId;
+	@Column(name="MDP1")
+	private int mdp1;
 	
-	@Column(name="ManDays")
-	private int manDays;
+	@Column(name="MDP2")
+	private int mdp2;
 	
-//	@Column(name="ProjectId")
-//	private int projectId;
+	@Column(name="MDP3")
+	private int mdp3;
 	
-	@Column(name="EmpNum")
-	private int supervisor;
+	@Column(name="MDP4")
+	private int mdp4;
 	
-	@OneToMany(mappedBy="workpackage", fetch=FetchType.EAGER)
-	private List<Employee> empWpList;
+	@Column(name="MDP5")
+	private int mdp5;
 	
-	@ManyToOne()
-	@JoinColumn(name="ProjectId")
-	private Project head;
+	@Column(name="MDDS")
+	private int mdds;
+	
+	@Column(name="MDSS")
+	private int mdss;
+	
+	@Column(name="ProjectId")
+	private int projectId;
+	
+	@Column(name="IsActive")
+	private boolean isActive;
 
 	public WorkPackage(){}
 	
-	public int getWpId() {
+	public String getWpId() {
 		return wpId;
 	}
 
-	public void setWpId(int wpId) {
+	public void setWpId(String wpId) {
 		this.wpId = wpId;
 	}
 
-	public int getWpNum() {
+	public String getWpNum() {
 		return wpNum;
 	}
 
-	public void setWpNum(int wpNum) {
+	public void setWpNum(String wpNum) {
 		this.wpNum = wpNum;
 	}
 
@@ -82,60 +85,92 @@ public class WorkPackage implements Serializable {
 		this.wpTitle = wpTitle;
 	}
 
-	public String getContractor() {
-		return contractor;
+	public String getCustomer() {
+		return customer;
 	}
 
-	public void setContractor(String contractor) {
-		this.contractor = contractor;
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
 
-	public int getSupervisor() {
-		return supervisor;
+	public String getRespId() {
+		return respId;
 	}
 
-	public void setUserId(int supervisor) {
-		this.supervisor = supervisor;
+	public void setRespId(String respId) {
+		this.respId = respId;
 	}
 
-	public String getPayRateId() {
-		return payRateId;
+	public int getMdp1() {
+		return mdp1;
 	}
 
-	public void setPayRateId(String payRateId) {
-		this.payRateId = payRateId;
+	public void setMdp1(int mdp1) {
+		this.mdp1 = mdp1;
 	}
 
-	public int getManDays() {
-		return manDays;
+	public int getMdp2() {
+		return mdp2;
 	}
 
-	public void setManDays(int manDays) {
-		this.manDays = manDays;
+	public void setMdp2(int mdp2) {
+		this.mdp2 = mdp2;
 	}
 
-//	public int getProjectId() {
-//		return projectId;
-//	}
-//
-//	public void setProjectId(int projectId) {
-//		this.projectId = projectId;
-//	}
-
-	public List<Employee> getEmpWpList() {
-		return empWpList;
+	public int getMdp3() {
+		return mdp3;
 	}
 
-	public void setEmpWPList(List<Employee> empWpList) {
-		this.empWpList = empWpList;
-	}
-	
-	public Project getHead() {
-		return head;
+	public void setMdp3(int mdp3) {
+		this.mdp3 = mdp3;
 	}
 
-	public void setHead(Project head) {
-		this.head = head;
+	public int getMdp4() {
+		return mdp4;
+	}
+
+	public void setMdp4(int mdp4) {
+		this.mdp4 = mdp4;
+	}
+
+	public int getMdp5() {
+		return mdp5;
+	}
+
+	public void setMdp5(int mdp5) {
+		this.mdp5 = mdp5;
+	}
+
+	public int getMdds() {
+		return mdds;
+	}
+
+	public void setMdds(int mdds) {
+		this.mdds = mdds;
+	}
+
+	public int getMdss() {
+		return mdss;
+	}
+
+	public void setMdss(int mdss) {
+		this.mdss = mdss;
+	}
+
+	public int getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
 }

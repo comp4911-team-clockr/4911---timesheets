@@ -38,6 +38,15 @@ public class Credential implements Serializable {
 	@Column(name="Email")
 	private String email;
 	
+	@Column(name="RecoveryAnswer1")
+	private String recovery1;
+	
+	@Column(name="RecoveryAnswer2")
+	private String recovery2;
+	
+	@Column(name="RecoveryAnswer3")
+	private String recovery3;
+	
 	@OneToOne(mappedBy="credential")
 	private Employee employee;
 	
@@ -106,4 +115,29 @@ public class Credential implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	
+	public String getRecovery1() {
+		return recovery1;
+	}
+
+	public void setRecovery1(String recovery1) {
+		this.recovery1 = recovery1;
+	}
+
+	public String getRecovery2() {
+		return recovery2;
+	}
+
+	public void setRecovery2(String recovery2) {
+		this.recovery2 = recovery2;
+	}
+
+	public String getRecovery3() {
+		return recovery3;
+	}
+
+	public void setRecovery3(String recovery3) {
+		this.recovery3 = recovery3;
+	}
+
 }

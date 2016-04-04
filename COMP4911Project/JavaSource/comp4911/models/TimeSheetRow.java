@@ -24,10 +24,10 @@ public class TimeSheetRow implements Serializable {
     @Column(name="TimeSheetRowID")
     private String timeSheetRowId;
 
-	@Column(name="ProjectID")
+	@Column(name="ProjectId")
     private int projectId;
     
-    @Column(name="WpID")
+    @Column(name="WpId")
     private int workpackId;
     
     @Column(name="WeekTotalHrs")
@@ -53,6 +53,12 @@ public class TimeSheetRow implements Serializable {
     
     @Column(name="FriHrs")
     private double friHrs;
+    
+    @Column(name="VacationDays")
+    private int vacationDays;
+
+    @Column(name="FlextimeHrs")
+    private double flexTimeHrs;
     
     @Column(name="Notes")
     private String notes;
@@ -170,4 +176,30 @@ public class TimeSheetRow implements Serializable {
 				+ sunHrs + " " + monHrs + " " + tuesHrs + " " + wedHrs + " " + thursHrs + " " 
 				+ friHrs + " " + notes;
 	}
+
+	public int getVacationDays() {
+		return vacationDays;
+	}
+
+	public void setVacationDays(int vacationDays) {
+		this.vacationDays = vacationDays;
+	}
+
+	public double getFlexTimeHrs() {
+		return flexTimeHrs;
+	}
+
+	public void setFlexTimeHrs(double flexTimeHrs) {
+		this.flexTimeHrs = flexTimeHrs;
+	}
+
+	public TimeSheet getTimesheet() {
+		return timesheet;
+	}
+
+	public void setTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
+	}
+	
+	
 }
