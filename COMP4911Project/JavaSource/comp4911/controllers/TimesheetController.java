@@ -162,6 +162,7 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String editTimeCancel(){
+		refreshTimeSheet();
 		return "DisplayTimesheets";
 	}
 	
@@ -170,6 +171,7 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String cancelEditTimesheet(){
+		refreshTimeSheet();
 		return "cancelEditTimesheet";
 	}
 }

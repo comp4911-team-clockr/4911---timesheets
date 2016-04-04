@@ -396,5 +396,11 @@ public class EmployeeController implements Serializable {
 			}
 			return false;
 		}
-
+	public String ForgotPassword(){
+		return "ForgotPasswordCancel";
+	}
+	
+	public String GoForgotPassword(){
+		return "ForgotPasswordPage";
+	}
 }

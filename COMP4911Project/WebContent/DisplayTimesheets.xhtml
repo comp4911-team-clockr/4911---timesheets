@@ -21,25 +21,36 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
-      		<h1>Troublesome Timesheets</h1><br/>
-      		<b:dataTable value="#{test.timesheetList}" var="timesheet">
+      	<b:container styleClass="tableChange">
+      		<h1>Troublesome Timesheets</h1><br/><p>Employee Number: #{user.currentEmployee.empNumber}</p>
+      		<b:dataTable styleClass="roundTheCorners" value="#{test.timesheetList}" var="timesheet">
       			
 				<h:column>
 					<f:facet name="header">Week Number</f:facet>
-					<h:outputText value="#{timesheet.weekNumber}"/>
+					<b:navLink class="removeDot" href="ViewTimesheet.xhtml">#{timesheet.weekNumber}</b:navLink>
+					
 				</h:column>
+				<!-- Did you mean something like this?
 				<h:column>
-					<h:commandButton value="Delete"
+				    <ui:repeat value="#{employees}" var="employee">
+				        <li>
+				        	<f:param name="id" value="#{employee.id}" />
+				        </li>
+				    </ui:repeat>
+				</h:column>
+				-->
+				<h:column>
+					<h:commandButton styleClass="btn greyButton" value="Delete"
 						action="#{test.deleteTimesheet(timesheet)}" />
 				</h:column>
 				<h:column>
-					<h:commandButton value="Edit"
+					<h:commandButton styleClass="btn greyButton" value="Edit"
 						action="#{test.editTimesheet(timesheet)}"/>
 				</h:column>
       		</b:dataTable>    
       		<br/>
-      		<h:commandButton class="btn btn-default" action="#{test.addTimesheetButton}" value="Create Timesheet" />
+      		<h:commandButton class="btn buttonColorizer" action="#{test.addTimesheetButton}" value="Create Timesheet" />
+      		<p></p>
       	</b:container>
       </h:form>
    </h:body>

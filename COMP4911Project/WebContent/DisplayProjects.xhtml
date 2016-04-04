@@ -21,7 +21,7 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Perilous Projects</h1><br/>
       		<!-- add a datatable or bootsfaces equivalent here later -->
       		<!--  
@@ -32,7 +32,7 @@
 	      		<b:navLink value="Project 5" href="DisplayWorkPackages.xhtml"></b:navLink>
 	      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>
       		-->
-      		<b:dataTable value="#{projectControl.projectList}" var="proj">
+      		<b:dataTable styleClass="roundTheCorners" value="#{projectControl.projectList}" var="proj">
       			<h:column>
 					<f:facet name="header">ID</f:facet>
 					<h:outputText value="#{proj.projectId}"/>
@@ -42,7 +42,7 @@
 					<b:navLink class="removeDot" value="#{proj.projName}" href ="DisplayWorkPackages.xhtml"></b:navLink>
 				</h:column>
       		</b:dataTable>   
-      		<b:commandButton action="#{user.AddProject()}" value="New Project"></b:commandButton>   	
+      		<h:commandButton class="btn buttonColorizer" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	
       	</b:container>
       </h:form>
    </h:body>

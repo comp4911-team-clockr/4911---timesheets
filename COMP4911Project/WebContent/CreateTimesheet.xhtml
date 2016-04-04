@@ -21,9 +21,9 @@
 		</b:container>
 	</h:form>
 	<h:form>
-		<b:container>
+		<b:container styleClass="tableChange">
 			<h1>Timesheets</h1><br/>
-			<h:dataTable id="test" styleClass="table table-striped resizing" value="#{test.timesheet.timeSheetRows}"
+			<h:dataTable id="test" styleClass="table resizing roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>
 					<f:facet name="header">
@@ -113,13 +113,14 @@
 					<b:inputText value="#{item.notes}" />
 				</h:column>
 				<h:column>
-					<h:commandButton value="Delete"
+					<h:commandButton styleClass="btn greyButton" value="Delete"
 						action="#{test.deleteTimesheetRow(item, 'CreateTimesheet')}"/>
 				</h:column>
 			</h:dataTable>
 			<h:commandButton class="btn btn-default" value="Add Row" action='#{test.createRow("CreateTimesheet")}'></h:commandButton>
 			<h:commandButton class="btn btn-default" value="Save Timesheet" action="#{test.createTimesheet}"></h:commandButton>
 			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{test.cancelCreateTimesheet}"></h:commandButton>
+			<p></p>
 		</b:container>
 	</h:form>
 </h:body>

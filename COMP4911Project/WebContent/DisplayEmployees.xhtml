@@ -21,9 +21,9 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Effervescent Employees</h1><br/>
-      		<b:dataTable value="#{user.empList}" var="emp">
+      		<b:dataTable styleClass="roundTheCorners" value="#{user.empList}" var="emp">
       			<h:column>
 					<f:facet name="header">Employee Number</f:facet>
 					<h:outputText value="#{emp.empNumber}"/>
@@ -37,17 +37,17 @@
 					<h:outputText value="#{emp.lastName}" />
 				</h:column>
 				<h:column>
-					<h:commandButton value="Delete"
+					<h:commandButton styleClass="btn greyButton" value="Delete"
 						action="#{user.deleteEmployee(emp)}"
 						rendered="#{user.showDelete(emp)}" />
 				</h:column>
 				<h:column>
-					<h:commandButton value="Edit"
+					<h:commandButton styleClass="btn greyButton" value="Edit"
 						action="#{user.showEmployeeToEdit(emp)}"/>
 				</h:column>
       		</b:dataTable>    
       		<br/>
-      		<b:button outcome="#{user.addEmployeeButton()}" value="Add Employee"></b:button>
+      		<h:button styleClass="btn buttonColorizer" outcome="#{user.addEmployeeButton()}" value="Add Employee"></h:button><p></p>
       	</b:container>
       </h:form>
    </h:body>

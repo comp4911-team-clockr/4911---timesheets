@@ -6,6 +6,10 @@
    PATH="/MainIndex.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="loggedin::#Splash.xhtml" NAME="output"
     PATH="/Splash.xhtml" TARGET="rules:#Splash.xhtml" TITLE="loggedin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="ForgotPasswordPage::#ForgottenPassword.xhtml" NAME="output1"
+    PATH="/ForgottenPassword.xhtml"
+    TARGET="rules:#ForgottenPassword.xhtml" TITLE="ForgotPasswordPage" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#EmployeesHR.xhtml" PATH="/EmployeesHR.xhtml"
@@ -128,6 +132,15 @@
    <PROCESS-ITEM-OUTPUT ID="EditTimesheetReturn::#EditTimesheet.xhtml"
     NAME="output1" PATH="/EditTimesheet.xhtml"
     TARGET="rules:#EditTimesheet.xhtml" TITLE="EditTimesheetReturn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ForgottenPassword.xhtml"
+  PATH="/ForgottenPassword.xhtml" SHAPE="32,881,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ForgottenPassword.xhtml:0" NAME="item"
+   PATH="/ForgottenPassword.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ForgotPasswordCancel::#MainIndex.xhtml"
+    NAME="output" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="ForgotPasswordCancel" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

@@ -21,9 +21,9 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Work Packages</h1><br/>
-      		<b:dataTable value="#{workPackControl.workPackList}" var="work">
+      		<b:dataTable styleClass="roundTheCorners" value="#{workPackControl.workPackList}" var="work">
       			<h:column>
 					<f:facet name="header">Number</f:facet>
 					<h:outputText value="#{work.wpNum}"/>
@@ -31,6 +31,11 @@
 				<h:column>
 					<f:facet name="header">Title</f:facet>
 					<b:navLink class="removeDot" value="#{work.wpTitle}" href ="DisplayTimesheets.xhtml"></b:navLink>
+				</h:column>
+				<h:column>
+					<!-- Add value="#{****} here-->
+					<f:facet name="header">Responsibility Engineer</f:facet>
+					<h:outputText value="Someone"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Costumer</f:facet>
