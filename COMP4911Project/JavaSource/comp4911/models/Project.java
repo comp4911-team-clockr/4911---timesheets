@@ -34,6 +34,9 @@ public class Project implements Serializable{
 	@Column(name="IssueDate")
 	private Date issueDate;
 	
+	@Column(name="ProjAssistant")
+	private int projAssistant;
+
 	@Column(name="CostingProposal")
 	private double proposal;
 	
@@ -66,7 +69,7 @@ public class Project implements Serializable{
 	
 	@Column(name="MDDS")
 	private int manDaysDS;
-	
+
 	@Column(name="MDSS")
 	private int manDaysSS;
 	
@@ -122,6 +125,14 @@ public class Project implements Serializable{
 //		this.wpList = wpList;
 //	}
 
+	public int getProjAssistant() {
+		return projAssistant;
+	}
+
+	public void setProjAssistant(int projAssistant) {
+		this.projAssistant = projAssistant;
+	}
+	
 	public Date getIssueDate() {
 		return issueDate;
 	}
@@ -218,6 +229,14 @@ public class Project implements Serializable{
 		this.manDaysP5 = manDaysP5;
 	}
 
+	public int getManDaysDS() {
+		return manDaysDS;
+	}
+
+	public void setManDaysDS(int manDaysDS) {
+		this.manDaysDS = manDaysDS;
+	}
+	
 	public int getManDaysSS() {
 		return manDaysSS;
 	}
