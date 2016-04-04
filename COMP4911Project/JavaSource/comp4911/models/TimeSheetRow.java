@@ -200,6 +200,4 @@ public class TimeSheetRow implements Serializable {
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
 	}
-	
-	
 }

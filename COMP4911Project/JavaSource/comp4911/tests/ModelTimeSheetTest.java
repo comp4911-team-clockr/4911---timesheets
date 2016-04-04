@@ -34,7 +34,7 @@ public class ModelTimeSheetTest {
 		final double thrHrs = 8.0;
 		final double friHrs = 8.0;
 		final double overAllHrs = 48.0;
-		final double overTimeHrs = 10.0;
+		//final double overTimeHrs = 10.0;
 		final double flexTimeHrs = 11.0;
 		final String signature = "Signature";
 		final String isApproval = "approved";
@@ -53,7 +53,7 @@ public class ModelTimeSheetTest {
 		ts.setThursTotalHrs(thrHrs);
 		ts.setFriTotalHrs(friHrs);
 		ts.setOverallTotalHrs(overAllHrs);
-		ts.setOvertimeHrs(overTimeHrs);
+		//ts.setOvertimeHrs(overTimeHrs);
 		ts.setflextimeHrs(flexTimeHrs);
 		ts.setSignature(signature);
 		ts.setApproval(isApproval);
@@ -74,7 +74,7 @@ public class ModelTimeSheetTest {
 		final double testThrHrs = ts.getThursTotalHrs();
 		final double testFriHrs = ts.getFriTotalHrs();
 		final double testOverAllHrs = ts.getOverallTotalHrs();
-		final double testOverTimeHrs = ts.getOvertimeHrs();
+		//final double testOverTimeHrs = ts.getOvertimeHrs();
 		final double testFlexTimeHrs = ts.getFlextimeHrs();
 		final String testSignature = ts.getSignature();
 		final String testIsApproval = ts.isApproval();
@@ -95,7 +95,7 @@ public class ModelTimeSheetTest {
 		final double expThrHrs = thrHrs;
 		final double expFriHrs = friHrs;
 		final double expOverAllHrs = overAllHrs;
-		final double expOverTimeHrs = overTimeHrs;
+		//final double expOverTimeHrs = overTimeHrs;
 		final double expFlexTimeHrs = flexTimeHrs;
 		final String expSignature = signature;
 		final String expIsApproval = isApproval;
@@ -198,12 +198,12 @@ public class ModelTimeSheetTest {
 		);
 		
 		// Testing overTimeHrs
-		TestCase.assertEquals
-		(
-			"TimeSheetGetSetTest overTimeHrs has FAILED", 
-			expOverTimeHrs, 
-			testOverTimeHrs
-		);
+//		TestCase.assertEquals
+//		(
+//			"TimeSheetGetSetTest overTimeHrs has FAILED", 
+//			expOverTimeHrs, 
+//			testOverTimeHrs
+//		);
 		
 		// Testing flexTimeHrs
 		TestCase.assertEquals

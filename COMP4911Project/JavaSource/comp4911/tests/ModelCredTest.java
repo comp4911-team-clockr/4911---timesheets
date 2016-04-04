@@ -3,13 +3,13 @@ package comp4911.tests;
 import junit.framework.TestCase;
 
 import java.sql.Date;
-import java.sql.Time;
+//import java.sql.Time;
 
 import org.junit.Test;
 import comp4911.models.Credential;
 import comp4911.models.Employee;
-import comp4911.models.Project;
-import comp4911.models.WorkPackage;
+//import comp4911.models.Project;
+//import comp4911.models.WorkPackage;
 
 /**
  * Testing the Credential Model
@@ -94,16 +94,16 @@ public class ModelCredTest {
 		final String empFName = "John";
 		final String empLName = "Doe";
 		final boolean isActive = true;
-		final int sickDays = 10;
+		//final int sickDays = 10;
 		final int vacDays = 10;
-		final Time flexStart = Time.valueOf("11:30:00");
-		final Time flexEnd = Time.valueOf("19:30:00");
+		//final Time flexStart = Time.valueOf("11:30:00");
+		//final Time flexEnd = Time.valueOf("19:30:00");
 		final Date hireDate = Date.valueOf("2010-10-10");
 		final String payRateId = "P1";
 		
 		final Credential newCred = new Credential(userId, password, roleId, role, email);
-		final Project proj = new Project();		
-		final WorkPackage wp = new WorkPackage();
+		//final Project proj = new Project();		
+		//final WorkPackage wp = new WorkPackage();
 		
 		// Creating a new Employee object
 		final Employee emp = new Employee();
@@ -112,15 +112,15 @@ public class ModelCredTest {
 		emp.setFirstName(empFName);
 		emp.setLastName(empLName);
 		emp.setActive(isActive);
-		emp.setSickDays(sickDays);
-		emp.setVacationDays(vacDays);
-		emp.setFlexStart(flexStart);
-		emp.setFlexEnd(flexEnd);
+		//emp.setSickDays(sickDays);
+		emp.setVacDays(vacDays);
+		//emp.setFlexStart(flexStart);
+		//emp.setFlexEnd(flexEnd);
 		emp.setHireDate(hireDate);
 		emp.setPayRateId(payRateId);
 		emp.setEmail(email);
-		emp.setProject(proj);
-		emp.setWorkpackage(wp);
+		//emp.setProject(proj);
+		//emp.setWorkpackage(wp);
 		
 		final Credential cred = new Credential();
 		
