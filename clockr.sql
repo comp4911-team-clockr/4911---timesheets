@@ -124,7 +124,7 @@ CREATE TABLE Project( ProjectId int NOT NULL,
 					  ProjName TINYTEXT NOT NULL, 
 					  EmpNum int NOT NULL,
                       ProjAssistant int,
-                      IssueDate date NOT NULL,
+                      IssueDate date,
                       
                       CostingProposal double,
                       InitialBudget double,
