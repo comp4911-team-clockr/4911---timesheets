@@ -47,43 +47,64 @@
 					<f:facet name="header">
 						<h:outputText value="Saturday" />
 					</f:facet>
-					<b:inputText value="#{item.satHrs}" />
+					<b:inputText id ="saturday" value="#{item.satHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="saturday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Sunday" />
 					</f:facet>
-					<b:inputText value="#{item.sunHrs}" />
+					<b:inputText id = "sunday" value="#{item.sunHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="sunday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Monday" />
 					</f:facet>
-					<b:inputText value="#{item.monHrs}" />
+					<b:inputText id = "monday" value="#{item.monHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="monday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Tuesday" />
 					</f:facet>
-					<b:inputText value="#{item.tuesHrs}" />
+					<b:inputText id = "tuesday" value="#{item.tuesHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="tuesday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Wednesday" />
 					</f:facet>
-					<b:inputText value="#{item.wedHrs}" />
+					<b:inputText id = "wednesday" value="#{item.wedHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="wednesday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Thursday" />
 					</f:facet>
-					<b:inputText value="#{item.thursHrs}" />
+					<b:inputText id = "thursday" value="#{item.thursHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="thursday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Friday" />
 					</f:facet>
-					<b:inputText value="#{item.friHrs}" />
+					<b:inputText id = "friday" value="#{item.friHrs}">
+                        <f:validateDoubleRange minimum="0.0" maximum="24.0" />
+                    </b:inputText>
+                    <h:message for="friday" style="color:red" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
