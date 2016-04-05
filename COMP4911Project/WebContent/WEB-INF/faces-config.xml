@@ -33,6 +33,17 @@
    <from-outcome>addWP</from-outcome>
    <to-view-id>/AddWorkPackage.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+  	<from-outcome>displayProjects</from-outcome>
+  	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ <from-view-id>/AddWorkPackage.xhtml</from-view-id>
+ <navigation-case>
+ 	<from-outcome>DisplayProject</from-outcome>
+ 	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+ </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/DisplayEmployees.xhtml</from-view-id>
@@ -62,6 +73,17 @@
    <from-outcome>reloadProjects</from-outcome>
    <to-view-id>/DisplayProjects.xhtml</to-view-id>
   </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+	 <from-view-id>/EditProject.xhtml</from-view-id>
+		 <navigation-case>
+			 <from-outcome>cancelEditProject</from-outcome>
+			 <to-view-id>/DisplayProjects.xhtml</to-view-id>
+		 </navigation-case>
+		 <navigation-case>
+		 	<from-outcome>editProject</from-outcome>
+		 	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+ 		</navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/EditEmployee.xhtml</from-view-id>
