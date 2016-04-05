@@ -45,8 +45,8 @@ public class Employee implements Serializable {
 	@Column(name="HireDate")
 	private Date hireDate;
 	
-	@Column(name="FlexTimeHrs")
-	private int flexHrs;=
+	@Column(name="FlexHours")
+	private int flexHrs;
 
 	@Column(name="Email")
 	private String email;
