@@ -27,8 +27,9 @@
       			
 				<h:column>
 					<f:facet name="header">Week Number</f:facet>
-					<b:navLink class="removeDot" href="ViewTimesheet.xhtml">#{timesheet.weekNumber}</b:navLink>
-					
+					<h:commandLink class="removeDot" value="#{timesheet.weekNumber}" 
+					action="#{test.gotoTimesheet(timesheet)}">
+					</h:commandLink>
 				</h:column>
 				<!-- Did you mean something like this?
 				<h:column>
