@@ -227,3 +227,30 @@ INSERT INTO EmployeeWPList VALUES("2|1", 3);
 INSERT INTO EmployeeWPList VALUES("2|1", 4);
 
 DROP TABLE IF EXISTS StatusReport;
+CREATE TABLE StatusReport(
+                        StatusReportId TINYTEXT,
+                        ReportDate date,
+                        MDPlanned double,
+                        MDActual double,
+                        WorkAccomplishedThisPeriod TEXT,
+                        WorkPlannedNextPerid TEXT,
+                        ProblemsEncountered TEXT,
+                        ProblemsAnticipated TEXT,
+                        timeVar double,
+                        mdVar double,
+                        costVar double
+                        );
+                        
+INSERT INTO StatusReport VALUES(
+                        "1|1|1",
+                        "2016-01-31",
+                        "100",
+                        "120",
+                        "Test deliverable 1. Test deliverable 2.",
+                        "Test deliverable 3. Test deliverable 4.",
+                        "Half dev team got the flu.",
+                        "Catching up with unfinished work - need to put in more time than anticipated",
+                        0,
+                        .2,
+                        .2
+                        );

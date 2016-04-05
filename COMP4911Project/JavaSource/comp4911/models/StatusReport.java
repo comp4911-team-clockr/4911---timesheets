@@ -38,19 +38,19 @@ public class StatusReport implements Serializable {
 	private String workPlanned;
 	
 	@Lob
-	@Column(name="ProblemsEncounteredThisPeriod", columnDefinition = "text", length=512)
+	@Column(name="ProblemsEncountered", columnDefinition = "text", length=512)
 	private String problemsEncountered;
 	
 	@Lob
-	@Column(name="ProblemsAnticipatedNextPeriod", columnDefinition = "text", length=512)
+	@Column(name="ProblemsAnticipated", columnDefinition = "text", length=512)
 	private String problemsAnticipated;
 	
-	@Column(name="TimeVariance")
+	@Column(name="timeVar")
 	private double timeVariance;
 	
-	@Column(name="MDVariance")
+	@Column(name="mdVar")
 	private double mdVariance;
 	
-	@Column(name="costVariance")
+	@Column(name="costVar")
 	private double costVariance;
 }
