@@ -186,9 +186,9 @@ public class TimesheetController implements Serializable{
 		return "DisplayTimesheets";
 	}
 	
-	public String cancelCreateTimesheet(){
+	public String CreateTimesheetCancel(){
 		refreshTimeSheet();
-		return "cancelCreateTimesheet";
+		return "CancelCreateTimesheet";
 	}
 	
 	public String cancelEditTimesheet(){
@@ -196,6 +196,10 @@ public class TimesheetController implements Serializable{
 		return "cancelEditTimesheet";
 	}
 	
+	public String CancelViewTimesheet(){
+		return "cancelViewTimesheet";
+	}
+
 	public void vacationDaysTaken(){
 		int daysTaken = 0;
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
