@@ -216,15 +216,24 @@ INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "0
                                 2, true);
 
 DROP TABLE IF EXISTS EmployeeWPList;
-CREATE TABLE EmployeeWPList(
-                            WpId TINYTEXT,
-                            EmpNum int
-                            );
+CREATE TABLE EmployeeWPList(WpEmpId TINYTEXT, WpId TINYTEXT, EmpNum int);
                             
-INSERT INTO EmployeeWPList VALUES("1|1", 1);
-INSERT INTO EmployeeWPList VALUES("1|1", 2);
-INSERT INTO EmployeeWPList VALUES("2|1", 3);
-INSERT INTO EmployeeWPList VALUES("2|1", 4);
+INSERT INTO EmployeeWPList VALUES(
+							"1|1|1",
+							"1|1",
+							1);
+INSERT INTO EmployeeWPList VALUES(
+							"1|1|2",
+							"1|1",
+							2);
+INSERT INTO EmployeeWPList VALUES(
+							"2|1|3",
+							"2|1",
+							3);
+INSERT INTO EmployeeWPList VALUES(
+							"2|1|4",
+							"2|1",
+							4);
 
 DROP TABLE IF EXISTS StatusReport;
 CREATE TABLE StatusReport(

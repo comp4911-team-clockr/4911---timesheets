@@ -47,6 +47,16 @@
       		<h:outputLabel value="#{workPackControl.workPack.mdds}"/> <br/>
       		<h:outputLabel value="MDSS" />
       		<h:outputLabel value="#{workPackControl.workPack.mdss}"/> <br/>
+      		
+      		<h:dataTable id="employeeWP" styleClass="table" value="#{workPackControl.empList}"
+      		var="item" border="1">
+      			<h:column>
+					<f:facet name="header">
+						<h:outputText value="Employee Name" />
+					</f:facet>
+					<h:outputText value="#{item.fullName}" />
+				</h:column>
+      		</h:dataTable>
       	</b:container>
       </h:form>
    </h:body>
