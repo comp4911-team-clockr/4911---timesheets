@@ -6,6 +6,44 @@
 	border-radius: 5px;
 }
 
+.tableChange {
+	background-color: rgba(237, 237, 238, 0.7);
+	border-radius: 10px;
+}
+
+td{
+	background-color: #FEFEFE;
+}
+
+th{
+	background-color: rgb(246, 245, 242);
+}
+
+table{
+	border-radius: 10px;
+}
+
+.borderBottom {
+	border-bottom: 1px solid #aaa;
+	padding-bottom: .5em;
+}
+
+.buttonColorizer {
+	background-color: rgb(232, 172, 104);
+}
+
+.greyButton {
+	background-color: #CCCCCC;
+}
+
+.greyButton:hover{
+	background-color: #DDDDDD;
+}
+
+.buttonColorizer:hover {
+	background-color: rgb(250, 175, 69);
+}
+
 .resizing {
    display:inline-block;
 }

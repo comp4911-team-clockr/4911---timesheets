@@ -34,7 +34,7 @@ public class ModelTimeSheetRowTest {
 		final double thrTotalHrs = 8.0;
 		final double friTotalHrs = 8.0;
 		final double overAllHrs = 48.0;
-		final double overTimeHrs = 10.0;
+		//final double overTimeHrs = 10.0;
 		final double flexTimeHrs = 11.0;
 		final String signature = "Signature";
 		final String isApproval = "approved";
@@ -53,7 +53,7 @@ public class ModelTimeSheetRowTest {
 		ts.setThursTotalHrs(thrTotalHrs);
 		ts.setFriTotalHrs(friTotalHrs);
 		ts.setOverallTotalHrs(overAllHrs);
-		ts.setOvertimeHrs(overTimeHrs);
+		//ts.setOvertimeHrs(overTimeHrs);
 		ts.setflextimeHrs(flexTimeHrs);
 		ts.setSignature(signature);
 		ts.setApproval(isApproval);
@@ -71,6 +71,7 @@ public class ModelTimeSheetRowTest {
 		final double friHrs = 8.0;
 		final double totalWkHrs = 48.0;
 		final String notes = "";
+		final int vacationDays = 1;
 
 		TimeSheetRow tsr = new TimeSheetRow();
 		tsr.setTimeSheet(ts);
@@ -86,6 +87,10 @@ public class ModelTimeSheetRowTest {
 		tsr.setFriHrs(friHrs);
 		tsr.setWeekTotalHrs(totalWkHrs);
 		tsr.setNotes(notes);
+		tsr.setVacationDays(vacationDays);
+		tsr.setFlexTimeHrs(flexTimeHrs);
+		tsr.setTimesheet(ts);
+		
 
 		// Test Result
 		TimeSheet testTimeSheet = new TimeSheet();
@@ -103,6 +108,11 @@ public class ModelTimeSheetRowTest {
 		final double testFriHrs = tsr.getFriHrs();
 		final double testTotalWkHrs = tsr.getWeekTotalHrs();
 		final String testNotes = tsr.getNotes();
+		final int testVacDays = tsr.getVacationDays();
+		final double testFlexTime = tsr.getFlexTimeHrs();
+		
+		TimeSheet testTS = new TimeSheet();
+		testTS = tsr.getTimesheet();
 
 		// Expected Result
 		TimeSheet expTimeSheet = new TimeSheet();
@@ -120,6 +130,11 @@ public class ModelTimeSheetRowTest {
 		final double expFriHrs = friHrs;
 		final double expTotalWkHrs = totalWkHrs;
 		final String expNotes = notes;
+		final int expVacDays = tsr.getVacationDays();
+		final double expFlexTime = tsr.getFlexTimeHrs();
+		
+		TimeSheet expTS = new TimeSheet();
+		expTS = tsr.getTimesheet();
 
 		// Testing timesheet
 		TestCase.assertEquals
@@ -223,6 +238,30 @@ public class ModelTimeSheetRowTest {
 			"TimeSheetRowGetSetTest notes has FAILED", 
 			expNotes, 
 			testNotes
+		);
+		
+		// Testing VacDays
+		TestCase.assertEquals
+		(
+			"TimeSheetRowGetSetTest VacDays has FAILED", 
+			expVacDays, 
+			testVacDays
+		);
+		
+		// Testing FlexTime
+		TestCase.assertEquals
+		(
+			"TimeSheetRowGetSetTest FlexTime has FAILED", 
+			expFlexTime, 
+			testFlexTime
+		);
+		
+		// Testing Timesheet
+		TestCase.assertEquals
+		(
+			"TimeSheetRowGetSetTest Timesheet has FAILED", 
+			expTS, 
+			testTS
 		);
 	}
 }

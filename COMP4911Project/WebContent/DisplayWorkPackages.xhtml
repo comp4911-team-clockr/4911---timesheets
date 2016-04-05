@@ -21,9 +21,9 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Work Packages</h1><br/>
-      		<b:dataTable value="#{workPackControl.workPackList}" var="work">
+      		<b:dataTable styleClass="roundTheCorners" value="#{workPackControl.workPackList}" var="work">
       			<h:column>
 					<f:facet name="header">Number</f:facet>
 					<h:outputText value="#{work.wpNum}"/>
@@ -32,9 +32,25 @@
 					<f:facet name="header">Title</f:facet>
 					<b:navLink class="removeDot" value="#{work.wpTitle}" href ="DisplayTimesheets.xhtml"></b:navLink>
 				</h:column>
+				
 				<h:column>
-					<f:facet name="header">Costumer</f:facet>
+					<f:facet name="header">Customer</f:facet>
 					<h:outputText value="#{work.customer}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">View</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="View"
+						action="#{workPackControl.viewWP(work)}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Edit</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="Edit"
+						action="#{workPackControl.editWP(work)}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="Delete"
+						action="#{workPackControl.deleteWP(work)}"/>
 				</h:column>
       		</b:dataTable>
       	</b:container>

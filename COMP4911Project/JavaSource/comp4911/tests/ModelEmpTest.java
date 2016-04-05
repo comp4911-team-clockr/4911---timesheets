@@ -3,15 +3,15 @@ package comp4911.tests;
 import junit.framework.TestCase;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
+//import java.sql.Time;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.junit.Test;
 import comp4911.models.Employee;
 import comp4911.models.Credential;
-import comp4911.models.WorkPackage;
-import comp4911.models.Project;
+//import comp4911.models.WorkPackage;
+//import comp4911.models.Project;
 
 /**
  *	Testing Employee Model
@@ -26,13 +26,14 @@ public class ModelEmpTest {
 		final String empFName = "John";
 		final String empLName = "Doe";
 		final boolean isActive = true;
-		final int sickDays = 10;
-		final int vacDays = 10;
-		final Time flexStart = Time.valueOf("11:30:00");
-		final Time flexEnd = Time.valueOf("19:30:00");
 		final Date hireDate = Date.valueOf("2010-10-10");
 		final String email = "zz@zz.zz";
 		final String payRateId = "P1";
+		final int supNum = 1;
+		final int vacDays = 10;
+		//final int sickDays = 10;
+		//final Time flexStart = Time.valueOf("11:30:00");
+		//final Time flexEnd = Time.valueOf("19:30:00");
 		
 		// Dummy Data for Credential
 		final String userId = "000099";
@@ -40,33 +41,10 @@ public class ModelEmpTest {
 		final int roleId = 005;
 		final String role = "Employee";
 		final Credential cred = new Credential(userId, password, roleId, role, email);
+		//final List<Employee> empList = new ArrayList<Employee>();
+		//final List<WorkPackage> wpList = new ArrayList<WorkPackage>();
 		
-		final List<Employee> empList = new ArrayList<Employee>();
-		final List<WorkPackage> wpList = new ArrayList<WorkPackage>();
-		
-		final Date issueDate = Date.valueOf("2016-02-01");
-		
-		final Project proj = new Project();
-		proj.setProjectId(10);
-		proj.setProjName("Project Alpha");
-		proj.setManDays(300);
-		proj.setSupervisor(2);
-		proj.setEmpProjList(empList); 	// List of Employee
-		proj.setWpList(wpList); 		// List of WorkPackage
-		proj.setIssueDate(issueDate);
-		proj.setDesc("");
-		
-		final WorkPackage wp = new WorkPackage();
-		wp.setWpId(1);
-		wp.setWpNum(1);
-		wp.setWpTitle("Project Set-Up");
-		wp.setContractor("TEK Solutions");
-		wp.setUserId(000004);
-		wp.setPayRateId("P1");
-		wp.setManDays(13);
-		wp.setEmpWPList(empList);		// List of Employee
-		wp.setHead(proj);
-		
+		//final Date issueDate = Date.valueOf("2016-02-01");
 		
 		// Creating a new Employee object
 		final Employee emp = new Employee();
@@ -75,55 +53,63 @@ public class ModelEmpTest {
 		emp.setFirstName(empFName);
 		emp.setLastName(empLName);
 		emp.setActive(isActive);
-		emp.setSickDays(sickDays);
-		emp.setVacationDays(vacDays);
-		emp.setFlexStart(flexStart);
-		emp.setFlexEnd(flexEnd);
 		emp.setHireDate(hireDate);
 		emp.setPayRateId(payRateId);
 		emp.setEmail(email);
-		emp.setProject(proj);
-		emp.setWorkpackage(wp);
+		emp.setSupNum(supNum);
+		emp.setVacDays(vacDays);
+		//emp.setSickDays(sickDays);
+		//emp.setFlexStart(flexStart);
+		//emp.setFlexEnd(flexEnd);
+		//emp.setProject(proj);
+		//emp.setWorkpackage(wp);
+		
 		
 		// Test Result
 		final int testEmpNum = emp.getEmpNumber();
 		final String testEmpFName = emp.getFirstName();
 		final String testEmpLName = emp.getLastName();
 		final boolean testIsActive = emp.isActive();
-		final int testSickDays = emp.getSickDays();
-		final int testVacDays = emp.getVacationDays();
-		final Time testFlexStart = emp.getFlexStart();
-		final Time testFlexEnd = emp.getFlexEnd();
 		final Date testHireDate = emp.getHireDate();
 		final String testEmail = emp.getEmail();
 		final String testPayRateId = emp.getPayRateId();
+		final int testVacDays = emp.getVacDays();
+		final int testSupNum = emp.getSupNum();
 		
 		Credential testCred = new Credential();
 		testCred = emp.getCredential();
-		WorkPackage testWP = new WorkPackage();
-		testWP = emp.getWorkpackage();
-		Project testProj = new Project();
-		testProj = emp.getProject();
+		
+		//final int testSickDays = emp.getSickDays();
+		//final Time testFlexStart = emp.getFlexStart();
+		//final Time testFlexEnd = emp.getFlexEnd();
+		
+		//WorkPackage testWP = new WorkPackage();
+		//testWP = emp.getWorkpackage();
+		//Project testProj = new Project();
+		//testProj = emp.getProject();
 		
 		// Expected Result
 		final int expEmpNum = empNum;
 		final String expEmpFName = empFName;
 		final String expEmpLName = empLName;
 		final boolean expIsActive = isActive;
-		final int expSickDays = sickDays;
-		final int expVacDays = vacDays;
-		final Time expFlexStart = flexStart;
-		final Time expFlexEnd = flexEnd;
 		final Date expHireDate = hireDate;
 		final String expEmail = email;
 		final String expPayRateId = payRateId;
+		final int expVacDays = vacDays;
+		final int expSupNum = supNum;
 		
 		Credential expCred = new Credential();
 		expCred = cred;
-		WorkPackage expWP = new WorkPackage();
-		expWP = wp;
-		Project expProj = new Project();
-		expProj = proj;
+		
+		//final int expSickDays = sickDays;
+		//final Time expFlexStart = flexStart;
+		//final Time expFlexEnd = flexEnd;
+		
+		//WorkPackage expWP = new WorkPackage();
+		//expWP = wp;
+		//Project expProj = new Project();
+		//expProj = proj;
 		
 		// Testing EmpNumber
 		TestCase.assertEquals
@@ -158,36 +144,28 @@ public class ModelEmpTest {
 		);
 		
 		// Testing SickDays
-		TestCase.assertEquals
-		(
-			"EmpGetSetTest SickDays has FAILED", 
-			expSickDays, 
-			testSickDays
-		);
-		
-		// Testing VacDays
-		TestCase.assertEquals
-		(
-			"EmpGetSetTest VacDays has FAILED", 
-			expVacDays, 
-			testVacDays
-		);
+//		TestCase.assertEquals
+//		(
+//			"EmpGetSetTest SickDays has FAILED", 
+//			expSickDays, 
+//			testSickDays
+//		);
 		
 		// Testing FlexStart
-		TestCase.assertEquals
-		(
-			"EmpGetSetTest FlexStart has FAILED", 
-			expFlexStart, 
-			testFlexStart
-		);
+//		TestCase.assertEquals
+//		(
+//			"EmpGetSetTest FlexStart has FAILED", 
+//			expFlexStart, 
+//			testFlexStart
+//		);
 		
 		// Testing FlexEnd
-		TestCase.assertEquals
-		(
-			"EmpGetSetTest FlexEnd has FAILED", 
-			expFlexEnd, 
-			testFlexEnd
-		);
+//		TestCase.assertEquals
+//		(
+//			"EmpGetSetTest FlexEnd has FAILED", 
+//			expFlexEnd, 
+//			testFlexEnd
+//		);
 		
 		// Testing HireDate
 		TestCase.assertEquals
@@ -221,20 +199,36 @@ public class ModelEmpTest {
 			testCred
 		);
 		
-		// Testing WorkPackage
+		// Testing SupNum
 		TestCase.assertEquals
 		(
-			"EmpGetSetTest WorkPackage has FAILED", 
-			expWP, 
-			testWP
+			"EmpGetSetTest SupNum has FAILED", 
+			expSupNum, 
+			testSupNum
 		);
 		
-		// Testing Project
+		// Testing VacDays
 		TestCase.assertEquals
 		(
-			"EmpGetSetTest Project has FAILED", 
-			expProj, 
-			testProj
+			"EmpGetSetTest VacDays has FAILED", 
+			expVacDays, 
+			testVacDays
 		);
+		
+//		// Testing WorkPackage
+//		TestCase.assertEquals
+//		(
+//			"EmpGetSetTest WorkPackage has FAILED", 
+//			expWP, 
+//			testWP
+//		);
+//		
+//		// Testing Project
+//		TestCase.assertEquals
+//		(
+//			"EmpGetSetTest Project has FAILED", 
+//			expProj, 
+//			testProj
+//		);
 	}
 }

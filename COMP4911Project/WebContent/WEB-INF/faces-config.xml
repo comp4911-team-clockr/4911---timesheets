@@ -8,6 +8,10 @@
    <from-outcome>loggedin</from-outcome>
    <to-view-id>/Splash.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>ForgotPasswordPage</from-outcome>
+   <to-view-id>/ForgottenPassword.xhtml</to-view-id>
+  </navigation-case>  
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/EmployeesHR.xhtml</from-view-id>
@@ -107,4 +111,11 @@
    <to-view-id>/DisplayTimesheets.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>   
+ <navigation-rule>
+  <from-view-id>/ForgottenPassword.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>ForgotPasswordCancel</from-outcome>
+   <to-view-id>/MainIndex.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>    
 </faces-config>

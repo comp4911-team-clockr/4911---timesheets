@@ -25,6 +25,7 @@
       <h:form>
       	<b:container>
       		<h1>Update Profile</h1>
+      		<h:messages style="color:red" />
       		<h:outputLabel value="First Name: " />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">
@@ -45,7 +46,7 @@
       		</b:row>
 	   		<b:row>
       		<b:column col-sm="4" col-xs="12">
-	   		<b:commandButton value="Update" action="#{user.updateProfile}"></b:commandButton>
+	   		<h:commandButton styleClass="btn btn-default" value="Update" action="#{user.updateProfile}"></h:commandButton>
 	   		</b:column>
       		</b:row>
       	</b:container>
@@ -68,12 +69,11 @@
       		</b:row>
       		<b:row>
       		<b:column col-sm="4" col-xs="12"> 
-	   		<b:commandButton value="Reset Password" action="#{user.resetEmpPassword}"></b:commandButton>
+	   		<h:commandButton styleClass="btn btn-default" value="Reset Password" action="#{user.resetEmpPassword}"></h:commandButton>
 	   		</b:column>
       		</b:row>
       		<b:row>
       		<b:column col-sm="4" col-xs="12"> 
-	   		<h:messages style="color:red" />
 	   		</b:column>
       		</b:row>
       	</b:container>

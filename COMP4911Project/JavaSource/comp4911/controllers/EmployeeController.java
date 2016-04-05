@@ -254,6 +254,7 @@ public class EmployeeController implements Serializable {
 			Credential tempCred = credential;
 
 			tempCred.setEmail(credToAdd.getEmail());
+			tempCred.setPassword(employee.getCredential().getPassword());
 			temp.setFirstName(employee.getFirstName());
 			temp.setLastName(employee.getLastName());
 			temp.setCredential(tempCred);
@@ -396,5 +397,11 @@ public class EmployeeController implements Serializable {
 			}
 			return false;
 		}
-
+	public String ForgotPassword(){
+		return "ForgotPasswordCancel";
+	}
+	
+	public String GoForgotPassword(){
+		return "ForgotPasswordPage";
+	}
 }

@@ -22,9 +22,9 @@
 		</b:container>
 	</h:form>
 	<h:form>
-		<b:container>
+		<b:container styleClass="tableChange">
 			<h1>Timesheets</h1><br/>
-			<h:dataTable id="test" value="#{test.timesheet.timeSheetRows}"
+			<h:dataTable id="test" styleClass="table roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>
 					<f:facet name="header">
@@ -85,6 +85,12 @@
 						<h:outputText value="Friday" />
 					</f:facet>
 					<h:outputText value="#{item.friHrs}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vacation Days" />
+					</f:facet>
+					<h:outputText value="#{item.vacationDays}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
