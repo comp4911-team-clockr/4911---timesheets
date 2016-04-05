@@ -29,34 +29,41 @@ public class EmployeeController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Inject private Employee employee;
+	@Inject
+	private Employee employee;
 
-	@Inject private Employee currentEmployee;
+	@Inject
+	private Employee currentEmployee;
 
-	@Inject private Employee editEmployee;
+	@Inject
+	private Employee editEmployee;
 
-	@Inject private EmployeeManager employeeManager;
+	@Inject
+	private EmployeeManager employeeManager;
 
-	@Inject private Credential credential;
+	@Inject
+	private Credential credential;
 
-	@Inject private Credential credToAdd;
+	@Inject
+	private Credential credToAdd;
 
-	@Inject private CredentialManager credentialManager;
+	@Inject
+	private CredentialManager credentialManager;
 
 	List<Employee> empList;
 
-	List<Credential>credList;
+	List<Credential> credList;
 
-	//The pattern used to check if password have an uppercase
+	// The pattern used to check if password have an uppercase
 	private final static Pattern hasUppercase = Pattern.compile("[A-Z]");
 
-	//The pattern used to check if password have a lowercase
+	// The pattern used to check if password have a lowercase
 	private final static Pattern hasLowercase = Pattern.compile("[a-z]");
 
-	//The pattern used to check if password have a number
+	// The pattern used to check if password have a number
 	private final static Pattern hasNumber = Pattern.compile("\\d");
 
-	//The pattern used to check if password have a special character
+	// The pattern used to check if password have a special character
 	private final static Pattern hasSpecialChar = Pattern.compile("[^a-zA-Z0-9 ]");
 
 	private String resetPassword;
@@ -88,14 +95,21 @@ public class EmployeeController implements Serializable {
 				setCredential(credentialManager.find(id));
 				refreshList();
 				System.out.println("Check Login passed");
-				return "loggedin";		
+				return "loggedin";
 			}
 		}
 		System.out.println("Check Login failed");
-		return "MainIndex?faces-redirect=true";
+
+		// Getting the message from the errorMessage.properties
+		String errorMessage = FacesContext.getCurrentInstance().getApplication()
+				.getResourceBundle(FacesContext.getCurrentInstance(), "error").getString("loginErr");
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, errorMessage);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+
+		return "";
 	}
-	
-	public String cancelEditEmployee(){
+
+	public String cancelEditEmployee() {
 		return "cancelEditEmployee";
 	}
 
@@ -138,7 +152,8 @@ public class EmployeeController implements Serializable {
 	public void setCredentialManager(CredentialManager credentialManager) {
 		this.credentialManager = credentialManager;
 	}
-	public String addEmployeeButton(){
+
+	public String addEmployeeButton() {
 		return "AddEmployee";
 	}
 
@@ -150,7 +165,7 @@ public class EmployeeController implements Serializable {
 		credToAdd = c;
 	}
 
-	//DigiSign
+	// DigiSign
 	public String addEmployee() {
 		System.out.println("Add Employee called");
 		Employee temp = new Employee();
@@ -158,7 +173,7 @@ public class EmployeeController implements Serializable {
 		Integer empNumber = empList.size() + 1;
 		String userID = empNumber.toString();
 
-		//Padding zeroes in front of userId accordingly
+		// Padding zeroes in front of userId accordingly
 		for (int i = userID.length(); i < 6; i++)
 			userID = '0' + userID;
 
@@ -180,7 +195,7 @@ public class EmployeeController implements Serializable {
 
 		int cal = hashFN + hashLN + hashPW;
 
-		String hashCode =  Integer.toString(cal);
+		String hashCode = Integer.toString(cal);
 
 		tempCred.setDigiSign(hashCode);
 		System.out.println(hashCode);
@@ -191,7 +206,7 @@ public class EmployeeController implements Serializable {
 
 		refreshList();
 
-		//any better way to "reset" the fields after it's used?
+		// any better way to "reset" the fields after it's used?
 		setEmployee(new Employee());
 		setCredToAdd(new Credential());
 
@@ -222,7 +237,6 @@ public class EmployeeController implements Serializable {
 		credToAdd = new Credential();
 		return "DisplayEmployees";
 	}
-
 
 	public boolean showDelete(Employee e) {
 		if (currentEmployee.getEmpNumber() == e.getEmpNumber())
@@ -266,46 +280,45 @@ public class EmployeeController implements Serializable {
 			refreshList();
 			return "userProfile";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Invalid email address entered."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid email address entered."));
 			return "ResetCreds";
 		}
 	}
 
 	public String resetEmpPassword() {
-		String validate = validateNewPass(credToAdd.getPassword(), resetPassword); 
+		String validate = validateNewPass(credToAdd.getPassword(), resetPassword);
 		if (validate.equals("Success")) {
 			credential.setPassword(credToAdd.getPassword());
 			credentialManager.merge(credential);
 
 			return "ResetCreds";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(validate));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(validate));
 		}
 		return "ResetCreds";
 	}
 
-	public String AddProject(){
+	public String AddProject() {
 		return "addProject";
 	}
 
-	public String AddWorkPackage(){
+	public String AddWorkPackage() {
 		return "addWP";
 	}
 
-	//Please change the length of the password to the desired length
-	//This function checks if the new input as new password are valid
-	//Conditions are:
-	//both not null or empty
-	//both are the same string
-	//have a uppercase
-	//have a lowercase
-	//have a number
-	//have a special character
+	// Please change the length of the password to the desired length
+	// This function checks if the new input as new password are valid
+	// Conditions are:
+	// both not null or empty
+	// both are the same string
+	// have a uppercase
+	// have a lowercase
+	// have a number
+	// have a special character
 	//
-	//If the result is invalid the problem will be printed into a string that will be returned at the end
-	//If the result is valid a "success" string will be returned
+	// If the result is invalid the problem will be printed into a string that
+	// will be returned at the end
+	// If the result is valid a "success" string will be returned
 	public static String validateNewPass(String pass1, String pass2) {
 		if (pass1 == null || pass2 == null) {
 			return "One or both passwords are null";
@@ -362,46 +375,48 @@ public class EmployeeController implements Serializable {
 	public void setResetPassword(String resetPassword) {
 		this.resetPassword = resetPassword;
 	}
+
 	public String getResetPassword() {
 		return this.resetPassword;
 	}
-	
-	public String cancelAddEmp(){
+
+	public String cancelAddEmp() {
 		System.out.println("Cancel was called");
 		return "reloadEmpList";
 	}
-	
-	public boolean isEmployee(int id){
+
+	public boolean isEmployee(int id) {
 		Employee temp = employeeManager.find(id);
 		int roleId = temp.getCredential().getRoleId();
-		if(roleId == 1){
+		if (roleId == 1) {
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean isProjectManager(int id){
-			Employee temp = employeeManager.find(id);
-			int roleId = temp.getCredential().getRoleId();
-			if(roleId == 2){
-				return true;
-			}
-			return false;
+
+	public boolean isProjectManager(int id) {
+		Employee temp = employeeManager.find(id);
+		int roleId = temp.getCredential().getRoleId();
+		if (roleId == 2) {
+			return true;
 		}
-		
-	public boolean isSystemAdmin(int id){
-			Employee temp = employeeManager.find(id);
-			int roleId = temp.getCredential().getRoleId();
-			if(roleId == 3){
-				return true;
-			}
-			return false;
+		return false;
+	}
+
+	public boolean isSystemAdmin(int id) {
+		Employee temp = employeeManager.find(id);
+		int roleId = temp.getCredential().getRoleId();
+		if (roleId == 3) {
+			return true;
 		}
-	public String ForgotPassword(){
+		return false;
+	}
+
+	public String ForgotPassword() {
 		return "ForgotPasswordCancel";
 	}
-	
-	public String GoForgotPassword(){
+
+	public String GoForgotPassword() {
 		return "ForgotPasswordPage";
 	}
 }
