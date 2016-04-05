@@ -19,6 +19,14 @@
 			<base-name>comp4911.messageBundle.employeeMessage</base-name>
 			<var>empMsg</var>
 		</resource-bundle>
+		<resource-bundle>
+			<base-name>comp4911.messageBundle.projectMessage</base-name>
+			<var>projMsg</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>comp4911.messageBundle.workPackageMessage</base-name>
+			<var>wpMsg</var>
+		</resource-bundle>
 	</application>
 
 	<navigation-rule>
