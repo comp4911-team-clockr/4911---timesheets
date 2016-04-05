@@ -254,6 +254,7 @@ public class EmployeeController implements Serializable {
 			Credential tempCred = credential;
 
 			tempCred.setEmail(credToAdd.getEmail());
+			tempCred.setPassword(employee.getCredential().getPassword());
 			temp.setFirstName(employee.getFirstName());
 			temp.setLastName(employee.getLastName());
 			temp.setCredential(tempCred);

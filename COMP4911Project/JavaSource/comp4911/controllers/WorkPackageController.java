@@ -3,8 +3,11 @@ package comp4911.controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,6 +28,8 @@ public class WorkPackageController implements Serializable {
 	private final String editNavigation = "EditWorkPackage";
 	private final String addNavigation = "AddWorkPackage";
 	private final String viewNavigation = "ViewWorkPackage";
+	
+	private final String validPattern = "[A-Z]{1}[0-9]{4}";
 	
 	@Inject
 	private WorkPackage workPack;
@@ -89,10 +94,16 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String addWP() {
-		workPackManager.persist(workPack);
-		refreshList();
-		workPack = null;
-		return listNavigation;
+		if (validWPNum(workPack.getWpNum())) {
+			workPackManager.persist(workPack);
+			refreshList();
+			workPack = null;
+			return listNavigation;
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
+			return "";
+		}
 	}
 	
 	public String editWP(WorkPackage wp) {
@@ -101,10 +112,16 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String editWP() {
-		workPackManager.merge(workPack);
-		refreshList();
-		workPack = null;
-		return listNavigation;
+		if (validWPNum(workPack.getWpNum())) {
+			workPackManager.merge(workPack);
+			refreshList();
+			workPack = null;
+			return listNavigation;
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
+			return "";
+		}
 	}
 	public String deleteWP(WorkPackage wp){
 		workPackManager.remove(wp);
@@ -114,5 +131,9 @@ public class WorkPackageController implements Serializable {
 	
 	public String cancel() {
 		return listNavigation;
+	}
+	
+	public boolean validWPNum(String wpNum) {
+		return Pattern.matches(validPattern, wpNum);
 	}
 }
