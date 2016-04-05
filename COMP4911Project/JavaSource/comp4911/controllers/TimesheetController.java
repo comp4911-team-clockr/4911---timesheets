@@ -167,6 +167,7 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String cancelCreateTimesheet(){
+		refreshTimeSheet();
 		return "cancelCreateTimesheet";
 	}
 	
