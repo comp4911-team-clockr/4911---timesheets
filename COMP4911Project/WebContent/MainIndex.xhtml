@@ -10,6 +10,7 @@
 	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body class="clockrBg">
+	<p>#{empMsg.empEmail}</p>
 	<h:form>
 		<b:container>
 			<b:row>
@@ -34,8 +35,6 @@
 							value="Login"
 							action="#{user.checkLogin(user.credential.userId, user.credential.password)}"
 							look="primary"></h:commandButton>
-							
-						<h:message for="loginBtn" errorClass="err"></h:message>
 						<p></p>
 					</div>
 				</b:column>

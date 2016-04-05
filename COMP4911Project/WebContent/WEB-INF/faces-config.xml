@@ -8,8 +8,16 @@
 			<default-locale>en</default-locale>
 		</locale-config>
 		<resource-bundle>
-			<base-name>comp4911.messageBundle.errorMessage</base-name>
-			<var>error</var>
+			<base-name>comp4911.messageBundle.loginMessage</base-name>
+			<var>loginMsg</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>comp4911.messageBundle.timeSheetMessage</base-name>
+			<var>tsMsg</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>comp4911.messageBundle.employeeMessage</base-name>
+			<var>empMsg</var>
 		</resource-bundle>
 	</application>
 

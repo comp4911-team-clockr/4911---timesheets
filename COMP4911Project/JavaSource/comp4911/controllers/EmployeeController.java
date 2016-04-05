@@ -100,13 +100,8 @@ public class EmployeeController implements Serializable {
 		}
 		System.out.println("Check Login failed");
 
-		// Getting the message from the errorMessage.properties
-		String errorMessage = FacesContext.getCurrentInstance().getApplication()
-				.getResourceBundle(FacesContext.getCurrentInstance(), "error").getString("loginErr");
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, errorMessage);
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		return "MainIndex?faces-redirect=true";
 
-		return "";
 	}
 
 	public String cancelEditEmployee() {
