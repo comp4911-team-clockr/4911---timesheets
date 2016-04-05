@@ -55,7 +55,6 @@ public class EmployeeWPManager implements Serializable {
 				+ "WHERE e.wpID ='" + wp +"'",
                 EmployeeWPList.class); 
 		java.util.List<EmployeeWPList> empList = query.getResultList();
-		System.out.println(empList == null);
 		return empList;
 	}
 	

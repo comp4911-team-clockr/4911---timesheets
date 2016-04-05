@@ -28,6 +28,9 @@ public class TimesheetController implements Serializable{
 	
 	private Employee employee;
 	
+	/* Navigation */
+	private final String viewNavigation = "ViewTimesheet";
+	
 	@Inject 
 	private TimeSheet timesheet;
 	
@@ -80,7 +83,10 @@ public class TimesheetController implements Serializable{
 		
 		return timesheet;
 	}
-	
+	public String gotoTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
+		return viewNavigation;
+	}
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
 	}
@@ -96,7 +102,8 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public void timesheetInit() {
-		refreshTimeSheet();
+		if (timesheet == null)
+			refreshTimeSheet();
 	}
 	
 	public String deleteTimesheetRow(TimeSheetRow tsRow, String outcome) {
