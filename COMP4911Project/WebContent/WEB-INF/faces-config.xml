@@ -8,6 +8,10 @@
 			<default-locale>en</default-locale>
 		</locale-config>
 		<resource-bundle>
+			<base-name>comp4911.messageBundle.pageTitles</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+		<resource-bundle>
 			<base-name>comp4911.messageBundle.loginMessage</base-name>
 			<var>loginMsg</var>
 		</resource-bundle>
