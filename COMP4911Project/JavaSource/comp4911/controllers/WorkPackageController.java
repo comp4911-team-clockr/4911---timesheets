@@ -11,7 +11,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import comp4911.managers.EmployeeManager;
 import comp4911.managers.WorkPackageManager;
+import comp4911.models.Employee;
 import comp4911.models.Project;
 import comp4911.models.WorkPackage;
 
@@ -29,7 +31,8 @@ public class WorkPackageController implements Serializable {
 	private final String addNavigation = "AddWorkPackage";
 	private final String viewNavigation = "ViewWorkPackage";
 	
-	private final String validPattern = "[A-Z]{1}[0-9]{4}";
+	private final String validWPNumPattern = "[A-Z]{1}[0-9]{4}";
+	private final String validRENumPattern = "[0-9]{6}";
 	
 	@Inject
 	private WorkPackage workPack;
@@ -40,12 +43,19 @@ public class WorkPackageController implements Serializable {
 	@Inject
 	private WorkPackageManager workPackManager;
 	
+	@Inject
+	private EmployeeManager empManager;
+	
 	private List<WorkPackage> workPackList;
+	
+	private List<Employee> reList;
 	
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
+		reList = new ArrayList<Employee>();
 	}
+	
 	public String gotoList(Project project) {
 		this.project = project;
 		return listNavigation;
@@ -60,6 +70,10 @@ public class WorkPackageController implements Serializable {
 	
 	public void refreshList(){
 		workPackList = workPackManager.getAllByProject(project.getProjectId());
+	}
+	
+	public void refreshREList() {
+		reList = empManager.getAllRE();
 	}
 	
 	public List<WorkPackage> getWorkPackList() {
@@ -112,7 +126,7 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String editWP() {
-		if (validateAll().equals("Success")) {
+		if (validateAll()) {
 			workPackManager.merge(workPack);
 			refreshList();
 			workPack = null;
@@ -130,14 +144,40 @@ public class WorkPackageController implements Serializable {
 		return listNavigation;
 	}
 	
-	public String validateAll() {
-		if (!validWPNum(workPack.getWpNum()))
+	public boolean validateAll() {
+		boolean validWP = true;
+		if (!validWPNum(workPack.getWpNum())) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
-		return "Success";
+			validWP = false;
+		}
+		
+		if (!validRespEngPat(workPack.getRespId())) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Not a valid Responsibility Engineer Number. ex: 000001"));
+			validWP = false;
+		}
+		
+		if (!validEmp(workPack.getRespId())) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("This employee does not exist."));
+			validWP = false;
+		}
+		return validWP;
 	}
 	
 	public boolean validWPNum(String wpNum) {
-		return Pattern.matches(validPattern, wpNum);
+		return Pattern.matches(validWPNumPattern, wpNum);
+	}
+	
+	public boolean validRespEngPat(String reNum) {
+		return Pattern.matches(validRENumPattern, reNum);
+	}
+	
+	public boolean validEmp(String reNum) {
+		int id = Integer.parseInt(reNum);
+		if (empManager.find(id) != null)
+			return true;
+		return false;
 	}
 }
