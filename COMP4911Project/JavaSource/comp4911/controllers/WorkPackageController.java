@@ -43,7 +43,7 @@ public class WorkPackageController implements Serializable {
 	private List<WorkPackage> workPackList;
 	
 	public WorkPackageController() {
-		System.out.println("Constructor called");
+		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
 	}
 	public String gotoList(Project project) {
@@ -52,7 +52,7 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public WorkPackage getWorkPackage() {
-		System.out.println("getWorkPackage() called");
+		System.out.println("Get WorkPackage called");
 		workPackList = workPackManager.getAll();
 		System.out.println(workPackList.size() + " size");
 		return workPack;
@@ -63,7 +63,7 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public List<WorkPackage> getWorkPackList() {
-		System.out.println("getWorkPackList");
+		System.out.println("Get WorkPackage List");
 		refreshList();
 		return workPackList;
 	}
