@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import comp4911.managers.EmployeeManager;
+import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.WorkPackageManager;
 import comp4911.models.Employee;
 import comp4911.models.Project;
@@ -46,13 +47,27 @@ public class WorkPackageController implements Serializable {
 	@Inject
 	private EmployeeManager empManager;
 	
+	@Inject
+	private EmployeeWPManager empWPManager;
+	
 	private List<WorkPackage> workPackList;
+	
+	private List<Employee> empList;
 	
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
+		empList = new ArrayList<Employee>();
 	}
 	
+	public List<Employee> getEmpList() {
+		return empList;
+	}
+
+	public void setEmpList(List<Employee> empList) {
+		this.empList = empList;
+	}
+
 	public String gotoList(Project project) {
 		this.project = project;
 		return listNavigation;
@@ -67,6 +82,12 @@ public class WorkPackageController implements Serializable {
 	
 	public void refreshList(){
 		workPackList = workPackManager.getAllByProject(project.getProjectId());
+	}
+	
+	public void refreshEmpList(WorkPackage wp) {
+		empList = empWPManager.listEmpByWP(wp.getWpId(), empManager);
+		if (empList == null)
+			empList = new ArrayList<Employee>(); 
 	}
 	
 	public List<WorkPackage> getWorkPackList() {
@@ -89,6 +110,7 @@ public class WorkPackageController implements Serializable {
 	
 	public String viewWP(WorkPackage workPack) {
 		this.workPack = workPack;
+		refreshEmpList(workPack);
 		return viewNavigation;
 	}
 	public String addWP(Project project) {
@@ -101,16 +123,13 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String addWP() {
-		if (validWPNum(workPack.getWpNum())) {
+		if (validateAll()) {
 			workPackManager.persist(workPack);
 			refreshList();
 			workPack = null;
 			return listNavigation;
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
-			return "";
 		}
+		return "";
 	}
 	
 	public String editWP(WorkPackage wp) {
@@ -122,7 +141,7 @@ public class WorkPackageController implements Serializable {
 		if (validateAll()) {
 			workPackManager.merge(workPack);
 			refreshList();
-			workPack = null;
+			workPack = null;			
 			return listNavigation;
 		}
 		return "";
