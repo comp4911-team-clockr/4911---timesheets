@@ -34,6 +34,11 @@
       		<b:inputText value="#{workPackControl.workPack.customer}"/> <br/>
       		<h:outputLabel value="Responsibility Engineer ID" />
       		<b:inputText value="#{workPackControl.workPack.respId}"/> <br/>
+      		<!-- For people who want to use this I guess
+      		h:selectOneMenu value="#{workPackControl.workPack.respId}">
+    			<f:selectItems value="#{workPackControl.empList}" var="emp"
+    			itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+			</h:selectOneMenu> <br/> -->
       		<h:outputLabel value="MDP1" />
       		<b:inputText value="#{workPackControl.workPack.mdp1}"/> <br/>
       		<h:outputLabel value="MDP2" />

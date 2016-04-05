@@ -97,6 +97,9 @@ public class EmployeeController implements Serializable {
 				System.out.println("Check Login passed");
 				return "loggedin";
 			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Username/Password is incorrect."));
 		}
 		System.out.println("Check Login failed");
 
@@ -413,5 +416,33 @@ public class EmployeeController implements Serializable {
 
 	public String GoForgotPassword() {
 		return "ForgotPasswordPage";
+	}
+	
+	public String GetRecoveryQuestions(String id){
+		//Employee set to entered user id to grab their question answers
+		currentEmployee = employeeManager.findByUserId(id);
+		return "GetRecoveryQuestions";
+	}
+	
+	//this method should take in 3 parameters (3 strings for questions)
+	public String SubmitRecovery(){
+		//add if statement and what not for entered values before returning.
+		//this is the case where everything is good
+		return "RecoveryPassed";
+	}
+	
+	public String RecoveryQuestionsCancel(){
+		return "RecoveryQuestionsCancel";
+	}
+	
+	public String CancelChangePassword(){
+		return "CancelChangePassword";
+	}
+	
+	//this method should have two parameters. one for password, then re-entered password
+	public String ConfirmChangePassword(){
+		//check if they're equal then change password value for that user and return this
+		return "ChangePasswordConfirmed";
+		//else return same page
 	}
 }

@@ -1,6 +1,7 @@
 package comp4911.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,6 +56,15 @@ public class WorkPackage implements Serializable {
 	
 	@Column(name="ProjectId")
 	private int projectId;
+	
+	@Column(name="IssueDate")
+	private Date issueDate;
+	
+	@Column(name="PlannedCompletionDate")
+	private Date plannedCompletionDate;
+	
+	@Column(name="ActualCompletionDate")
+	private Date actualCompletionDate;
 	
 	@Column(name="IsActive")
 	private boolean isActive;
@@ -171,6 +181,32 @@ public class WorkPackage implements Serializable {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	
+
+	public Date getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public Date getPlannedCompletionDate() {
+		return plannedCompletionDate;
+	}
+
+	public void setPlannedCompletionDate(Date plannedCompletionDate) {
+		this.plannedCompletionDate = plannedCompletionDate;
+	}
+
+	public Date getActualCompletionDate() {
+		return actualCompletionDate;
+	}
+
+	public void setActualCompletionDate(Date actualCompletionDate) {
+		this.actualCompletionDate = actualCompletionDate;
 	}
 
 }

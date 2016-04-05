@@ -2,13 +2,11 @@ package comp4911.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -34,7 +32,10 @@ public class Employee implements Serializable {
 	private String firstName;
 	
 	@Column(name="EmpLname")
-	private String lastName;	
+	private String lastName;
+	
+	@Transient
+	private String fullName;
 	
 	@Column(name="SupervisorEmpNum")
 	private int supNum;
@@ -45,6 +46,10 @@ public class Employee implements Serializable {
 	@Column(name="HireDate")
 	private Date hireDate;
 	
+
+	@Column(name="FlexHours")
+	private int flexHrs;
+
 	@Column(name="Email")
 	private String email;
 	
@@ -86,6 +91,10 @@ public class Employee implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getFullName() {
+		return firstName + " " + lastName;
 	}
 
 	public boolean isActive() {
@@ -134,6 +143,14 @@ public class Employee implements Serializable {
 
 	public void setVacDays(int vacDays) {
 		this.vacDays = vacDays;
-	}	
+	}
+	
+	public int getFlexHrs() {
+		return flexHrs;
+	}
+
+	public void setFlexHrs(int flexHrs) {
+		this.flexHrs = flexHrs;
+	}
 }
 

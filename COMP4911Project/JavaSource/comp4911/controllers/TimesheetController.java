@@ -28,6 +28,9 @@ public class TimesheetController implements Serializable{
 	
 	private Employee employee;
 	
+	/* Navigation */
+	private final String viewNavigation = "ViewTimesheet";
+	
 	@Inject 
 	private TimeSheet timesheet;
 	
@@ -75,24 +78,32 @@ public class TimesheetController implements Serializable{
 			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll(employee.getEmpNumber()).get(0);
 			//System.out.println(timesheet.getTimeSheetRows().size());
+			
 		}
 		
 		return timesheet;
 	}
-	
+	public String gotoTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
+		return viewNavigation;
+	}
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
 	}
 	
 	public String saveChanges() {
 		vacationDaysTaken();
+		for(int i = 1; i < 8; i++){
+			calculateTotaldayhours(i);
+		}
 		timesheetManager.merge(timesheet);
 		refreshTimeSheet();
 		return "DisplayTimesheets";
 	}
 	
 	public void timesheetInit() {
-		refreshTimeSheet();
+		if (timesheet == null)
+			refreshTimeSheet();
 	}
 	
 	public String deleteTimesheetRow(TimeSheetRow tsRow, String outcome) {
@@ -158,6 +169,9 @@ public class TimesheetController implements Serializable{
 	
 	public String createTimesheet() {
 		vacationDaysTaken();
+		for(int i = 1; i < 8; i++){
+			calculateTotaldayhours(i);
+		}
 		timesheetManager.persist(timesheet);
 		timesheetList.add(timesheet);
 		return "DisplayTimesheets";
@@ -172,9 +186,9 @@ public class TimesheetController implements Serializable{
 		return "DisplayTimesheets";
 	}
 	
-	public String cancelCreateTimesheet(){
+	public String CreateTimesheetCancel(){
 		refreshTimeSheet();
-		return "cancelCreateTimesheet";
+		return "CancelCreateTimesheet";
 	}
 	
 	public String cancelEditTimesheet(){
@@ -182,6 +196,10 @@ public class TimesheetController implements Serializable{
 		return "cancelEditTimesheet";
 	}
 	
+	public String CancelViewTimesheet(){
+		return "cancelViewTimesheet";
+	}
+
 	public void vacationDaysTaken(){
 		int daysTaken = 0;
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
@@ -189,5 +207,41 @@ public class TimesheetController implements Serializable{
 		}
 		employee.setVacDays(employee.getVacDays() - daysTaken);
 		employeeManager.merge(employee);
+	}
+	
+	public void calculateTotaldayhours(int day) {
+		double hours = 0.0;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
+			switch (day) {
+				case 1: 
+					hours += r.getSatHrs();
+					timesheet.setSatTotalHrs(hours);
+					break;
+				case 2:
+					hours += r.getSunHrs();
+					timesheet.setSunTotalHrs(hours);
+					break;
+				case 3:
+					hours += r.getMonHrs();
+					timesheet.setMonTotalHrs(hours);
+					break;
+				case 4:
+					hours += r.getTuesHrs();
+					timesheet.setTuesTotalHrs(hours);
+					break;
+				case 5:
+					hours += r.getWedHrs();
+					timesheet.setWedTotalHrs(hours);
+					break;
+				case 6:
+					hours += r.getThursHrs();
+					timesheet.setThursTotalHrs(hours);
+					break;
+				case 7:
+					hours += r.getFriHrs();
+					timesheet.setFriTotalHrs(hours);
+					break;
+			}
+		}
 	}
 }
