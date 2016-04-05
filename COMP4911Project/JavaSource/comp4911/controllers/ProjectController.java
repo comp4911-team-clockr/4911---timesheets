@@ -40,14 +40,13 @@ public class ProjectController implements Serializable {
 	}
 
 	public ProjectController() {
-		System.out.println("Constructor called");
+		System.out.println("Project Constructor called");
 		projectList = new ArrayList<Project>();
 	}
 
 	public Project getProject() {
-		System.out.println("getProject() called");
+		System.out.println("Get Project called");
 		projectList = projectManager.getAll();
-		System.out.println(projectList.size() + " size");
 		return project;
 	}
 
@@ -69,7 +68,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<Project> getProjectList() {
-		System.out.println("getProjectList");
+		System.out.println("Get Project List");
 		refreshList();
 		return projectList;
 	}

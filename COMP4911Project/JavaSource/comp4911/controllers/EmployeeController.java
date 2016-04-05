@@ -90,6 +90,9 @@ public class EmployeeController implements Serializable {
 				System.out.println("Check Login passed");
 				return "loggedin";		
 			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Username/Password is incorrect."));
 		}
 		System.out.println("Check Login failed");
 		return "MainIndex?faces-redirect=true";
@@ -254,6 +257,7 @@ public class EmployeeController implements Serializable {
 			Credential tempCred = credential;
 
 			tempCred.setEmail(credToAdd.getEmail());
+			tempCred.setPassword(employee.getCredential().getPassword());
 			temp.setFirstName(employee.getFirstName());
 			temp.setLastName(employee.getLastName());
 			temp.setCredential(tempCred);

@@ -39,7 +39,13 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Name</f:facet>
-					<b:navLink class="removeDot" value="#{proj.projName}" href ="DisplayWorkPackages.xhtml"></b:navLink>
+					<h:commandLink class="removeDot" value="#{proj.projName}" action="#{workPackControl.gotoList(proj)}">
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Add Work Package</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="Add Work Package"
+						action="#{workPackControl.addWP(proj)}"/>
 				</h:column>
       		</b:dataTable>   
       		<h:commandButton class="btn buttonColorizer" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	

@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 //import javax.transaction.Transactional;
 
+import comp4911.managers.EmployeeManager;
 import comp4911.managers.TimeSheetManager;
 import comp4911.models.Employee;
 import comp4911.models.TimeSheet;
@@ -32,6 +33,9 @@ public class TimesheetController implements Serializable{
 	
 	@Inject
 	private TimeSheetManager timesheetManager;
+	
+	@Inject private EmployeeManager employeeManager;
+
 
 	private List<TimeSheet> timesheetList;
 	
@@ -66,7 +70,7 @@ public class TimesheetController implements Serializable{
 	
 	//@Transactional
 	public TimeSheet getTimesheet() {
-		System.out.println("Get Timesheet called");
+		//System.out.println("Get Timesheets called");
 		if(timesheet.equals(null)) {
 			//System.out.println("Timesheet is null");
 			timesheet = timesheetManager.getAll(employee.getEmpNumber()).get(0);
@@ -81,6 +85,7 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String saveChanges() {
+		vacationDaysTaken();
 		timesheetManager.merge(timesheet);
 		refreshTimeSheet();
 		return "DisplayTimesheets";
@@ -152,6 +157,7 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String createTimesheet() {
+		vacationDaysTaken();
 		timesheetManager.persist(timesheet);
 		timesheetList.add(timesheet);
 		return "DisplayTimesheets";
@@ -178,5 +184,14 @@ public class TimesheetController implements Serializable{
 	
 	public String CancelViewTimesheet(){
 		return "cancelViewTimesheet";
+	}
+
+	public void vacationDaysTaken(){
+		int daysTaken = 0;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
+			daysTaken += r.getVacationDays();
+		}
+		employee.setVacDays(employee.getVacDays() - daysTaken);
+		employeeManager.merge(employee);
 	}
 }
