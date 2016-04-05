@@ -93,6 +93,7 @@ public class TimesheetController implements Serializable{
 	
 	public String saveChanges() {
 		vacationDaysTaken();
+		calculateWeekTotalHours();
 		for(int i = 1; i < 8; i++){
 			calculateTotaldayhours(i);
 		}
@@ -169,6 +170,7 @@ public class TimesheetController implements Serializable{
 	
 	public String createTimesheet() {
 		vacationDaysTaken();
+		calculateWeekTotalHours();
 		for(int i = 1; i < 8; i++){
 			calculateTotaldayhours(i);
 		}
@@ -196,7 +198,7 @@ public class TimesheetController implements Serializable{
 		return "cancelEditTimesheet";
 	}
 	
-	public String CancelViewTimesheet(){
+	public String cancelViewTimesheet(){
 		return "cancelViewTimesheet";
 	}
 
@@ -207,6 +209,15 @@ public class TimesheetController implements Serializable{
 		}
 		employee.setVacDays(employee.getVacDays() - daysTaken);
 		employeeManager.merge(employee);
+	}
+	
+	public void calculateWeekTotalHours(){
+		double hours = 0.0;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
+			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
+				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
+				+ r.getSatHrs() + r.getSunHrs())));
+		}
 	}
 	
 	public void calculateTotaldayhours(int day) {
