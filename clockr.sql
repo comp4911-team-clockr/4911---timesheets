@@ -233,7 +233,7 @@ CREATE TABLE StatusReport(
                         MDPlanned double,
                         MDActual double,
                         WorkAccomplishedThisPeriod TEXT,
-                        WorkPlannedNextPerid TEXT,
+                        WorkPlannedNextPeriod TEXT,
                         ProblemsEncountered TEXT,
                         ProblemsAnticipated TEXT,
                         timeVar double,
