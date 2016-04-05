@@ -112,16 +112,13 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String editWP() {
-		if (validWPNum(workPack.getWpNum())) {
+		if (validateAll().equals("Success")) {
 			workPackManager.merge(workPack);
 			refreshList();
 			workPack = null;
 			return listNavigation;
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
-			return "";
 		}
+		return "";
 	}
 	public String deleteWP(WorkPackage wp){
 		workPackManager.remove(wp);
@@ -131,6 +128,13 @@ public class WorkPackageController implements Serializable {
 	
 	public String cancel() {
 		return listNavigation;
+	}
+	
+	public String validateAll() {
+		if (!validWPNum(workPack.getWpNum()))
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
+		return "Success";
 	}
 	
 	public boolean validWPNum(String wpNum) {
