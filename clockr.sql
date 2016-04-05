@@ -238,6 +238,7 @@ INSERT INTO EmployeeWPList VALUES(
 DROP TABLE IF EXISTS StatusReport;
 CREATE TABLE StatusReport(
                         StatusReportId TINYTEXT,
+                        RespEngId TINYTEXT,
                         ReportDate date,
                         MDPlanned double,
                         MDActual double,
@@ -252,6 +253,7 @@ CREATE TABLE StatusReport(
                         
 INSERT INTO StatusReport VALUES(
                         "1|1|1",
+                        "000004",
                         "2016-01-31",
                         "100",
                         "120",
