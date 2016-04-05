@@ -82,13 +82,17 @@ public class ProjectController implements Serializable {
 		return "EditProject";
 	}
 	
+	
+	
 	public String updateProject(int id){
 		Project temp = projectManager.find(id);
 		
+		temp.setProjectId(editProject.getProjectId());
 		temp.setProjName(editProject.getProjName());
 		temp.setSupervisor(editProject.getSupervisor());
 		//project assistant set to 1, maybe change later
 		temp.setProjAssistant(1);
+		temp.setEstCompletionDate(editProject.getEstCompletionDate());
 		temp.setIssueDate(editProject.getIssueDate());
 		temp.setProposal(editProject.getProposal());
 		temp.setInitBudget(editProject.getInitBudget());
@@ -106,7 +110,7 @@ public class ProjectController implements Serializable {
 		
 		projectManager.merge(temp);
 		
-		return "DisplayProjects";
+		return "editProject";
 	}
 	
 	public String addProject(){
@@ -116,8 +120,8 @@ public class ProjectController implements Serializable {
 		temp.setProjectId(id);
 		temp.setProjName(project.getProjName());
 		temp.setSupervisor(project.getSupervisor());
-		//project assistant set to 1, maybe change later
 		temp.setProjAssistant(1);
+		temp.setEstCompletionDate(project.getEstCompletionDate());
 		temp.setIssueDate(project.getIssueDate());
 		temp.setProposal(project.getProposal());
 		temp.setInitBudget(project.getInitBudget());
@@ -149,5 +153,9 @@ public class ProjectController implements Serializable {
 	
 	public String cancelNewProject(){
 		return "reloadProjects";
+	}
+	
+	public String cancelEditProject(){
+		return "cancelEditProject";
 	}
 }

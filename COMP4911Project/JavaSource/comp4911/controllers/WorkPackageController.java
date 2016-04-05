@@ -31,6 +31,7 @@ public class WorkPackageController implements Serializable {
 	private final String editNavigation = "EditWorkPackage";
 	private final String addNavigation = "AddWorkPackage";
 	private final String viewNavigation = "ViewWorkPackage";
+	private final String projectNavigation = "DisplayProject";
 	
 	private final String validWPNumPattern = "[A-Z]{1}[0-9]{4}";
 	private final String validRENumPattern = "[0-9]{6}";
@@ -156,6 +157,10 @@ public class WorkPackageController implements Serializable {
 		return listNavigation;
 	}
 	
+	public String cancelToProject(){
+		return projectNavigation;
+	}
+	
 	public boolean validateAll() {
 		boolean validWP = true;
 		if (!validWPNum(workPack.getWpNum())) {
@@ -191,5 +196,9 @@ public class WorkPackageController implements Serializable {
 		if (empManager.find(id) != null)
 			return true;
 		return false;
+	}
+	
+	public String backToProjects(){
+		return "displayProjects";
 	}
 }

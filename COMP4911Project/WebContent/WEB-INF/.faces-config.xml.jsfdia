@@ -37,10 +37,20 @@
    <PROCESS-ITEM-OUTPUT ID="addWP::#AddWorkPackage.xhtml" NAME="output"
     PATH="/AddWorkPackage.xhtml" TARGET="rules:#AddWorkPackage.xhtml"
     TITLE="addWP" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="displayProjects::#DisplayProjects.xhtml"
+    NAME="output1" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="displayProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddWorkPackage.xhtml"
-  PATH="/AddWorkPackage.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/AddWorkPackage.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#AddWorkPackage.xhtml:0" NAME="item"
+   PATH="/AddWorkPackage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="DisplayProject::#DisplayProjects.xhtml"
+    NAME="output" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="DisplayProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#AddProject.xhtml" PATH="/AddProject.xhtml"
   SHAPE="240,257,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#AddProject.xhtml:0" NAME="item"
@@ -179,6 +189,30 @@
     ID="cancelViewTimesheet::#DisplayTimesheets.xhtml" NAME="output"
     PATH="/DisplayTimesheets.xhtml"
     TARGET="rules:#DisplayTimesheets.xhtml" TITLE="cancelViewTimesheet" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EditProject.xhtml" PATH="/EditProject.xhtml"
+  SHAPE="32,1057,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EditProject.xhtml:0" NAME="item"
+   PATH="/EditProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancelEditProject::#DisplayProjects.xhtml"
+    NAME="output" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="cancelEditProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editProject::#DisplayProjects.xhtml"
+    NAME="output1" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EditProject.xhtml" PATH="/EditProject.xhtml"
+  SHAPE="32,1057,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EditProject.xhtml:0" NAME="item"
+   PATH="/EditProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancelEditProject::#DisplayProjects.xhtml"
+    NAME="output" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="cancelEditProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editProject::#DisplayProjects.xhtml"
+    NAME="output1" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
