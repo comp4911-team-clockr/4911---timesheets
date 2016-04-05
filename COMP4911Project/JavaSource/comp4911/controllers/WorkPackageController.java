@@ -48,12 +48,9 @@ public class WorkPackageController implements Serializable {
 	
 	private List<WorkPackage> workPackList;
 	
-	private List<Employee> reList;
-	
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
-		reList = new ArrayList<Employee>();
 	}
 	
 	public String gotoList(Project project) {
@@ -70,10 +67,6 @@ public class WorkPackageController implements Serializable {
 	
 	public void refreshList(){
 		workPackList = workPackManager.getAllByProject(project.getProjectId());
-	}
-	
-	public void refreshREList() {
-		reList = empManager.getAllRE();
 	}
 	
 	public List<WorkPackage> getWorkPackList() {

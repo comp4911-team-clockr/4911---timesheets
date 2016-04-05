@@ -58,12 +58,4 @@ public class EmployeeManager implements Serializable {
 	        
 	        return employees;
 	    }
-	
-	public java.util.List<Employee> getAllRE() {
-		TypedQuery<Employee> query = em.createQuery("select e from Employee e WHERE e.credential.UserRole" +
-	" = 'ResponsibilityEngineer'",
-                Employee.class); 
-        java.util.List<Employee> employees = query.getResultList();
-		return employees;
-	}
 }
