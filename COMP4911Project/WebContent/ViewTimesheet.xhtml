@@ -24,6 +24,8 @@
 	<h:form>
 		<b:container styleClass="tableChange">
 			<h1>Timesheets</h1><br/>
+      		<h:commandButton class="btn buttonColorizer" value="Back" action="#{test.CancelViewTimesheet}" immediate="true"></h:commandButton>
+			<p></p>
 			<h:dataTable id="test" styleClass="table roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>

@@ -79,6 +79,7 @@
   <navigation-case>
    <from-outcome>CreateTimesheet</from-outcome>
    <to-view-id>/CreateTimesheet.xhtml</to-view-id>
+   <redirect></redirect>
   </navigation-case>
   <navigation-case>
    <from-outcome>cancelCreateTimesheet</from-outcome>
@@ -107,7 +108,7 @@
  <navigation-rule>
   <from-view-id>/CreateTimesheet.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>cancelCreateTimesheet</from-outcome>
+   <from-outcome>CancelCreateTimesheet</from-outcome>
    <to-view-id>/DisplayTimesheets.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>   
@@ -117,5 +118,38 @@
    <from-outcome>ForgotPasswordCancel</from-outcome>
    <to-view-id>/MainIndex.xhtml</to-view-id>
   </navigation-case>
- </navigation-rule>    
+  <navigation-case>
+   <from-outcome>GetRecoveryQuestions</from-outcome>
+   <to-view-id>/RecoveryQuestions.xhtml</to-view-id>
+  </navigation-case>  
+ </navigation-rule>  
+ <navigation-rule>
+  <from-view-id>/RecoveryQuestions.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>RecoveryQuestionsCancel</from-outcome>
+   <to-view-id>/MainIndex.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>RecoveryPassed</from-outcome>
+   <to-view-id>/ChangePassword.xhtml</to-view-id>
+  </navigation-case>  
+ </navigation-rule> 
+ <navigation-rule>
+  <from-view-id>/ChangePassword.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>ChangePasswordConfirmed</from-outcome>
+   <to-view-id>/MainIndex.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>CancelChangePassword</from-outcome>
+   <to-view-id>/MainIndex.xhtml</to-view-id>
+  </navigation-case>  
+ </navigation-rule>  
+ <navigation-rule>
+  <from-view-id>/ViewTimesheet.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>cancelViewTimesheet</from-outcome>
+   <to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>      
 </faces-config>

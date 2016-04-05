@@ -119,7 +119,7 @@
 			</h:dataTable>
 			<h:commandButton class="btn btn-default" value="Add Row" action='#{test.createRow("CreateTimesheet")}'></h:commandButton>
 			<h:commandButton class="btn btn-default" value="Save Timesheet" action="#{test.createTimesheet}"></h:commandButton>
-			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{test.cancelCreateTimesheet}"></h:commandButton>
+			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{test.CreateTimesheetCancel}" immediate="true"></h:commandButton>
 			<p></p>
 		</b:container>
 	</h:form>
