@@ -149,12 +149,12 @@ public class WorkPackageController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Not a valid Responsibility Engineer Number. ex: 000001"));
 			validWP = false;
-		}
-		
-		if (!validEmp(workPack.getRespId())) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("This employee does not exist."));
-			validWP = false;
+		} else {
+			if (!validEmp(workPack.getRespId())) {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("This employee does not exist."));
+				validWP = false;
+			}
 		}
 		return validWP;
 	}
