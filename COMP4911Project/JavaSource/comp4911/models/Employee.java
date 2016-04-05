@@ -45,6 +45,9 @@ public class Employee implements Serializable {
 	@Column(name="HireDate")
 	private Date hireDate;
 	
+	@Column(name="FlexTimeHrs")
+	private int flexHrs;=
+
 	@Column(name="Email")
 	private String email;
 	
@@ -134,6 +137,14 @@ public class Employee implements Serializable {
 
 	public void setVacDays(int vacDays) {
 		this.vacDays = vacDays;
-	}	
+	}
+	
+	public int getFlexHrs() {
+		return flexHrs;
+	}
+
+	public void setFlexHrs(int flexHrs) {
+		this.flexHrs = flexHrs;
+	}
 }
 

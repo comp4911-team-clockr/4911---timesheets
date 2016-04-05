@@ -15,16 +15,17 @@ CREATE TABLE Employees(	EmpNum int,
 						EmpLname TINYTEXT,
 						UserId TINYTEXT, 
                         SupervisorEmpNum int,
-						VacationDays int, 
+						VacationDays int,
+                        FlexHours int,
                         HireDate date, 
 						Email TINYTEXT, 
 						PayRateId TINYTEXT
 						);
                                                 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 2, 10, "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 2, 10, "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 2, 10, "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 2, 10, "2011-01-01", "dd@dd.dd", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 2, 10, 0, "2010-10-10", "aa@aa.aa", "P1");
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 2, 10, 0, "1995-01-01", "bb@bb.bb", "P5");
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 2, 10, 0, "2010-01-01", "cc@cc.cc", "P3");
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 2, 10, 0, "2011-01-01", "dd@dd.dd", "P3");
 
 DROP TABLE IF EXISTS Credentials;
 CREATE TABLE Credentials( UserId TINYTEXT, 
@@ -125,6 +126,7 @@ CREATE TABLE Project( ProjectId int NOT NULL,
 					  EmpNum int NOT NULL,
                       ProjAssistant int,
                       IssueDate date,
+                      EstimatedCompletionDate date,
                       
                       CostingProposal double,
                       InitialBudget double,
@@ -141,7 +143,7 @@ CREATE TABLE Project( ProjectId int NOT NULL,
                       MDSS int NOT NULL,                      
 					  Descript TEXT NOT NULL);	
                       
-INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", 
+INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", "2016-02-20",
                             10000,
                             0,
                             0,
@@ -155,7 +157,7 @@ INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01",
                             0,
                             0,
                             "");
-INSERT INTO Project VALUES(2, "Project Beta", 2, 3, "2016-01-31", 
+INSERT INTO Project VALUES(2, "Project Beta", 2, 3, "2016-01-31", "2016-02-20",
                             10000,
                             0,
                             0,
@@ -175,7 +177,12 @@ CREATE TABLE WorkPackage( WpId TINYTEXT,
 						  WpNum TINYTEXT, 
 						  WpTitle TINYTEXT, 
 						  Customer TINYTEXT, 
-						  RespEngId TINYTEXT, 
+						  RespEngId TINYTEXT,
+
+                          IssueDate date,
+                          PlannedCompletionDate date,
+                          ActualCompletionDate date,
+                          
 						  MDP1 int NOT NULL,
                           MDP2 int NOT NULL,
                           MDP3 int NOT NULL,
@@ -186,7 +193,8 @@ CREATE TABLE WorkPackage( WpId TINYTEXT,
                           ProjectId int, 
                           IsActive BOOL);
                           
-INSERT INTO WorkPackage VALUES("1|1", "B1111", "Project Set-Up", "TEK Solutions", "000004", 
+INSERT INTO WorkPackage VALUES("1|1", "B1111", "Project Set-Up", "TEK Solutions", "000004",
+                                "2016-02-01", "2016-02-20", "2016-02-21",
                                 100,
                                 0,
                                 0,
@@ -197,6 +205,7 @@ INSERT INTO WorkPackage VALUES("1|1", "B1111", "Project Set-Up", "TEK Solutions"
                                 1, true);
                                 
 INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "000004", 
+                                "2016-02-01", "2016-02-20","2016-02-21",
                                 200,
                                 0,
                                 0,
@@ -218,37 +227,3 @@ INSERT INTO EmployeeWPList VALUES("2|1", 3);
 INSERT INTO EmployeeWPList VALUES("2|1", 4);
 
 DROP TABLE IF EXISTS StatusReport;
-CREATE TABLE StatusReport(
-                        WpId TINYTEXT,
-                        ReportNum int,
-                        ReportDate date,
-                        DeliverableDoc TINYTEXT,
-                        DeliverableDocNum int,
-                        PlannedCompletionDate date,
-                        ProjectedCompletionDate date,
-                        ActualCompletionDate date,
-                        VariancePercent double,
-                        ProgressToDateMDPlanned int,
-                        ProgressToDateMDActual int,
-                        WorkAccomplishedThisPeriod TINYTEXT,
-                        WorkPlannedNextPerid TINYTEXT,
-                        ProblemsThisPeriod TINYTEXT,
-                        ProblemsAnticipated TINYTEXT
-                        );
-INSERT INTO StatusReport VALUES(
-                        "1|1",
-                        1,
-                        "2016-01-31",
-                        "Test deliverable 1. Test deliverable 2.",
-                        1,
-                        "2016-05-31",
-                        "2016-06-15",
-                        "2016-07-02",
-                        0.3,
-                        100,
-                        150,
-                        "Stuff text 1",
-                        "Stuff text 2",
-                        "Emp A not doing assigned work",
-                        "Emp A slacking off again"
-                        );                 

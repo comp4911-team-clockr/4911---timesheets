@@ -34,6 +34,9 @@ public class Project implements Serializable{
 	@Column(name="IssueDate")
 	private Date issueDate;
 	
+	@Column(name="EstimatedCompletionDate")
+	private Date estCompletionDate;
+
 	@Column(name="CostingProposal")
 	private double proposal;
 	
@@ -224,6 +227,38 @@ public class Project implements Serializable{
 
 	public void setManDaysSS(int manDaysSS) {
 		this.manDaysSS = manDaysSS;
+	}
+	
+	public Date getEstCompletionDate() {
+		return estCompletionDate;
+	}
+
+	public void setEstCompletionDate(Date estCompletionDate) {
+		this.estCompletionDate = estCompletionDate;
+	}
+
+	public double getRo1Budget() {
+		return ro1Budget;
+	}
+
+	public void setRo1Budget(double ro1Budget) {
+		this.ro1Budget = ro1Budget;
+	}
+
+	public double getRo2Budget() {
+		return ro2Budget;
+	}
+
+	public void setRo2Budget(double ro2Budget) {
+		this.ro2Budget = ro2Budget;
+	}
+
+	public int getManDaysDS() {
+		return manDaysDS;
+	}
+
+	public void setManDaysDS(int manDaysDS) {
+		this.manDaysDS = manDaysDS;
 	}
 	
 }
