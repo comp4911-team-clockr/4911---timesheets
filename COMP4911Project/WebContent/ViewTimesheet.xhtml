@@ -24,6 +24,8 @@
 	<h:form>
 		<b:container styleClass="tableChange">
 			<h1>Timesheets</h1><br/>
+      		<h:commandButton class="btn buttonColorizer" value="Back" action="#{test.cancelViewTimesheet}" immediate="true"></h:commandButton>
+			<p></p>
 			<h:dataTable id="test" styleClass="table roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>
@@ -46,45 +48,72 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Week Total" />
+					</f:facet>
+					<h:outputText value="#{item.weekTotalHrs}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Saturday" />
 					</f:facet>
 					<h:outputText value="#{item.satHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.satTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Sunday" />
 					</f:facet>
 					<h:outputText value="#{item.sunHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.sunTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Monday" />
 					</f:facet>
 					<h:outputText value="#{item.monHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.monTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Tuesday" />
 					</f:facet>
 					<h:outputText value="#{item.tuesHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.tuesTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Wednesday" />
 					</f:facet>
 					<h:outputText value="#{item.wedHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.wedTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Thursday" />
 					</f:facet>
 					<h:outputText value="#{item.thursHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.thursTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Friday" />
 					</f:facet>
 					<h:outputText value="#{item.friHrs}" />
+					<f:facet name="footer">
+						<h:outputText value="Total: #{test.timesheet.friTotalHrs}" />
+					</f:facet>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
