@@ -22,7 +22,7 @@
       </h:form>
       <h:form>
       	<b:container>
-      		<h1>Add Work Package</h1><br/>
+      		<h1>Edit Work Package</h1><br/>
       		<h:outputLabel value="Project ID" />
       		<b:inputText value="#{workPackControl.workPack.projectId}" readonly="true"/> <br/>
       		<h:outputLabel value="Work Package Number" />
@@ -47,7 +47,7 @@
       		<b:inputText value="#{workPackControl.workPack.mdds}"/> <br/>
       		<h:outputLabel value="MDSS" />
       		<b:inputText value="#{workPackControl.workPack.mdss}"/> <br/>
-      		<h:commandButton styleClass="btn btn-default" value="Add Work Package" action="#{workPackControl.addWP}"></h:commandButton>   
+      		<h:commandButton styleClass="btn btn-default" value="Edit Work Package" action="#{workPackControl.editWP}"></h:commandButton>   
       		<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{workPackControl.cancel}" immediate="true"></h:commandButton>
       	</b:container>
       </h:form>

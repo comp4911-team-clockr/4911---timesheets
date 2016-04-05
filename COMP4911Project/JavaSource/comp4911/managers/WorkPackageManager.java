@@ -39,8 +39,8 @@ public class WorkPackageManager implements Serializable {
 	}
 	
 	public void remove(WorkPackage wp) {
-		wp = find(wp.getWpId());
-		em.remove(wp);
+		wp.setActive(false);
+		merge(wp);
 	}
 	
 	public WorkPackage findByUserId(String id) {
@@ -51,11 +51,20 @@ public class WorkPackageManager implements Serializable {
 		return wp;
 	}
 	
+	public java.util.List<WorkPackage> getAllByProject(int id) {
+        TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
+        		"WHERE p.isActive IS TRUE AND p.projectId=" + id,
+                WorkPackage.class); 
+        java.util.List<WorkPackage> workPacks = query.getResultList();
+        return workPacks;
+	}
+	
 	public java.util.List<WorkPackage> getAll() {
-	        TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p",
+	        TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
+	        		"WHERE p.isActive IS TRUE",
 	                WorkPackage.class); 
 	        java.util.List<WorkPackage> workPacks = query.getResultList();
 	        return workPacks;
-	    }
+	}
 	
 }
