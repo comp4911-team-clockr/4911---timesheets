@@ -16,7 +16,7 @@ CREATE TABLE Employees(	EmpNum int,
 						UserId TINYTEXT, 
                         SupervisorEmpNum int,
 						VacationDays int,
-                        FlexHours int,
+                        FlexHours double,
                         HireDate date, 
 						Email TINYTEXT, 
 						PayRateId TINYTEXT

@@ -291,7 +291,10 @@ table{
 }
 
 
-
+#javax_faces_developmentstage_messages {
+	color: red !important;
+	margin-top: 50px;
+}
 
 
 

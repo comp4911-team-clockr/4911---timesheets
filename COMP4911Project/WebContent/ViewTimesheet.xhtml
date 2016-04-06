@@ -36,7 +36,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Project Number" />
+						<h:outputText value="Project" />
 					</f:facet>
 					<h:outputText value="#{item.projectId}" />
 				</h:column>
@@ -123,6 +123,12 @@
 						<h:outputText value="Vacation Days" />
 					</f:facet>
 					<h:outputText value="#{item.vacationDays}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Flextime" />
+					</f:facet>
+					<h:outputText value="#{item.flexTimeHrs}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

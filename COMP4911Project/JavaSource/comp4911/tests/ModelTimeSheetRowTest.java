@@ -37,7 +37,7 @@ public class ModelTimeSheetRowTest {
 		//final double overTimeHrs = 10.0;
 		final double flexTimeHrs = 11.0;
 		final String signature = "Signature";
-		final String isApproval = "approved";
+		final boolean isApproval = false;
 		final boolean isActive = true;
 		
 		TimeSheet ts = new TimeSheet();
