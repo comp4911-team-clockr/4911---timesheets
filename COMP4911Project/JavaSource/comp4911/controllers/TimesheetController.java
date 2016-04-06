@@ -221,7 +221,7 @@ public class TimesheetController implements Serializable{
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
 			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
 				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
-				+ r.getSatHrs() + r.getSunHrs())));
+				+ r.getSatHrs() + r.getSunHrs() + r.getFlexTimeHrs())));
 			/*if(hours < 40.0 ){
 				isValid = false;
 				FacesContext.getCurrentInstance().addMessage(null,
@@ -266,6 +266,14 @@ public class TimesheetController implements Serializable{
 				case 8:
 					hours += r.getWeekTotalHrs();
 					timesheet.setOverallTotalHrs(hours);
+					if(hours > 40) {
+						employee.setFlexHrs((hours-40));
+						employeeManager.merge(employee);
+					}
+					break;
+				case 9: 
+					hours += r.getFlexTimeHrs();
+					timesheet.setflextimeHrs(hours);
 					break;
 			}
 		}

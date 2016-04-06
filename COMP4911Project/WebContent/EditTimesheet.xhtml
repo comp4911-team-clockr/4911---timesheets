@@ -116,6 +116,14 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Flextime Hours" />
+					</f:facet>
+					<b:inputText value="#{item.flexTimeHrs}">
+						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.flexHrs}" />
+                    </b:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Notes" />
 					</f:facet>
 					<b:inputText value="#{item.notes}" />

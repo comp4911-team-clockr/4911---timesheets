@@ -52,13 +52,13 @@
 					<f:facet name="header">Approved</f:facet>
 					<h:selectBooleanCheckbox value="#{timesheet.approval}" disabled="true" readonly="true"></h:selectBooleanCheckbox>
 				</h:column>
-				<h:messages errorStyle="color:darkred"/>
       		</b:dataTable>    
       		<br/>
       		<h:commandButton class="btn buttonColorizer" action="#{test.addTimesheetButton}" value="Create Timesheet" />
       		<p></p>
       	</b:container>
       	<br/><br/>
+      	<h:messages errorStyle="color:darkred"/>
       </h:form>
    </h:body>
 </html>

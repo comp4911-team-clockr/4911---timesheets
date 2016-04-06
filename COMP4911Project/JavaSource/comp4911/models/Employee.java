@@ -48,7 +48,7 @@ public class Employee implements Serializable {
 	
 
 	@Column(name="FlexHours")
-	private int flexHrs;
+	private double flexHrs;
 
 	@Column(name="Email")
 	private String email;
@@ -145,11 +145,11 @@ public class Employee implements Serializable {
 		this.vacDays = vacDays;
 	}
 	
-	public int getFlexHrs() {
+	public double getFlexHrs() {
 		return flexHrs;
 	}
 
-	public void setFlexHrs(int flexHrs) {
+	public void setFlexHrs(double flexHrs) {
 		this.flexHrs = flexHrs;
 	}
 }
