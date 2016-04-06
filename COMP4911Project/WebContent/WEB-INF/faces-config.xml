@@ -2,6 +2,23 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.loginMessage</base-name>
+            <var>loginMsg</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.timeSheetMessage</base-name>
+            <var>tsMsg</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.employeeMessage</base-name>
+            <var>empMsg</var>
+        </resource-bundle>
+    </application>
  <navigation-rule>
   <from-view-id>/MainIndex.xhtml</from-view-id>
   <navigation-case>
@@ -11,7 +28,18 @@
   <navigation-case>
    <from-outcome>ForgotPasswordPage</from-outcome>
    <to-view-id>/ForgottenPassword.xhtml</to-view-id>
+  </navigation-case>       
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/Splash.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>AddEmployee</from-outcome>
+   <to-view-id>/AddEmployee.xhtml</to-view-id>
   </navigation-case>  
+  <navigation-case>
+   <from-outcome>addProject</from-outcome>
+   <to-view-id>/AddProject.xhtml</to-view-id>
+  </navigation-case>     
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/EmployeesHR.xhtml</from-view-id>

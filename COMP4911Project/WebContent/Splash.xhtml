@@ -27,7 +27,34 @@
 					<h:outputText value = "Project Manager" rendered = "#{user.isProjectManager(user.currentEmployee.empNumber)}"/>
 					<h:outputText value = "System Admin" rendered = "#{user.isSystemAdmin(user.currentEmployee.empNumber)}"/>
 	      		</b:column>
-	      	</b:row>			
+	      	</b:row>
+	      	<br/><br/><br/>
+	      	<b:row>
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+			      	<div class="splashItem">
+						<h:commandButton action="#{test.addTimesheetButton}" styleClass="AddTSButton1" ></h:commandButton>
+			      		<span class="caption">Create Timesheet</span>
+			      	</div>     		
+	      		</b:column>
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+			      	<div class="splashItem">
+						<h:commandButton action="#{user.AddProject}" styleClass="AddTSButton2" ></h:commandButton>
+			      		<span class="caption">Create Project</span>
+			      	</div>     		
+	      		</b:column>	 
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+			      	<div class="splashItem">
+						<h:commandButton action="#{test.addTimesheetButton}" styleClass="AddTSButton3" ></h:commandButton>
+			      		<span class="caption">Create Work Package</span>
+			      	</div>     		
+	      		</b:column>	 
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+			      	<div class="splashItem">
+						<h:commandButton action="#{user.addEmployeeButton()}" styleClass="AddTSButton4" ></h:commandButton>
+			      		<span class="caption">Add An Employee</span>
+			      	</div>     		
+	      		</b:column>	 	      			      		     		
+	      	</b:row>
 	      </b:container>
       </h:form>
    </h:body>

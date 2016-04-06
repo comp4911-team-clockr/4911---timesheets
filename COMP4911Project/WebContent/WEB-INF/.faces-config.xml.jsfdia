@@ -77,7 +77,17 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Splash.xhtml" PATH="/Splash.xhtml"
-  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Splash.xhtml:0" NAME="item"
+   PATH="/Splash.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="AddEmployee::#AddEmployee.xhtml"
+    NAME="output" PATH="/AddEmployee.xhtml"
+    TARGET="rules:#AddEmployee.xhtml" TITLE="AddEmployee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addProject::#AddProject.xhtml"
+    NAME="output1" PATH="/AddProject.xhtml"
+    TARGET="rules:#AddProject.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#DisplayEmployees.xhtml"
   PATH="/DisplayEmployees.xhtml" SHAPE="256,513,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#DisplayEmployees.xhtml:0" NAME="item"

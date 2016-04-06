@@ -11,6 +11,102 @@
 	border-radius: 10px;
 }
 
+.AddTSButton1 {
+	background: url(/COMP4911Project/resources/images/timesheetIcon.png) no-repeat top;
+	background-color: #E1E1E2;
+	width: 18em;
+	height: 18em;
+	border-radius: 15px;
+	border-width: 10px;
+	background-size: cover;
+	border-style: solid;
+    border-color: #8c8c8c;
+}
+
+.AddTSButton1:hover {
+	background-color: #F1F1F2;
+	border-style: solid;
+	border-color: #b3b3b3;
+}
+
+.AddTSButton2 {
+	background: url(/COMP4911Project/resources/images/people.png) no-repeat top;
+	background-color: #e87f41;
+	width: 18em;
+	height: 18em;
+	border-radius: 15px;
+	border-width: 10px;
+	background-size: cover;
+	border-style: solid;
+    border-color: #8c8c8c;
+}
+
+.AddTSButton2:hover {
+	background-color: #f88f51;
+	border-style: solid;
+	border-color: #b3b3b3;
+}
+
+.AddTSButton3 {
+	background: url(/COMP4911Project/resources/images/WorkPackage.png) no-repeat top;
+	background-color: #54cab9;
+	width: 18em;
+	height: 18em;
+	border-radius: 15px;
+	border-width: 10px;
+	background-size: cover;
+	border-style: solid;
+    border-color: #8c8c8c;
+}
+
+.AddTSButton3:hover {
+	background-color: #64dac9;
+	border-style: solid;
+	border-color: #b3b3b3;
+}
+
+.AddTSButton4 {
+	background: url(/COMP4911Project/resources/images/Employee.png) no-repeat top;
+	background-color: #ffb33a;
+	width: 18em;
+	height: 18em;
+	border-radius: 15px;
+	border-width: 10px;
+	background-size: cover;
+	border-style: solid;
+    border-color: #8c8c8c;
+}
+
+.AddTSButton4:hover {
+	background-color: #ffc34a;
+	border-style: solid;
+	border-color: #b3b3b3;
+}
+
+.centerInColumn {
+	vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 6em;	
+}
+
+.splashItem {
+	vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 18em;
+    height: 18em;
+}
+
+.caption {
+	display: inline-block;
+	margin: 10px 10px 0 0;
+	padding: 5px 10px;
+	font-size: 1.5em;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 10px;
+}
+
 td{
 	background-color: #FEFEFE;
 }
@@ -54,6 +150,9 @@ table{
 
 #bgImage2 {
 	background-image: url(/COMP4911Project/resources/images/newcity.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .blue {
