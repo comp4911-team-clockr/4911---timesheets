@@ -94,10 +94,11 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         FriTotalHrs double,
                         FlextimeHrs double, 
                         Signature VARCHAR(255),
-                        Approval VARCHAR(255),
+                        Submitted BOOL,
+                        Approval BOOL,
                         IsActive BOOL);
 						
-INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", "", TRUE);	
+INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", FALSE, FALSE, TRUE);	
                         
 DROP TABLE IF EXISTS TimeSheetRow;
 CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,

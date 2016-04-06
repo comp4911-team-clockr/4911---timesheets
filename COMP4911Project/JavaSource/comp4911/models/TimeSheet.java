@@ -67,8 +67,11 @@ public class TimeSheet implements Serializable {
 	@Column(name="Signature")
 	private String Signature;
 	
+	@Column(name="Submitted")
+	private boolean submitted;
+	
 	@Column(name="Approval")
-	private String approval;
+	private boolean approval;
 	
 	@Column(name="IsActive")
 	private boolean isActive;
@@ -187,12 +190,20 @@ public class TimeSheet implements Serializable {
 	public void setSignature(String signature) {
 		Signature = signature;
 	}
+	
+	public boolean isSubmitted() {
+		return submitted;
+	}
 
-	public String isApproval() {
+	public void setSubmitted(boolean submitted) {
+		this.submitted = submitted;
+	}
+
+	public boolean isApproval() {
 		return approval;
 	}
 
-	public void setApproval(String approval) {
+	public void setApproval(boolean approval) {
 		this.approval = approval;
 	}
 	
