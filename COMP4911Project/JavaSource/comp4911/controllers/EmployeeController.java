@@ -410,7 +410,6 @@ public class EmployeeController implements Serializable {
 	
 	public String GetRecoveryQuestions(String id){
 		//Employee set to entered user id to grab their question answers
-<<<<<<< HEAD
 		Credential cred = credentialManager.find(credential.getUserId());
 		
 		if (cred != null) {
@@ -426,17 +425,12 @@ public class EmployeeController implements Serializable {
 		}
 		System.out.println("Check User id fail");
 		return "ForgotPasswordCancel";
-		
-=======
-		currentEmployee = employeeManager.findByUserId(id);
-		return "GetRecoveryQuestions";
->>>>>>> cb6e96123613e375e2d53e6838dd92fbdf4c0940
 	}
 	
 	//this method should take in 3 parameters (3 strings for questions)
 	public String SubmitRecovery(){
 		//add if statement and what not for entered values before returning.
-<<<<<<< HEAD
+
 		if (credToAdd.getRecovery1().equals(credential.getRecovery1()) &&
 			credToAdd.getRecovery2().equals(credential.getRecovery2()) &&
 			credToAdd.getRecovery3().equals(credential.getRecovery3()) ){
@@ -448,10 +442,6 @@ public class EmployeeController implements Serializable {
 			System.out.println("Wrong Password!!!");
 			return "GetRecoveryQuestions";
 		}		
-=======
-		//this is the case where everything is good
-		return "RecoveryPassed";
->>>>>>> cb6e96123613e375e2d53e6838dd92fbdf4c0940
 	}
 	
 	public String RecoveryQuestionsCancel(){
@@ -465,7 +455,6 @@ public class EmployeeController implements Serializable {
 	//this method should have two parameters. one for password, then re-entered password
 	public String ConfirmChangePassword(){
 		//check if they're equal then change password value for that user and return this
-<<<<<<< HEAD
 		String validate = validateNewPass(credToAdd.getPassword(), resetPassword); 
 		if (validate.equals("Success")) {
 			credential.setPassword(credToAdd.getPassword());
@@ -478,10 +467,5 @@ public class EmployeeController implements Serializable {
 		}
 		//else return same page
 		return "RecoveryPassed";
-
-=======
-		return "ChangePasswordConfirmed";
-		//else return same page
->>>>>>> cb6e96123613e375e2d53e6838dd92fbdf4c0940
 	}
 }
