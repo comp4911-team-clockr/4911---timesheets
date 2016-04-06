@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="CommonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container styleClass="tableChange">
+      		<h1>Status Reports</h1><br/>
+      		<b:dataTable styleClass="roundTheCorners" value="#{statusReportControl.statusReportList}" var="work">
+      			<h:column>
+					<f:facet name="header">Status Report Id</f:facet>
+					<h:outputText value="#{work.statusReportId}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Responsibility Engineer</f:facet>
+					<h:outputText value="#{statusReportControl.getEmployeeName(work.respEngId)}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Report Date</f:facet>
+					<h:outputText value="#{work.reportDate}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Man Days Planned</f:facet>
+					<h:outputText value="#{work.mdPlanned}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Man Days Actual</f:facet>
+					<h:outputText value="#{work.mdActual}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Work Accomplished This Period</f:facet>
+					<h:outputText value="#{work.workAccomplished}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Work Planned Next Period</f:facet>
+					<h:outputText value="#{work.workPlanned}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Problems Encountered This Period</f:facet>
+					<h:outputText value="#{work.problemsEncountered}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Problems Anticipated Next Period</f:facet>
+					<h:outputText value="#{work.problemsAnticipated}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Time Variance</f:facet>
+					<h:outputText value="#{statusReportControl.getPercent(work.timeVariance)}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Labour (Man Days) Variance</f:facet>
+					<h:outputText value="#{statusReportControl.getPercent(work.mdVariance)}"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Cost Variance</f:facet>
+					<h:outputText value="#{statusReportControl.getPercent(work.costVariance)}"/>					
+				</h:column>
+
+      		</b:dataTable>
+      		      	<h:commandButton styleClass="btn btn-default" value="Back"
+						action="#{workPackControl.backToProjects}"/>
+      	</b:container>
+      	<br/><br/>
+      </h:form>
+   </h:body>
+</html>

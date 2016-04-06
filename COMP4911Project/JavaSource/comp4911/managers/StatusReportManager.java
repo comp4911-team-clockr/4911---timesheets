@@ -1,6 +1,7 @@
 package comp4911.managers;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
@@ -45,14 +46,32 @@ public class StatusReportManager implements Serializable {
 		return sr;
 	}
 	
+	// takes Status Report ID and returns WP Id
+//	private String tokenizeSRId(String id)
+//	{
+//		String temp = ""; 
+//		String[] tokens = id.split(Pattern.quote("|"));
+//		temp = tokens[0] + "|" + tokens[1];
+//		return temp;
+//	}
+	
 	// db query to find all reports in a WP
-	public java.util.List<StatusReport> getAllByWorkPackage (int id) {
-        TypedQuery<StatusReport> query = em.createQuery("SELECT s FROM StatusReport s "+
-        		"WHERE s.wpId=" + id,
-                StatusReport.class); 
+	public java.util.List<StatusReport> getAllByWorkPackage (String wpId) {
+		TypedQuery<StatusReport> query = em.createQuery("SELECT s FROM StatusReport s "+
+        		"WHERE s.statusReportId LIKE '" + wpId + "|%'", StatusReport.class);
+//        query.setParameter("wpId", id);
         java.util.List<StatusReport> reports = query.getResultList();
         return reports;
 	}
+	
+//	public WorkPackage findByUserId(String id) {
+//		String SRid = tokenizeSRId(id);
+//		TypedQuery<WorkPackage> query = em.createQuery("SELECT w FROM WorkPackage w WHERE w.WpId = :WpId ", WorkPackage.class);
+//		query.setParameter("WpId", SRid);
+//		java.util.List<WorkPackage> results = query.getResultList(); 
+//		WorkPackage wp = results.get(0);
+//		return wp;
+//	}
 	
 	// db query to find all status reports in db
 	public java.util.List<StatusReport> getAll() {
