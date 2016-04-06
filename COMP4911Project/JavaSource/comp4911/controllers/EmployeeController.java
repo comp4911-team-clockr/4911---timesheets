@@ -407,4 +407,66 @@ public class EmployeeController implements Serializable {
 	public String GoForgotPassword(){
 		return "ForgotPasswordPage";
 	}
+	
+	public String GetRecoveryQuestions(String id){
+		//Employee set to entered user id to grab their question answers
+		Credential cred = credentialManager.find(credential.getUserId());
+		
+		if (cred != null) {
+			currentEmployee = employeeManager.findByUserId(credential.getUserId());
+			setCredential(credentialManager.find(credential.getUserId()));
+			refreshList();
+			System.out.println("Check User Id passed");
+			credential  = cred;
+			return "GetRecoveryQuestions";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Username is incorrect."));
+		}
+		System.out.println("Check User id fail");
+		return "ForgotPasswordCancel";
+		
+	}
+	
+	//this method should take in 3 parameters (3 strings for questions)
+	public String SubmitRecovery(){
+		//add if statement and what not for entered values before returning.
+		if (credToAdd.getRecovery1().equals(credential.getRecovery1()) &&
+			credToAdd.getRecovery2().equals(credential.getRecovery2()) &&
+			credToAdd.getRecovery3().equals(credential.getRecovery3()) ){
+			System.out.println(credToAdd.getRecovery1() + " " + credential.getRecovery1());
+			System.out.println(credToAdd.getRecovery2() + " " + credential.getRecovery2());
+			System.out.println(credToAdd.getRecovery3() + " " + credential.getRecovery3());
+			return "RecoveryPassed";
+		} else {
+			System.out.println("Wrong Password!!!");
+			return "GetRecoveryQuestions";
+		}		
+	}
+	
+	public String RecoveryQuestionsCancel(){
+		return "RecoveryQuestionsCancel";
+	}
+	
+	public String CancelChangePassword(){
+		return "CancelChangePassword";
+	}
+	
+	//this method should have two parameters. one for password, then re-entered password
+	public String ConfirmChangePassword(){
+		//check if they're equal then change password value for that user and return this
+		String validate = validateNewPass(credToAdd.getPassword(), resetPassword); 
+		if (validate.equals("Success")) {
+			credential.setPassword(credToAdd.getPassword());
+			credentialManager.merge(credential);
+
+			return "ChangePasswordConfirmed";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(validate));
+		}
+		//else return same page
+		return "RecoveryPassed";
+
+	}
 }
