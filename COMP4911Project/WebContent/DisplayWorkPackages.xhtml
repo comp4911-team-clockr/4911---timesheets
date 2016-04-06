@@ -32,7 +32,10 @@
 					<f:facet name="header">Title</f:facet>
 					<b:navLink class="removeDot" value="#{work.wpTitle}" href ="DisplayTimesheets.xhtml"></b:navLink>
 				</h:column>
-				
+				<h:column>
+					<f:facet name="header">Responsibility Engineer</f:facet>
+					<h:outputText value="#{work.respId}"/>
+				</h:column>
 				<h:column>
 					<f:facet name="header">Customer</f:facet>
 					<h:outputText value="#{work.customer}"/>
@@ -56,6 +59,7 @@
       		      	<h:commandButton styleClass="btn btn-default" value="Back"
 						action="#{workPackControl.backToProjects}"/>
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>
