@@ -59,6 +59,8 @@
       		<b:inputText value="#{projectControl.editProject.manDaysDS}"/> <br/>
       		<h:outputLabel value="MDSS" />
       		<b:inputText value="#{projectControl.editProject.manDaysSS}"/> <br/>
+      		<h:outputLabel value="Description" />
+      		<b:inputText value="#{projectControl.editProject.desc}"/> <br/>
       		<h:commandButton styleClass="btn btn-default" value="Edit Project" action="#{projectControl.updateProject(projectControl.editProject.projectId)}"></h:commandButton>   
       		<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{projectControl.cancelEditProject}" immediate="true"></h:commandButton>
       	</b:container>
