@@ -114,6 +114,7 @@ public class WorkPackageController implements Serializable {
 		refreshEmpList(workPack);
 		return viewNavigation;
 	}
+	
 	public String addWP(Project project) {
 		workPack = new WorkPackage();
 		workPack.setActive(true);
@@ -133,11 +134,13 @@ public class WorkPackageController implements Serializable {
 		return "";
 	}
 	
+	// navigating to page + setting page to specific wp
 	public String editWP(WorkPackage wp) {
 		workPack = wp;
 		return editNavigation;
 	}
 	
+	// saving edit changes
 	public String editWP() {
 		if (validateAll()) {
 			workPackManager.merge(workPack);
@@ -147,6 +150,7 @@ public class WorkPackageController implements Serializable {
 		}
 		return "";
 	}
+	
 	public String deleteWP(WorkPackage wp){
 		workPackManager.remove(wp);
 		refreshList();

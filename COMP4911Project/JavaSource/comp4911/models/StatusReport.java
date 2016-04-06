@@ -18,7 +18,7 @@ public class StatusReport implements Serializable {
 	
 	@Id
 	@Column(name="StatusReportId")
-	private String statusReportId;
+	private String statusReportId;	
 	
 	@Column(name="RespEngId")
 	private String respEngId;
@@ -152,4 +152,5 @@ public class StatusReport implements Serializable {
 	public void setCostVariance(double costVariance) {
 		this.costVariance = costVariance;
 	}
+
 }
