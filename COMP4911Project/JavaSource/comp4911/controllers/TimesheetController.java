@@ -6,8 +6,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 //import javax.transaction.Transactional;
@@ -30,8 +28,11 @@ public class TimesheetController implements Serializable{
 	
 	private Employee employee;
 	
+	private boolean approve;
+	
 	/* Navigation */
 	private final String viewNavigation = "ViewTimesheet";
+	private final String approveListNavigation = "DisplayTimesheetsForApproval";
 	
 	@Inject 
 	private TimeSheet timesheet;
@@ -41,7 +42,6 @@ public class TimesheetController implements Serializable{
 	
 	@Inject private EmployeeManager employeeManager;
 
-
 	private List<TimeSheet> timesheetList;
 	
 	public TimesheetController() {
@@ -49,9 +49,20 @@ public class TimesheetController implements Serializable{
 
 	public void SetEmployee(Employee employee) {
 		this.employee = employee;
-		refreshTimeSheet();
 	}
 	
+	public String getEmployeeName(int id) {
+		return employeeManager.find(id).getFullName();
+	}
+	
+	public boolean isApprove() {
+		return approve;
+	}
+
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
+
 	public void refreshTimeSheet() {
 		timesheetList = timesheetManager.getAll(employee.getEmpNumber());
 		if (timesheetList.size() > 0)
@@ -69,6 +80,15 @@ public class TimesheetController implements Serializable{
 		return timesheetManager;
 	}
 
+	public void initDisplay() {
+		refreshTimeSheet();
+	}
+	
+	public void initApproval() {
+		timesheetList = timesheetManager
+				.getListForApproval(employee.getEmpNumber(), employeeManager);
+	}
+	
 	public void setTimesheetManager(TimeSheetManager timesheetManager) {
 		this.timesheetManager = timesheetManager;
 	}
@@ -85,10 +105,18 @@ public class TimesheetController implements Serializable{
 		
 		return timesheet;
 	}
-	public String gotoTimesheet(TimeSheet timesheet) {
+	public String gotoTimesheet(TimeSheet timesheet, boolean approve) {
 		this.timesheet = timesheet;
+		this.approve = approve;
 		return viewNavigation;
 	}
+	
+	public String approveTimesheet(boolean approved) {
+		timesheet.setApproval(approved);
+		timesheetManager.merge(timesheet);
+		return approveListNavigation;
+	}
+	
 	public void setTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
 	}
@@ -99,8 +127,11 @@ public class TimesheetController implements Serializable{
 		for(int i = 1; i < 9; i++){
 			calculateTotaldayhours(i);
 		}
+		timesheet.setApproval(false);
+		timesheet.setSubmitted(false);
 		timesheetManager.merge(timesheet);
-		refreshTimeSheet();
+		//shouldn't be needed anymore because theres an init now for the display page that
+		//automatically refreshes: refreshTimeSheet();
 		return "DisplayTimesheets";
 	}
 	
@@ -136,7 +167,8 @@ public class TimesheetController implements Serializable{
 	
 	public String deleteTimesheet(TimeSheet timesheet) {
 		timesheetManager.remove(timesheet);
-		refreshTimeSheet();
+		//shouldn't be needed anymore because theres an init now for the display page that
+		//automatically refreshes: refreshTimeSheet();
 		return "DisplayTimesheets";
 	}
 	
@@ -186,17 +218,17 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public String editTimeCancel(){
-		refreshTimeSheet();
+		//refreshTimeSheet();
 		return "DisplayTimesheets";
 	}
 	
 	public String CreateTimesheetCancel(){
-		refreshTimeSheet();
+		//refreshTimeSheet();
 		return "CancelCreateTimesheet";
 	}
 	
 	public String cancelEditTimesheet(){
-		refreshTimeSheet();
+		//refreshTimeSheet();
 		return "cancelEditTimesheet";
 	}
 	
@@ -219,7 +251,7 @@ public class TimesheetController implements Serializable{
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
 			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
 				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
-				+ r.getSatHrs() + r.getSunHrs())));
+				+ r.getSatHrs() + r.getSunHrs() + r.getFlexTimeHrs())));
 			/*if(hours < 40.0 ){
 				isValid = false;
 				FacesContext.getCurrentInstance().addMessage(null,
@@ -264,8 +296,30 @@ public class TimesheetController implements Serializable{
 				case 8:
 					hours += r.getWeekTotalHrs();
 					timesheet.setOverallTotalHrs(hours);
+					if(hours > 40) {
+						employee.setFlexHrs((hours-40));
+						employeeManager.merge(employee);
+					}
+					break;
+				case 9: 
+					hours += r.getFlexTimeHrs();
+					timesheet.setflextimeHrs(hours);
 					break;
 			}
 		}
+	}
+	
+	public void submitTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
+			if(r.getWeekTotalHrs() < 40.0){
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cannot Submit, hours is less than 40!", null));
+				return ;
+			}
+		}
+		
+		timesheet.setSubmitted(true);
+		timesheetManager.merge(this.timesheet);
 	}
 }

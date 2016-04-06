@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import comp4911.models.Employee;
 import comp4911.models.TimeSheet;
 
 @Dependent
@@ -62,9 +63,29 @@ public class TimeSheetManager implements Serializable {
 		return timesheets;
 	}
 	public List<TimeSheet> getAll(int id) {
-		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where isActive IS TRUE AND empNumber=" + id, TimeSheet.class);
+		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where t.isActive IS TRUE AND t.empNumber=" + id, TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();
 		
+		return timesheets;
+	}
+	
+	public List<TimeSheet> getListForApproval(int supId, EmployeeManager empManager) {
+		List<Employee> empList = empManager.getAllBySupervisor(supId);
+		List<TimeSheet> timesheets = null;
+		TypedQuery<TimeSheet> query;
+		boolean first = true;
+		
+		for (Employee e: empList) {
+			 query = em.createQuery("select t from TimeSheet t where t.isActive IS TRUE " +
+					 "AND t.submitted IS TRUE AND t.approval IS FALSE AND t.empNumber= " 
+					 + e.getEmpNumber(), TimeSheet.class);
+			if (!first) {
+				timesheets.addAll(query.getResultList());
+			} else {
+				first = false;
+				timesheets = query.getResultList();
+			}
+		}
 		return timesheets;
 	}
 }

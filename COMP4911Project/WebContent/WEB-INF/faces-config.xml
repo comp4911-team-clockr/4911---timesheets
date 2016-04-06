@@ -172,6 +172,10 @@
 			<from-outcome>GetRecoveryQuestions</from-outcome>
 			<to-view-id>/RecoveryQuestions.xhtml</to-view-id>
 		</navigation-case>
+			<navigation-case>
+			<from-outcome>ForgotPasswordPage</from-outcome>
+			<to-view-id>/ForgottenPassword.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/RecoveryQuestions.xhtml</from-view-id>

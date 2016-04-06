@@ -165,6 +165,10 @@
     ID="GetRecoveryQuestions::#RecoveryQuestions.xhtml" NAME="output1"
     PATH="/RecoveryQuestions.xhtml"
     TARGET="rules:#RecoveryQuestions.xhtml" TITLE="GetRecoveryQuestions" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="ForgotPasswordPage::#ForgottenPassword.xhtml" NAME="output2"
+    PATH="/ForgottenPassword.xhtml"
+    TARGET="rules:#ForgottenPassword.xhtml" TITLE="ForgotPasswordPage" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#RecoveryQuestions.xhtml"
@@ -178,6 +182,9 @@
     ID="GetRecoveryQuestions::#RecoveryQuestions.xhtml" NAME="output1"
     PATH="/RecoveryQuestions.xhtml"
     TARGET="rules:#RecoveryQuestions.xhtml" TITLE="GetRecoveryQuestions" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="RecoveryPassed::#ChangePassword.xhtml"
+    NAME="output2" PATH="/ChangePassword.xhtml"
+    TARGET="rules:#ChangePassword.xhtml" TITLE="RecoveryPassed" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#ChangePassword.xhtml"
@@ -190,6 +197,9 @@
    <PROCESS-ITEM-OUTPUT ID="RecoveryPassed::#ChangePassword.xhtml"
     NAME="output1" PATH="/ChangePassword.xhtml"
     TARGET="rules:#ChangePassword.xhtml" TITLE="RecoveryPassed" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="CancelChangePassword::#MainIndex.xhtml"
+    NAME="output2" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="CancelChangePassword" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#ViewTimesheet.xhtml"
