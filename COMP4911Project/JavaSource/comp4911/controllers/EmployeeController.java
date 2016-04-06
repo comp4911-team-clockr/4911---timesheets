@@ -3,9 +3,19 @@ package comp4911.controllers;
 import java.io.Serializable;
 //import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 //import javax.mail.Address;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import java.util.regex.Pattern;
 
 import javax.enterprise.context.SessionScoped;
@@ -92,7 +102,7 @@ public class EmployeeController implements Serializable {
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Username/Password is incorrect."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username/Password is incorrect.",null));
 		}
 		System.out.println("Check Login failed");
 		return "MainIndex?faces-redirect=true";
@@ -424,7 +434,7 @@ public class EmployeeController implements Serializable {
 					new FacesMessage("Username is incorrect."));
 		}
 		System.out.println("Check User id fail");
-		return "ForgotPasswordCancel";
+		return "ForgotPasswordPage";
 	}
 	
 	//this method should take in 3 parameters (3 strings for questions)
@@ -439,7 +449,9 @@ public class EmployeeController implements Serializable {
 			System.out.println(credToAdd.getRecovery3() + " " + credential.getRecovery3());
 			return "RecoveryPassed";
 		} else {
-			System.out.println("Wrong Password!!!");
+			System.out.println("Check Answers!!!");
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Those answers are incorrect."));
 			return "GetRecoveryQuestions";
 		}		
 	}
@@ -459,7 +471,6 @@ public class EmployeeController implements Serializable {
 		if (validate.equals("Success")) {
 			credential.setPassword(credToAdd.getPassword());
 			credentialManager.merge(credential);
-
 			return "ChangePasswordConfirmed";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
