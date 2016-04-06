@@ -34,7 +34,7 @@
 				<h:column>
 					<f:facet name="header">Submit for approval</f:facet>
 					<h:commandButton styleClass="btn greyButton" value="Submit"
-						action="#{test.editTimesheet(timesheet)}"/>
+						action="#{test.submitTimesheet(timesheet)}"/>
 				</h:column>
 				<h:column>
 					<h:commandButton styleClass="btn greyButton" value="Edit"
@@ -45,9 +45,14 @@
 						action="#{test.deleteTimesheet(timesheet)}" />
 				</h:column>
 				<h:column>
+					<f:facet name="header">Submitted</f:facet>
+					<h:selectBooleanCheckbox value="#{timesheet.submitted}" disabled="true" readonly="true"></h:selectBooleanCheckbox>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Approved</f:facet>
 					<h:selectBooleanCheckbox value="#{timesheet.approval}" disabled="true" readonly="true"></h:selectBooleanCheckbox>
 				</h:column>
+				<h:messages errorStyle="color:darkred"/>
       		</b:dataTable>    
       		<br/>
       		<h:commandButton class="btn buttonColorizer" action="#{test.addTimesheetButton}" value="Create Timesheet" />

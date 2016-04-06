@@ -99,6 +99,8 @@ public class TimesheetController implements Serializable{
 		for(int i = 1; i < 9; i++){
 			calculateTotaldayhours(i);
 		}
+		timesheet.setApproval(false);
+		timesheet.setSubmitted(false);
 		timesheetManager.merge(timesheet);
 		refreshTimeSheet();
 		return "DisplayTimesheets";
@@ -267,5 +269,19 @@ public class TimesheetController implements Serializable{
 					break;
 			}
 		}
+	}
+	
+	public void submitTimesheet(TimeSheet timesheet) {
+		this.timesheet = timesheet;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
+			if(r.getWeekTotalHrs() < 40.0){
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cannot Submit, hours is less than 40!", null));
+				return ;
+			}
+		}
+		
+		timesheet.setSubmitted(true);
+		timesheetManager.merge(this.timesheet);
 	}
 }

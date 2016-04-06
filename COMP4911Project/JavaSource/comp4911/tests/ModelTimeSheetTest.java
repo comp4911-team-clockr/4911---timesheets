@@ -37,7 +37,7 @@ public class ModelTimeSheetTest {
 		//final double overTimeHrs = 10.0;
 		final double flexTimeHrs = 11.0;
 		final String signature = "Signature";
-		final String isApproval = "approved";
+		final boolean isApproval = false;
 		final boolean isActive = true;
 		
 		TimeSheet ts = new TimeSheet();
@@ -77,7 +77,7 @@ public class ModelTimeSheetTest {
 		//final double testOverTimeHrs = ts.getOvertimeHrs();
 		final double testFlexTimeHrs = ts.getFlextimeHrs();
 		final String testSignature = ts.getSignature();
-		final String testIsApproval = ts.isApproval();
+		final boolean testIsApproval = ts.isApproval();
 		final boolean testIsActive = ts.getIsActive();
 		
 		// Expected Result
@@ -98,7 +98,7 @@ public class ModelTimeSheetTest {
 		//final double expOverTimeHrs = overTimeHrs;
 		final double expFlexTimeHrs = flexTimeHrs;
 		final String expSignature = signature;
-		final String expIsApproval = isApproval;
+		final boolean expIsApproval = isApproval;
 		final boolean expIsActive = isActive;
 		
 		// Testing timeSheetRowList
