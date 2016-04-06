@@ -34,15 +34,15 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Submit for approval</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Submit"
-						action="#{test.submitTimesheet(timesheet)}"/>
-				</h:column>
-				<h:column>
-					<h:commandButton styleClass="btn greyButton" value="Edit"
+					<h:commandButton styleClass="btn timesheetButtons" value="Submit"
 						action="#{test.editTimesheet(timesheet)}"/>
 				</h:column>
 				<h:column>
-					<h:commandButton styleClass="btn greyButton" value="Delete"
+					<h:commandButton styleClass="btn timesheetButtons" value="Edit"
+						action="#{test.editTimesheet(timesheet)}"/>
+				</h:column>
+				<h:column>
+					<h:commandButton styleClass="btn timesheetButtons" value="Delete"
 						action="#{test.deleteTimesheet(timesheet)}" />
 				</h:column>
 				<h:column>
@@ -55,7 +55,7 @@
 				</h:column>
       		</b:dataTable>    
       		<br/>
-      		<h:commandButton class="btn buttonColorizer" action="#{test.addTimesheetButton}" value="Create Timesheet" />
+      		<h:commandButton class="btn timesheetButtons" action="#{test.addTimesheetButton}" value="Create Timesheet" />
       		<p></p>
       	</b:container>
       	<br/><br/>

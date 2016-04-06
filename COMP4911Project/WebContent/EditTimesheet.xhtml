@@ -129,13 +129,13 @@
 					<b:inputText value="#{item.notes}" />
 				</h:column>
 				<h:column>
-					<h:commandButton styleClass="btn greyButton" value="Delete"
+					<h:commandButton styleClass="btn timesheetButtons" value="Delete"
 						action="#{test.deleteTimesheetRow(item, 'EditTimesheet')}"/>
 				</h:column>
 			</h:dataTable>
-			<h:commandButton class="btn btn-default" value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
-			<h:commandButton class="btn btn-default" value="Save Timesheet" action="#{test.saveChanges}"></h:commandButton>
-			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{test.cancelEditTimesheet}" immediate="true"></h:commandButton>
+			<h:commandButton class="btn timesheetButtons addPadRight" value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
+			<h:commandButton class="btn timesheetButtons addPadRight" value="Save Timesheet" action="#{test.saveChanges}"></h:commandButton>
+			<h:commandButton styleClass="btn timesheetButtons" value="Cancel" action="#{test.cancelEditTimesheet}" immediate="true"></h:commandButton>
 		</b:container>
 		<br/><br/>
 	</h:form>

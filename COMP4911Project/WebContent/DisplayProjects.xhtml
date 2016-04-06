@@ -43,22 +43,47 @@
 					</h:commandLink>
 				</h:column>
 				<h:column>
+					<f:facet name="header">Project Manager</f:facet>
+
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Initial Budget</f:facet>
+					<h:outputText class="removeDot" value="#{proj.initBudget}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date Issued</f:facet>
+					<h:outputText class="removeDot" value="#{proj.issueDate}"/>
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Remaining Budget</f:facet>
+
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Remaining Days</f:facet>
+
+				</h:column>									
+				<h:column>
 					<f:facet name="header">Add Work Package</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Add Work Package"
+					<h:commandButton styleClass="btn workPackageButtons" value="Add Work Package"
 						action="#{workPackControl.addWP(proj)}"/>
 				</h:column>
 				<h:column>
+					<f:facet name="header">View Project</f:facet>
+					<h:commandButton styleClass="btn projectButtons" value="View Project"
+						action="#{projectControl.selectEditProject(proj,'viewProject')}"/>					
+				</h:column>					
+				<h:column>
 					<f:facet name="header">Edit Project</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Edit Project"
-						action="#{projectControl.selectEditProject(proj)}"/>
+					<h:commandButton styleClass="btn projectButtons" value="Edit Project"
+						action="#{projectControl.selectEditProject(proj,'EditProject')}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Delete</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Delete"
+					<h:commandButton styleClass="btn projectButtons" value="Delete"
 						action="#{projectControl.deleteProject(proj)}"/>
 				</h:column>
       		</b:dataTable>   
-      		<h:commandButton class="btn buttonColorizer" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	
+      		<h:commandButton class="btn projectButtons" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	
       	</b:container>
       	<br/><br/>
       </h:form>

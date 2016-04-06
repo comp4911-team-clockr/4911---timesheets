@@ -21,34 +21,36 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Work Package</h1><br/>
-      		<h:outputLabel value="Project ID" />
-      		<h:outputLabel value="#{workPackControl.workPack.projectId}" readonly="true"/> <br/>
-      		<h:outputLabel value="Work Package Number" />
-      		<h:outputLabel value="#{workPackControl.workPack.wpNum}"/> <br/>
-      		<h:outputLabel value="Work Package Title" />
-      		<h:outputLabel value="#{workPackControl.workPack.wpTitle}"/> <br/>
-      		<h:outputLabel value="Customer" />
-      		<h:outputLabel value="#{workPackControl.workPack.customer}"/> <br/>
-      		<h:outputLabel value="Responsibility Engineer ID" />
-      		<h:outputLabel value="#{workPackControl.workPack.respId}"/> <br/>
-      		<h:outputLabel value="MDP1" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdp1}"/> <br/>
-      		<h:outputLabel value="MDP2" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdp2}"/> <br/>
-      		<h:outputLabel value="MDP3" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdp3}"/> <br/>
-      		<h:outputLabel value="MDP4" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdp4}"/> <br/>
-      		<h:outputLabel value="MDP5" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdp5}"/> <br/>
-      		<h:outputLabel value="MDDS" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdds}"/> <br/>
-      		<h:outputLabel value="MDSS" />
-      		<h:outputLabel value="#{workPackControl.workPack.mdss}"/> <br/>
-      		
-      		<h:dataTable id="employeeWP" styleClass="table" value="#{workPackControl.empList}"
+      		<h:outputLabel class="lessBigFont addPadRight" value="Project ID:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.projectId}" readonly="true"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="Work Package Number:" />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.wpNum}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="Work Package Title:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.wpTitle}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="Customer:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.customer}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="Responsibility Engineer ID:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.respId}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDP1:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdp1}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDP2:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdp2}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDP3:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdp3}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDP4:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdp4}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDP5:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdp5}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDDS:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdds}"/> <br/>
+      		<h:outputLabel class="lessBigFont addPadRight" value="MDSS:  " />
+      		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.mdss}"/> <br/>
+      	</b:container><br/>
+      <b:container styleClass="tableChange">
+      		<h1>Employees in Work Package</h1><br/>
+      		<b:dataTable id="employeeWP" styleClass="table" value="#{workPackControl.empList}"
       		var="item" border="1">
       			<h:column>
 					<f:facet name="header">
@@ -56,7 +58,7 @@
 					</f:facet>
 					<h:outputText value="#{item.fullName}" />
 				</h:column>
-      		</h:dataTable>
+      		</b:dataTable>
       	</b:container>
       </h:form>
    </h:body>

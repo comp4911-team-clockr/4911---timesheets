@@ -42,17 +42,17 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">View</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="View"
+					<h:commandButton styleClass="btn workPackageButtons" value="View"
 						action="#{workPackControl.viewWP(work)}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Edit</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Edit"
+					<h:commandButton styleClass="btn workPackageButtons" value="Edit"
 						action="#{workPackControl.editWP(work)}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Delete</f:facet>
-					<h:commandButton styleClass="btn greyButton" value="Delete"
+					<h:commandButton styleClass="btn workPackageButtons" value="Delete"
 						action="#{workPackControl.deleteWP(work)}"/>
 				</h:column>
 				<h:column>
@@ -61,8 +61,8 @@
 						action="#{statusReportControl.viewSR(work)}"/>
 				</h:column>
       		</b:dataTable>
-      		      	<h:commandButton styleClass="btn btn-default" value="Back"
-						action="#{workPackControl.backToProjects}"/>
+      		      	<h:commandButton styleClass="btn workPackageButtons" value="Back"
+						action="#{workPackControl.backToProjects}"/><p></p>
       	</b:container>
       	<br/><br/>
       </h:form>

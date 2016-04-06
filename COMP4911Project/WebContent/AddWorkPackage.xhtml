@@ -21,41 +21,81 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Add Work Package</h1><br/>
       		<h:messages style="color:red" />
-      		<h:outputLabel value="Project ID" />
-      		<b:inputText value="#{workPackControl.workPack.projectId}" readonly="true"/> <br/>
-      		<h:outputLabel value="Work Package Number" />
-      		<b:inputText value="#{workPackControl.workPack.wpNum}"/> <br/>
-      		<h:outputLabel value="Work Package Title" />
-      		<b:inputText value="#{workPackControl.workPack.wpTitle}"/> <br/>
-      		<h:outputLabel value="Customer" />
-      		<b:inputText value="#{workPackControl.workPack.customer}"/> <br/>
-      		<h:outputLabel value="Responsibility Engineer ID" />
-      		<b:inputText value="#{workPackControl.workPack.respId}"/> <br/>
+      		
+	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">      
+		     		<h:outputLabel value="Project ID" />		
+      				<b:inputText value="#{workPackControl.workPack.projectId}" readonly="#{workPackControl.idReadOnly}"/>
+      			</b:column>
+		     	<b:column col-sm="4" col-xs="12">  
+		     		<h:outputLabel value="Work Package Number" />      			
+      				<b:inputText value="#{workPackControl.workPack.wpNum}"/>
+      			</b:column>   
+		     	<b:column col-sm="4" col-xs="12">
+		     		<h:outputLabel value="Work Package Title" />	        		
+      				<b:inputText value="#{workPackControl.workPack.wpTitle}"/>
+      			</b:column>      			   			
+      		</b:row>      				
+
+	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">        
+		     		<h:outputLabel value="Customer" />		
+      				<b:inputText value="#{workPackControl.workPack.customer}"/>
+      			</b:column>
+		     	<b:column col-sm="4" col-xs="12">  
+		     		<h:outputLabel value="Responsibility Engineer ID" />    		
+      				<b:inputText value="#{workPackControl.workPack.respId}"/>
+      			</b:column>   
+		     	<b:column col-sm="4" col-xs="12">
+		     		<h:outputLabel value="MDP1" />       		
+      				<b:inputText value="#{workPackControl.workPack.mdp1}"/>
+      			</b:column>      			   			
+      		</b:row>	
+	
       		<!-- For people who want to use this I guess
       		h:selectOneMenu value="#{workPackControl.workPack.respId}">
     			<f:selectItems value="#{workPackControl.empList}" var="emp"
     			itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
 			</h:selectOneMenu> <br/> -->
-      		<h:outputLabel value="MDP1" />
-      		<b:inputText value="#{workPackControl.workPack.mdp1}"/> <br/>
-      		<h:outputLabel value="MDP2" />
-      		<b:inputText value="#{workPackControl.workPack.mdp2}"/> <br/>
-      		<h:outputLabel value="MDP3" />
-      		<b:inputText value="#{workPackControl.workPack.mdp3}"/> <br/>
-      		<h:outputLabel value="MDP4" />
-      		<b:inputText value="#{workPackControl.workPack.mdp4}"/> <br/>
-      		<h:outputLabel value="MDP5" />
-      		<b:inputText value="#{workPackControl.workPack.mdp5}"/> <br/>
-      		<h:outputLabel value="MDDS" />
-      		<b:inputText value="#{workPackControl.workPack.mdds}"/> <br/>
-      		<h:outputLabel value="MDSS" />
-      		<b:inputText value="#{workPackControl.workPack.mdss}"/> <br/>
-      		<h:commandButton styleClass="btn btn-default" value="Add Work Package" action="#{workPackControl.addWP}"></h:commandButton>   
-      		<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{workPackControl.cancelToProject}" immediate="true"></h:commandButton>
+
+ 	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">  
+		     		<h:outputLabel value="MDP2" />     		
+      				<b:inputText value="#{workPackControl.workPack.mdp2}"/>
+      			</b:column>
+		     	<b:column col-sm="4" col-xs="12">   
+		     		<h:outputLabel value="MDP3" />    		
+      				<b:inputText value="#{workPackControl.workPack.mdp3}"/>
+      			</b:column>  
+		     	<b:column col-sm="4" col-xs="12"> 
+		     		<h:outputLabel value="MDP4" />      		
+	      			<b:inputText value="#{workPackControl.workPack.mdp4}"/>
+    			</b:column>        			    			
+      		</b:row>	
+
+ 	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">  
+		     		<h:outputLabel value="MDP5" />     		
+      				<b:inputText value="#{workPackControl.workPack.mdp5}"/>
+      			</b:column>
+		     	<b:column col-sm="4" col-xs="12">
+		     		<h:outputLabel value="MDDS" />       		
+      				<b:inputText value="#{workPackControl.workPack.mdds}"/>
+      			</b:column> 
+		     	<b:column col-sm="4" col-xs="12">
+		     		<h:outputLabel value="MDSS" />       		
+      				<b:inputText value="#{workPackControl.workPack.mdss}"/><BR/>
+      			</b:column>      			     			
+      		</b:row>	
+
+      		<h:commandButton styleClass="btn workPackageButtons addPadRight" value="Add Work Package" action="#{workPackControl.addWP}"></h:commandButton>   
+      		<h:commandButton styleClass="btn workPackageButtons" value="Cancel" action="#{workPackControl.cancelToProject}" immediate="true"></h:commandButton>
+      		<p></p>
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>

@@ -37,17 +37,17 @@
 					<h:outputText value="#{emp.lastName}" />
 				</h:column>
 				<h:column>
-					<h:commandButton styleClass="btn greyButton" value="Delete"
+					<h:commandButton styleClass="btn employeeButtons" value="Edit"
+						action="#{user.showEmployeeToEdit(emp)}"/>
+				</h:column>				
+				<h:column>
+					<h:commandButton styleClass="btn employeeButtons" value="Delete"
 						action="#{user.deleteEmployee(emp)}"
 						rendered="#{user.showDelete(emp)}" />
 				</h:column>
-				<h:column>
-					<h:commandButton styleClass="btn greyButton" value="Edit"
-						action="#{user.showEmployeeToEdit(emp)}"/>
-				</h:column>
       		</b:dataTable>    
       		<br/>
-      		<h:button styleClass="btn buttonColorizer" outcome="#{user.addEmployeeButton()}" value="Add Employee"></h:button><p></p>
+      		<h:button styleClass="btn employeeButtons" outcome="#{user.addEmployeeButton()}" value="Add Employee"></h:button><p></p>
       	</b:container>
       	<br/><br/>
       </h:form>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<application>
 		<locale-config>
 			<default-locale>en</default-locale>
@@ -37,6 +39,10 @@
 			<to-view-id>/AddEmployee.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>addWPSplash</from-outcome>
+			<to-view-id>/AddWorkPackage.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>addProject</from-outcome>
 			<to-view-id>/AddProject.xhtml</to-view-id>
 		</navigation-case>
@@ -53,6 +59,14 @@
 		<navigation-case>
 			<from-outcome>addProject</from-outcome>
 			<to-view-id>/AddProject.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>viewProject</from-outcome>
+			<to-view-id>/ViewProject.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>viewProject</from-outcome>
+			<to-view-id>/ViewProject.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
@@ -172,20 +186,12 @@
 			<from-outcome>GetRecoveryQuestions</from-outcome>
 			<to-view-id>/RecoveryQuestions.xhtml</to-view-id>
 		</navigation-case>
-			<navigation-case>
-			<from-outcome>ForgotPasswordPage</from-outcome>
-			<to-view-id>/ForgottenPassword.xhtml</to-view-id>
-		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/RecoveryQuestions.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>RecoveryQuestionsCancel</from-outcome>
 			<to-view-id>/MainIndex.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>GetRecoveryQuestions</from-outcome>
-			<to-view-id>/RecoveryQuestions.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>RecoveryPassed</from-outcome>
@@ -199,10 +205,6 @@
 			<to-view-id>/MainIndex.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>RecoveryPassed</from-outcome>
-			<to-view-id>/ChangePassword.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>CancelChangePassword</from-outcome>
 			<to-view-id>/MainIndex.xhtml</to-view-id>
 		</navigation-case>
@@ -212,6 +214,20 @@
 		<navigation-case>
 			<from-outcome>cancelViewTimesheet</from-outcome>
 			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/ViewProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelViewProject</from-outcome>
+			<to-view-id>/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/ViewProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelViewProject</from-outcome>
+			<to-view-id>/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

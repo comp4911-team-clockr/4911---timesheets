@@ -7,13 +7,63 @@
 }
 
 .tableChange {
-	background-color: rgba(237, 237, 238, 0.7);
+	background-color: rgba(237, 237, 238, 0.85);
 	border-radius: 10px;
 }
 
+.biggerFont {
+	font-size: 20px;
+	margin-bottom: 1em;
+}
+
+.lessBigFont {
+	font-size: 15px;
+	margin-bottom: 0.5em;
+}
+
+#headerChange {
+	background-color: rgba(237, 237, 238, 0.7);
+}
+
+.addPadRight {
+	margin-right: 0.5em;
+}
+
+.projectButtons {
+	background-color: #f88f51;
+}
+
+.projectButtons:hover {
+	background-color: #f89f61;
+}
+
+.timesheetButtons {
+	background-color: #3cd69c;	
+}
+
+.timesheetButtons:hover {
+	background-color: #4ce6ac;
+}
+
+.employeeButtons {
+	background-color: #ffc34a;
+}
+
+.employeeButtons:hover{
+	background-color: #ffd35a;
+}
+
+.workPackageButtons {
+	background-color: #64dac9;	
+}
+
+.workPackageButtons:hover {
+	background-color: #74ead9;
+}
+
 .AddTSButton1 {
-	background: url(/COMP4911Project/resources/images/timesheetIcon.png) no-repeat top;
-	background-color: #E1E1E2;
+	background: url(/COMP4911Project/resources/images/timesheetIcon2.png) no-repeat top;
+	background-color: #3cd69c;
 	width: 18em;
 	height: 18em;
 	border-radius: 15px;
@@ -24,14 +74,14 @@
 }
 
 .AddTSButton1:hover {
-	background-color: #F1F1F2;
+	background-color: #4ce6ac;
 	border-style: solid;
 	border-color: #b3b3b3;
 }
 
 .AddTSButton2 {
 	background: url(/COMP4911Project/resources/images/people.png) no-repeat top;
-	background-color: #e87f41;
+	background-color: #f88f51;
 	width: 18em;
 	height: 18em;
 	border-radius: 15px;
@@ -42,14 +92,14 @@
 }
 
 .AddTSButton2:hover {
-	background-color: #f88f51;
+	background-color: #f89f61;
 	border-style: solid;
 	border-color: #b3b3b3;
 }
 
 .AddTSButton3 {
 	background: url(/COMP4911Project/resources/images/WorkPackage.png) no-repeat top;
-	background-color: #54cab9;
+	background-color: #64dac9;
 	width: 18em;
 	height: 18em;
 	border-radius: 15px;
@@ -60,14 +110,14 @@
 }
 
 .AddTSButton3:hover {
-	background-color: #64dac9;
+	background-color: #74ead9;
 	border-style: solid;
 	border-color: #b3b3b3;
 }
 
 .AddTSButton4 {
 	background: url(/COMP4911Project/resources/images/Employee.png) no-repeat top;
-	background-color: #ffb33a;
+	background-color: #ffc34a;
 	width: 18em;
 	height: 18em;
 	border-radius: 15px;
@@ -78,7 +128,7 @@
 }
 
 .AddTSButton4:hover {
-	background-color: #ffc34a;
+	background-color: #ffd35a;
 	border-style: solid;
 	border-color: #b3b3b3;
 }

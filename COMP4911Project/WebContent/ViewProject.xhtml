@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="CommonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container styleClass="tableChange">
+      		<h1>Project Details</h1><br/>
+      		<h:outputLabel class="lessBigFont" value="Project Id:" />
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.supervisor}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Project Name:" />
+			<h:outputText class="lessBigFont" value=" #{user.credential.userId}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Supervisor:" />
+			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.firstName}" /><br/>      		
+      		<h:outputLabel class="lessBigFont" value="Date Issues:" />
+			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.lastName}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Estimated Completion Date:" />
+			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.empNumber}" /><br/>			
+      		<h:outputLabel class="lessBigFont" value="Project Assistant:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Project Assistant:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Costing Proposal:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Initial Budget:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		
+      		<h:outputLabel class="lessBigFont" value="RO1 Budget" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="RO2 Budget:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Final Budget:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDP1:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		      	
+      		<h:outputLabel class="lessBigFont" value="MDP2:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDP3:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDP5:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDDS:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDSS:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="Description:" />
+      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		      		      		      	
+      		<br/>
+      		<h:commandButton styleClass="btn projectButtons" value="Back" action="#{projectControl.cancelViewProject}" immediate="true"></h:commandButton>
+      		<p></p>     		
+      	</b:container>
+      	<br/><br/>
+      </h:form>
+   </h:body>
+</html>

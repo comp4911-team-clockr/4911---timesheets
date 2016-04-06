@@ -21,24 +21,40 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Edit Employee</h1><br/>
-      		<h:outputLabel value="First Name" />
-      		<b:inputText value="#{user.editEmployee.firstName}"/> <br/>
-      		<h:outputLabel value="Last Name" />
-      		<b:inputText value="#{user.editEmployee.lastName}"/> <br/>
-      		<h:outputLabel value="Email" />
-      		<b:inputText value="#{user.credToAdd.email}"/> <br/>
-      		<h:outputLabel value="User Role" />
-      		<b:selectOneMenu class="dropdownstyle" value="#{user.credToAdd.role}">
-		        <f:selectItem itemValue="SystemAdmin" itemLabel="Admin"></f:selectItem>
-		        <f:selectItem itemValue="HumanResources" itemLabel="Human Resources"></f:selectItem>
-		        <f:selectItem itemValue="ProjectManager" itemLabel="Project Manager"></f:selectItem>
-		        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
-            </b:selectOneMenu>
-      		<h:commandButton styleClass="btn btn-default" value="Edit Employee" action="#{user.updateEmployee(user.editEmployee.empNumber)}"></h:commandButton>   
-      		<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{user.cancelEditEmployee}" immediate="true"></h:commandButton>
+ 	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">    
+		     		<h:outputLabel value="First Name" />   		
+      				<b:inputText value="#{user.editEmployee.firstName}"/>
+      			</b:column>
+		     	<b:column col-sm="4" col-xs="12">    
+		     		<h:outputLabel value="Last Name" />   		
+      				<b:inputText value="#{user.editEmployee.lastName}"/>
+      			</b:column> 
+		     	<b:column col-sm="4" col-xs="12">  
+		     		<h:outputLabel value="Email" />     		
+      				<b:inputText value="#{user.credToAdd.email}"/>
+      			</b:column>      			     			
+      		</b:row>	
+	
+ 	      	<b:row>
+		     	<b:column col-sm="4" col-xs="12">
+		     		<h:outputLabel value="User Role" />       		
+		      		<b:selectOneMenu class="dropdownstyle" value="#{user.credToAdd.role}">
+				        <f:selectItem itemValue="SystemAdmin" itemLabel="Admin"></f:selectItem>
+				        <f:selectItem itemValue="HumanResources" itemLabel="Human Resources"></f:selectItem>
+				        <f:selectItem itemValue="ProjectManager" itemLabel="Project Manager"></f:selectItem>
+				        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
+		            </b:selectOneMenu>
+		        </b:column>
+		    </b:row>    
+		    <br/>
+      		<h:commandButton styleClass="btn employeeButtons addPadRight" value="Edit Employee" action="#{user.updateEmployee(user.editEmployee.empNumber)}"></h:commandButton>   
+      		<h:commandButton styleClass="btn employeeButtons" value="Cancel" action="#{user.cancelEditEmployee}" immediate="true"></h:commandButton>
+      		<p></p>
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>

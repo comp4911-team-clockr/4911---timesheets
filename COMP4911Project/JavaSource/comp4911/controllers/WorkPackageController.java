@@ -36,6 +36,8 @@ public class WorkPackageController implements Serializable {
 	private final String validWPNumPattern = "[A-Z]{1}[0-9]{4}";
 	private final String validRENumPattern = "[0-9]{6}";
 	
+	private boolean idReadOnly = true;
+	
 	@Inject
 	private WorkPackage workPack;
 	
@@ -118,10 +120,18 @@ public class WorkPackageController implements Serializable {
 	public String addWP(Project project) {
 		workPack = new WorkPackage();
 		workPack.setActive(true);
+		setIdReadOnly(true);
 		workPack.setProjectId(project.getProjectId());
 		String wpID = project.getProjectId() + "|" + (workPackList.size() + 1);
 		workPack.setWpId(wpID);
 		return addNavigation;
+	}
+	
+	public String addWPSplash(){
+		workPack = new WorkPackage();
+		workPack.setActive(true);
+		setIdReadOnly(false);
+		return "addWPSplash";
 	}
 	
 	public String addWP() {
@@ -204,5 +214,13 @@ public class WorkPackageController implements Serializable {
 	
 	public String backToProjects(){
 		return "displayProjects";
+	}
+
+	public boolean isIdReadOnly() {
+		return idReadOnly;
+	}
+
+	public void setIdReadOnly(boolean idReadOnly) {
+		this.idReadOnly = idReadOnly;
 	}
 }

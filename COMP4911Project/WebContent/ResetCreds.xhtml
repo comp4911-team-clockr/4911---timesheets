@@ -23,59 +23,60 @@
       </h:form>
       <br/>
       <h:form>
-      	<b:container>
-      		<h1>Update Profile</h1>
+      	<b:container styleClass="tableChange">
+      		<h1>Update Profile</h1><br/>
       		<h:messages style="color:red" />
-      		<h:outputLabel value="First Name: " />
+      		
       		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-	   		<b:inputText value="#{user.employee.firstName}" />
-	   		</b:column>
+	      		<b:column col-sm="4" col-xs="12">
+	      			<h:outputLabel value="First Name: " />
+		   			<b:inputText value="#{user.employee.firstName}" />
+		   		</b:column>
+	      		<b:column col-sm="4" col-xs="12">
+	      			<h:outputLabel value="Last Name: " />
+		   			<b:inputText value="#{user.employee.lastName}" />
+		   		</b:column>
+	      		<b:column col-sm="4" col-xs="12"> 
+	      			<h:outputLabel value="Email: " />
+	   				<b:inputText value="#{user.credToAdd.email}" />
+	   			</b:column>	   		
       		</b:row>
-	   		<h:outputLabel value="Last Name: " />
+
 	   		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-	   		<b:inputText value="#{user.employee.lastName}" />
-	   		</b:column>
+      			<b:column col-sm="4" col-xs="12">
+      				<br/>
+	   				<h:commandButton styleClass="btn employeeButtons" value="Update" action="#{user.updateProfile}"></h:commandButton>
+	   			</b:column>
+				<p></p>
       		</b:row>
-	   		<h:outputLabel value="Email: " />
-	   		<b:row>
-      		<b:column col-sm="4" col-xs="12"> 
-	   		<b:inputText value="#{user.credToAdd.email}" />
-	   		</b:column>
-      		</b:row>
-	   		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-	   		<h:commandButton styleClass="btn btn-default" value="Update" action="#{user.updateProfile}"></h:commandButton>
-	   		</b:column>
-      		</b:row>
+      		<br/>
       	</b:container>
       </h:form>
       <br/>
       
       <h:form>
-      	<b:container>
-      	<h:outputLabel value="Password" />
+      	<b:container styleClass="tableChange">
+      		<h1>Update Password</h1><br/>
+      		<h:messages style="color:red" />
       		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-      		<b:inputText type="password" styleClass="smallerTextInput" value="#{user.credToAdd.password}"></b:inputText>
-      		</b:column>
+	      		<b:column col-sm="4" col-xs="12">
+	      			<h:outputLabel value="Password" />
+	      			<b:inputText type="password" styleClass="smallerTextInput" value="#{user.credToAdd.password}"></b:inputText>
+	      		</b:column>
+	      		<b:column col-sm="4" col-xs="12">
+		      		<h:outputLabel value="Re-enter Password" />
+		      		<b:inputText type="password" styleClass="smallerTextInput" value="#{user.resetPassword}"></b:inputText>
+		      		<br/>
+	      		</b:column>	      		
       		</b:row>
-      		<h:outputLabel value="Re-enter Password" />
+
       		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-      		<b:inputText type="password" styleClass="smallerTextInput" value="#{user.resetPassword}"></b:inputText>
-      		</b:column>
+	      		<b:column col-sm="4" col-xs="12"> 
+		   			<h:commandButton styleClass="btn employeeButtons" value="Reset Password" action="#{user.resetEmpPassword}"></h:commandButton>
+		   		</b:column>
+		   		<p></p>
       		</b:row>
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12"> 
-	   		<h:commandButton styleClass="btn btn-default" value="Reset Password" action="#{user.resetEmpPassword}"></h:commandButton>
-	   		</b:column>
-      		</b:row>
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12"> 
-	   		</b:column>
-      		</b:row>
+      		<br/>
       	</b:container>
       </h:form>
    </h:body>

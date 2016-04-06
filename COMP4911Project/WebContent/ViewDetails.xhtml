@@ -21,20 +21,20 @@
 	      </b:container>
       </h:form>
       <h:form>
-      	<b:container>
+      	<b:container styleClass="tableChange">
       		<h1>Employee Details</h1><br/>
-      		<h:outputLabel value="User Role:" />
-      		<h:outputText value=" #{user.credential.role}" /><br/>
-      		<h:outputLabel value="User ID:" />
-			<h:outputText value=" #{user.credential.userId}" /><br/>
-      		<h:outputLabel value="First Name:" />
-			<h:outputText value=" #{user.currentEmployee.firstName}" /><br/>      		
-      		<h:outputLabel value="Last Name:" />
-			<h:outputText value=" #{user.currentEmployee.lastName}" /><br/>
-      		<h:outputLabel value="Employee Number:" />
-			<h:outputText value=" #{user.currentEmployee.empNumber}" /><br/>			
-      		<h:outputLabel value="Email:" />
-      		<h:outputText value=" #{user.currentEmployee.credential.email}" /><br/>
+      		<h:outputLabel class="biggerFont" value="User Role:" />
+      		<h:outputText class="biggerFont" value=" #{user.credential.role}" /><br/>
+      		<h:outputLabel class="biggerFont" value="User ID:" />
+			<h:outputText class="biggerFont" value=" #{user.credential.userId}" /><br/>
+      		<h:outputLabel class="biggerFont" value="First Name:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.firstName}" /><br/>      		
+      		<h:outputLabel class="biggerFont" value="Last Name:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.lastName}" /><br/>
+      		<h:outputLabel class="biggerFont" value="Employee Number:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.empNumber}" /><br/>			
+      		<h:outputLabel class="biggerFont" value="Email:" />
+      		<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.email}" /><br/>
       	</b:container>
       </h:form>
    </h:body>
