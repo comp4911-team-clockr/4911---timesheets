@@ -77,7 +77,17 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Splash.xhtml" PATH="/Splash.xhtml"
-  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Splash.xhtml:0" NAME="item"
+   PATH="/Splash.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="AddEmployee::#AddEmployee.xhtml"
+    NAME="output" PATH="/AddEmployee.xhtml"
+    TARGET="rules:#AddEmployee.xhtml" TITLE="AddEmployee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addProject::#AddProject.xhtml"
+    NAME="output1" PATH="/AddProject.xhtml"
+    TARGET="rules:#AddProject.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#DisplayEmployees.xhtml"
   PATH="/DisplayEmployees.xhtml" SHAPE="256,513,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#DisplayEmployees.xhtml:0" NAME="item"
@@ -164,9 +174,10 @@
    <PROCESS-ITEM-OUTPUT ID="RecoveryQuestionsCancel::#MainIndex.xhtml"
     NAME="output" PATH="/MainIndex.xhtml"
     TARGET="rules:#MainIndex.xhtml" TITLE="RecoveryQuestionsCancel" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="RecoveryPassed::#ChangePassword.xhtml"
-    NAME="output1" PATH="/ChangePassword.xhtml"
-    TARGET="rules:#ChangePassword.xhtml" TITLE="RecoveryPassed" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="GetRecoveryQuestions::#RecoveryQuestions.xhtml" NAME="output1"
+    PATH="/RecoveryQuestions.xhtml"
+    TARGET="rules:#RecoveryQuestions.xhtml" TITLE="GetRecoveryQuestions" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#ChangePassword.xhtml"
@@ -176,9 +187,9 @@
    <PROCESS-ITEM-OUTPUT ID="ChangePasswordConfirmed::#MainIndex.xhtml"
     NAME="output" PATH="/MainIndex.xhtml"
     TARGET="rules:#MainIndex.xhtml" TITLE="ChangePasswordConfirmed" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="CancelChangePassword::#MainIndex.xhtml"
-    NAME="output1" PATH="/MainIndex.xhtml"
-    TARGET="rules:#MainIndex.xhtml" TITLE="CancelChangePassword" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="RecoveryPassed::#ChangePassword.xhtml"
+    NAME="output1" PATH="/ChangePassword.xhtml"
+    TARGET="rules:#ChangePassword.xhtml" TITLE="RecoveryPassed" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#ViewTimesheet.xhtml"
@@ -189,18 +200,6 @@
     ID="cancelViewTimesheet::#DisplayTimesheets.xhtml" NAME="output"
     PATH="/DisplayTimesheets.xhtml"
     TARGET="rules:#DisplayTimesheets.xhtml" TITLE="cancelViewTimesheet" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#EditProject.xhtml" PATH="/EditProject.xhtml"
-  SHAPE="32,1057,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#EditProject.xhtml:0" NAME="item"
-   PATH="/EditProject.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="cancelEditProject::#DisplayProjects.xhtml"
-    NAME="output" PATH="/DisplayProjects.xhtml"
-    TARGET="rules:#DisplayProjects.xhtml" TITLE="cancelEditProject" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="editProject::#DisplayProjects.xhtml"
-    NAME="output1" PATH="/DisplayProjects.xhtml"
-    TARGET="rules:#DisplayProjects.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#EditProject.xhtml" PATH="/EditProject.xhtml"
