@@ -172,9 +172,7 @@ public class TimesheetController implements Serializable{
 	
 	public String createTimesheet() {
 		vacationDaysTaken();
-		if(!(calculateWeekTotalHours())){
-			return "";
-		}
+		calculateWeekTotalHours();
 		for(int i = 1; i < 9; i++){
 			calculateTotaldayhours(i);
 		}
@@ -215,20 +213,20 @@ public class TimesheetController implements Serializable{
 		employeeManager.merge(employee);
 	}
 	
-	public boolean calculateWeekTotalHours(){
+	public void calculateWeekTotalHours(){
 		double hours = 0.0;
-		boolean isValid = true;
+		//boolean isValid = true;
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
 			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
 				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
 				+ r.getSatHrs() + r.getSunHrs())));
-			if(hours < 40.0 ){
+			/*if(hours < 40.0 ){
 				isValid = false;
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("Error Hours is Less than 40"));
 			}
+			*/
 		}
-		return isValid;
 	}
 	
 	public void calculateTotaldayhours(int day) {
