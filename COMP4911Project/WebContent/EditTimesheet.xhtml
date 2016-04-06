@@ -33,13 +33,13 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Project Number" />
+						<h:outputText value="Project" />
 					</f:facet>
 					<b:inputText value="#{item.projectId}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Work Package" />
+						<h:outputText value="WP" />
 					</f:facet>
 					<b:inputText value="#{item.workpackId}" />
 				</h:column>
@@ -108,18 +108,18 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Vacation Days" />
+						<h:outputText value="Flextime" />
 					</f:facet>
-					<b:inputText value="#{item.vacationDays}">
-						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.vacDays}" />
+					<b:inputText value="#{item.flexTimeHrs}">
+						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.flexHrs}" />
                     </b:inputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Flextime Hours" />
+						<h:outputText value="Vacation Days" />
 					</f:facet>
-					<b:inputText value="#{item.flexTimeHrs}">
-						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.flexHrs}" />
+					<b:inputText value="#{item.vacationDays}">
+						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.vacDays}" />
                     </b:inputText>
 				</h:column>
 				<h:column>

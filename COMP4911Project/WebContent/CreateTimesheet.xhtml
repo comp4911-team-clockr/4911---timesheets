@@ -22,7 +22,7 @@
 	</h:form>
 	<h:form>
 		<b:container styleClass="tableChange">
-			<h1>Timesheets</h1><br/>
+			<h1>New Timesheet</h1><br/>
 			<h:dataTable id="test" styleClass="table resizing roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
 				<h:column>
@@ -33,13 +33,13 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Project Number" />
+						<h:outputText value="Project" />
 					</f:facet>
 					<b:inputText value="#{item.projectId}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Work Package" />
+						<h:outputText value="WP" />
 					</f:facet>
 					<b:inputText value="#{item.workpackId}" />
 				</h:column>
@@ -105,6 +105,14 @@
                         <f:validateDoubleRange minimum="0.0" maximum="24.0" />
                     </b:inputText>
                     <h:message for="friday" style="color:red" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Flextime" />
+					</f:facet>
+					<b:inputText value="#{item.flexTimeHrs}">
+						<f:validateDoubleRange minimum="0.0" maximum="#{user.currentEmployee.flexHrs}" />
+                    </b:inputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">

@@ -10,6 +10,7 @@
 <h:head>
 	<title>Timesheet</title>
 	<h:outputStylesheet library="css" name="main.css" />
+	<h:outputStylesheet name="css/default/icons.css" />
 </h:head>
 <h:body id="bgImage2">
 	<h:form>
@@ -42,13 +43,13 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Work Package" />
+						<h:outputText value="WP" />
 					</f:facet>
 					<h:outputText value="#{item.workpackId}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Week Total" />
+						<h:outputText value="Total" />
 					</f:facet>
 					<h:outputText value="#{item.weekTotalHrs}" />
 					<f:facet name="footer">
@@ -120,15 +121,15 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Vacation Days" />
-					</f:facet>
-					<h:outputText value="#{item.vacationDays}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
 						<h:outputText value="Flextime" />
 					</f:facet>
 					<h:outputText value="#{item.flexTimeHrs}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vacation Days" />
+					</f:facet>
+					<h:outputText value="#{item.vacationDays}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">

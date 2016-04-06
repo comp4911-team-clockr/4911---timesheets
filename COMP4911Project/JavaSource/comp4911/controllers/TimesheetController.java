@@ -36,11 +36,9 @@ public class TimesheetController implements Serializable{
 	private final String viewNavigation = "ViewTimesheet";
 	private final String approveListNavigation = "DisplayTimesheetsForApproval";
 	
-	@Inject 
-	private TimeSheet timesheet;
+	@Inject private TimeSheet timesheet;
 	
-	@Inject
-	private TimeSheetManager timesheetManager;
+	@Inject private TimeSheetManager timesheetManager;
 	
 	@Inject private EmployeeManager employeeManager;
 
@@ -249,17 +247,14 @@ public class TimesheetController implements Serializable{
 	
 	public void calculateWeekTotalHours(){
 		double hours = 0.0;
-		//boolean isValid = true;
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
 			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
 				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
 				+ r.getSatHrs() + r.getSunHrs() + r.getFlexTimeHrs())));
-			/*if(hours < 40.0 ){
-				isValid = false;
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage("Error Hours is Less than 40"));
-			}
-			*/
+		}
+		if(hours > 40) {
+			employee.setFlexHrs((hours-40));
+			employeeManager.merge(employee);
 		}
 	}
 	
@@ -298,10 +293,6 @@ public class TimesheetController implements Serializable{
 				case 8:
 					hours += r.getWeekTotalHrs();
 					timesheet.setOverallTotalHrs(hours);
-					if(hours > 40) {
-						employee.setFlexHrs((hours-40));
-						employeeManager.merge(employee);
-					}
 					break;
 				case 9: 
 					hours += r.getFlexTimeHrs();
@@ -313,14 +304,11 @@ public class TimesheetController implements Serializable{
 	
 	public void submitTimesheet(TimeSheet timesheet) {
 		this.timesheet = timesheet;
-		for(TimeSheetRow r : timesheet.getTimeSheetRows()){
-			if(r.getWeekTotalHrs() < 40.0){
-				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cannot Submit, hours is less than 40!", null));
-				return ;
-			}
+		if(this.timesheet.getOverallTotalHrs() < 40.0){
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cannot submit timesheet, total hours worked is less than 40.", null));
+			return ;
 		}
-		
 		timesheet.setSubmitted(true);
 		timesheetManager.merge(this.timesheet);
 	}
