@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 //import javax.transaction.Transactional;
@@ -93,7 +95,8 @@ public class TimesheetController implements Serializable{
 	
 	public String saveChanges() {
 		vacationDaysTaken();
-		for(int i = 1; i < 8; i++){
+		calculateWeekTotalHours();
+		for(int i = 1; i < 9; i++){
 			calculateTotaldayhours(i);
 		}
 		timesheetManager.merge(timesheet);
@@ -169,7 +172,10 @@ public class TimesheetController implements Serializable{
 	
 	public String createTimesheet() {
 		vacationDaysTaken();
-		for(int i = 1; i < 8; i++){
+		if(!(calculateWeekTotalHours())){
+			return "";
+		}
+		for(int i = 1; i < 9; i++){
 			calculateTotaldayhours(i);
 		}
 		timesheetManager.persist(timesheet);
@@ -196,7 +202,7 @@ public class TimesheetController implements Serializable{
 		return "cancelEditTimesheet";
 	}
 	
-	public String CancelViewTimesheet(){
+	public String cancelViewTimesheet(){
 		return "cancelViewTimesheet";
 	}
 
@@ -207,6 +213,22 @@ public class TimesheetController implements Serializable{
 		}
 		employee.setVacDays(employee.getVacDays() - daysTaken);
 		employeeManager.merge(employee);
+	}
+	
+	public boolean calculateWeekTotalHours(){
+		double hours = 0.0;
+		boolean isValid = true;
+		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
+			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
+				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
+				+ r.getSatHrs() + r.getSunHrs())));
+			if(hours < 40.0 ){
+				isValid = false;
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("Error Hours is Less than 40"));
+			}
+		}
+		return isValid;
 	}
 	
 	public void calculateTotaldayhours(int day) {
@@ -240,6 +262,10 @@ public class TimesheetController implements Serializable{
 				case 7:
 					hours += r.getFriHrs();
 					timesheet.setFriTotalHrs(hours);
+					break;
+				case 8:
+					hours += r.getWeekTotalHrs();
+					timesheet.setOverallTotalHrs(hours);
 					break;
 			}
 		}
