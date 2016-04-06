@@ -277,7 +277,7 @@ public class EmployeeController implements Serializable {
 
 			refreshCurrentEmployee();
 			refreshList();
-			return "userProfile";
+			return "ViewDetails";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Invalid email address entered."));
