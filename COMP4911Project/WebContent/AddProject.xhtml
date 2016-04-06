@@ -42,22 +42,107 @@
       		<b:column col-sm="4" col-xs="12">
       		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.supervisor}"></b:inputText>
       		</b:column>
-      		</b:row>
-      		<h:outputLabel value="Project Description" />
-      		<b:row>
-      		<b:column col-sm="4" col-xs="12">
-      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.desc}"></b:inputText>
-      		</b:column>
-      		</b:row>           		
+      		</b:row>      		
       		<h:outputLabel value="Issue Date" />
       		<b:row>
       		<b:column col-sm="4" col-xs="12">      		
       		<b:datepicker format="dd/mm/yyyy" value="#{projectControl.project.issueDate}"></b:datepicker>
       		</b:column>
-      		</b:row>         		
+      		</b:row> 
+      		<h:outputLabel value="Estimated Completion Date" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:datepicker format="dd/mm/yyyy" value="#{projectControl.project.estCompletionDate}"></b:datepicker>
+      		</b:column>
+      		</b:row>       
+      		<h:outputLabel value="Project Assistant" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.projAssistant}"></b:inputText>
+      		</b:column>
+      		</b:row> 
+      		<h:outputLabel value="Costing Proposal" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.proposal}"></b:inputText>
+      		</b:column>
+      		</b:row>   		
+      		<h:outputLabel value="Initial Budget" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.initBudget}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="RO1 Budget" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.ro1Budget}"></b:inputText>
+      		</b:column>
+      		</b:row>  
+      		<h:outputLabel value="RO2 Budget" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.ro2Budget}"></b:inputText>
+      		</b:column>
+      		</b:row> 
+      		<h:outputLabel value="Final Budget" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.finalBudget}"></b:inputText>
+      		</b:column>
+      		</b:row>	
+      		<h:outputLabel value="Man Days P1" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP1}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days P2" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP2}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days P3" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP3}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days P4" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP4}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days P5" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP5}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days DS" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysDS}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Man Days SS" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysSS}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		<h:outputLabel value="Description" />
+      		<b:row>
+      		<b:column col-sm="4" col-xs="12">
+      		<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.desc}"></b:inputText>
+      		</b:column>
+      		</b:row>
+      		
 			<br/>			
       		<h:commandButton class="btn btn-default" value="Create Project" action="#{projectControl.addProject()}"></h:commandButton>
-      		<h:commandButton class="btn btn-default" value="Cancel" action="#{projectControl.cancelNewProject()}"></h:commandButton>
+      		<h:commandButton class="btn btn-default" value="Cancel" action="#{projectControl.cancelNewProject()}" immediate="true"></h:commandButton>
       	</b:container>
       </h:form>
    </h:body>

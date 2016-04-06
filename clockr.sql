@@ -94,10 +94,11 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         FriTotalHrs double,
                         FlextimeHrs double, 
                         Signature VARCHAR(255),
-                        Approval VARCHAR(255),
+                        Submitted BOOL,
+                        Approval BOOL,
                         IsActive BOOL);
 						
-INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", "", TRUE);	
+INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", FALSE, FALSE, TRUE);	
                         
 DROP TABLE IF EXISTS TimeSheetRow;
 CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,
@@ -238,6 +239,7 @@ INSERT INTO EmployeeWPList VALUES(
 DROP TABLE IF EXISTS StatusReport;
 CREATE TABLE StatusReport(
                         StatusReportId TINYTEXT,
+                        RespEngId TINYTEXT,
                         ReportDate date,
                         MDPlanned double,
                         MDActual double,
@@ -252,6 +254,7 @@ CREATE TABLE StatusReport(
                         
 INSERT INTO StatusReport VALUES(
                         "1|1|1",
+                        "000004",
                         "2016-01-31",
                         "100",
                         "120",

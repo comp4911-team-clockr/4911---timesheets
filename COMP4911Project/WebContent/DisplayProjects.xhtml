@@ -47,9 +47,20 @@
 					<h:commandButton styleClass="btn greyButton" value="Add Work Package"
 						action="#{workPackControl.addWP(proj)}"/>
 				</h:column>
+				<h:column>
+					<f:facet name="header">Edit Project</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="Edit Project"
+						action="#{projectControl.selectEditProject(proj)}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton styleClass="btn greyButton" value="Delete"
+						action="#{projectControl.deleteProject(proj)}"/>
+				</h:column>
       		</b:dataTable>   
       		<h:commandButton class="btn buttonColorizer" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>

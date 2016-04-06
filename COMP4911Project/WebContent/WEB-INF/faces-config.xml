@@ -2,6 +2,23 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.loginMessage</base-name>
+            <var>loginMsg</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.timeSheetMessage</base-name>
+            <var>tsMsg</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>comp4911.messageBundle.employeeMessage</base-name>
+            <var>empMsg</var>
+        </resource-bundle>
+    </application>
  <navigation-rule>
   <from-view-id>/MainIndex.xhtml</from-view-id>
   <navigation-case>
@@ -11,7 +28,18 @@
   <navigation-case>
    <from-outcome>ForgotPasswordPage</from-outcome>
    <to-view-id>/ForgottenPassword.xhtml</to-view-id>
+  </navigation-case>       
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/Splash.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>AddEmployee</from-outcome>
+   <to-view-id>/AddEmployee.xhtml</to-view-id>
   </navigation-case>  
+  <navigation-case>
+   <from-outcome>addProject</from-outcome>
+   <to-view-id>/AddProject.xhtml</to-view-id>
+  </navigation-case>     
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/EmployeesHR.xhtml</from-view-id>
@@ -33,6 +61,17 @@
    <from-outcome>addWP</from-outcome>
    <to-view-id>/AddWorkPackage.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+  	<from-outcome>displayProjects</from-outcome>
+  	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ <from-view-id>/AddWorkPackage.xhtml</from-view-id>
+ <navigation-case>
+ 	<from-outcome>DisplayProject</from-outcome>
+ 	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+ </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/DisplayEmployees.xhtml</from-view-id>
@@ -62,6 +101,17 @@
    <from-outcome>reloadProjects</from-outcome>
    <to-view-id>/DisplayProjects.xhtml</to-view-id>
   </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+	 <from-view-id>/EditProject.xhtml</from-view-id>
+		 <navigation-case>
+			 <from-outcome>cancelEditProject</from-outcome>
+			 <to-view-id>/DisplayProjects.xhtml</to-view-id>
+		 </navigation-case>
+		 <navigation-case>
+		 	<from-outcome>editProject</from-outcome>
+		 	<to-view-id>/DisplayProjects.xhtml</to-view-id>
+ 		</navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/EditEmployee.xhtml</from-view-id>
@@ -130,10 +180,13 @@
    <to-view-id>/MainIndex.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
+<<<<<<< HEAD
    <from-outcome>GetRecoveryQuestions</from-outcome>
    <to-view-id>/RecoveryQuestions.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
+=======
+>>>>>>> cb6e96123613e375e2d53e6838dd92fbdf4c0940
    <from-outcome>RecoveryPassed</from-outcome>
    <to-view-id>/ChangePassword.xhtml</to-view-id>
   </navigation-case>  
@@ -144,10 +197,13 @@
    <from-outcome>ChangePasswordConfirmed</from-outcome>
    <to-view-id>/MainIndex.xhtml</to-view-id>
   </navigation-case>
+<<<<<<< HEAD
     <navigation-case>
    <from-outcome>RecoveryPassed</from-outcome>
    <to-view-id>/ChangePassword.xhtml</to-view-id>
   </navigation-case>  
+=======
+>>>>>>> cb6e96123613e375e2d53e6838dd92fbdf4c0940
   <navigation-case>
    <from-outcome>CancelChangePassword</from-outcome>
    <to-view-id>/MainIndex.xhtml</to-view-id>
