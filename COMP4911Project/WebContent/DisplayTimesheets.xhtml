@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+      <f:event listener="#{test.initDisplay}" type="preRenderView"></f:event>
    <h:head>
       <title></title>
       <h:outputStylesheet library="css" name="main.css"  /> 
@@ -28,7 +29,7 @@
 				<h:column>
 					<f:facet name="header">Week Number</f:facet>
 					<h:commandLink class="removeDot" value="#{timesheet.weekNumber}" 
-					action="#{test.gotoTimesheet(timesheet)}">
+					action="#{test.gotoTimesheet(timesheet, false)}">
 					</h:commandLink>
 				</h:column>
 				<h:column>

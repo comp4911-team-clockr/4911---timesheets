@@ -87,7 +87,7 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         OverallTotalHrs double,
                         SatTotalHrs double,
                         SunTotalHrs double,
-						MonTotalHrs double,
+						            MonTotalHrs double,
                         TuesTotalHrs double,
                         WedsTotalHrs double,
                         ThursTotalHrs double,
@@ -98,7 +98,7 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         Approval BOOL,
                         IsActive BOOL);
 						
-INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", FALSE, FALSE, TRUE);	
+INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", TRUE, FALSE, TRUE);	
                         
 DROP TABLE IF EXISTS TimeSheetRow;
 CREATE TABLE TimeSheetRow( TimeSheetRowId TINYTEXT,
@@ -217,24 +217,48 @@ INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "0
                                 2, true);
 
 DROP TABLE IF EXISTS EmployeeWPList;
-CREATE TABLE EmployeeWPList(WpEmpId TINYTEXT, WpId TINYTEXT, EmpNum int);
-                            
+CREATE TABLE EmployeeWPList(WpEmpId TINYTEXT, WpId TINYTEXT, EmpNum int, ProjectId int);
+
+INSERT INTO EmployeeWPList VALUES(
+              "1|0|1",
+              NULL,
+              1,
+              1);
+INSERT INTO EmployeeWPList VALUES(
+              "1|0|2",
+              NULL,
+              2,
+              1);
+INSERT INTO EmployeeWPList VALUES(
+              "2|0|3",
+              NULL,
+              3,
+              2);
+INSERT INTO EmployeeWPList VALUES(
+              "2|0|4",
+              NULL,
+              4,
+              2);                           
 INSERT INTO EmployeeWPList VALUES(
 							"1|1|1",
 							"1|1",
-							1);
+							1,
+              1);
 INSERT INTO EmployeeWPList VALUES(
 							"1|1|2",
 							"1|1",
-							2);
+							2,
+              1);
 INSERT INTO EmployeeWPList VALUES(
 							"2|1|3",
 							"2|1",
-							3);
+							3,
+              2);
 INSERT INTO EmployeeWPList VALUES(
 							"2|1|4",
 							"2|1",
-							4);
+							4,
+              2);
 
 DROP TABLE IF EXISTS StatusReport;
 CREATE TABLE StatusReport(

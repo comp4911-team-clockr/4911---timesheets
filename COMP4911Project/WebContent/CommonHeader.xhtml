@@ -2,25 +2,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <body>
-	    <ui:composition>
-			<b:navBar brand="Clockr" brandHref="Splash.xhtml">
-			     <b:navbarLinks>
-			         <b:navLink value="Home" href="Splash.xhtml" iconAwesome="home"></b:navLink>
-			         <b:navLink value="Projects" href="DisplayProjects.xhtml" iconAwesome="folder-open"></b:navLink>
-			          <b:navLink value="TimeSheets" href="DisplayTimesheets.xhtml" iconAwesome="calendar"></b:navLink>
-			         <b:navLink value="Employees" href="DisplayEmployees.xhtml" iconAwesome="suitcase"></b:navLink>
-			         <b:dropMenu value="Profile" iconAwesome="gears">
-			             <b:navLink value="Update Profile" href="ResetCreds.xhtml"></b:navLink>
-			             <b:navLink value="View Details" href="ViewDetails.xhtml"></b:navLink>
-			             <b:navLink value="Sign Out" href="MainIndex.xhtml"></b:navLink>
-			         </b:dropMenu>
-			     </b:navbarLinks>
-			</b:navBar>			
-	    </ui:composition>
-    </body>
-</html> 
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<b:navBar brand="Clockr" brandHref="Splash.xhtml">
+			<b:navbarLinks>
+				<b:navLink value="Home" href="Splash.xhtml" iconAwesome="home"></b:navLink>
+				<b:navLink value="Projects" href="DisplayProjects.xhtml"
+					iconAwesome="folder-open"></b:navLink>
+				<b:dropMenu value="TimeSheets" iconAwesome="calendar">
+					<b:navLink value="#{user.currentEmployee.firstName}'s TimeSheets" href="DisplayTimesheets.xhtml"></b:navLink>
+					<b:navLink value="TimeSheets for Approval" href="DisplayTimesheetsForApproval.xhtml"></b:navLink>
+				</b:dropMenu>
+				
+				<b:navLink value="Employees" href="DisplayEmployees.xhtml"
+					iconAwesome="suitcase"></b:navLink>
+				<b:dropMenu value="Profile" iconAwesome="gears">
+					<b:navLink value="Update Profile" href="ResetCreds.xhtml"></b:navLink>
+					<b:navLink value="View Details" href="ViewDetails.xhtml"></b:navLink>
+					<b:navLink value="Sign Out" href="MainIndex.xhtml"></b:navLink>
+				</b:dropMenu>
+			</b:navbarLinks>
+		</b:navBar>
+	</ui:composition>
+</body>
+</html>

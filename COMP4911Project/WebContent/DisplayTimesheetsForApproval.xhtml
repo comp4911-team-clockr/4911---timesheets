@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      <f:event listener="#{test.initApproval}" type="preRenderView"></f:event>
+   <h:head>
+      <title></title>
+      <h:outputStylesheet library="css" name="main.css"  /> 
+   </h:head>
+   <h:body id="bgImage2">
+      <h:form>
+	      <b:container>
+			<div id="header">
+			<ui:insert name="header">
+				<ui:include src="CommonHeader.xhtml"/>
+			</ui:insert>
+			</div>		
+	      </b:container>
+      </h:form>
+      <h:form>
+      	<b:container styleClass="tableChange">
+      		<h1>Troublesome Timesheets for Approval</h1><br/><p>Employee Number: #{user.currentEmployee.empNumber}</p>
+      		<b:dataTable styleClass="roundTheCorners" value="#{test.timesheetList}" var="timesheet">
+      			<h:column>
+					<f:facet name="header">Employee Number</f:facet>
+					<h:outputText value="#{timesheet.empNumber}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Employee Name</f:facet>
+					<h:outputText value="#{test.getEmployeeName(timesheet.empNumber)}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Week Number</f:facet>
+					<h:commandLink class="removeDot" value="#{timesheet.weekNumber}" 
+					action="#{test.gotoTimesheet(timesheet, true)}">
+					</h:commandLink>
+				</h:column>
+      		</b:dataTable>    
+      		<p></p>
+      	</b:container>
+      	<br/><br/>
+      </h:form>
+   </h:body>
+</html>

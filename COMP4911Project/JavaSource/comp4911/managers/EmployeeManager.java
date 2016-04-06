@@ -29,20 +29,20 @@ public class EmployeeManager implements Serializable {
 	public Employee find(int id) {
 		return em.find(Employee.class, id);
 	}
-	
+
 	public void persist(Employee employee) {
 		em.persist(employee);
 	}
-	
+
 	public void merge(Employee employee) {
 		em.merge(employee);
 	}
-	
+
 	public void remove(Employee employee) {
 		employee = find(employee.getEmpNumber());
 		em.remove(employee);
 	}
-	
+
 	public Employee findByUserId(String id) {
 		TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e WHERE e.credential.userId = :userID ", Employee.class);
 		query.setParameter("userID", id);
@@ -50,12 +50,21 @@ public class EmployeeManager implements Serializable {
 		Employee emp = results.get(0);
 		return emp;
 	}
-	
+
 	public java.util.List<Employee> getAll() {
-	        TypedQuery<Employee> query = em.createQuery("select e from Employee e",
-	                Employee.class); 
-	        java.util.List<Employee> employees = query.getResultList();
-	        
-	        return employees;
+		TypedQuery<Employee> query = em.createQuery("select e from Employee e",
+				Employee.class); 
+		java.util.List<Employee> employees = query.getResultList();
+
+		return employees;
+	}
+
+	public java.util.List<Employee> getAllBySupervisor(int supId) {
+		TypedQuery<Employee> query = em.createQuery("select e from Employee e " +
+				"WHERE e.supNum IS " + supId,
+				Employee.class); 
+		java.util.List<Employee> employees = query.getResultList();
+
+		return employees;
 	}
 }
