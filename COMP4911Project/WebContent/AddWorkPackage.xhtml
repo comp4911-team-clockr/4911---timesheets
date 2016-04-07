@@ -28,30 +28,39 @@
 	      	<b:row>
 		     	<b:column col-sm="4" col-xs="12">      
 		     		<h:outputLabel value="Project ID" />		
-      				<b:inputText value="#{workPackControl.workPack.projectId}" readonly="#{workPackControl.idReadOnly}"/>
+      				<b:inputText id="wpPID" value="#{workPackControl.workPack.projectId}" readonly="#{workPackControl.idReadOnly}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpPID"/>
       			</b:column>
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="Work Package Number" />      			
-      				<b:inputText value="#{workPackControl.workPack.wpNum}"/>
+      				<b:inputText id="workpN" value="#{workPackControl.workPack.wpNum}" validateMessage="#{wpMsg.wpNum}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="workpN"/>
       			</b:column>   
 		     	<b:column col-sm="4" col-xs="12">
 		     		<h:outputLabel value="Work Package Title" />	        		
-      				<b:inputText value="#{workPackControl.workPack.wpTitle}"/>
+      				<b:inputText id="workpT" value="#{workPackControl.workPack.wpTitle}" validateMessage="#{wpMsg.wpTitle}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="workpT"/>
       			</b:column>      			   			
       		</b:row>      				
 
 	      	<b:row>
 		     	<b:column col-sm="4" col-xs="12">        
 		     		<h:outputLabel value="Customer" />		
-      				<b:inputText value="#{workPackControl.workPack.customer}"/>
+      				<b:inputText id="wpCust" value="#{workPackControl.workPack.customer}" 
+      						validateMessage="#{wpMsg.wpCust}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpCust"/>
       			</b:column>
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="Responsibility Engineer ID" />    		
-      				<b:inputText value="#{workPackControl.workPack.respId}"/>
+      				<b:inputText id="wpresId" value="#{workPackControl.workPack.respId}" 
+      						validateMessage="#{wpMsg.wpRespId}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpresId"/>
       			</b:column>   
 		     	<b:column col-sm="4" col-xs="12">
 		     		<h:outputLabel value="MDP1" />       		
-      				<b:inputText value="#{workPackControl.workPack.mdp1}"/>
+      				<b:inputText id="wpmd1" value="#{workPackControl.workPack.mdp1}" validateMessage="#{wpMsg.wpMdp1}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpmd1"/>
       			</b:column>      			   			
       		</b:row>	
 	
@@ -64,30 +73,43 @@
  	      	<b:row>
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="MDP2" />     		
-      				<b:inputText value="#{workPackControl.workPack.mdp2}"/>
+      				<b:inputText id="wpmd2" value="#{workPackControl.workPack.mdp2}" validateMessage="#{wpMsg.wpMdp2}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpmd2"/>
       			</b:column>
 		     	<b:column col-sm="4" col-xs="12">   
 		     		<h:outputLabel value="MDP3" />    		
-      				<b:inputText value="#{workPackControl.workPack.mdp3}"/>
+      				<b:inputText id="wpmd3" value="#{workPackControl.workPack.mdp3}" validateMessage="#{wpMsg.wpMdp3}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpmd3"/>
       			</b:column>  
 		     	<b:column col-sm="4" col-xs="12"> 
 		     		<h:outputLabel value="MDP4" />      		
-	      			<b:inputText value="#{workPackControl.workPack.mdp4}"/>
+	      			<b:inputText id="wpmd4" value="#{workPackControl.workPack.mdp4}"  validateMessage="#{wpMsg.wpMdp4}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpmd4"/>
     			</b:column>        			    			
       		</b:row>	
 
  	      	<b:row>
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="MDP5" />     		
-      				<b:inputText value="#{workPackControl.workPack.mdp5}"/>
+      				<b:inputText id="wpmd5" value="#{workPackControl.workPack.mdp5}" validateMessage="#{wpMsg.wpMdp5}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpmd5"/>
       			</b:column>
 		     	<b:column col-sm="4" col-xs="12">
 		     		<h:outputLabel value="MDDS" />       		
-      				<b:inputText value="#{workPackControl.workPack.mdds}"/>
+      				<b:inputText id="wpMDD" value="#{workPackControl.workPack.mdds}" validateMessage="#{wpMsg.wpMdds}" converterMessage="#{wpMsg.wpConvert}" 
+      						required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpMDD"/>
       			</b:column> 
 		     	<b:column col-sm="4" col-xs="12">
 		     		<h:outputLabel value="MDSS" />       		
-      				<b:inputText value="#{workPackControl.workPack.mdss}"/><BR/>
+      				<b:inputText id="wpMDS" value="#{workPackControl.workPack.mdss}" validateMessage="#{wpMsg.wpMdss}" 
+      						converterMessage="#{wpMsg.wpConvert}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:message for="wpMDS"/>
+      				<BR/>
       			</b:column>      			     			
       		</b:row>	
 

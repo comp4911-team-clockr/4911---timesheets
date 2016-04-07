@@ -26,7 +26,8 @@
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	   	   			<h:outputLabel value="Project Name" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.projName}" ></b:inputText>
+	      			<b:inputText id="projNam" styleClass="smallerTextInput" value="#{projectControl.project.projName}" validateMessage="#{projMsg.projName}" required="true" requiredMessage="#{projMsg.projReq}"></b:inputText>
+	      			<b:message for="projNam"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Project Manager" />
