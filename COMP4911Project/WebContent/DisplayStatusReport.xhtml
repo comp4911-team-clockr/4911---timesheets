@@ -39,7 +39,9 @@
 
 				<h:column>
 					<f:facet name="header">Report Date</f:facet>
-					<h:outputText value="#{statRep.reportDate}" />
+					<h:outputText value="#{statusReportControl.statusReport.reportDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
 				</h:column>
 
 				<h:column>

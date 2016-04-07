@@ -124,9 +124,10 @@ public class TimesheetController implements Serializable{
 	public String saveChanges() {
 		vacationDaysTaken();
 		calculateWeekTotalHours();
-		for(int i = 1; i < 9; i++){
+		for(int i = 1; i < 10; i++){
 			calculateTotaldayhours(i);
 		}
+		flextimeTaken();
 		timesheet.setApproval(false);
 		timesheet.setSubmitted(false);
 		timesheetManager.merge(timesheet);
@@ -146,7 +147,6 @@ public class TimesheetController implements Serializable{
 	}
 	
 	public void createTimesheetRow() {
-		
 		int tsRowNum = 1;
 		if (timesheet.getTimeSheetRows().size() > 0) {
 			TimeSheetRow temp = timesheet.getTimeSheetRows().get(timesheet.getTimeSheetRows().size() - 1);
@@ -205,9 +205,10 @@ public class TimesheetController implements Serializable{
 	public String createTimesheet() {
 		vacationDaysTaken();
 		calculateWeekTotalHours();
-		for(int i = 1; i < 9; i++){
+		for(int i = 1; i < 10; i++){
 			calculateTotaldayhours(i);
 		}
+		flextimeTaken();
 		timesheetManager.persist(timesheet);
 		timesheetList.add(timesheet);
 		return "DisplayTimesheets";
@@ -245,12 +246,21 @@ public class TimesheetController implements Serializable{
 		employeeManager.merge(employee);
 	}
 	
+	public void flextimeTaken(){
+		double hours = 0.0;
+		hours = timesheet.getFlextimeHrs();
+		employee.setFlexHrs((employee.getFlexHrs() - hours));
+		employeeManager.merge(employee);
+	}
+	
+	
 	public void calculateWeekTotalHours(){
 		double hours = 0.0;
 		for(TimeSheetRow r : timesheet.getTimeSheetRows()) {
 			r.setWeekTotalHrs((hours = (r.getMonHrs() + r.getTuesHrs() 
 				+ r.getWedHrs() + r.getThursHrs() + r.getFriHrs() 
-				+ r.getSatHrs() + r.getSunHrs() + r.getFlexTimeHrs())));
+				+ r.getSatHrs() + r.getSunHrs() + r.getFlexTimeHrs() 
+				+ (r.getVacationDays() * 8))));
 		}
 		if(hours > 40) {
 			employee.setFlexHrs((hours-40));

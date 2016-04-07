@@ -52,7 +52,9 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Date Issued</f:facet>
-					<h:outputText class="removeDot" value="#{proj.issueDate}"/>
+					<h:outputText class="removeDot" value="#{proj.issueDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
 				</h:column>	
 				<h:column>
 					<f:facet name="header">Remaining Budget</f:facet>
