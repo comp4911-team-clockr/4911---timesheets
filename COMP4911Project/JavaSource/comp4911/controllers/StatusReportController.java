@@ -18,6 +18,7 @@ import comp4911.models.Employee;
 import comp4911.models.Project;
 import comp4911.models.WorkPackage;
 import comp4911.models.StatusReport;
+import comp4911.models.TimeSheet;
 
 
 @Named("statusReportControl")
@@ -146,5 +147,16 @@ public class StatusReportController implements Serializable {
 		System.out.println("getPercent called");
 		double temp = pc * 100;
 		return temp;
+	}
+
+	public String editStatusReport(StatusReport statusreport) {
+		this.statusReport = statusreport;
+		return "editStatusreport";
+	}
+	
+	public String addStatusReport() {
+		this.statusReport = new StatusReport();
+		statusReportList.add(statusReport);
+		return "addStatusreport";
 	}
 }
