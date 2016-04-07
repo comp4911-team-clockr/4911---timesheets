@@ -2,93 +2,129 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-   <h:head>
-      <title></title>
-      <h:outputStylesheet library="css" name="main.css"  /> 
-   </h:head>
-   <h:body id="bgImage2">
-      <h:form>
-	      <b:container>
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title></title>
+	<h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<h:body id="bgImage2">
+	<h:form id="addStatusReportForm">
+		<b:container>
 			<div id="header">
-			<ui:insert name="header">
-				<ui:include src="CommonHeader.xhtml"/>
-			</ui:insert>
-			</div>		
-	      </b:container>
-      </h:form>
-      <h:form>
-      	<b:container styleClass="tableChange">
-      		<h1>Status Reports</h1><br/>
-      		<b:dataTable styleClass="roundTheCorners" value="#{statusReportControl.statusReportList}" var="work">
-      			<h:column>
-					<f:facet name="header">Status Report Id</f:facet>
-					<h:inputText value="#{work.statusReportId}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Responsibility Engineer</f:facet>
-					<h:inputText value="#{work.respEngId}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Report Date</f:facet>
-					<h:inputText value="#{work.reportDate}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Man Days Planned</f:facet>
-					<h:inputText value="#{work.mdPlanned}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Man Days Actual</f:facet>
-					<h:inputText value="#{work.mdActual}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Work Accomplished This Period</f:facet>
-					<h:inputText value="#{work.workAccomplished}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Work Planned Next Period</f:facet>
-					<h:inputText value="#{work.workPlanned}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Problems Encountered This Period</f:facet>
-					<h:inputText value="#{work.problemsEncountered}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Problems Anticipated Next Period</f:facet>
-					<h:inputText value="#{work.problemsAnticipated}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Time Variance</f:facet>
-					<h:inputText value="#{work.timeVariance}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Labour (Man Days) Variance</f:facet>
-					<h:inputText value="#{work.mdVariance}"/>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">Cost Variance</f:facet>
-					<h:inputText value="#{work.costVariance}"/>					
-				</h:column>
+				<ui:insert name="header">
+					<ui:include src="CommonHeader.xhtml" />
+				</ui:insert>
+			</div>
+		</b:container>
+	</h:form>
+	<h:form>
+		<b:container styleClass="tableChange">
+			<h1>Add Status Report</h1>
+			<br />
+			<h:messages style="color:red" />
 
-      		</b:dataTable>
-      		      	<h:commandButton styleClass="btn btn-default" value="Back"
-						action="#{workPackControl.backToProjects}"/>
-      	</b:container>
-      	<br/><br/>
-      </h:form>
-   </h:body>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Status Report ID" />
+					<b:inputText
+						value="#{statusReportControl.statusReport.statusReportId}"
+						readonly="#{workPackControl.idReadOnly}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Responsibility Engineer Id" />
+					<b:inputText value="#{statusReportControl.statusReport.respEngId}"
+						validatorMessage="Not a valid Responsibility Engineer Number. ex: 000001"
+						required="true">
+						<f:validateRegex pattern="[0-9]{6}" />
+					</b:inputText>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Report Date" />
+					<b:inputText value="#{statusReportControl.statusReport.reportDate}"
+						readonly="true" />
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Man Days Planned" />
+					<b:inputText id="SRManDaysPlanned" value="#{statusReportControl.statusReport.mdPlanned}">
+						<f:validateLongRange minimum="0" maximum="1000" />
+					</b:inputText>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Man Days Actual" />
+					<b:inputText id="SRManDaysActual" value="#{statusReportControl.statusReport.mdActual}">
+						<f:validateLongRange minimum="0" maximum="1000" />
+					</b:inputText>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Work Accomplished" />
+					<b:inputTextarea
+						value="#{statusReportControl.statusReport.workAccomplished}"
+						validatorMessage="Length should not exceed 512 characters for Work Accomplished.">
+						<f:validateLength maximum="512" />
+					</b:inputTextarea>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Work Planned" />
+					<b:inputTextarea
+						value="#{statusReportControl.statusReport.workPlanned}"
+						validatorMessage="Length should not exceed 512 characters for Work Planned.">
+						<f:validateLength maximum="512" />
+					</b:inputTextarea>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Problems Encountered" />
+					<b:inputTextarea
+						value="#{statusReportControl.statusReport.problemsEncountered}"
+						validatorMessage="Length should not exceed 512 characters for Problems Encountered.">
+						<f:validateLength maximum="512" />
+					</b:inputTextarea>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Problems Anticipated" />
+					<b:inputTextarea
+						value="#{statusReportControl.statusReport.problemsAnticipated}"
+						validatorMessage="Length should not exceed 512 characters for Problems Anticipated.">
+						<f:validateLength maximum="512" />
+					</b:inputTextarea>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Time Variance" />
+					<b:inputText
+						value="#{statusReportControl.statusReport.timeVariance}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Man Days Variance" />
+					<b:inputText value="#{statusReportControl.statusReport.mdVariance}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Cost Variance" />
+					<b:inputText
+						value="#{statusReportControl.statusReport.costVariance}" />
+					<br />
+				</b:column>
+			</b:row>
+
+			<h:commandButton styleClass="btn workPackageButtons addPadRight"
+				value="Add Work Package"
+				action="#{statusReportControl.saveChangesForAdd}"></h:commandButton>
+			<h:button styleClass="btn workPackageButtons" value="Cancel"
+				outcome="#{statusReportControl.listNavigation}" immediate="true"></h:button>
+			<p></p>
+		</b:container>
+		<br />
+		<br />
+	</h:form>
+</h:body>
 </html>

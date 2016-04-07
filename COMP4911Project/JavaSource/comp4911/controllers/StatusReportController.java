@@ -1,6 +1,7 @@
 package comp4911.controllers;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -31,7 +32,7 @@ public class StatusReportController implements Serializable {
 	
 	private final String listNavigation = "DisplayStatusReport";
 	private final String editNavigation = "EditStatusReport";
-//	private final String addNavigation = "AddStatusReport";
+	private final String addNavigation = "AddStatusReport";
 	private final String viewNavigation = "ViewStatusReport";
 	private final String workPackageNavigation = "DisplayWorkPackages";
 
@@ -71,6 +72,10 @@ public class StatusReportController implements Serializable {
 		statusReportList = new ArrayList<StatusReport>();
 	}
 	
+	public String getListNavigation() {
+		return listNavigation;
+	}
+
 	// get all status reports in db
 	public StatusReport getStatusReport() {
 		System.out.println("Get StatusReport called");
@@ -142,7 +147,7 @@ public class StatusReportController implements Serializable {
 		System.out.println("getEmployeeName called");
 		return empManager.find(Integer.parseInt(username)).getFullName();
 	}
-
+	
 	public double getPercent(double pc) {
 		System.out.println("getPercent called");
 		double temp = pc * 100;
@@ -151,12 +156,28 @@ public class StatusReportController implements Serializable {
 
 	public String editStatusReport(StatusReport statusreport) {
 		this.statusReport = statusreport;
-		return "editStatusreport";
+		return editNavigation;
 	}
 	
 	public String addStatusReport() {
 		this.statusReport = new StatusReport();
-		statusReportList.add(statusReport);
-		return "addStatusreport";
+		statusReportList = statusReportManager.getAllByWorkPackage(workPack.getWpId());
+		statusReport.setStatusReportId(workPack.getWpId() + "|" + (statusReportList.size() + 1));
+		//temp
+		statusReport
+		.setReportDate(new java.sql.Date(java.util.Calendar.getInstance().getTime().getTime()));
+		return addNavigation;
+	}
+	
+	public String saveChangesForAdd() {
+		statusReportManager.persist(statusReport);
+		statusReportList.add(statusReport); //simulates add rather than doing a refresh
+		//which is less costly
+		return listNavigation;
+	}
+	public String saveChangesForEdit() {
+		statusReportManager.merge(statusReport);
+		refreshList();
+		return listNavigation;
 	}
 }
