@@ -213,7 +213,7 @@ public class WorkPackageController implements Serializable {
 	}
 	
 	public String backToProjects(){
-		return "displayProjects";
+		return "DisplayProjects";
 	}
 
 	public boolean isIdReadOnly() {
