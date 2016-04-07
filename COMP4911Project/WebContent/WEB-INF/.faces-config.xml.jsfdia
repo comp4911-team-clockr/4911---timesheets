@@ -37,11 +37,14 @@
   PATH="/DisplayWorkPackages.xhtml" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#DisplayWorkPackages.xhtml:0" NAME="item"
    PATH="/DisplayWorkPackages.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="addWP::#AddWorkPackage.xhtml" NAME="output"
-    PATH="/AddWorkPackage.xhtml" TARGET="rules:#AddWorkPackage.xhtml"
-    TITLE="addWP" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editStatusreport::#EditStatusReport.xhtml"
+    NAME="output" PATH="/EditStatusReport.xhtml"
+    TARGET="rules:#EditStatusReport.xhtml" TITLE="editStatusreport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addStatusreport::#AddStatusReport.xhtml"
+    NAME="output1" PATH="/AddStatusReport.xhtml"
+    TARGET="rules:#AddStatusReport.xhtml" TITLE="addStatusreport" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="displayProjects::#DisplayProjects.xhtml"
-    NAME="output1" PATH="/DisplayProjects.xhtml"
+    NAME="output2" PATH="/DisplayProjects.xhtml"
     TARGET="rules:#DisplayProjects.xhtml" TITLE="displayProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
@@ -219,6 +222,7 @@
     TARGET="rules:#DisplayProjects.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+<<<<<<< Updated upstream
  <PROCESS-ITEM NAME="rules:#ViewProject.xhtml" PATH="/ViewProject.xhtml"
   SHAPE="368,849,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#ViewProject.xhtml:0" NAME="item"
@@ -234,4 +238,10 @@
     TARGET="rules:#DisplayProjects.xhtml" TITLE="cancelViewProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+=======
+ <PROCESS-ITEM NAME="rules:#EditStatusReport.xhtml"
+  PATH="/EditStatusReport.xhtml" SHAPE="368,849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#AddStatusReport.xhtml"
+  PATH="/AddStatusReport.xhtml" SHAPE="368,849,0,0" model-entity="JSFProcessGroup"/>
+>>>>>>> Stashed changes
 </PROCESS>
