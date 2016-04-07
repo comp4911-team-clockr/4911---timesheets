@@ -15,6 +15,7 @@ import comp4911.managers.EmployeeManager;
 import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.WorkPackageManager;
 import comp4911.models.Employee;
+import comp4911.models.EmployeeWPList;
 import comp4911.models.Project;
 import comp4911.models.WorkPackage;
 
@@ -37,6 +38,7 @@ public class WorkPackageController implements Serializable {
 	private final String validRENumPattern = "[0-9]{6}";
 	
 	private boolean idReadOnly = true;
+	private boolean allowWPAssignment;
 	
 	@Inject
 	private WorkPackage workPack;
@@ -52,6 +54,8 @@ public class WorkPackageController implements Serializable {
 	
 	@Inject
 	private EmployeeWPManager empWPManager;
+	
+	private Employee employee;
 	
 	private List<WorkPackage> workPackList;
 	
@@ -73,6 +77,7 @@ public class WorkPackageController implements Serializable {
 
 	public String gotoList(Project project) {
 		this.project = project;
+		refreshList();
 		return listNavigation;
 	}
 	
@@ -95,7 +100,6 @@ public class WorkPackageController implements Serializable {
 	
 	public List<WorkPackage> getWorkPackList() {
 		System.out.println("Get WorkPackage List");
-		refreshList();
 		return workPackList;
 	}
 	
@@ -179,18 +183,18 @@ public class WorkPackageController implements Serializable {
 		boolean validWP = true;
 		if (!validWPNum(workPack.getWpNum())) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Not a valid Work Package Number. ex: B1111"));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not a valid Work Package Number. ex: B1111", null));
 			validWP = false;
 		}
 		
 		if (!validRespEngPat(workPack.getRespId())) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Not a valid Responsibility Engineer Number. ex: 000001"));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not a valid Responsibility Engineer Number. ex: 000001", null));
 			validWP = false;
 		} else {
 			if (!validEmp(workPack.getRespId())) {
 				FacesContext.getCurrentInstance().addMessage(null,
-						new FacesMessage("This employee does not exist."));
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "This employee does not exist.", null));
 				validWP = false;
 			}
 		}
@@ -222,5 +226,42 @@ public class WorkPackageController implements Serializable {
 
 	public void setIdReadOnly(boolean idReadOnly) {
 		this.idReadOnly = idReadOnly;
+	}
+	
+	public String assignEmployee(Employee employee){
+		this.employee = employee;
+		workPackList = workPackManager.getAll();
+		allowWPAssignment = true;
+		return listNavigation;
+	}
+	
+	public String assignToWP(WorkPackage wp) {
+		EmployeeWPList emp_wp = new EmployeeWPList();
+		String projFlag = wp.getProjectId() + "|0|" + employee.getEmpNumber();
+		String empWpId = wp.getWpId() + "|" + employee.getEmpNumber();
+		if (empWPManager.find(projFlag) != null) {
+			if (empWPManager.find(empWpId) == null) {
+				emp_wp.setWpEmpId(empWpId);
+				emp_wp.setEmpNum(employee.getEmpNumber());
+				emp_wp.setWpID(wp.getWpId());
+				emp_wp.setProjectId(wp.getProjectId());
+				empWPManager.persist(emp_wp);
+				allowWPAssignment = false;
+				refreshEmpList(wp);
+				return viewNavigation;
+			}
+			else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Employee is already assigned to this Work Package.", null));
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Employee is not assigned to the Project for this Work Package.", null));
+		}
+		return "";
+	}
+	
+	public boolean getAllowWPAssignment() {
+		return allowWPAssignment;
 	}
 }
