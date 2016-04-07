@@ -24,43 +24,43 @@
       	<b:container styleClass="tableChange">
       		<h1>Project Details</h1><br/>
       		<h:outputLabel class="lessBigFont" value="Project Id:" />
-      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.supervisor}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.projectId}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Project Name:" />
-			<h:outputText class="lessBigFont" value=" #{user.credential.userId}" /><br/>
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.projName}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Supervisor:" />
-			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.firstName}" /><br/>      		
-      		<h:outputLabel class="lessBigFont" value="Date Issues:" />
-			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.lastName}" /><br/>
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.supervisor}" /><br/>      		
+      		<h:outputLabel class="lessBigFont" value="Issue Date:" />
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.issueDate}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Estimated Completion Date:" />
-			<h:outputText class="lessBigFont" value=" #{user.currentEmployee.empNumber}" /><br/>			
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.estCompletionDate}" /><br/>			
       		<h:outputLabel class="lessBigFont" value="Project Assistant:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
-      		<h:outputLabel class="lessBigFont" value="Project Assistant:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.projAssistant}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Costing Proposal:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.proposal}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Initial Budget:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.initBudget}" /><br/>      		      		      		
       		<h:outputLabel class="lessBigFont" value="RO1 Budget" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.ro1Budget}" /><br/>
       		<h:outputLabel class="lessBigFont" value="RO2 Budget:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.ro2Budget}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Final Budget:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.finalBudget}" /><br/>
       		<h:outputLabel class="lessBigFont" value="MDP1:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		      	
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysP1}" /><br/>      		      		      		      	
       		<h:outputLabel class="lessBigFont" value="MDP2:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysP2}" /><br/>
       		<h:outputLabel class="lessBigFont" value="MDP3:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysP3}" /><br/>
+      		<h:outputLabel class="lessBigFont" value="MDP4:" />
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysP4}" /><br/>
       		<h:outputLabel class="lessBigFont" value="MDP5:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysP5}" /><br/>
       		<h:outputLabel class="lessBigFont" value="MDDS:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysDS}" /><br/>
       		<h:outputLabel class="lessBigFont" value="MDSS:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.manDaysSS}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Description:" />
-      		<h:outputText class="lessBigFont" value=" #{user.currentEmployee.email}" /><br/>      		      		      		      		      		      	
+      		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.desc}" /><br/>      		      		      		      		      		      	
       		<br/>
       		<h:commandButton styleClass="btn projectButtons" value="Back" action="#{projectControl.cancelViewProject}" immediate="true"></h:commandButton>
       		<p></p>     		

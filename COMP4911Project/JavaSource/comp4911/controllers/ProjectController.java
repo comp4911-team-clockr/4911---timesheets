@@ -141,35 +141,6 @@ public class ProjectController implements Serializable {
 		return "projects";
 	}
 	
-	/*public String viewProject(int id){
-		Project temp = projectManager.find(id);	
-		
-		temp.setProjectId(editProject.getProjectId());
-		temp.setProjName(editProject.getProjName());
-		temp.setSupervisor(editProject.getSupervisor());
-		//project assistant set to 1, maybe change later
-		temp.setProjAssistant(1);
-		temp.setEstCompletionDate(editProject.getEstCompletionDate());
-		temp.setIssueDate(editProject.getIssueDate());
-		temp.setProposal(editProject.getProposal());
-		temp.setInitBudget(editProject.getInitBudget());
-		temp.setRO1Budget(editProject.getRO1Budget());
-		temp.setRO2Budget(editProject.getRO2Budget());
-		temp.setFinalBudget(editProject.getFinalBudget());
-		temp.setManDaysP1(editProject.getManDaysP1());
-		temp.setManDaysP2(editProject.getManDaysP2());
-		temp.setManDaysP3(editProject.getManDaysP3());
-		temp.setManDaysP4(editProject.getManDaysP4());
-		temp.setManDaysP5(editProject.getManDaysP5());
-		temp.setManDaysDS(editProject.getManDaysDS());
-		temp.setManDaysSS(editProject.getManDaysSS());
-		temp.setDesc(editProject.getDesc());
-		
-		projectManager.merge(temp);
-	
-		return "viewProject";
-	}*/	
-	
 	public String deleteProject(Project proj){
 		projectManager.remove(projectManager.find(proj.getProjectId()));
 		
