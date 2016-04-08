@@ -21,7 +21,7 @@
 		</b:container>
 	</h:form>
 	<h:form>
-		<b:container>
+		<b:container styleClass="tableChange">
 			<h1>Timesheets</h1><br/>
 			<h:dataTable id="test" styleClass="table table-striped resizing" value="#{test.timesheet.timeSheetRows}"
 				var="item" border="1">
@@ -136,6 +136,7 @@
 			<h:commandButton class="btn timesheetButtons addPadRight" value="Add Row" action='#{test.createRow("EditTimesheet")}'></h:commandButton>
 			<h:commandButton class="btn timesheetButtons addPadRight" value="Save Timesheet" action="#{test.saveChanges}"></h:commandButton>
 			<h:commandButton styleClass="btn timesheetButtons" value="Cancel" action="#{test.cancelEditTimesheet}" immediate="true"></h:commandButton>
+			<p></p>
 		</b:container>
 		<br/><br/>
 	</h:form>
