@@ -489,16 +489,15 @@ public class EmployeeController implements Serializable {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
 	}
-<<<<<<< Updated upstream
+	
 	public String cancelViewDetails(){
 		return "cancelViewDetails";
 	}
-=======
+
 	
 	public boolean getIsHR() {
 		isHR = (currentEmployee.getCredential().getRole().equals("HumanResource"));
 		return isHR;
 	}
 	
->>>>>>> Stashed changes
 }
