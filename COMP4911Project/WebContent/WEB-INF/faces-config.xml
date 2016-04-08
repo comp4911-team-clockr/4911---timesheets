@@ -257,4 +257,18 @@
 			<to-view-id>/DisplayWorkPackages.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/ViewWorkPackage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelViewPackage</from-outcome>
+			<to-view-id>/DisplayWorkPackages.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/ViewDetails.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelViewDetails</from-outcome>
+			<to-view-id>/Splash.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>		
 </faces-config>

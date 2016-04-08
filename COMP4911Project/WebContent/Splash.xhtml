@@ -22,10 +22,7 @@
 			</div>			
 	      	<b:row>
 	      		<b:column col-lg="12" col-md="12" col-sm="12" col-xs="12">
-	      			<h1 class="loginStyle" id="titleMove">Welcome, Wizard #{user.currentEmployee.firstName}!</h1>
-	      			<h:outputText value = "Employee" rendered = "#{user.isEmployee(user.currentEmployee.empNumber)}"/>
-					<h:outputText value = "Project Manager" rendered = "#{user.isProjectManager(user.currentEmployee.empNumber)}"/>
-					<h:outputText value = "System Admin" rendered = "#{user.isSystemAdmin(user.currentEmployee.empNumber)}"/>
+	      			<h1 class="loginStyle" id="titleMove">Welcome, #{user.currentEmployee.firstName}!</h1>
 	      		</b:column>
 	      	</b:row>
 	      	<br/><br/><br/>

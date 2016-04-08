@@ -250,4 +250,23 @@
   PATH="/EditStatusReport.xhtml" SHAPE="464,1665,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#AddStatusReport.xhtml"
   PATH="/AddStatusReport.xhtml" SHAPE="464,1777,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ViewWorkPackage.xhtml"
+  PATH="/ViewWorkPackage.xhtml" SHAPE="96,1009,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ViewWorkPackage.xhtml:0" NAME="item"
+   PATH="/ViewWorkPackage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelViewPackage::#DisplayWorkPackages.xhtml" NAME="output"
+    PATH="/DisplayWorkPackages.xhtml"
+    TARGET="rules:#DisplayWorkPackages.xhtml" TITLE="cancelViewPackage" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ViewDetails.xhtml" PATH="/ViewDetails.xhtml"
+  SHAPE="96,1009,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ViewDetails.xhtml:0" NAME="item"
+   PATH="/ViewDetails.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancelViewDetails::#Splash.xhtml"
+    NAME="output" PATH="/Splash.xhtml" TARGET="rules:#Splash.xhtml"
+    TITLE="cancelViewDetails" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

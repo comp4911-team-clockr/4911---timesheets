@@ -23,6 +23,7 @@
       <h:form>
       	<b:container styleClass="tableChange">
       		<h1>Work Package</h1><br/>
+      		<h:commandButton styleClass="btn workPackageButtons" value="Back" action="#{workPackControl.cancelViewPackage}"/><br/><br/>
       		<h:outputLabel class="lessBigFont addPadRight" value="Project ID:  " />
       		<h:outputLabel class="lessBigFont addPadRight" value="#{workPackControl.workPack.projectId}" readonly="true"/> <br/>
       		<h:outputLabel class="lessBigFont addPadRight" value="Work Package Number:" />
@@ -60,6 +61,7 @@
 				</h:column>
       		</b:dataTable>
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>

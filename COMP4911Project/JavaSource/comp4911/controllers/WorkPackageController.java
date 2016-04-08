@@ -264,4 +264,8 @@ public class WorkPackageController implements Serializable {
 	public boolean getAllowWPAssignment() {
 		return allowWPAssignment;
 	}
+	
+	public String cancelViewPackage(){
+		return "cancelViewPackage";
+	}
 }

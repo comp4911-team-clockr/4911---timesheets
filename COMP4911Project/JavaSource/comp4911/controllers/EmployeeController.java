@@ -486,5 +486,7 @@ public class EmployeeController implements Serializable {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
 	}
-	
+	public String cancelViewDetails(){
+		return "cancelViewDetails";
+	}
 }

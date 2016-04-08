@@ -35,7 +35,10 @@
 			<h:outputText class="biggerFont" value=" #{user.currentEmployee.empNumber}" /><br/>			
       		<h:outputLabel class="biggerFont" value="Email:" />
       		<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.email}" /><br/>
+      		<h:commandButton styleClass="btn employeeButtons" value="Back" action="#{user.cancelViewDetails}" immediate="true"></h:commandButton>      		
+      		<p></p>
       	</b:container>
+      	<br/><br/>
       </h:form>
    </h:body>
 </html>
