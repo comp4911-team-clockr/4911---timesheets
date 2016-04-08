@@ -181,8 +181,6 @@ public class TimesheetController implements Serializable{
 		timesheet = new TimeSheet();
 		int tsNum = 1;
 		
-		refreshTimeSheet();
-		
 		if (timesheetList.size() > 0) {
 			TimeSheet temp = timesheetList.get(timesheetList.size() - 1);
 			tsNum = Integer.parseInt(temp.getTimeSID().substring(temp.getTimeSID().lastIndexOf('|')+ 1));
