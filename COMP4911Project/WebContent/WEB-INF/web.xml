@@ -18,4 +18,45 @@
       <param-name>javax.faces.PROJECT_STAGE</param-name>
       <param-value>Production</param-value>
    </context-param>
+   
+   
+   <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>secureDomain</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/MainIndex.xhtml</form-login-page>
+            <form-error-page>/faces/loginerror.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-constraint>
+        <display-name>Projects</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Projects Area</web-resource-name>
+            <description></description>
+            <url-pattern>/faces/projects/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>ProjectManager</role-name>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+     <security-role>  
+         <role-name>Employee</role-name>  
+     </security-role>  
+     <security-role>  
+         <role-name>ProjectManager</role-name>  
+     </security-role>  
 </web-app>
