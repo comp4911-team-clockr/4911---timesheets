@@ -1,25 +1,18 @@
 package comp4911.controllers;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import comp4911.managers.EmployeeManager;
-import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.StatusReportManager;
-import comp4911.models.Employee;
 import comp4911.models.Project;
 import comp4911.models.WorkPackage;
 import comp4911.models.StatusReport;
-import comp4911.models.TimeSheet;
 
 
 @Named("statusReportControl")

@@ -82,6 +82,15 @@ public class ProjectController implements Serializable {
 		return something;
 	}
 	
+	public double calculateRemainingBudget(Project proj) {
+		return proj.getInitBudget() - proj.getFinalBudget();
+	}
+	
+	public long calculateDaysRemaining(Project proj) {
+		long diff = proj.getEstCompletionDate().getTime() - proj.getIssueDate().getTime();
+		return java.util.concurrent.TimeUnit.DAYS.convert(diff, java.util.concurrent.TimeUnit.MILLISECONDS);
+	}
+	
 	public String updateProject(int id){
 		Project temp = projectManager.find(id);
 		

@@ -299,7 +299,12 @@ INSERT INTO EmployeeWPList VALUES(
               "2|0|4",
               NULL,
               4,
-              2);                           
+              2);
+INSERT INTO EmployeeWPList VALUES(
+              "1|0|5",
+              NULL,
+              5,
+              1);                           
 INSERT INTO EmployeeWPList VALUES(
 							"1|1|1",
 							"1|1",

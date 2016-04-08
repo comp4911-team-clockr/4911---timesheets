@@ -58,11 +58,11 @@
 				</h:column>	
 				<h:column>
 					<f:facet name="header">Remaining Budget</f:facet>
-
+					<h:outputText class="removeDot" value="#{projectControl.calculateRemainingBudget(proj)}"/>
 				</h:column>	
 				<h:column>
 					<f:facet name="header">Remaining Days</f:facet>
-
+					<h:outputText class="removeDot" value="#{projectControl.calculateDaysRemaining(proj)}"/>
 				</h:column>									
 				<h:column>
 					<f:facet name="header">Add Work Package</f:facet>

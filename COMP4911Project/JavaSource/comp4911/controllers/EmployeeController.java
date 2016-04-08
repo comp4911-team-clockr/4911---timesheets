@@ -52,6 +52,8 @@ public class EmployeeController implements Serializable {
 	@Inject private Credential credToAdd;
 
 	@Inject private CredentialManager credentialManager;
+	
+	private boolean isPM;
 
 	List<Employee> empList;
 
@@ -280,7 +282,7 @@ public class EmployeeController implements Serializable {
 			return "ViewDetails";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Invalid email address entered."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid email address entered.", null));
 			return "ResetCreds";
 		}
 	}
@@ -294,7 +296,7 @@ public class EmployeeController implements Serializable {
 			return "ResetCreds";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(validate));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, validate, null));
 		}
 		return "ResetCreds";
 	}
@@ -431,7 +433,7 @@ public class EmployeeController implements Serializable {
 			return "GetRecoveryQuestions";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Username is incorrect."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username is incorrect.", null));
 		}
 		System.out.println("Check User id fail");
 		return "ForgotPasswordPage";
@@ -451,7 +453,7 @@ public class EmployeeController implements Serializable {
 		} else {
 			System.out.println("Check Answers!!!");
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Those answers are incorrect."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Those answers are incorrect.", null));
 			return "GetRecoveryQuestions";
 		}		
 	}
@@ -474,9 +476,15 @@ public class EmployeeController implements Serializable {
 			return "ChangePasswordConfirmed";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(validate));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, validate, null));
 		}
 		//else return same page
 		return "RecoveryPassed";
 	}
+
+	public boolean getIsPM() {
+		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
+		return isPM;
+	}
+	
 }

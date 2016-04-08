@@ -24,6 +24,9 @@ public class EmployeeWPList implements Serializable {
 	
 	@Column(name="EmpNum")
 	private int empNum;
+	
+	@Column(name="ProjectId")
+	private int projectId;
 
 	public String getWpEmpId() {
 		return wpEmpId;
@@ -43,5 +46,10 @@ public class EmployeeWPList implements Serializable {
 	public void setEmpNum(int empNum) {
 		this.empNum = empNum;
 	}
-	
+	public int getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
 }

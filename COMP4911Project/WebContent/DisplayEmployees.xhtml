@@ -45,6 +45,12 @@
 						action="#{user.deleteEmployee(emp)}"
 						rendered="#{user.showDelete(emp)}" />
 				</h:column>
+				<h:column rendered="#{user.isPM}">
+					<f:facet name="header">Misc</f:facet>
+					<h:commandButton styleClass="btn employeeButtons" value="Assign To Work Package"
+						action="#{workPackControl.assignEmployee(emp)}"
+						rendered="#{user.isPM}" />
+				</h:column>
       		</b:dataTable>    
       		<br/>
       		<h:button styleClass="btn employeeButtons" outcome="#{user.addEmployeeButton()}" value="Add Employee"></h:button><p></p>
