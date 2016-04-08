@@ -29,11 +29,15 @@
 		     	<b:column col-sm="4" col-xs="12">      
 		     		<h:outputLabel value="Project ID" />		
       				<b:inputText id="wpPID" value="#{workPackControl.workPack.projectId}" readonly="#{workPackControl.idReadOnly}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
-      				<b:message for="wpPID" globalOnly="false"/>
+      				<b:message for="wpPID"/>
       			</b:column>
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="Work Package Number" />      			
-      				<b:inputText id="workpN" value="#{workPackControl.workPack.wpNum}" validatorMessage="#{wpMsg.wpNum}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      				<b:inputText id="workpN" value="#{workPackControl.workPack.wpNum}" validatorMessage="#{wpMsg.wpNum}" required="true" requiredMessage="#{wpMsg.wpReq}">
+      				<f:validateRegex
+						pattern="^[a-zA-Z][0-9]{4}" />
+      				</b:inputText>
+      				
       				<b:message for="workpN"/>
       			</b:column>   
 		     	<b:column col-sm="4" col-xs="12">
@@ -53,7 +57,9 @@
 		     	<b:column col-sm="4" col-xs="12">  
 		     		<h:outputLabel value="Responsibility Engineer ID" />    		
       				<b:inputText id="wpresId" value="#{workPackControl.workPack.respId}" 
-      						validatorMessage="#{wpMsg.wpRespId}" required="true" requiredMessage="#{wpMsg.wpReq}"/>
+      						validatorMessage="#{wpMsg.wpRespId}" required="true" requiredMessage="#{wpMsg.wpReq}">
+      						<f:validateRegex pattern="[0-9]{6}" />
+					</b:inputText>
       				<b:message for="wpresId"/>
       			</b:column>   
 		     	<b:column col-sm="4" col-xs="12">
