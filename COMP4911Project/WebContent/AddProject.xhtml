@@ -26,16 +26,23 @@
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	   	   			<h:outputLabel value="Project Name" />
-	      			<b:inputText id="projNam" styleClass="smallerTextInput" value="#{projectControl.project.projName}" validateMessage="#{projMsg.projName}" required="true" requiredMessage="#{projMsg.projReq}"></b:inputText>
+	      			<b:inputText id="projNam" styleClass="smallerTextInput" value="#{projectControl.project.projName}" validateMessage="#{projMsg.projName}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}"
+	      					validatorMessage="#{projMsg.projName}"></b:inputText>
 	      			<b:message for="projNam"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Project Manager" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.supervisor}"></b:inputText>
+	      			<b:inputText id="projMan" styleClass="smallerTextInput" value="#{projectControl.project.supervisor}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}"
+	      					validatorMessage="#{projMsg.projManager}"></b:inputText>
+	      			<b:message for="projMan"/>
 	      		</b:column>	 
 	      		<b:column col-sm="4" col-xs="12">     
 	      			<h:outputLabel value="Issue Date" /> 		
-	      			<b:datepicker format="dd/mm/yyyy" value="#{projectControl.project.issueDate}"></b:datepicker>
+	      			<b:datepicker id="issDate" format="dd/mm/yyyy" value="#{projectControl.project.issueDate}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}"></b:datepicker>
+	      			<b:message for="issDate"/>
 	      		</b:column>	      		     		
       		</b:row>
       		<!--
@@ -50,75 +57,118 @@
       		<b:row>
       			<b:column col-sm="4" col-xs="12">
       				<h:outputLabel value="Estimated Completion Date" />
-      				<b:datepicker format="dd/mm/yyyy" value="#{projectControl.project.estCompletionDate}"></b:datepicker>
+      				<b:datepicker id="estiDate" format="dd/mm/yyyy" value="#{projectControl.project.estCompletionDate}" 
+      						required="true" requiredMessage="#{projMsg.projReq}"></b:datepicker>
+      				<b:message for="estiDate"/>
       			</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Project Assistant" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.projAssistant}"></b:inputText>
+	      			<b:inputText id="projAss" styleClass="smallerTextInput" value="#{projectControl.project.projAssistant}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}"  converterMessage="#{projMsg.projCon}"
+	      					validatorMessage="#{projMsg.projAssistant}"></b:inputText>
+	      			<b:message for="projAss"/>
 	      		</b:column>      			
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Costing Proposal" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.proposal}"></b:inputText>
+	      			<b:inputText id="costPro" styleClass="smallerTextInput" value="#{projectControl.project.proposal}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="costPro"/>
 	      		</b:column>	      		
       		</b:row>         		
       		
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Initial Budget" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.initBudget}"></b:inputText>
+	      			<b:inputText id="iniBud" styleClass="smallerTextInput" value="#{projectControl.project.initBudget}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="iniBud"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="RO1 Budget" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.ro1Budget}"></b:inputText>
+	      			<b:inputText id="r1Bud" styleClass="smallerTextInput" value="#{projectControl.project.ro1Budget}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="r1Bud"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="RO2 Budget" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.ro2Budget}"></b:inputText>
+	      			<b:inputText id="r2Bud" styleClass="smallerTextInput" value="#{projectControl.project.ro2Budget}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="r2Bud"/>
 	      		</b:column>	      			      		
       		</b:row>
       		 
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Final Budget" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.finalBudget}"></b:inputText>
+	      			<b:inputText id="finBud" styleClass="smallerTextInput" value="#{projectControl.project.finalBudget}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="finBud"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      		<h:outputLabel value="Man Days P1" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP1}"></b:inputText>
+	      			<b:inputText id="manD1" styleClass="smallerTextInput" value="#{projectControl.project.manDaysP1}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manD1"/>
 	      		</b:column>	   
 	      		<b:column col-sm="4" col-xs="12">
 	      		<h:outputLabel value="Man Days P2" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP2}"></b:inputText>
+	      			<b:inputText id="manD2" styleClass="smallerTextInput" value="#{projectControl.project.manDaysP2}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manD2"/>
 	      		</b:column>	      		   		
       		</b:row>	
 
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Man Days P3" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP3}"></b:inputText>
+	      			<b:inputText id="manD3" styleClass="smallerTextInput" value="#{projectControl.project.manDaysP3}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manD3"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Man Days P4" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP4}"></b:inputText>
+	      			<b:inputText id="manD4" styleClass="smallerTextInput" value="#{projectControl.project.manDaysP4}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manD4"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Man Days P5" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysP5}"></b:inputText>
+	      			<b:inputText id="manD5" styleClass="smallerTextInput" value="#{projectControl.project.manDaysP5}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manD5"/>
 	      		</b:column>	      			      		
       		</b:row>
 
       		<b:row>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Man Days DS" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysDS}"></b:inputText>
+	      			<b:inputText id="manDS" styleClass="smallerTextInput" value="#{projectControl.project.manDaysDS}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manDS"/>
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Man Days SS" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.manDaysSS}"></b:inputText>
+	      			<b:inputText id="manSS" styleClass="smallerTextInput" value="#{projectControl.project.manDaysSS}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					</b:inputText>
+	      			<b:message for="manSS"/>
 	      		</b:column>	
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Description" />
-	      			<b:inputText styleClass="smallerTextInput" value="#{projectControl.project.desc}"></b:inputText>
+	      			<b:inputText id="desci" styleClass="smallerTextInput" value="#{projectControl.project.desc}" 
+	      					required="true" requiredMessage="#{projMsg.projReq}"></b:inputText>
+	      			<b:message for="desci"/>
 	      		</b:column>	      		      		
       		</b:row>
       		
