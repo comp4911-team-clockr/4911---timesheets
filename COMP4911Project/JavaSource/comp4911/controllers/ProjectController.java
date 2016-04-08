@@ -5,11 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import comp4911.managers.EmployeeManager;
+import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.ProjectManager;
+import comp4911.models.Employee;
+import comp4911.models.EmployeeWPList;
 import comp4911.models.Project;
+import comp4911.models.WorkPackage;
 
 @Named("projectControl")
 @SessionScoped
@@ -31,6 +38,32 @@ public class ProjectController implements Serializable {
 	@Inject
 	private Project editProject;
 	
+	@Inject
+	private EmployeeWPManager empWPManager;
+	
+	@Inject
+	private EmployeeManager empManager;
+	
+	private Employee employee;
+	
+	private boolean projectAssignment;
+	
+	public boolean isProjectAssignment() {
+		return projectAssignment;
+	}
+
+	
+
+	private List<Employee> empList;
+	
+	public List<Employee> getEmpList() {
+		return empList;
+	}
+	
+	public void setEmpList(List<Employee> empList) {
+		this.empList = empList;
+	}
+	
 	public Project getEditProject() {
 		return editProject;
 	}
@@ -42,7 +75,10 @@ public class ProjectController implements Serializable {
 	public ProjectController() {
 		System.out.println("Project Constructor called");
 		projectList = new ArrayList<Project>();
+		empList = new ArrayList<Employee>();
 	}
+
+	
 
 	public Project getProject() {
 		System.out.println("Get Project called");
@@ -79,6 +115,7 @@ public class ProjectController implements Serializable {
 	
 	public String selectEditProject(Project proj, String something){
 		editProject = proj;
+		refreshEmpList(proj);
 		return something;
 	}
 	
@@ -148,6 +185,41 @@ public class ProjectController implements Serializable {
 		refreshList();
 		
 		return "projects";
+	}
+	
+	public String selectEmpToProject(Employee employee){
+		this.employee = employee;
+		projectList = projectManager.getAll();
+		projectAssignment = true;
+		return "EmployeeToProjects";
+	}
+	
+	public void refreshEmpList(Project proj) {
+		empList = empWPManager.listEmpByProj(proj.getProjectId(), empManager);
+		if (empList == null)
+			empList = new ArrayList<Employee>(); 
+	}
+	
+	public String assignEmpToProject(Project proj){
+		EmployeeWPList employeeProject = new EmployeeWPList();
+		String projectEmp = proj.getProjectId() + "|0|" + employee.getEmpNumber();
+		String wpEmp = proj.getProjectId() + "|" + employee.getEmpNumber();
+		if(empWPManager.find(projectEmp) == null){
+			employeeProject.setWpEmpId(projectEmp);
+			employeeProject.setProjectId(proj.getProjectId());
+			employeeProject.setEmpNum(employee.getEmpNumber());
+			employeeProject.setWpID(wpEmp);
+			empWPManager.persist(employeeProject);
+			projectAssignment = false;
+			refreshEmpList(proj);
+			
+			return "DisplayEmployees";
+		}
+		else{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Employee is already assigned to this Project.", null));
+		}
+		return "";
 	}
 	
 	public String deleteProject(Project proj){

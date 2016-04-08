@@ -80,6 +80,10 @@
 			<from-outcome>viewProject</from-outcome>
 			<to-view-id>/ViewProject.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayEmployees</from-outcome>
+			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/DisplayWorkPackages.xhtml</from-view-id>
@@ -112,6 +116,10 @@
 		<navigation-case>
 			<from-outcome>DisplayEmployeeList</from-outcome>
 			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>EmployeeToProjects</from-outcome>
+			<to-view-id>/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>

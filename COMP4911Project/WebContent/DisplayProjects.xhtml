@@ -69,6 +69,12 @@
 					<h:commandButton styleClass="btn workPackageButtons" value="Add"
 						action="#{workPackControl.addWP(proj)}"/>
 				</h:column>
+				<h:column rendered = "#{projectControl.projectAssignment}">
+					<f:facet name="header">Assign Employee To Project</f:facet>
+					<h:commandButton styleClass="btn workPackageButtons" value="Assign"
+						action="#{projectControl.assignEmpToProject(proj)}"
+						rendered = "#{projectControl.projectAssignment}"/>
+				</h:column>
 				<h:column>
 					<f:facet name="header">View Project</f:facet>
 					<h:commandButton styleClass="btn projectButtons" value="View"
@@ -92,6 +98,7 @@
       		<h:commandButton class="btn projectButtons" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	
       	</b:container>
       	<br/><br/>
+      	<b:messages></b:messages>
       </h:form>
    </h:body>
 </html>

@@ -31,6 +31,9 @@
    <PROCESS-ITEM-OUTPUT ID="viewProject::#ViewProject.xhtml"
     NAME="output1" PATH="/ViewProject.xhtml"
     TARGET="rules:#ViewProject.xhtml" TITLE="viewProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="DisplayEmployees::#DisplayEmployees.xhtml"
+    NAME="output2" PATH="/DisplayEmployees.xhtml"
+    TARGET="rules:#DisplayEmployees.xhtml" TITLE="DisplayEmployees" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#DisplayWorkPackages.xhtml"
@@ -95,6 +98,9 @@
    <PROCESS-ITEM-OUTPUT ID="addWPSplash::#AddWorkPackage.xhtml"
     NAME="output1" PATH="/AddWorkPackage.xhtml"
     TARGET="rules:#AddWorkPackage.xhtml" TITLE="addWPSplash" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addProject::#AddProject.xhtml"
+    NAME="output2" PATH="/AddProject.xhtml"
+    TARGET="rules:#AddProject.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#DisplayEmployees.xhtml"
@@ -105,6 +111,9 @@
     ID="DisplayEmployeeList::#DisplayEmployees.xhtml" NAME="output"
     PATH="/DisplayEmployees.xhtml"
     TARGET="rules:#DisplayEmployees.xhtml" TITLE="DisplayEmployeeList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="EmployeeToProjects::#DisplayProjects.xhtml"
+    NAME="output1" PATH="/DisplayProjects.xhtml"
+    TARGET="rules:#DisplayProjects.xhtml" TITLE="EmployeeToProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#EditEmployee.xhtml"

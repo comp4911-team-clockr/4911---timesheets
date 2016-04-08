@@ -66,6 +66,18 @@
       		<p></p>     		
       	</b:container>
       	<br/><br/>
+      	<b:container styleClass="tableChange">
+      		<h1>Employees in Project</h1><br/>
+      		<b:dataTable id="employeeWP" styleClass="table" value="#{projectControl.empList}"
+      		var="item" border="1">
+      			<h:column>
+					<f:facet name="header">
+						<h:outputText value="Employee Name" />
+					</f:facet>
+					<h:outputText value="#{item.fullName}" />
+				</h:column>
+      		</b:dataTable>
+      	</b:container>
       </h:form>
    </h:body>
 </html>

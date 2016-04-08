@@ -54,6 +54,8 @@ public class EmployeeController implements Serializable {
 	@Inject private CredentialManager credentialManager;
 	
 	private boolean isPM;
+	
+	private boolean isHR;
 
 	List<Employee> empList;
 
@@ -404,7 +406,7 @@ public class EmployeeController implements Serializable {
 			return false;
 		}
 		
-	public boolean isSystemAdmin(int id){
+	public boolean isHumanResource(int id){
 			Employee temp = employeeManager.find(id);
 			int roleId = temp.getCredential().getRoleId();
 			if(roleId == 3){
@@ -412,6 +414,7 @@ public class EmployeeController implements Serializable {
 			}
 			return false;
 		}
+
 	public String ForgotPassword(){
 		return "ForgotPasswordCancel";
 	}
@@ -486,7 +489,16 @@ public class EmployeeController implements Serializable {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
 	}
+<<<<<<< Updated upstream
 	public String cancelViewDetails(){
 		return "cancelViewDetails";
 	}
+=======
+	
+	public boolean getIsHR() {
+		isHR = (currentEmployee.getCredential().getRole().equals("HumanResource"));
+		return isHR;
+	}
+	
+>>>>>>> Stashed changes
 }

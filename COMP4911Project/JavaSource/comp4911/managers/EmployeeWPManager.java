@@ -71,4 +71,26 @@ public class EmployeeWPManager implements Serializable {
 		}
 		return empList;
 	}
+	
+	public java.util.List<EmployeeWPList> listByProj(int proj) {
+		TypedQuery<EmployeeWPList> query = em.createQuery("select e from EmployeeWPList e "
+				+ "WHERE e.projectId ='" + proj +"'",
+                EmployeeWPList.class); 
+		java.util.List<EmployeeWPList> empList = query.getResultList();
+		return empList;
+	}
+	
+	public java.util.List<Employee> listEmpByProj(int proj, EmployeeManager empManager) {
+		java.util.List<Employee> empList = new java.util.ArrayList<Employee>();
+		Employee temp = null;
+		if (listByProj(proj) != null){
+			
+			for (EmployeeWPList empProj : listByProj(proj)) {
+				if ((temp = empManager.find(empProj.getEmpNum())) != null)
+					empList.add(temp);
+			}
+		
+		}
+		return empList;
+	}
 }

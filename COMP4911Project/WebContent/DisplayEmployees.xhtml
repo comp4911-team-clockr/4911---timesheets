@@ -51,6 +51,12 @@
 						action="#{workPackControl.assignEmployee(emp)}"
 						rendered="#{user.isPM}" />
 				</h:column>
+				<h:column rendered="#{user.isHR}">
+					<f:facet name="header">Assign To Project</f:facet>
+					<h:commandButton styleClass="btn employeeButtons" value="Assign To Project"
+						action="#{projectControl.selectEmpToProject(emp)}"
+						rendered="#{user.isHR}" />
+				</h:column>
       		</b:dataTable>    
       		<br/>
       		<h:button styleClass="btn employeeButtons" outcome="#{user.addEmployeeButton()}" value="Add Employee"></h:button><p></p>
