@@ -44,7 +44,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Project Manager</f:facet>
-
+					<h:outputText class="removeDot" value="#{proj.supervisor}"/>
 				</h:column>	
 				<h:column>
 					<f:facet name="header">Initial Budget</f:facet>
@@ -66,23 +66,27 @@
 				</h:column>									
 				<h:column>
 					<f:facet name="header">Add Work Package</f:facet>
-					<h:commandButton styleClass="btn workPackageButtons" value="Add Work Package"
+					<h:commandButton styleClass="btn workPackageButtons" value="Add"
 						action="#{workPackControl.addWP(proj)}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">View Project</f:facet>
-					<h:commandButton styleClass="btn projectButtons" value="View Project"
+					<h:commandButton styleClass="btn projectButtons" value="View"
 						action="#{projectControl.selectEditProject(proj,'viewProject')}"/>					
 				</h:column>					
 				<h:column>
 					<f:facet name="header">Edit Project</f:facet>
-					<h:commandButton styleClass="btn projectButtons" value="Edit Project"
+					<h:commandButton styleClass="btn projectButtons" value="Edit"
 						action="#{projectControl.selectEditProject(proj,'EditProject')}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Delete</f:facet>
 					<h:commandButton styleClass="btn projectButtons" value="Delete"
 						action="#{projectControl.deleteProject(proj)}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Monthly Report</f:facet>
+					<h:button styleClass="btn projectButtons" value="View"/>
 				</h:column>
       		</b:dataTable>   
       		<h:commandButton class="btn projectButtons" action="#{user.AddProject()}" value="New Project"></h:commandButton><p></p> 	

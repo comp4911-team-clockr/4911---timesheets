@@ -1,5 +1,6 @@
 /*=============LOGIN PAGE CSS========================*/
 //Used to round input textarea corners
+
 .roundCorners {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -340,9 +341,5 @@ table{
 	padding-right: 15px;
 }
 
-/*#javax_faces_developmentstage_messages {
-	color: red !important;
-	margin-top: 50px;
-}*/ 
 
 

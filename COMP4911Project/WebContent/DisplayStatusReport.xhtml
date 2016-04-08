@@ -24,8 +24,10 @@
 		<b:container styleClass="tableChange">
 			<h1>Status Reports</h1>
 			<br />
-			<b:dataTable styleClass="roundTheCorners"
+		
+			<h:dataTable styleClass="dataTables_wrapper form-inline dt-bootstrap table roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer"
 				value="#{statusReportControl.statusReportList}" var="statRep">
+
 				<h:column>
 					<f:facet name="header">Status Report Id</f:facet>
 					<h:outputText value="#{statRep.statusReportId}" />
@@ -93,17 +95,18 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Edit</f:facet>
-					<h:commandButton styleClass="btn greyButton"
-						value="Edit Status Report"
+					<h:commandButton styleClass="btn workPackageButtons"
+						value="Edit"
 						action="#{statusReportControl.editStatusReport(statRep)}" />
 				</h:column>
-			</b:dataTable>
+			</h:dataTable>
 
-			<h:commandButton styleClass="btn btn-default"
+			<h:commandButton styleClass="btn workPackageButtons addPadRight"
 				value="Add Status Report"
 				action="#{statusReportControl.addStatusReport}" />
-			<h:commandButton styleClass="btn btn-default" value="Back"
+			<h:commandButton styleClass="btn workPackageButtons" value="Back"
 				action="#{workPackControl.backToProjects}" />
+			<p></p>
 		</b:container>
 		<br />
 		<br />

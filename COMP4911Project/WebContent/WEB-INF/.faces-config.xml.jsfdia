@@ -127,15 +127,15 @@
     NAME="output" PATH="/CreateTimesheet.xhtml"
     TARGET="rules:#CreateTimesheet.xhtml" TITLE="CreateTimesheet" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="cancelCreateTimesheet::#DisplayTimesheets.xhtml" NAME="output1"
+    ID="cancelCreateTimesheet::#DisplayTimesheets.xhtml" NAME="output2"
     PATH="/DisplayTimesheets.xhtml"
     TARGET="rules:#DisplayTimesheets.xhtml"
     TITLE="cancelCreateTimesheet" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="EditTimesheet::#EditTimesheet.xhtml"
-    NAME="output2" PATH="/EditTimesheet.xhtml"
+    NAME="output3" PATH="/EditTimesheet.xhtml"
     TARGET="rules:#EditTimesheet.xhtml" TITLE="EditTimesheet" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="DisplayTimesheets::#DisplayTimesheets.xhtml"
-    NAME="output3" PATH="/DisplayTimesheets.xhtml"
+    NAME="output1" PATH="/DisplayTimesheets.xhtml"
     TARGET="rules:#DisplayTimesheets.xhtml" TITLE="DisplayTimesheets" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
