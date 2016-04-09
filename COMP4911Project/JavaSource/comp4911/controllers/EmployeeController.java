@@ -15,6 +15,8 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 import java.util.regex.Pattern;
 
@@ -39,38 +41,45 @@ public class EmployeeController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Inject private Employee employee;
+	@Inject
+	private Employee employee;
 
-	@Inject private Employee currentEmployee;
+	@Inject
+	private Employee currentEmployee;
 
-	@Inject private Employee editEmployee;
+	@Inject
+	private Employee editEmployee;
 
-	@Inject private EmployeeManager employeeManager;
+	@Inject
+	private EmployeeManager employeeManager;
 
-	@Inject private Credential credential;
+	@Inject
+	private Credential credential;
 
-	@Inject private Credential credToAdd;
+	@Inject
+	private Credential credToAdd;
 
-	@Inject private CredentialManager credentialManager;
-	
+	@Inject
+	private CredentialManager credentialManager;
+
 	private boolean isPM;
-	
+
 	private boolean isHR;
 
 	List<Employee> empList;
 
-	List<Credential>credList;
+	List<Credential> credList;
 
-	//The pattern used to check if password have an uppercase
+	// The pattern used to check if password have an uppercase
 	private final static Pattern hasUppercase = Pattern.compile("[A-Z]");
 
-	//The pattern used to check if password have a lowercase
+	// The pattern used to check if password have a lowercase
 	private final static Pattern hasLowercase = Pattern.compile("[a-z]");
 
-	//The pattern used to check if password have a number
+	// The pattern used to check if password have a number
 	private final static Pattern hasNumber = Pattern.compile("\\d");
 
-	//The pattern used to check if password have a special character
+	// The pattern used to check if password have a special character
 	private final static Pattern hasSpecialChar = Pattern.compile("[^a-zA-Z0-9 ]");
 
 	private String resetPassword;
@@ -94,6 +103,33 @@ public class EmployeeController implements Serializable {
 		empList = e;
 	}
 
+	public String login() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+		try {
+			request.login(credential.getUserId(), credential.getPassword());
+		} catch (ServletException e) {
+
+			context.addMessage(null, new FacesMessage("Login failed."));
+			return "error";
+		}
+		currentEmployee = employeeManager.findByUserId(credential.getUserId());
+		setCredential(credentialManager.find(credential.getUserId()));
+		refreshList();
+		return "welcome/Splash";
+	}
+
+	public String logout() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+		try {
+			request.logout();
+		} catch (ServletException e) {
+
+		}
+		return "/MainIndex.xhtml?faces-redirect=true";
+	}
+
 	public String checkLogin(String id, String password) {
 		Credential cred;
 		if ((cred = credentialManager.find(id)) != null) {
@@ -102,17 +138,17 @@ public class EmployeeController implements Serializable {
 				setCredential(credentialManager.find(id));
 				refreshList();
 				System.out.println("Check Login passed");
-				return "loggedin";		
+				return "loggedin";
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username/Password is incorrect.",null));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username/Password is incorrect.", null));
 		}
 		System.out.println("Check Login failed");
 		return "MainIndex?faces-redirect=true";
 	}
-	
-	public String cancelEditEmployee(){
+
+	public String cancelEditEmployee() {
 		return "cancelEditEmployee";
 	}
 
@@ -155,7 +191,8 @@ public class EmployeeController implements Serializable {
 	public void setCredentialManager(CredentialManager credentialManager) {
 		this.credentialManager = credentialManager;
 	}
-	public String addEmployeeButton(){
+
+	public String addEmployeeButton() {
 		return "AddEmployee";
 	}
 
@@ -167,7 +204,7 @@ public class EmployeeController implements Serializable {
 		credToAdd = c;
 	}
 
-	//DigiSign
+	// DigiSign
 	public String addEmployee() {
 		System.out.println("Add Employee called");
 		Employee temp = new Employee();
@@ -175,7 +212,7 @@ public class EmployeeController implements Serializable {
 		Integer empNumber = empList.size() + 1;
 		String userID = empNumber.toString();
 
-		//Padding zeroes in front of userId accordingly
+		// Padding zeroes in front of userId accordingly
 		for (int i = userID.length(); i < 6; i++)
 			userID = '0' + userID;
 
@@ -197,7 +234,7 @@ public class EmployeeController implements Serializable {
 
 		int cal = hashFN + hashLN + hashPW;
 
-		String hashCode =  Integer.toString(cal);
+		String hashCode = Integer.toString(cal);
 
 		tempCred.setDigiSign(hashCode);
 		System.out.println(hashCode);
@@ -208,7 +245,7 @@ public class EmployeeController implements Serializable {
 
 		refreshList();
 
-		//any better way to "reset" the fields after it's used?
+		// any better way to "reset" the fields after it's used?
 		setEmployee(new Employee());
 		setCredToAdd(new Credential());
 
@@ -239,7 +276,6 @@ public class EmployeeController implements Serializable {
 		credToAdd = new Credential();
 		return "DisplayEmployees";
 	}
-
 
 	public boolean showDelete(Employee e) {
 		if (currentEmployee.getEmpNumber() == e.getEmpNumber())
@@ -290,7 +326,7 @@ public class EmployeeController implements Serializable {
 	}
 
 	public String resetEmpPassword() {
-		String validate = validateNewPass(credToAdd.getPassword(), resetPassword); 
+		String validate = validateNewPass(credToAdd.getPassword(), resetPassword);
 		if (validate.equals("Success")) {
 			credential.setPassword(credToAdd.getPassword());
 			credentialManager.merge(credential);
@@ -303,26 +339,27 @@ public class EmployeeController implements Serializable {
 		return "ResetCreds";
 	}
 
-	public String AddProject(){
+	public String AddProject() {
 		return "addProject";
 	}
 
-	public String AddWorkPackage(){
+	public String AddWorkPackage() {
 		return "addWP";
 	}
 
-	//Please change the length of the password to the desired length
-	//This function checks if the new input as new password are valid
-	//Conditions are:
-	//both not null or empty
-	//both are the same string
-	//have a uppercase
-	//have a lowercase
-	//have a number
-	//have a special character
+	// Please change the length of the password to the desired length
+	// This function checks if the new input as new password are valid
+	// Conditions are:
+	// both not null or empty
+	// both are the same string
+	// have a uppercase
+	// have a lowercase
+	// have a number
+	// have a special character
 	//
-	//If the result is invalid the problem will be printed into a string that will be returned at the end
-	//If the result is valid a "success" string will be returned
+	// If the result is invalid the problem will be printed into a string that
+	// will be returned at the end
+	// If the result is valid a "success" string will be returned
 	public static String validateNewPass(String pass1, String pass2) {
 		if (pass1 == null || pass2 == null) {
 			return "One or both passwords are null";
@@ -379,60 +416,61 @@ public class EmployeeController implements Serializable {
 	public void setResetPassword(String resetPassword) {
 		this.resetPassword = resetPassword;
 	}
+
 	public String getResetPassword() {
 		return this.resetPassword;
 	}
-	
-	public String cancelAddEmp(){
+
+	public String cancelAddEmp() {
 		System.out.println("Cancel was called");
 		return "reloadEmpList";
 	}
-	
-	public boolean isEmployee(int id){
+
+	public boolean isEmployee(int id) {
 		Employee temp = employeeManager.find(id);
 		int roleId = temp.getCredential().getRoleId();
-		if(roleId == 1){
+		if (roleId == 1) {
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean isProjectManager(int id){
-			Employee temp = employeeManager.find(id);
-			int roleId = temp.getCredential().getRoleId();
-			if(roleId == 2){
-				return true;
-			}
-			return false;
-		}
-		
-	public boolean isHumanResource(int id){
-			Employee temp = employeeManager.find(id);
-			int roleId = temp.getCredential().getRoleId();
-			if(roleId == 3){
-				return true;
-			}
-			return false;
-		}
 
-	public String ForgotPassword(){
+	public boolean isProjectManager(int id) {
+		Employee temp = employeeManager.find(id);
+		int roleId = temp.getCredential().getRoleId();
+		if (roleId == 2) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isHumanResource(int id) {
+		Employee temp = employeeManager.find(id);
+		int roleId = temp.getCredential().getRoleId();
+		if (roleId == 3) {
+			return true;
+		}
+		return false;
+	}
+
+	public String ForgotPassword() {
 		return "ForgotPasswordCancel";
 	}
-	
-	public String GoForgotPassword(){
+
+	public String GoForgotPassword() {
 		return "ForgotPasswordPage";
 	}
-	
-	public String GetRecoveryQuestions(String id){
-		//Employee set to entered user id to grab their question answers
+
+	public String GetRecoveryQuestions(String id) {
+		// Employee set to entered user id to grab their question answers
 		Credential cred = credentialManager.find(credential.getUserId());
-		
+
 		if (cred != null) {
 			currentEmployee = employeeManager.findByUserId(credential.getUserId());
 			setCredential(credentialManager.find(credential.getUserId()));
 			refreshList();
 			System.out.println("Check User Id passed");
-			credential  = cred;
+			credential = cred;
 			return "GetRecoveryQuestions";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -441,14 +479,14 @@ public class EmployeeController implements Serializable {
 		System.out.println("Check User id fail");
 		return "ForgotPasswordPage";
 	}
-	
-	//this method should take in 3 parameters (3 strings for questions)
-	public String SubmitRecovery(){
-		//add if statement and what not for entered values before returning.
 
-		if (credToAdd.getRecovery1().equals(credential.getRecovery1()) &&
-			credToAdd.getRecovery2().equals(credential.getRecovery2()) &&
-			credToAdd.getRecovery3().equals(credential.getRecovery3()) ){
+	// this method should take in 3 parameters (3 strings for questions)
+	public String SubmitRecovery() {
+		// add if statement and what not for entered values before returning.
+
+		if (credToAdd.getRecovery1().equals(credential.getRecovery1())
+				&& credToAdd.getRecovery2().equals(credential.getRecovery2())
+				&& credToAdd.getRecovery3().equals(credential.getRecovery3())) {
 			System.out.println(credToAdd.getRecovery1() + " " + credential.getRecovery1());
 			System.out.println(credToAdd.getRecovery2() + " " + credential.getRecovery2());
 			System.out.println(credToAdd.getRecovery3() + " " + credential.getRecovery3());
@@ -458,21 +496,23 @@ public class EmployeeController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Those answers are incorrect.", null));
 			return "GetRecoveryQuestions";
-		}		
+		}
 	}
-	
-	public String RecoveryQuestionsCancel(){
+
+	public String RecoveryQuestionsCancel() {
 		return "RecoveryQuestionsCancel";
 	}
-	
-	public String CancelChangePassword(){
+
+	public String CancelChangePassword() {
 		return "CancelChangePassword";
 	}
-	
-	//this method should have two parameters. one for password, then re-entered password
-	public String ConfirmChangePassword(){
-		//check if they're equal then change password value for that user and return this
-		String validate = validateNewPass(credToAdd.getPassword(), resetPassword); 
+
+	// this method should have two parameters. one for password, then re-entered
+	// password
+	public String ConfirmChangePassword() {
+		// check if they're equal then change password value for that user and
+		// return this
+		String validate = validateNewPass(credToAdd.getPassword(), resetPassword);
 		if (validate.equals("Success")) {
 			credential.setPassword(credToAdd.getPassword());
 			credentialManager.merge(credential);
@@ -481,7 +521,7 @@ public class EmployeeController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, validate, null));
 		}
-		//else return same page
+		// else return same page
 		return "RecoveryPassed";
 	}
 
@@ -489,15 +529,14 @@ public class EmployeeController implements Serializable {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
 	}
-	
-	public String cancelViewDetails(){
+
+	public String cancelViewDetails() {
 		return "cancelViewDetails";
 	}
 
-	
 	public boolean getIsHR() {
 		isHR = (currentEmployee.getCredential().getRole().equals("HumanResource"));
 		return isHR;
 	}
-	
+
 }

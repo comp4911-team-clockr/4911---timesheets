@@ -9,10 +9,10 @@
  </servlet>
  <servlet-mapping>
   <servlet-name>Faces Servlet</servlet-name>
-  <url-pattern>/faces/*</url-pattern>
+  <url-pattern>*.xhtml</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
-  <welcome-file>faces/MainIndex.xhtml</welcome-file>
+  <welcome-file>/MainIndex.xhtml</welcome-file>
  </welcome-file-list>
     <context-param>
       <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -24,17 +24,17 @@
         <auth-method>FORM</auth-method>
         <realm-name>secureDomain</realm-name>
         <form-login-config>
-            <form-login-page>/faces/MainIndex.xhtml</form-login-page>
-            <form-error-page>/faces/loginerror.xhtml</form-error-page>
+            <form-login-page>/MainIndex.xhtml</form-login-page>
+            <form-error-page>/loginerror.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-    
+       
     <security-constraint>
-        <display-name>Projects</display-name>
+        <display-name>Employees</display-name>
         <web-resource-collection>
-            <web-resource-name>Protected Projects Area</web-resource-name>
+            <web-resource-name>Protected Employees Area</web-resource-name>
             <description></description>
-            <url-pattern>/faces/projects/*</url-pattern>
+            <url-pattern>/employees/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>HEAD</http-method>
@@ -45,7 +45,144 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>ProjectManager</role-name>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Profile</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Profile Area</web-resource-name>
+            <description></description>
+            <url-pattern>/profile/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Timesheets</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Timesheets Area</web-resource-name>
+            <description></description>
+            <url-pattern>/timesheets/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Projects</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Projects Area</web-resource-name>
+            <description></description>
+            <url-pattern>/projects/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Reports</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Reports Area</web-resource-name>
+            <description></description>
+            <url-pattern>/reports/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Welcome</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Welcome Area</web-resource-name>
+            <description></description>
+            <url-pattern>/welcome/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Employee</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Work Package</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Work Package Area</web-resource-name>
+            <description></description>
+            <url-pattern>/wp/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
             <role-name>Employee</role-name>
         </auth-constraint>
         <user-data-constraint>

@@ -7,7 +7,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>#{title.titleEditStatRep}</title>
+	<title>#{title.titleAddStatRep}</title>
 	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 <h:body id="bgImage2">
@@ -15,14 +15,14 @@
 		<b:container>
 			<div id="header">
 				<ui:insert name="header">
-					<ui:include src="CommonHeader.xhtml" />
+					<ui:include src="/CommonHeader.xhtml" />
 				</ui:insert>
 			</div>
 		</b:container>
 	</h:form>
 	<h:form>
 		<b:container styleClass="tableChange">
-			<h1>Edit Status Report</h1>
+			<h1>Add Status Report</h1>
 			<br />
 			<h:messages style="color:red" />
 
@@ -117,8 +117,8 @@
 			</b:row>
 
 			<h:commandButton styleClass="btn workPackageButtons addPadRight"
-				value="Save Changes"
-				action="#{statusReportControl.saveChangesForEdit}"></h:commandButton>
+				value="Add Work Package"
+				action="#{statusReportControl.saveChangesForAdd}"></h:commandButton>
 			<h:button styleClass="btn workPackageButtons" value="Cancel"
 				outcome="#{statusReportControl.listNavigation}" immediate="true"></h:button>
 			<p></p>

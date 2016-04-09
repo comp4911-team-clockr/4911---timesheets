@@ -8,23 +8,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<ui:composition>
-		<b:navBar id="headerChange" brand="Clockr" brandHref="Splash.xhtml">
+		<b:navBar id="headerChange" brand="Clockr" brandHref="#{request.contextPath}/welcome/Splash.xhtml">
 			<b:navbarLinks>
-				<b:navLink value="Home" href="Splash.xhtml" iconAwesome="home"></b:navLink>
-				<b:navLink value="Projects" href="DisplayProjects.xhtml"
+				<b:navLink value="Home" href="#{request.contextPath}/welcome/Splash.xhtml" iconAwesome="home"></b:navLink>
+				<b:navLink value="Projects" href="#{request.contextPath}/projects/DisplayProjects.xhtml"
 					iconAwesome="folder-open"></b:navLink>
 				<b:dropMenu value="TimeSheets" iconAwesome="calendar">
 					<b:navLink value="#{user.currentEmployee.firstName}'s TimeSheets"
-						href="DisplayTimesheets.xhtml"></b:navLink>
+						href="#{request.contextPath}/timesheets/DisplayTimesheets.xhtml"></b:navLink>
 					<b:navLink value="TimeSheets for Approval"
-						href="DisplayTimesheetsForApproval.xhtml"></b:navLink>
+						href="#{request.contextPath}/timesheets/DisplayTimesheetsForApproval.xhtml"></b:navLink>
 				</b:dropMenu>
-				<b:navLink value="Employees" href="DisplayEmployees.xhtml"
+				<b:navLink value="Employees" href="#{request.contextPath}/employees/DisplayEmployees.xhtml"
 					iconAwesome="suitcase"></b:navLink>
 				<b:dropMenu value="Profile" iconAwesome="gears">
-					<b:navLink value="Update Profile" href="ResetCreds.xhtml"></b:navLink>
-					<b:navLink value="View Details" href="ViewDetails.xhtml"></b:navLink>
-					<b:navLink value="Sign Out" href="MainIndex.xhtml"></b:navLink>
+					<b:navLink value="Update Profile" href="#{request.contextPath}/profile/ResetCreds.xhtml"></b:navLink>
+					<b:navLink value="View Details" href="#{request.contextPath}/profile/ViewDetails.xhtml"></b:navLink>
+					<h:commandLink class="removeDot" value="Sign Out" action="#{user.logout}"></h:commandLink>
 				</b:dropMenu>
 			</b:navbarLinks>
 		</b:navBar>

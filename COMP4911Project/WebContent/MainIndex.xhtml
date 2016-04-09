@@ -22,7 +22,7 @@
 	      			<b:inputText placeholder="User ID" styleClass="sizeInput" value="#{user.credential.userId}"></b:inputText>
 	      			<b:inputText type="password" placeholder="Password" styleClass="sizeInput" value="#{user.credential.password}"></b:inputText>
 	      			<h:commandLink class="removeDot" value="Forgot password?" action="#{user.GoForgotPassword}"></h:commandLink><br/><p></p>
-	      			<h:commandButton styleClass="blue fillWidth btn" value="Login" action="#{user.checkLogin(user.credential.userId, user.credential.password)}" look="primary"></h:commandButton>
+	      			<h:commandButton styleClass="blue fillWidth btn" value="Login" action="#{user.login}" look="primary"></h:commandButton>
 	      			<p></p>
 	      			</div>
 	      		</b:column>
