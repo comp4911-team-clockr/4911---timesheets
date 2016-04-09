@@ -29,28 +29,37 @@ public class CredentialManager implements Serializable {
 	public Credential find(String id) {
 		return em.find(Credential.class, id);
 	}
-	
+
 	public void persist(Credential credential) {
 		em.persist(credential);
 	}
-	
+
 	public void merge(Credential credential) {
 		em.merge(credential);
 	}
-	
+
 	public void remove(Credential credential) {
 		credential = this.find(credential.getUserId());
 		em.remove(credential);
 	}
-	
+
 	public Credential[] getAll() {
-	        TypedQuery<Credential> query = em.createQuery("select c from Credential c",
-	                Credential.class); 
-	        java.util.List<Credential> credentials = query.getResultList();
-	        Credential[] credArray = new Credential[credentials.size()];
-	        for (int i=0; i < credArray.length; i++) {
-	            credArray[i] = credentials.get(i);
-	        }
-	        return credArray;
-	    }
+		TypedQuery<Credential> query = em.createQuery("select c from Credential c",
+				Credential.class); 
+		java.util.List<Credential> credentials = query.getResultList();
+		Credential[] credArray = new Credential[credentials.size()];
+		for (int i=0; i < credArray.length; i++) {
+			credArray[i] = credentials.get(i);
+		}
+		return credArray;
+	}
+	
+	public java.util.List<Credential> getAllProjectManagers() {
+		TypedQuery<Credential> query = em.createQuery("select c from Credential c " +
+				"WHERE c.role LIKE 'ProjectManager'",
+				Credential.class); 
+		java.util.List<Credential> credentials = query.getResultList();
+		
+		return credentials;
+	}
 }

@@ -61,7 +61,7 @@ public class EmployeeWPManager implements Serializable {
 	public java.util.List<Employee> listEmpByWP(String wp, EmployeeManager empManager) {
 		java.util.List<Employee> empList = new java.util.ArrayList<Employee>();
 		Employee temp = null;
-		if (listByWP(wp) != null){
+		if (!listByWP(wp).isEmpty()){
 			
 			for (EmployeeWPList empWP : listByWP(wp)) {
 				if ((temp = empManager.find(empWP.getEmpNum())) != null)
@@ -70,6 +70,17 @@ public class EmployeeWPManager implements Serializable {
 		
 		}
 		return empList;
+	}
+	
+	public java.util.List<Integer> listEmpNumByWP(String wp) {
+		java.util.List<Integer> empNumList = new java.util.ArrayList<Integer>();
+		if (!listByWP(wp).isEmpty()){
+			
+			for (EmployeeWPList empWP : listByWP(wp)) {
+				empNumList.add(empWP.getEmpNum());
+			}
+		}
+		return empNumList;
 	}
 	
 	public java.util.List<EmployeeWPList> listByProj(int proj) {

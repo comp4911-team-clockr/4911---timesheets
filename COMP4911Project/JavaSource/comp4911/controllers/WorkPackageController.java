@@ -61,10 +61,13 @@ public class WorkPackageController implements Serializable {
 	
 	private List<Employee> empList;
 	
+	private List<Employee> empREList;
+	
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
 		empList = new ArrayList<Employee>();
+		empREList = new ArrayList<Employee>();
 	}
 	
 	public List<Employee> getEmpList() {
@@ -115,6 +118,10 @@ public class WorkPackageController implements Serializable {
 		this.workPack = workPack;
 	}
 	
+	public List<Employee> getEmpREList() {
+		return empREList;
+	}
+
 	public String viewWP(WorkPackage workPack) {
 		this.workPack = workPack;
 		refreshEmpList(workPack);
@@ -126,8 +133,8 @@ public class WorkPackageController implements Serializable {
 		workPack.setActive(true);
 		setIdReadOnly(true);
 		workPack.setProjectId(project.getProjectId());
-		String wpID = project.getProjectId() + "|" + (workPackList.size() + 1);
-		workPack.setWpId(wpID);
+		//for dropdown list
+		empREList = empManager.getAll();
 		return addNavigation;
 	}
 	
@@ -135,11 +142,16 @@ public class WorkPackageController implements Serializable {
 		workPack = new WorkPackage();
 		workPack.setActive(true);
 		setIdReadOnly(false);
+		//for dropdown list
+		empREList = empManager.getAll();
 		return "addWPSplash";
 	}
 	
 	public String addWP() {
 		if (validateAll()) {
+			//put this here instead so that adding from splash page still works
+			String wpID = project.getProjectId() + "|" + (workPackList.size() + 1);
+			workPack.setWpId(wpID);
 			workPackManager.persist(workPack);
 			refreshList();
 			workPack = null;
@@ -151,6 +163,8 @@ public class WorkPackageController implements Serializable {
 	// navigating to page + setting page to specific wp
 	public String editWP(WorkPackage wp) {
 		workPack = wp;
+		//for dropdown list
+		empREList = empManager.getAll();
 		return editNavigation;
 	}
 	

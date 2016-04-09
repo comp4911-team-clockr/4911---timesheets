@@ -45,7 +45,10 @@
 		      	</b:column>
 		      	<b:column col-sm="4" col-xs="12"> 
 		      		<h:outputLabel value="Responsibility Engineer ID" />
-		      		<b:inputText value="#{workPackControl.workPack.respId}"/>
+					<b:selectOneMenu value="#{workPackControl.workPack.respId}">
+						<f:selectItems value="#{workPackControl.empREList}" var="emp"
+							itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+					</b:selectOneMenu>
 		      	</b:column>
 		      	<b:column col-sm="4" col-xs="12"> 
 		      		<h:outputLabel value="MDP1" />

@@ -2,122 +2,134 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-   <h:head>
-      <title>#{title.titleEditProj}</title>
-      <h:outputStylesheet library="css" name="main.css"  /> 
-   </h:head>
-   <h:body id="bgImage2">
-      <h:form>
-	      <b:container>
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:event listener="#{projectControl.refreshPMList}" type="preRenderView"></f:event>
+<h:head>
+	<title>#{title.titleEditProj}</title>
+	<h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<h:body id="bgImage2">
+	<h:form>
+		<b:container>
 			<div id="header">
-			<ui:insert name="header">
-				<ui:include src="CommonHeader.xhtml"/>
-			</ui:insert>
-			</div>		
-	      </b:container>
-      </h:form>
-      <h:form>
-      	<b:container styleClass="tableChange">
-      		<h1>Edit Project</h1><br/>
-	      		<b:row>
-		      		<b:column col-sm="4" col-xs="12">      		
-		      			<h:outputLabel value="Project Id" />
-		      			<b:inputText value="#{projectControl.editProject.projectId}"/>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      		
-		      			<h:outputLabel value="Project Name" />
-		      			<b:inputText value="#{projectControl.editProject.projName}"/>
-		      		</b:column>	 
-	      			<b:column col-sm="4" col-xs="12">		      		
-	      				<h:outputLabel value="Supervisor" />
-	      				<b:inputText value="#{projectControl.editProject.supervisor}"/>
-	      			</b:column>		      		       		    		
-      			</b:row>
-	      		<b:row>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="Issue Date" />
-	      				<b:datepicker format="dd/mm/yyyy" value="#{projectControl.editProject.issueDate}"></b:datepicker>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="Estimated Completion Date" />
-	      				<b:datepicker format="dd/mm/yyyy" value="#{projectControl.editProject.estCompletionDate}"></b:datepicker>
-	      			</b:column>	   
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="Project Assistant" />
-	      				<b:inputText value="#{projectControl.editProject.projAssistant}"/>
-	      			</b:column>	      			   			
-	      		</b:row>	
-	      		<b:row>
-	      			<b:column col-sm="4" col-xs="12">      		
-	      				<h:outputLabel value="Costing Proposal" />
-	      				<b:inputText value="#{projectControl.editProject.proposal}"/>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      		
-	      				<h:outputLabel value="Initial Budget" />
-	      				<b:inputText value="#{projectControl.editProject.initBudget}"/>
-	      			</b:column>	 
-	      			<b:column col-sm="4" col-xs="12">      		
-	      				<h:outputLabel value="RO1 Budget" />
-	      				<b:inputText value="#{projectControl.editProject.ro1Budget}"/>
-	      			</b:column>	      			     			
-	      		</b:row>
-	      		<b:row>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="RO2 Budget" />
-	      				<b:inputText value="#{projectControl.editProject.ro2Budget}"/>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="Final Budget" />
-	      				<b:inputText value="#{projectControl.editProject.finalBudget}"/>
-	      			</b:column>	 
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="MDP1" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysP1}"/>
-	      			</b:column>	      			     			
-	      		</b:row>
-	      		<b:row>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="MDP2" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysP2}"/>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      		
-	      				<h:outputLabel value="MDP3" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysP3}"/>
-	      			</b:column>	 
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="MDP4" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysP4}"/>
-	      			</b:column>	      			     			
-	      		</b:row>	
-	      		<b:row>
-	      			<b:column col-sm="4" col-xs="12">      		
-	      				<h:outputLabel value="MDP5" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysP5}"/>
-	      			</b:column>
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="MDDS" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysDS}"/>
-	      			</b:column>	   
-	      			<b:column col-sm="4" col-xs="12">      			
-	      				<h:outputLabel value="MDSS" />
-	      				<b:inputText value="#{projectControl.editProject.manDaysSS}"/>
-	      			</b:column>	      			   			
-	      		</b:row>
-	      		<b:row>
-	      			<b:column col-xs="12">      			
-	      				<h:outputLabel value="Description" />
-	      				<b:inputText value="#{projectControl.editProject.desc}"/><br/>
-	      			</b:column>
-	      		</b:row>	
-      		<h:commandButton styleClass="btn projectButtons addPadRight" value="Edit Project" action="#{projectControl.updateProject(projectControl.editProject.projectId)}"></h:commandButton>   
-      		<h:commandButton styleClass="btn projectButtons" value="Cancel" action="#{projectControl.cancelEditProject}" immediate="true"></h:commandButton>
-      		<p></p>
-      	</b:container>
-      	<br/><br/>
-      </h:form>
-   </h:body>
+				<ui:insert name="header">
+					<ui:include src="CommonHeader.xhtml" />
+				</ui:insert>
+			</div>
+		</b:container>
+	</h:form>
+	<h:form>
+		<b:container styleClass="tableChange">
+			<h1>Edit Project</h1>
+			<br />
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Project Id" />
+					<b:inputText value="#{projectControl.editProject.projectId}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Project Name" />
+					<b:inputText value="#{projectControl.editProject.projName}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Supervisor" />
+					<b:selectOneMenu value="#{projectControl.project.supervisor}">
+						<f:selectItems value="#{projectControl.pmList}" var="emp"
+							itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Issue Date" />
+					<b:datepicker format="dd/mm/yyyy"
+						value="#{projectControl.editProject.issueDate}"></b:datepicker>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Estimated Completion Date" />
+					<b:datepicker format="dd/mm/yyyy"
+						value="#{projectControl.editProject.estCompletionDate}"></b:datepicker>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Project Assistant" />
+					<b:inputText value="#{projectControl.editProject.projAssistant}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Costing Proposal" />
+					<b:inputText value="#{projectControl.editProject.proposal}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Initial Budget" />
+					<b:inputText value="#{projectControl.editProject.initBudget}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="RO1 Budget" />
+					<b:inputText value="#{projectControl.editProject.ro1Budget}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="RO2 Budget" />
+					<b:inputText value="#{projectControl.editProject.ro2Budget}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="Final Budget" />
+					<b:inputText value="#{projectControl.editProject.finalBudget}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDP1" />
+					<b:inputText value="#{projectControl.editProject.manDaysP1}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDP2" />
+					<b:inputText value="#{projectControl.editProject.manDaysP2}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDP3" />
+					<b:inputText value="#{projectControl.editProject.manDaysP3}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDP4" />
+					<b:inputText value="#{projectControl.editProject.manDaysP4}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDP5" />
+					<b:inputText value="#{projectControl.editProject.manDaysP5}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDDS" />
+					<b:inputText value="#{projectControl.editProject.manDaysDS}" />
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+					<h:outputLabel value="MDSS" />
+					<b:inputText value="#{projectControl.editProject.manDaysSS}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column col-xs="12">
+					<h:outputLabel value="Description" />
+					<b:inputText value="#{projectControl.editProject.desc}" />
+					<br />
+				</b:column>
+			</b:row>
+			<h:commandButton styleClass="btn projectButtons addPadRight"
+				value="Edit Project"
+				action="#{projectControl.updateProject(projectControl.editProject.projectId)}"></h:commandButton>
+			<h:commandButton styleClass="btn projectButtons" value="Cancel"
+				action="#{projectControl.cancelEditProject}" immediate="true"></h:commandButton>
+			<p></p>
+		</b:container>
+		<br />
+		<br />
+	</h:form>
+</h:body>
 </html>
