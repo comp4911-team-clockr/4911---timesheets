@@ -85,7 +85,7 @@ public class EmployeeWPManager implements Serializable {
 	
 	public java.util.List<EmployeeWPList> listByProj(int proj) {
 		TypedQuery<EmployeeWPList> query = em.createQuery("select e from EmployeeWPList e "
-				+ "WHERE e.projectId ='" + proj +"'",
+				+ "WHERE e.projectId ='" + proj +"' AND e.wpID IS NULL",
                 EmployeeWPList.class); 
 		java.util.List<EmployeeWPList> empList = query.getResultList();
 		return empList;
