@@ -80,6 +80,13 @@
 					</f:facet>
 					<h:outputText value="#{item.fullName}" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Remove from Project" />
+					</f:facet>
+					<h:commandButton styleClass="btn projectButtons" value="Remove"
+						action="#{projectControl.removeEmployee(item.empNumber)}"/>
+				</h:column>
       		</b:dataTable>
       	</b:container>
       </h:form>

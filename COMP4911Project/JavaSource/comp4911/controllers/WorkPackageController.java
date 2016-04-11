@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.TypedQuery;
 
 import comp4911.managers.EmployeeManager;
 import comp4911.managers.EmployeeWPManager;
@@ -17,6 +18,7 @@ import comp4911.managers.WorkPackageManager;
 import comp4911.models.Employee;
 import comp4911.models.EmployeeWPList;
 import comp4911.models.Project;
+import comp4911.models.TimeSheet;
 import comp4911.models.WorkPackage;
 
 @Named("workPackControl")
@@ -317,6 +319,12 @@ public class WorkPackageController implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Employee is not assigned to the Project for this Work Package.", null));
 		}
 		return "";
+	}
+	
+	public String removeEmployee(int empNum){
+		empWPManager.remove(empWPManager.find(workPack.getWpId() + "|" + empNum));
+		refreshEmpList(workPack);
+		return "DisplayWorkPackage";
 	}
 
 	public boolean getAllowWPAssignment() {

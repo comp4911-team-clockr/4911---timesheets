@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import comp4911.models.Employee;
 import comp4911.models.EmployeeWPList;
+import comp4911.models.Project;
 
 @Dependent
 @Stateless
@@ -103,5 +104,22 @@ public class EmployeeWPManager implements Serializable {
 		
 		}
 		return empList;
+	}
+	
+	public java.util.List<EmployeeWPList> listEverythingByEmpProj(Project proj, int empNo) {
+		TypedQuery<EmployeeWPList> query = em.createQuery("select e from EmployeeWPList e "
+				+ "WHERE e.projectId ='" + proj.getProjectId() +"' AND e.empNum =" 
+				+ empNo,
+                EmployeeWPList.class); 
+		java.util.List<EmployeeWPList> empList = query.getResultList();
+		return empList;
+	}
+	
+	public void removeAllByProj(Project proj, int empNo) {
+		java.util.List<EmployeeWPList> empList = listEverythingByEmpProj(proj, empNo);
+		
+		for (EmployeeWPList empWP : empList) {
+			remove(empWP);
+		}
 	}
 }
