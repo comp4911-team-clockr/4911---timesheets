@@ -28,7 +28,7 @@
             <form-error-page>/loginerror.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-       
+    
     <security-constraint>
         <display-name>Employees</display-name>
         <web-resource-collection>
@@ -45,7 +45,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>Employee</role-name>
+            <role-name>HumanResource</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -68,7 +68,9 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
+            <role-name>HumanResource</role-name>
             <role-name>Employee</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -91,7 +93,9 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
+            <role-name>HumanResource</role-name>
             <role-name>Employee</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -114,7 +118,8 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>Employee</role-name>
+            <role-name>HumanResource</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -137,7 +142,8 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>Employee</role-name>
+            <role-name>HumanResource</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -160,7 +166,9 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
+            <role-name>HumanResource</role-name>
             <role-name>Employee</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
@@ -183,13 +191,17 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>Employee</role-name>
+            <role-name>HumanResource</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
     
+     <security-role>  
+         <role-name>HumanResource</role-name>  
+     </security-role>  
      <security-role>  
          <role-name>Employee</role-name>  
      </security-role>  
