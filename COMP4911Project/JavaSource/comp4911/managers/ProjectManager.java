@@ -1,4 +1,4 @@
-package comp4911.managers;
+	package comp4911.managers;
 
 import java.io.Serializable;
 
@@ -39,20 +39,12 @@ public class ProjectManager implements Serializable {
 	}
 
 	public void remove(Project project) {
-		project = find(project.getProjectId());
-		em.remove(project);
-	}
-
-	public Project findByUserId(String id) {
-		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.projectId = :projectId ", Project.class);
-		query.setParameter("projectId", id);
-		java.util.List<Project> results = query.getResultList(); 
-		Project proj = results.get(0);
-		return proj;
+		project.setActive(false);
+		merge(project);
 	}
 
 	public java.util.List<Project> getAll() {
-		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p",
+		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.isActive=TRUE",
 				Project.class); 
 		java.util.List<Project> projects = query.getResultList();
 		return projects;

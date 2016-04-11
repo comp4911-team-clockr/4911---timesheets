@@ -28,7 +28,7 @@
 			<b:row>
 				<b:column col-sm="4" col-xs="12">
 					<h:outputLabel value="Project Id" />
-					<b:inputText value="#{projectControl.editProject.projectId}" />
+					<b:inputText value="#{projectControl.editProject.projectId}" readonly="true" />
 				</b:column>
 				<b:column col-sm="4" col-xs="12">
 					<h:outputLabel value="Project Name" />
@@ -36,17 +36,18 @@
 				</b:column>
 				<b:column col-sm="4" col-xs="12">
 					<h:outputLabel value="Supervisor" />
-					<b:selectOneMenu value="#{projectControl.project.supervisor}">
+					<b:selectOneMenu value="#{projectControl.editProject.supervisor}">
 						<f:selectItems value="#{projectControl.pmList}" var="emp"
-							itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+							itemValue="#{emp.empNumber}" itemLabel="#{emp.fullName}" />
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
 			<b:row>
 				<b:column col-sm="4" col-xs="12">
 					<h:outputLabel value="Issue Date" />
-					<b:datepicker format="dd/mm/yyyy"
-						value="#{projectControl.editProject.issueDate}"></b:datepicker>
+					<b:inputText value="#{projectControl.editProject.issueDate}" readonly="true">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</b:inputText>
 				</b:column>
 				<b:column col-sm="4" col-xs="12">
 					<h:outputLabel value="Estimated Completion Date" />
@@ -123,7 +124,7 @@
 			</b:row>
 			<h:commandButton styleClass="btn projectButtons addPadRight"
 				value="Edit Project"
-				action="#{projectControl.updateProject(projectControl.editProject.projectId)}"></h:commandButton>
+				action="#{projectControl.updateProject}"></h:commandButton>
 			<h:commandButton styleClass="btn projectButtons" value="Cancel"
 				action="#{projectControl.cancelEditProject}" immediate="true"></h:commandButton>
 			<p></p>

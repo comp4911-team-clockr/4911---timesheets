@@ -80,6 +80,9 @@ public class Project implements Serializable{
 	@Column(name="Descript", columnDefinition = "text", length=512)
 	private String desc;
 
+	@Column(name="IsActive")
+	private boolean isActive;
+	
 //	@OneToMany(mappedBy="project", fetch=FetchType.EAGER)
 //	private List<Employee> empProjList;
 //	
@@ -272,4 +275,13 @@ public class Project implements Serializable{
 		this.ro2Budget = ro2Budget;
 	}
 
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	
 }
