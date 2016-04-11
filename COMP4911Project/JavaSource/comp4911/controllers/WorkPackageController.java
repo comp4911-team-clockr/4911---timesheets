@@ -27,49 +27,51 @@ public class WorkPackageController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private final String listNavigation = "DisplayWorkPackages";
 	private final String editNavigation = "EditWorkPackage";
 	private final String addNavigation = "AddWorkPackage";
 	private final String viewNavigation = "ViewWorkPackage";
 	private final String projectNavigation = "DisplayProject";
-	
+
 	private final String validWPNumPattern = "[A-Z]{1}[0-9]{4}";
 	private final String validRENumPattern = "[0-9]{6}";
-	
+
 	private boolean idReadOnly = true;
 	private boolean allowWPAssignment;
-	
+
 	@Inject
 	private WorkPackage workPack;
-	
+
 	@Inject
 	private Project project;
-	
+
 	@Inject
 	private WorkPackageManager workPackManager;
-	
+
 	@Inject
 	private EmployeeManager empManager;
-	
+
 	@Inject
 	private EmployeeWPManager empWPManager;
-	
+
 	private Employee employee;
-	
+
+	private boolean validWP = true;
+
 	private List<WorkPackage> workPackList;
-	
+
 	private List<Employee> empList;
-	
+
 	private List<Employee> empREList;
-	
+
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
 		empList = new ArrayList<Employee>();
 		empREList = new ArrayList<Employee>();
 	}
-	
+
 	public List<Employee> getEmpList() {
 		return empList;
 	}
@@ -83,33 +85,33 @@ public class WorkPackageController implements Serializable {
 		refreshList();
 		return listNavigation;
 	}
-	
+
 	public WorkPackage getWorkPackage() {
 		System.out.println("Get WorkPackage called");
 		workPackList = workPackManager.getAll();
 		System.out.println(workPackList.size() + " size");
 		return workPack;
 	}
-	
+
 	public void refreshList(){
 		workPackList = workPackManager.getAllByProject(project.getProjectId());
 	}
-	
+
 	public void refreshEmpList(WorkPackage wp) {
 		empList = empWPManager.listEmpByWP(wp.getWpId(), empManager);
 		if (empList == null)
 			empList = new ArrayList<Employee>(); 
 	}
-	
+
 	public List<WorkPackage> getWorkPackList() {
 		System.out.println("Get WorkPackage List");
 		return workPackList;
 	}
-	
+
 	public void setWorkPackList(List<WorkPackage> workPackList) {
 		this.workPackList = workPackList;
 	}
-	
+
 	public WorkPackage getWorkPack() {
 		return workPack;
 	}
@@ -117,7 +119,7 @@ public class WorkPackageController implements Serializable {
 	public void setWorkPack(WorkPackage workPack) {
 		this.workPack = workPack;
 	}
-	
+
 	public List<Employee> getEmpREList() {
 		return empREList;
 	}
@@ -127,26 +129,27 @@ public class WorkPackageController implements Serializable {
 		refreshEmpList(workPack);
 		return viewNavigation;
 	}
-	
+
 	public String addWP(Project project) {
 		workPack = new WorkPackage();
 		workPack.setActive(true);
 		setIdReadOnly(true);
 		workPack.setProjectId(project.getProjectId());
 		//for dropdown list
-		empREList = empManager.getAll();
+		empREList = empWPManager.listEmpByProj(workPack.getProjectId(), empManager);
 		return addNavigation;
 	}
-	
+
 	public String addWPSplash(){
 		workPack = new WorkPackage();
 		workPack.setActive(true);
 		setIdReadOnly(false);
 		//for dropdown list
 		empREList = empManager.getAll();
+		validWP = true;
 		return "addWPSplash";
 	}
-	
+
 	public String addWP() {
 		if (validateAll()) {
 			//put this here instead so that adding from splash page still works
@@ -154,53 +157,80 @@ public class WorkPackageController implements Serializable {
 			workPack.setWpId(wpID);
 			workPackManager.persist(workPack);
 			refreshList();
+
+			//adding to the many to many table
+			String wpFlag = workPack.getWpId() + "|" + Integer.parseInt(workPack.getRespId());
+			if (empWPManager.find(wpFlag) == null) {
+				EmployeeWPList tempEmpWP = new EmployeeWPList();
+				tempEmpWP.setEmpNum(Integer.parseInt(workPack.getRespId()));
+				tempEmpWP.setProjectId(workPack.getProjectId());
+				tempEmpWP.setWpID(workPack.getWpId());
+				tempEmpWP.setWpEmpId(wpFlag);
+				empWPManager.persist(tempEmpWP);
+			}
+			//resets workPack
 			workPack = null;
 			return listNavigation;
 		}
 		return "";
 	}
-	
+
 	// navigating to page + setting page to specific wp
 	public String editWP(WorkPackage wp) {
 		workPack = wp;
 		//for dropdown list
-		empREList = empManager.getAll();
+		empREList = empWPManager.listEmpByProj(workPack.getProjectId(), empManager);
 		return editNavigation;
 	}
-	
+
 	// saving edit changes
 	public String editWP() {
 		if (validateAll()) {
 			workPackManager.merge(workPack);
 			refreshList();
+			//adding to the many to many table
+			String wpFlag = workPack.getWpId() + "|" + Integer.parseInt(workPack.getRespId());
+			if (empWPManager.find(wpFlag) == null) {
+				EmployeeWPList tempEmpWP = new EmployeeWPList();
+				tempEmpWP.setEmpNum(Integer.parseInt(workPack.getRespId()));
+				tempEmpWP.setProjectId(workPack.getProjectId());
+				tempEmpWP.setWpID(workPack.getWpId());
+				tempEmpWP.setWpEmpId(wpFlag);
+				empWPManager.persist(tempEmpWP);
+			}
+			//resets workPack
 			workPack = null;			
 			return listNavigation;
 		}
 		return "";
 	}
-	
+
 	public String deleteWP(WorkPackage wp){
 		workPackManager.remove(wp);
 		refreshList();
 		return listNavigation;
 	}
-	
+
 	public String cancel() {
 		return listNavigation;
 	}
-	
+
 	public String cancelToProject(){
 		return projectNavigation;
 	}
-	
+
+	public boolean isValidWP() {
+		return validWP;
+	}
+
 	public boolean validateAll() {
-		boolean validWP = true;
+		validWP = true;
 		if (!validWPNum(workPack.getWpNum())) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not a valid Work Package Number. ex: B1111", null));
 			validWP = false;
 		}
-		
+
 		if (!validRespEngPat(workPack.getRespId())) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not a valid Responsibility Engineer Number. ex: 000001", null));
@@ -210,26 +240,40 @@ public class WorkPackageController implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "This employee does not exist.", null));
 				validWP = false;
+			} else {
+				if (!validEmpInProj(workPack.getProjectId(), workPack.getRespId())) {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "This employee is not in this project.", null));
+					validWP = false;
+				}
 			}
 		}
 		return validWP;
 	}
-	
+
 	public boolean validWPNum(String wpNum) {
 		return Pattern.matches(validWPNumPattern, wpNum);
 	}
-	
+
 	public boolean validRespEngPat(String reNum) {
 		return Pattern.matches(validRENumPattern, reNum);
 	}
-	
+
 	public boolean validEmp(String reNum) {
 		int id = Integer.parseInt(reNum);
 		if (empManager.find(id) != null)
 			return true;
 		return false;
 	}
-	
+
+	public boolean validEmpInProj(int projId, String reNum) {
+		int empNo = Integer.parseInt(reNum);
+		String projFlag = projId + "|0|" + empNo;
+		if (empWPManager.find(projFlag) != null)
+			return true;
+		return false;
+	}
+
 	public String backToProjects(){
 		return "DisplayProjects";
 	}
@@ -241,14 +285,14 @@ public class WorkPackageController implements Serializable {
 	public void setIdReadOnly(boolean idReadOnly) {
 		this.idReadOnly = idReadOnly;
 	}
-	
+
 	public String assignEmployee(Employee employee){
 		this.employee = employee;
 		workPackList = workPackManager.getAll();
 		allowWPAssignment = true;
 		return listNavigation;
 	}
-	
+
 	public String assignToWP(WorkPackage wp) {
 		EmployeeWPList emp_wp = new EmployeeWPList();
 		String projFlag = wp.getProjectId() + "|0|" + employee.getEmpNumber();
@@ -274,11 +318,11 @@ public class WorkPackageController implements Serializable {
 		}
 		return "";
 	}
-	
+
 	public boolean getAllowWPAssignment() {
 		return allowWPAssignment;
 	}
-	
+
 	public String cancelViewPackage(){
 		return "cancelViewPackage";
 	}

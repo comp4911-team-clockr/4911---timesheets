@@ -148,7 +148,7 @@
 					<BR />
 				</b:column>
 			</b:row>
-
+			<b:messages errorStyle="color:red" rendered="#{!workPackControl.validWP}" />
 			<h:commandButton styleClass="btn workPackageButtons addPadRight"
 				value="Add Work Package" action="#{workPackControl.addWP}"></h:commandButton>
 			<h:commandButton styleClass="btn workPackageButtons" value="Cancel"
