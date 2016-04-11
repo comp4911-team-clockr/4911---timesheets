@@ -30,9 +30,13 @@
       		<h:outputLabel class="lessBigFont" value="Supervisor:" />
 			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.supervisor}" /><br/>      		
       		<h:outputLabel class="lessBigFont" value="Issue Date:" />
-			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.issueDate}" /><br/>
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.issueDate}">
+				<f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+			</h:outputText><br/>
       		<h:outputLabel class="lessBigFont" value="Estimated Completion Date:" />
-			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.estCompletionDate}" /><br/>			
+			<h:outputText class="lessBigFont" value=" #{projectControl.editProject.estCompletionDate}">
+				<f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+			</h:outputText><br/>			
       		<h:outputLabel class="lessBigFont" value="Project Assistant:" />
       		<h:outputText class="lessBigFont" value=" #{projectControl.editProject.projAssistant}" /><br/>
       		<h:outputLabel class="lessBigFont" value="Costing Proposal:" />

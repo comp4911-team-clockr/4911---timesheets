@@ -40,13 +40,13 @@
 	      			<b:message for="projMan"/> -->
 	      			<b:selectOneMenu value="#{projectControl.project.supervisor}">
 						<f:selectItems value="#{projectControl.pmList}" var="emp"
-							itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+							itemValue="#{emp.empNumber}" itemLabel="#{emp.fullName}" />
 					</b:selectOneMenu>
 	      		</b:column>	 
 	      		<b:column col-sm="4" col-xs="12">     
 	      			<h:outputLabel value="Issue Date" /> 		
-	      			<b:datepicker id="issDate" format="dd/mm/yyyy" value="#{projectControl.project.issueDate}" 
-	      					required="true" requiredMessage="#{projMsg.projReq}"></b:datepicker>
+	      			<b:inputText styleClass="smallerTextInput" id="issDate" format="dd/mm/yyyy" value="#{projectControl.project.issueDate}" 
+	      					readonly="true"/>
 	      			<b:message for="issDate"/>
 	      		</b:column>	      		     		
       		</b:row>
@@ -178,7 +178,7 @@
       		</b:row>
       		
 			<br/>			
-      		<h:commandButton class="btn projectButtons addPadRight" value="Create Project" action="#{projectControl.addProject()}"></h:commandButton>
+      		<h:commandButton class="btn projectButtons addPadRight" value="Create Project" action="#{projectControl.addProject}"></h:commandButton>
       		<h:commandButton class="btn projectButtons" value="Cancel" action="#{projectControl.cancelNewProject()}" immediate="true"></h:commandButton>
       		<p></p>
       	</b:container>
