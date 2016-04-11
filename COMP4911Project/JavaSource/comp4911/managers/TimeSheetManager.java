@@ -57,13 +57,13 @@ public class TimeSheetManager implements Serializable {
 	}
 	
 	public List<TimeSheet> getAll() {
-		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where isActive IS TRUE", TimeSheet.class);
+		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where isActive=TRUE", TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();
 		
 		return timesheets;
 	}
 	public List<TimeSheet> getAll(int id) {
-		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where t.isActive IS TRUE AND t.empNumber=" + id, TimeSheet.class);
+		TypedQuery<TimeSheet> query = em.createQuery("select t from TimeSheet t where t.isActive=TRUE AND t.empNumber=" + id, TimeSheet.class);
 		List<TimeSheet> timesheets = query.getResultList();
 		
 		return timesheets;
@@ -76,8 +76,8 @@ public class TimeSheetManager implements Serializable {
 		boolean first = true;
 		
 		for (Employee e: empList) {
-			 query = em.createQuery("select t from TimeSheet t where t.isActive IS TRUE " +
-					 "AND t.submitted IS TRUE AND t.approval IS FALSE AND t.empNumber= " 
+			 query = em.createQuery("select t from TimeSheet t where t.isActive=TRUE " +
+					 "AND t.submitted=TRUE AND t.approval=FALSE AND t.empNumber= " 
 					 + e.getEmpNumber(), TimeSheet.class);
 			if (!first) {
 				timesheets.addAll(query.getResultList());

@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import comp4911.models.Credential;
 import comp4911.models.Employee;
+import comp4911.models.WorkPackage;
 
 @Dependent
 @Stateless
@@ -61,10 +63,32 @@ public class EmployeeManager implements Serializable {
 
 	public java.util.List<Employee> getAllBySupervisor(int supId) {
 		TypedQuery<Employee> query = em.createQuery("select e from Employee e " +
-				"WHERE e.supNum IS " + supId,
+				"WHERE e.supNum LIKE " + supId,
 				Employee.class); 
 		java.util.List<Employee> employees = query.getResultList();
 
 		return employees;
+	}
+	
+	public java.util.List<Employee> getAllProjectManagers(CredentialManager credManager) {
+		java.util.List<Employee> employees = new java.util.ArrayList<Employee>();
+		
+		for(Credential c : credManager.getAllProjectManagers()) {
+			employees.add(c.getEmployee());
+		}
+		return employees;
+	}
+	
+	public java.util.List<Employee> getAllEmployeesToAddForWP(EmployeeWPManager empWPManager, WorkPackage wp) {
+		java.util.List<Integer> empInWP = empWPManager.listEmpNumByWP(wp.getWpId());
+		if (!empInWP.isEmpty()) {
+			TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e " +
+					"WHERE e.empNumber NOT IN :empNumList",
+					Employee.class); 
+			query.setParameter("empNumList", empInWP);
+			java.util.List<Employee> employees = query.getResultList();
+			return employees;
+		}
+		return getAll();
 	}
 }

@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import comp4911.managers.CredentialManager;
 import comp4911.managers.EmployeeManager;
 import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.ProjectManager;
@@ -35,6 +36,8 @@ public class ProjectController implements Serializable {
 	
 	private List<Project> projectList;
 	
+	private List<Employee> pmList;
+	
 	@Inject
 	private Project editProject;
 	
@@ -44,6 +47,9 @@ public class ProjectController implements Serializable {
 	@Inject
 	private EmployeeManager empManager;
 	
+	@Inject
+	private CredentialManager credManager;
+	
 	private Employee employee;
 	
 	private boolean projectAssignment;
@@ -51,8 +57,6 @@ public class ProjectController implements Serializable {
 	public boolean isProjectAssignment() {
 		return projectAssignment;
 	}
-
-	
 
 	private List<Employee> empList;
 	
@@ -76,9 +80,12 @@ public class ProjectController implements Serializable {
 		System.out.println("Project Constructor called");
 		projectList = new ArrayList<Project>();
 		empList = new ArrayList<Employee>();
+		pmList = new ArrayList<Employee>();
 	}
 
-	
+	public List<Employee> getPmList() {
+		return pmList;
+	}
 
 	public Project getProject() {
 		System.out.println("Get Project called");
@@ -103,6 +110,10 @@ public class ProjectController implements Serializable {
 		projectList = projectManager.getAll();
 	}
 
+	public void refreshPMList() {
+		pmList = empManager.getAllProjectManagers(credManager);
+	}
+	
 	public List<Project> getProjectList() {
 		System.out.println("Get Project List");
 		refreshList();
@@ -113,10 +124,10 @@ public class ProjectController implements Serializable {
 		this.projectList = projectList;
 	}
 	
-	public String selectEditProject(Project proj, String something){
+	public String selectEditProject(Project proj, String navigation){
 		editProject = proj;
 		refreshEmpList(proj);
-		return something;
+		return navigation;
 	}
 	
 	public double calculateRemainingBudget(Project proj) {
@@ -203,12 +214,14 @@ public class ProjectController implements Serializable {
 	public String assignEmpToProject(Project proj){
 		EmployeeWPList employeeProject = new EmployeeWPList();
 		String projectEmp = proj.getProjectId() + "|0|" + employee.getEmpNumber();
-		String wpEmp = proj.getProjectId() + "|" + employee.getEmpNumber();
+		/* There's no need to set the work package id in this case because at this
+		 * point, the user isn't even assigned to a work package yet. Instead,
+		 * we simply give the WpId a null value.*/
 		if(empWPManager.find(projectEmp) == null){
 			employeeProject.setWpEmpId(projectEmp);
 			employeeProject.setProjectId(proj.getProjectId());
 			employeeProject.setEmpNum(employee.getEmpNumber());
-			employeeProject.setWpID(wpEmp);
+			employeeProject.setWpID(null);
 			empWPManager.persist(employeeProject);
 			projectAssignment = false;
 			refreshEmpList(proj);

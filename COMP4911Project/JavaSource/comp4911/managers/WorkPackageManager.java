@@ -53,7 +53,7 @@ public class WorkPackageManager implements Serializable {
 	
 	public java.util.List<WorkPackage> getAllByProject(int id) {
         TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
-        		"WHERE p.isActive IS TRUE AND p.projectId=" + id,
+        		"WHERE p.isActive=TRUE AND p.projectId=" + id,
                 WorkPackage.class); 
         java.util.List<WorkPackage> workPacks = query.getResultList();
         return workPacks;
@@ -61,7 +61,7 @@ public class WorkPackageManager implements Serializable {
 	
 	public java.util.List<WorkPackage> getAll() {
 	        TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
-	        		"WHERE p.isActive IS TRUE",
+	        		"WHERE p.isActive=TRUE",
 	                WorkPackage.class); 
 	        java.util.List<WorkPackage> workPacks = query.getResultList();
 	        return workPacks;

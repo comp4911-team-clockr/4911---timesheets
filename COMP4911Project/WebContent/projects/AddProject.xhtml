@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+      <f:event listener="#{projectControl.refreshPMList}" type="preRenderView"></f:event>
    <h:head>
       <title>#{title.titleAddProj}</title>
       <h:outputStylesheet library="css" name="main.css"  /> 
@@ -33,10 +34,14 @@
 	      		</b:column>
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Project Manager" />
-	      			<b:inputText id="projMan" styleClass="smallerTextInput" value="#{projectControl.project.supervisor}" 
+	      			<!-- <b:inputText id="projMan" styleClass="smallerTextInput" value="#{projectControl.project.supervisor}" 
 	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}"
 	      					validatorMessage="#{projMsg.projManager}"></b:inputText>
-	      			<b:message for="projMan"/>
+	      			<b:message for="projMan"/> -->
+	      			<b:selectOneMenu value="#{projectControl.project.supervisor}">
+						<f:selectItems value="#{projectControl.pmList}" var="emp"
+							itemValue="#{emp.credential.userId}" itemLabel="#{emp.fullName}" />
+					</b:selectOneMenu>
 	      		</b:column>	 
 	      		<b:column col-sm="4" col-xs="12">     
 	      			<h:outputLabel value="Issue Date" /> 		
