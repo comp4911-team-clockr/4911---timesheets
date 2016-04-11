@@ -12,7 +12,7 @@
 			<b:navbarLinks>
 				<b:navLink value="Home" href="#{request.contextPath}/welcome/Splash.xhtml" iconAwesome="home"></b:navLink>
 				<b:navLink value="Projects" href="#{request.contextPath}/projects/DisplayProjects.xhtml"
-					iconAwesome="folder-open"></b:navLink>
+					iconAwesome="folder-open" rendered="#{user.isPM or user.isHR}"></b:navLink>
 				<b:dropMenu value="TimeSheets" iconAwesome="calendar">
 					<b:navLink value="#{user.currentEmployee.firstName}'s TimeSheets"
 						href="#{request.contextPath}/timesheets/DisplayTimesheets.xhtml"></b:navLink>
@@ -20,7 +20,7 @@
 						href="#{request.contextPath}/timesheets/DisplayTimesheetsForApproval.xhtml"></b:navLink>
 				</b:dropMenu>
 				<b:navLink value="Employees" href="#{request.contextPath}/employees/DisplayEmployees.xhtml"
-					iconAwesome="suitcase"></b:navLink>
+					iconAwesome="suitcase" rendered="#{user.isPM}"></b:navLink>
 				<b:dropMenu value="Profile" iconAwesome="gears">
 					<b:navLink value="Update Profile" href="#{request.contextPath}/profile/ResetCreds.xhtml"></b:navLink>
 					<b:navLink value="View Details" href="#{request.contextPath}/profile/ViewDetails.xhtml"></b:navLink>

@@ -33,19 +33,19 @@
 			      		<span class="caption">Create Timesheet</span>
 			      	</div>     		
 	      		</b:column>
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isPM or user.isHR}">
 			      	<div class="splashItem">
 						<h:commandButton action="#{user.AddProject}" styleClass="AddTSButton2" ></h:commandButton>
 			      		<span class="caption">Create Project</span>
 			      	</div>     		
 	      		</b:column>	 
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isPM or user.isHR}">
 			      	<div class="splashItem">
 						<h:commandButton action="#{workPackControl.addWPSplash}" styleClass="AddTSButton3" ></h:commandButton>
 			      		<span class="caption">Create Work Package</span>
 			      	</div>     		
 	      		</b:column>	 
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isHR}">
 			      	<div class="splashItem">
 						<h:commandButton action="#{user.addEmployeeButton()}" styleClass="AddTSButton4" ></h:commandButton>
 			      		<span class="caption">Add An Employee</span>
