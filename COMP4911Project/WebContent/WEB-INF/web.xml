@@ -46,6 +46,7 @@
         <auth-constraint>
             <description/>
             <role-name>HumanResource</role-name>
+            <role-name>ProjectManager</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>

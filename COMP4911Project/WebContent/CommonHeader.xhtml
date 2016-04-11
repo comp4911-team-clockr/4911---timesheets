@@ -20,7 +20,7 @@
 						href="#{request.contextPath}/timesheets/DisplayTimesheetsForApproval.xhtml"></b:navLink>
 				</b:dropMenu>
 				<b:navLink value="Employees" href="#{request.contextPath}/employees/DisplayEmployees.xhtml"
-					iconAwesome="suitcase" rendered="#{user.isPM}"></b:navLink>
+					iconAwesome="suitcase" rendered="#{user.isPM or user.isHR}"></b:navLink>
 				<b:dropMenu value="Profile" iconAwesome="gears">
 					<b:navLink value="Update Profile" href="#{request.contextPath}/profile/ResetCreds.xhtml"></b:navLink>
 					<b:navLink value="View Details" href="#{request.contextPath}/profile/ViewDetails.xhtml"></b:navLink>

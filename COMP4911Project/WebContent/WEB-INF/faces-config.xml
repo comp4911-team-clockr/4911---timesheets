@@ -33,32 +33,40 @@
 			<var>wpMsg</var>
 		</resource-bundle>
 	</application>
+	
 	<navigation-rule>
 		<from-view-id>/MainIndex.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>loggedin</from-outcome>
-			<to-view-id>/Splash.xhtml</to-view-id>
+			<to-view-id>/welcome/Splash.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>ForgotPasswordPage</from-outcome>
 			<to-view-id>/ForgottenPassword.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<!--  added CreateTimesheet outcome navigation case -->
 	<navigation-rule>
-		<from-view-id>/Splash.xhtml</from-view-id>
+		<from-view-id>/welcome/Splash.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>CreateTimesheet</from-outcome>
+			<to-view-id>/timesheets/CreateTimesheet.xhtml</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>AddEmployee</from-outcome>
-			<to-view-id>/AddEmployee.xhtml</to-view-id>
+			<to-view-id>/employees/AddEmployee.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>addWPSplash</from-outcome>
-			<to-view-id>/AddWorkPackage.xhtml</to-view-id>
+			<to-view-id>/wp/AddWorkPackage.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>addProject</from-outcome>
-			<to-view-id>/AddProject.xhtml</to-view-id>
+			<to-view-id>/projects/AddProject.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/EmployeesHR.xhtml</from-view-id>
 		<navigation-case>
@@ -66,144 +74,160 @@
 			<to-view-id>/AddEmployee.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/DisplayProjects.xhtml</from-view-id>
+		<from-view-id>/projects/DisplayProjects.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>addProject</from-outcome>
-			<to-view-id>/AddProject.xhtml</to-view-id>
+			<to-view-id>/projects/AddProject.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>viewProject</from-outcome>
-			<to-view-id>/ViewProject.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>viewProject</from-outcome>
-			<to-view-id>/ViewProject.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>DisplayEmployees</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/DisplayWorkPackages.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>editStatusreport</from-outcome>
-			<to-view-id>/EditStatusReport.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>addStatusreport</from-outcome>
-			<to-view-id>/AddStatusReport.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>addWP</from-outcome>
-			<to-view-id>/AddWorkPackage.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>displayProjects</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/AddWorkPackage.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>DisplayProject</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/DisplayEmployees.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>DisplayEmployeeList</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>EmployeeToProjects</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/AddEmployee.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>displayEmployeeList</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>reloadEmpList</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/AddProject.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>projects</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>reloadProjects</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/EditProject.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>cancelEditProject</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
+			<to-view-id>/projects/ViewProject.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>editProject</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/EditEmployee.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>cancelEditEmployee</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
+			<to-view-id>/projects/EditProject.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>DisplayEmployees</from-outcome>
-			<to-view-id>/DisplayEmployees.xhtml</to-view-id>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayWorkPackages</from-outcome>
+			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
+		</navigation-case>		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/wp/DisplayWorkPackages.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editStatusreport</from-outcome>
+			<to-view-id>/reports/EditStatusReport.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addStatusreport</from-outcome>
+			<to-view-id>/reports/AddStatusReport.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addWP</from-outcome>
+			<to-view-id>/wp/AddWorkPackage.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>displayProjects</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/DisplayTimesheets.xhtml</from-view-id>
+		<from-view-id>/wp/AddWorkPackage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>DisplayProject</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/employees/DisplayEmployees.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>DisplayEmployeeList</from-outcome>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>EmployeeToProjects</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/employees/AddEmployee.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>displayEmployeeList</from-outcome>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>reloadEmpList</from-outcome>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/projects/AddProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>projects</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>reloadProjects</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/projects/EditProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelEditProject</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>editProject</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/employees/EditEmployee.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelEditEmployee</from-outcome>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayEmployees</from-outcome>
+			<to-view-id>/employees/DisplayEmployees.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/timesheets/DisplayTimesheets.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>CreateTimesheet</from-outcome>
-			<to-view-id>/CreateTimesheet.xhtml</to-view-id>
+			<to-view-id>/timesheets/CreateTimesheet.xhtml</to-view-id>
 			<redirect></redirect>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cancelCreateTimesheet</from-outcome>
-			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+			<to-view-id>/timesheets/DisplayTimesheets.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>EditTimesheet</from-outcome>
-			<to-view-id>/EditTimesheet.xhtml</to-view-id>
+			<to-view-id>/timesheets/EditTimesheet.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>DisplayTimesheets</from-outcome>
-			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+			<to-view-id>/timesheets/DisplayTimesheets.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/EditTimesheet.xhtml</from-view-id>
+		<from-view-id>/timesheets/EditTimesheet.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelEditTimesheet</from-outcome>
-			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+			<to-view-id>/timesheets/DisplayTimesheets.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>EditTimesheetReturn</from-outcome>
-			<to-view-id>/EditTimesheet.xhtml</to-view-id>
+			<to-view-id>/timesheets/EditTimesheet.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/CreateTimesheet.xhtml</from-view-id>
+		<from-view-id>/timesheets/CreateTimesheet.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>CancelCreateTimesheet</from-outcome>
-			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+			<to-view-id>/timesheets/DisplayTimesheets.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/ForgottenPassword.xhtml</from-view-id>
 		<navigation-case>
@@ -215,6 +239,7 @@
 			<to-view-id>/RecoveryQuestions.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/RecoveryQuestions.xhtml</from-view-id>
 		<navigation-case>
@@ -226,6 +251,7 @@
 			<to-view-id>/ChangePassword.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/ChangePassword.xhtml</from-view-id>
 		<navigation-case>
@@ -237,46 +263,52 @@
 			<to-view-id>/MainIndex.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/ViewTimesheet.xhtml</from-view-id>
+		<from-view-id>/timesheets/ViewTimesheet.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelViewTimesheet</from-outcome>
-			<to-view-id>/DisplayTimesheets.xhtml</to-view-id>
+			<to-view-id>/timesheets/DisplayTimesheets.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/ViewProject.xhtml</from-view-id>
+		<from-view-id>/projects/ViewProject.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelViewProject</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/ViewProject.xhtml</from-view-id>
+		<from-view-id>/projects/ViewProject.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelViewProject</from-outcome>
-			<to-view-id>/DisplayProjects.xhtml</to-view-id>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/DisplayStatusReport.xhtml</from-view-id>
+		<from-view-id>/reports/DisplayStatusReport.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>DisplayProjects</from-outcome>
-			<to-view-id>/DisplayWorkPackages.xhtml</to-view-id>
+			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/ViewWorkPackage.xhtml</from-view-id>
+		<from-view-id>/wp/ViewWorkPackage.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelViewPackage</from-outcome>
-			<to-view-id>/DisplayWorkPackages.xhtml</to-view-id>
+			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
-		<from-view-id>/ViewDetails.xhtml</from-view-id>
+		<from-view-id>/profile/ViewDetails.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>cancelViewDetails</from-outcome>
-			<to-view-id>/Splash.xhtml</to-view-id>
+			<to-view-id>/welcome/Splash.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>		
 </faces-config>

@@ -116,7 +116,7 @@ public class EmployeeController implements Serializable {
 		currentEmployee = employeeManager.findByUserId(credential.getUserId());
 		setCredential(credentialManager.find(credential.getUserId()));
 		refreshList();
-		return "welcome/Splash";
+		return "loggedin";
 	}
 
 	public String logout() {
