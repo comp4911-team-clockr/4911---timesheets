@@ -229,7 +229,13 @@ public class ProjectController implements Serializable {
 
 		return "DisplayProjects";
 	}
-
+	
+	public String removeEmployee(int empNum){
+		empWPManager.removeAllByProj(editProject, empNum);
+		refreshEmpList(editProject);
+		return "ViewProject";
+	}
+	
 	public String cancelNewProject(){
 		return "reloadProjects";
 	}
