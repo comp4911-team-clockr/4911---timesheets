@@ -17,6 +17,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.regex.Pattern;
 
@@ -122,12 +123,15 @@ public class EmployeeController implements Serializable {
 	public String logout() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+				  
 		try {
+			HttpSession httpSession = (HttpSession)context.getExternalContext().getSession(false);
+			httpSession.invalidate();
 			request.logout();
 		} catch (ServletException e) {
 
 		}
-		return "/MainIndex.xhtml?faces-redirect=true";
+		return "/MainIndex?faces-redirect=true";
 	}
 	
 	/*
