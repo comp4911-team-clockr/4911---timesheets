@@ -17,7 +17,7 @@
 					<b:navLink value="#{user.currentEmployee.firstName}'s TimeSheets"
 						href="#{request.contextPath}/timesheets/DisplayTimesheets.xhtml"></b:navLink>
 					<b:navLink value="TimeSheets for Approval"
-						href="#{request.contextPath}/timesheets/DisplayTimesheetsForApproval.xhtml"></b:navLink>
+						href="#{request.contextPath}/timesheets/DisplayTimesheetsForApproval.xhtml" rendered="#{user.isPM or user.isHR}"></b:navLink>
 				</b:dropMenu>
 				<b:navLink value="Employees" href="#{request.contextPath}/employees/DisplayEmployees.xhtml"
 					iconAwesome="suitcase" rendered="#{user.isPM or user.isHR}"></b:navLink>
