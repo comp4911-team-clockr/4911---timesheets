@@ -48,8 +48,8 @@ public class StatusReport implements Serializable {
 	@Column(name="ProblemsAnticipated", columnDefinition = "text", length=512)
 	private String problemsAnticipated;
 	
-	@Column(name="timeVar")
-	private double timeVariance;
+	@Column(name="pComplete")
+	private double pcComplete;
 	
 	@Column(name="mdVar")
 	private double mdVariance;
@@ -129,14 +129,6 @@ public class StatusReport implements Serializable {
 		this.problemsAnticipated = problemsAnticipated;
 	}
 
-	public double getTimeVariance() {
-		return timeVariance;
-	}
-
-	public void setTimeVariance(double timeVariance) {
-		this.timeVariance = timeVariance;
-	}
-
 	public double getMdVariance() {
 		return mdVariance;
 	}
@@ -151,6 +143,14 @@ public class StatusReport implements Serializable {
 
 	public void setCostVariance(double costVariance) {
 		this.costVariance = costVariance;
+	}
+
+	public double getPcComplete() {
+		return pcComplete;
+	}
+
+	public void setPcComplete(double pcComplete) {
+		this.pcComplete = pcComplete;
 	}
 
 }

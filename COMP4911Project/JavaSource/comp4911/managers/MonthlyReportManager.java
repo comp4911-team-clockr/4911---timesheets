@@ -33,7 +33,7 @@ public class MonthlyReportManager implements Serializable {
 			em.merge(mr);
 		}
 		
-		// db query to find status report based on PM empNum
+		// db query to find monthly report based on PM empNum
 		public MonthlyReport findByPMEmpNum(int id) {
 		TypedQuery<MonthlyReport> query = em.createQuery("SELECT m FROM MonthlyReport m "+
 					"WHERE m.EmpNum=" + id, MonthlyReport.class);
@@ -50,7 +50,7 @@ public class MonthlyReportManager implements Serializable {
 	        return reports;
 		}
 
-		// db query to find all status reports in db
+		// db query to find all monthly reports in db
 		public java.util.List<MonthlyReport> getAll() {
 	        TypedQuery<MonthlyReport> query = em.createQuery("SELECT m FROM MonthlyReport m ",
 	                MonthlyReport.class); 

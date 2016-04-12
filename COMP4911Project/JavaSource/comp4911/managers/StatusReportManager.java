@@ -92,4 +92,11 @@ public class StatusReportManager implements Serializable {
 		return reports;
 	}
 	
+	// db query to find all reports in a Project
+	public java.util.List<StatusReport> getAllByProject (int projId) {
+		TypedQuery<StatusReport> query = em.createQuery("SELECT s FROM StatusReport s "+
+        		"WHERE s.statusReportId LIKE '" + projId + "|%|%'", StatusReport.class);
+        java.util.List<StatusReport> reports = query.getResultList();
+        return reports;
+	}
 }

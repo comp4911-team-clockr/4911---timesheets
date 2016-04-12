@@ -257,16 +257,6 @@ CREATE TABLE WorkPackage(   WpId TINYTEXT,
                             ProjectId int,
                             IsActive BOOL);
 
-INSERT INTO WorkPackage VALUES("1|1", "B1111", "Project Set-Up", "TEK Solutions", "000004",
-                                "2016-02-01", "2016-02-20", "2016-02-21",
-                                100,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                1, true);
 
 INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "000004",
                                 "2016-02-01", "2016-02-20","2016-02-21",
@@ -339,7 +329,7 @@ CREATE TABLE StatusReport(
                         WorkPlannedNextPeriod TEXT,
                         ProblemsEncountered TEXT,
                         ProblemsAnticipated TEXT,
-                        timeVar double,
+                        pComplete double,
                         mdVar double,
                         costVar double
                         );
@@ -354,7 +344,7 @@ INSERT INTO StatusReport VALUES(
                         "Test deliverable 3. Test deliverable 4.",
                         "Half dev team got the flu.",
                         "Catching up with unfinished work - need to put in more time than anticipated",
-                        0,
+                        100,
                         .2,
                         .2
                         );
@@ -371,4 +361,17 @@ CREATE TABLE MonthlyReport(
                         mdVar double,
                         costVar double,
                         pcCompletion double
+                        );
+                        
+INSERT INTO MonthlyReport VALUES(
+                        "1|1",
+                        3,
+                        "2016-01-31",
+                        100,
+                        11500,
+                        100,
+                        100,
+                        0,
+                        0,
+                        100
                         );

@@ -66,7 +66,7 @@ public class StatusReportController implements Serializable {
 	}
 	
 	public String getListNavigation() {
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 
 	// get all status reports in db
@@ -74,7 +74,7 @@ public class StatusReportController implements Serializable {
 		System.out.println("Get StatusReport called");
 //		statusReportList = statusReportManager.getAll();
 		statusReportList = statusReportManager.getAllByWorkPackage(workPack.getWpId());
-		System.out.println(statusReportList.size() + " size");
+		System.out.println(statusReportList.size() + " status report list size");
 		return statusReport;
 	}
 	
@@ -92,7 +92,7 @@ public class StatusReportController implements Serializable {
 	public String viewSR(WorkPackage workPack) {
 		this.workPack = workPack;
 		statusReportList = statusReportManager.getAllByWorkPackage(workPack.getWpId());
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	
 	// get a specific status report
@@ -110,13 +110,13 @@ public class StatusReportController implements Serializable {
 		statusReportManager.persist(statusReport);
 		refreshList();
 		statusReport = null;
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	
 	// going to status report page + setting page to specific status report
 	public String editWP(StatusReport sr) {
 		statusReport = sr;
-		return editNavigation;
+		return "EditStatusReport";
 	}
 	
 	// saving edit changes in status report
@@ -124,12 +124,12 @@ public class StatusReportController implements Serializable {
 		statusReportManager.merge(statusReport);
 		refreshList();
 		statusReport= null;			
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	
 	// cancel to list of status reports
 	public String cancel() {
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	
 	// cancel to list of work packages
@@ -150,7 +150,7 @@ public class StatusReportController implements Serializable {
 
 	public String editStatusReport(StatusReport statusreport) {
 		this.statusReport = statusreport;
-		return editNavigation;
+		return "EditStatusReport";
 	}
 	
 	public String addStatusReport() {
@@ -160,19 +160,19 @@ public class StatusReportController implements Serializable {
 		//temp
 		statusReport
 		.setReportDate(new java.sql.Date(java.util.Calendar.getInstance().getTime().getTime()));
-		return addNavigation;
+		return "AddStatusReport";
 	}
 	
 	public String saveChangesForAdd() {
 		statusReportManager.persist(statusReport);
 		statusReportList.add(statusReport); //simulates add rather than doing a refresh
 		//which is less costly
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	public String saveChangesForEdit() {
 		statusReportManager.merge(statusReport);
 		refreshList();
-		return listNavigation;
+		return "DisplayStatusReport";
 	}
 	
 	public String backToWP(){

@@ -367,13 +367,13 @@
     NAME="output" PATH="/reports/RequestMonthlyReport.xhtml"
     TARGET="rules:#reports#RequestMonthlyReport.xhtml"
     TITLE="RequestMonthlyReport" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="DisplayProjects::#wp#DisplayProjects.xhtml"
-    NAME="output2" PATH="/wp/DisplayProjects.xhtml"
-    TARGET="rules:#wp#DisplayProjects.xhtml" TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayProjects::#projects#DisplayProjects.xhtml" NAME="output2"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#wp#DisplayProjects.xhtml"
-  PATH="/wp/DisplayProjects.xhtml" SHAPE="1104,2721,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#reports#RequestMonthlyReport.xhtml"
   PATH="/reports/RequestMonthlyReport.xhtml" SHAPE="1088,2721,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

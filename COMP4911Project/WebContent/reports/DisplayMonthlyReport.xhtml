@@ -26,7 +26,7 @@
 			<br />
 		
 			<h:dataTable styleClass="dataTables_wrapper form-inline dt-bootstrap table roundTheCorners table-bordered j_idt19j_idt22Table dataTable no-footer"
-				value="#{statusReportControl.statusReportList}" var="statRep">
+				value="#{monthlyReportControl.monthlyReportList}" var="monthRep">
 
 				<h:column>
 					<f:facet name="header">Monthly Report Id</f:facet>
@@ -39,11 +39,6 @@
 
 				<h:column>
 					<f:facet name="header">Report Date</f:facet>
-					<!-- 
-					<h:outputText value="#{statusReportControl.statusReport.reportDate}">
-						<f:convertDateTime pattern="yyyy-MM-dd" />
-					</h:outputText>
-					-->
 				</h:column>
 
 				<h:column>
@@ -71,12 +66,16 @@
 				<h:column>
 					<f:facet name="header">Budget Cost Variance</f:facet>
 				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Percent Complete</f:facet>
+				</h:column>
 			</h:dataTable>
 
 			<h:commandButton styleClass="btn workPackageButtons addPadRight"
-				value="Request Monthly Report"/>
+				value="Request Monthly Report" action="#{monthlyReportControl.generateReport}"/>
 			<h:commandButton styleClass="btn workPackageButtons" value="Back"
-				action="#{statusReportControl.backToProj}" />
+				action="#{monthlyReportControl.backToProj}" />
 			<p></p>
 		</b:container>
 		<br />

@@ -92,7 +92,8 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Monthly Report</f:facet>
-					<h:button styleClass="btn projectButtons" value="View"/>
+					<h:commandButton styleClass="btn projectButtons" value="View"
+						action="#{monthlyReportControl.viewMR(proj)}"/>
 				</h:column>
       		</b:dataTable>   
       		<h:commandButton class="btn projectButtons" action="#{projectControl.addProjectSetup()}" value="New Project"></h:commandButton><p></p> 	
