@@ -86,7 +86,7 @@
 	      		<b:column col-sm="4" col-xs="12">
 	      			<h:outputLabel value="Initial Budget" />
 	      			<b:inputText id="iniBud" styleClass="smallerTextInput" value="#{projectControl.project.initBudget}" 
-	      					required="true" requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}">
+	      					 requiredMessage="#{projMsg.projReq}" converterMessage="#{projMsg.projCon}" readonly="true">
 	      					</b:inputText>
 	      			<b:message for="iniBud"/>
 	      		</b:column>
