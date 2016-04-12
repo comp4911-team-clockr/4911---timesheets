@@ -254,9 +254,10 @@ public class EmployeeController implements Serializable {
 
 	public String deleteEmployee(Employee e) {
 		System.out.println("Delete Employee called");
-		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
+		e.setActive(false);
+		employeeManager.merge(e);
+//		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
 		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
-
 		refreshList();
 
 		return "DisplayEmployees";

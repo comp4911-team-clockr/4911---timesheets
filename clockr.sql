@@ -19,19 +19,21 @@ CREATE TABLE Employees(	EmpNum int,
                         FlexHours double,
                         HireDate date,
 						Email TINYTEXT,
-						PayRateId TINYTEXT
+						PayRateId TINYTEXT,
+						IsActive BOOL
 						);
 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 3, 10, 0, "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 3, 10, 0, "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 4, 10, 0, "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 3, 10, 0, "2011-01-01", "dd@dd.dd", "P3");
-INSERT INTO Employees VALUES (5, "Bruce", "Wayne", "000005", 3, 5, 0, "2011-10-07", "ee@ee.ee", "P4");
-INSERT INTO Employees VALUES (6, "Clark", "Kent", "000006", 4, 10, 0, "2011-11-01", "ff@ff.ff", "P3");
-INSERT INTO Employees VALUES (7, "Sally", "Sue", "000007", 3, 10, 0, "2011-12-01", "gg@hh.hh", "P2");
-INSERT INTO Employees VALUES (8, "Emily", "Doe", "000008", 3, 10, 0, "2012-01-01", "hh@hh.hh", "DS");
-INSERT INTO Employees VALUES (9, "Wally", "West", "000009", 4, 10, 0, "2012-02-05", "ii@ii.ii", "SS");
-INSERT INTO Employees VALUES (10, "Jackee", "Ma", "000010", 4, 10, 0, "1994-10-07", "jj@jj.jj", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 3, 10, 0, "2010-10-10", "aa@aa.aa", "P1", TRUE);
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 3, 10, 0, "1995-01-01", "bb@bb.bb", "P5", TRUE);
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 4, 10, 0, "2010-01-01", "cc@cc.cc", "P3", TRUE);
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 3, 10, 0, "2011-01-01", "dd@dd.dd", "P3", TRUE);
+INSERT INTO Employees VALUES (5, "Bruce", "Wayne", "000005", 3, 5, 0, "2011-10-07", "ee@ee.ee", "P4", TRUE);
+INSERT INTO Employees VALUES (6, "Clark", "Kent", "000006", 4, 10, 0, "2011-11-01", "ff@ff.ff", "P3", TRUE);
+INSERT INTO Employees VALUES (7, "Sally", "Sue", "000007", 3, 10, 0, "2011-12-01", "gg@hh.hh", "P2", TRUE);
+INSERT INTO Employees VALUES (8, "Emily", "Doe", "000008", 3, 10, 0, "2012-01-01", "hh@hh.hh", "DS", TRUE);
+INSERT INTO Employees VALUES (9, "Wally", "West", "000009", 4, 10, 0, "2012-02-05", "ii@ii.ii", "SS", TRUE);
+INSERT INTO Employees VALUES (10, "Jackee", "Ma", "000010", 4, 10, 0, "1994-10-07", "jj@jj.jj", "P3", TRUE);
+
 DROP TABLE IF EXISTS Credentials;
 CREATE TABLE Credentials( UserId TINYTEXT,
 						  Password TINYTEXT,
