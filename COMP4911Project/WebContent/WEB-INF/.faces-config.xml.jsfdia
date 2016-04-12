@@ -159,6 +159,11 @@
     NAME="output1" PATH="/projects/DisplayProjects.xhtml"
     TARGET="rules:#projects#DisplayProjects.xhtml"
     TITLE="EmployeeToProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkPackages::#wp#DisplayWorkPackages.xhtml"
+    NAME="output2" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#projects#ViewProject.xhtml"
