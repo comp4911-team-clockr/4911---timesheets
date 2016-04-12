@@ -48,12 +48,12 @@ public class WorkPackageManager implements Serializable {
 		merge(wp);
 	}
 	
-	public WorkPackage findByUserId(String id) {
-		TypedQuery<WorkPackage> query = em.createQuery("SELECT w FROM WorkPackage w WHERE w.wpId = :wpId ", WorkPackage.class);
-		query.setParameter("wpId", id);
-		java.util.List<WorkPackage> results = query.getResultList(); 
-		WorkPackage wp = results.get(0);
-		return wp;
+	public java.util.List<WorkPackage> getAllByRE(String respId) {
+		TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
+        		"WHERE p.isActive=TRUE AND p.respId=" + respId,
+                WorkPackage.class); 
+        java.util.List<WorkPackage> workPacks = query.getResultList();
+        return workPacks;
 	}
 	
 	public java.util.List<WorkPackage> getAllByProject(int id) {

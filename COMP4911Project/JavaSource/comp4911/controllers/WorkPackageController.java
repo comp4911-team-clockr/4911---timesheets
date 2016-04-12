@@ -42,6 +42,7 @@ public class WorkPackageController implements Serializable {
 
 	private boolean idReadOnly = true;
 	private boolean allowWPAssignment;
+	private boolean isRE;
 
 	@Inject
 	private WorkPackage workPack;
@@ -71,6 +72,10 @@ public class WorkPackageController implements Serializable {
 
 	private List<Employee> empREList;
 
+	public void SetEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
@@ -86,10 +91,19 @@ public class WorkPackageController implements Serializable {
 		this.empList = empList;
 	}
 
+	public boolean isRE() {
+		isRE = (!workPackManager.getAllByRE(employee.getCredential().getUserId()).isEmpty());
+		return isRE;
+	}
 	public String gotoList(Project project) {
 		this.project = project;
 		refreshList();
 		return listNavigation;
+	}
+	
+	public String gotoWP() {
+		workPackList = workPackManager.getAllByRE(employee.getCredential().getUserId());
+		return "/wp/" + listNavigation + "?faces-redirect=true";
 	}
 
 	public WorkPackage getWorkPackage() {

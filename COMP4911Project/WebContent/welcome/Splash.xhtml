@@ -7,6 +7,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
       <f:event listener="#{test.SetEmployee(user.currentEmployee)}" type="preRenderView"></f:event>
+      <f:event listener="#{workPackControl.SetEmployee(user.currentEmployee)}" type="preRenderView"></f:event>
    <h:head>
       <title>#{title.titleSplash}</title>
       <h:outputStylesheet library="css" name="main.css"  /> 

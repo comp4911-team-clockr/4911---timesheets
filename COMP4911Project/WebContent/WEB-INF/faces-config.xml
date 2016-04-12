@@ -65,6 +65,10 @@
 			<from-outcome>addProject</from-outcome>
 			<to-view-id>/projects/AddProject.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayWorkProjects</from-outcome>
+			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
