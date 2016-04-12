@@ -35,6 +35,14 @@
 			<h:outputText class="biggerFont" value=" #{user.currentEmployee.empNumber}" /><br/>			
       		<h:outputLabel class="biggerFont" value="Email:" />
       		<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.email}" /><br/>
+      		
+      		<h:outputLabel class="biggerFont" value="Recovery Answer1:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.recovery1}" /><br/>      		
+      		<h:outputLabel class="biggerFont" value="Recovery Answer2:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.recovery2}" /><br/>
+      		<h:outputLabel class="biggerFont" value="Recovery Answer3:" />
+			<h:outputText class="biggerFont" value=" #{user.currentEmployee.credential.recovery3}" /><br/>			
+      		
       		<h:commandButton styleClass="btn employeeButtons" value="Back" action="#{user.cancelViewDetails}" immediate="true"></h:commandButton>      		
       		<p></p>
       	</b:container>
