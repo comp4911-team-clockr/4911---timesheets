@@ -1,4 +1,9 @@
 /*=============LOGIN PAGE CSS========================*/
+//Used for messages
+.err {
+	color: red;
+}
+
 //Used to round input textarea corners
 
 .roundCorners {

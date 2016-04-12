@@ -4,6 +4,7 @@ import java.io.Serializable;
 //import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -20,6 +21,7 @@ import java.util.regex.Pattern;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -56,6 +58,9 @@ public class EmployeeController implements Serializable {
 	private boolean isPM;
 
 	private boolean isHR;
+	
+	@ManagedProperty("#{loginMsg}")
+	private ResourceBundle msg;
 
 	List<Employee> empList;
 
@@ -332,41 +337,49 @@ public class EmployeeController implements Serializable {
 			return "One or both passwords are null";
 		}
 
-		StringBuilder retVal = new StringBuilder();
+		//StringBuilder retVal = new StringBuilder();
 
 		if (pass1.isEmpty() || pass2.isEmpty()) {
-			retVal.append("Empty fields\n");
+			//retVal.append("Empty fields\n");
+			return "Empty field(s)\n";
 		}
 
 		if (pass1.equals(pass2)) {
 			if (pass1.length() < 7) {
-				retVal.append("Password is too short. Needs to have 11 characters\n");
+				//retVal.append("Password is too short. Needs to have 11 characters\n");
+				return "Password is too short. Needs to have 11 characters\n";
 			}
 
 			if (!hasUppercase.matcher(pass1).find()) {
-				retVal.append("Password needs an upper case\n");
+				//retVal.append("Password needs an upper case\n");
+				return "Password needs an upper case\n";
 			}
 
 			if (!hasLowercase.matcher(pass1).find()) {
-				retVal.append("Password needs a lowercase\n");
+				//retVal.append("Password needs a lowercase\n");
+				return "Password needs a lowercase\n";
 			}
 
 			if (!hasNumber.matcher(pass1).find()) {
-				retVal.append("Password needs a number\n");
+				//retVal.append("Password needs a number\n");
+				return "Password needs a number\n";
 			}
 
 			if (!hasSpecialChar.matcher(pass1).find()) {
-				retVal.append("Password needs a special character i.e. !,@,#, etc.\n");
+				//retVal.append("Password needs a special character i.e. !,@,#, etc.\n");
+				return "Password needs a special character i.e. !,@,#, etc.\n";
 			}
 		} else {
-			retVal.append("Passwords don't match\n");
+			//retVal.append("Passwords don't match\n");
+			return "Passwords don't match\n";
 		}
 
-		if (retVal.length() == 0) {
-			retVal.append("Success");
-		}
+		//if (retVal.length() == 0) {
+			//retVal.append("Success");
+			return "Success";
+		//}
 
-		return retVal.toString();
+		//return retVal.toString();
 	}
 
 	public static boolean isValidEmailAddress(String email) {
@@ -439,8 +452,8 @@ public class EmployeeController implements Serializable {
 			credential  = cred;
 			return "GetRecoveryQuestions";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username is incorrect.", null));
+			FacesContext.getCurrentInstance().addMessage("forgotForm:userId",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "User ID is incorrect.", null));
 		}
 		System.out.println("Check User id fail");
 		return "ForgotPasswordPage";
@@ -459,8 +472,8 @@ public class EmployeeController implements Serializable {
 			return "RecoveryPassed";
 		} else {
 			System.out.println("Check Answers!!!");
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Those answers are incorrect.", null));
+			FacesContext.getCurrentInstance().addMessage("recoverForm:submitBtn",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Given answers are incorrect.", null));
 			return "GetRecoveryQuestions";
 		}		
 	}
@@ -482,7 +495,7 @@ public class EmployeeController implements Serializable {
 			credentialManager.merge(credential);
 			return "ChangePasswordConfirmed";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
+			FacesContext.getCurrentInstance().addMessage("changePassForm:submitBtn",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, validate, null));
 		}
 		//else return same page

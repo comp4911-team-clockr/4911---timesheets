@@ -10,7 +10,7 @@
       <h:outputStylesheet library="css" name="main.css"  /> 
    </h:head>
    <h:body class="clockrBg">
-      <h:form>
+      <h:form id="recoverForm">
 	      <b:container>
 	      	<b:row>
 	      		<b:column col-md="2" col-sm="1" col-xs="0"></b:column>
@@ -26,8 +26,9 @@
 	      			<b:inputText placeholder=" " styleClass="sizeInput" value="#{user.credToAdd.recovery2}"></b:inputText>
 					<p>When you were young, what did you want to be when you grew up?</p>	     
 	      			<b:inputText placeholder=" " styleClass="sizeInput" value="#{user.credToAdd.recovery3}"></b:inputText>					 			
-
-	      			<h:commandButton styleClass="blue btn" value="Submit" action="#{user.SubmitRecovery}"></h:commandButton>
+					<h:message for="submitBtn" style="color: red;" />
+					<br />
+	      			<h:commandButton id="submitBtn" styleClass="blue btn" value="Submit" action="#{user.SubmitRecovery}"></h:commandButton>
 	      			<h:commandButton styleClass="btn btn-default" value="Cancel" action="#{user.RecoveryQuestionsCancel}" immediate="true"></h:commandButton>
 	      			<p></p>
 	      			</div>
