@@ -129,7 +129,8 @@ public class EmployeeController implements Serializable {
 		}
 		return "/MainIndex.xhtml?faces-redirect=true";
 	}
-
+	
+	/*
 	public String checkLogin(String id, String password) {
 		Credential cred;
 		if ((cred = credentialManager.find(id)) != null) {
@@ -147,6 +148,7 @@ public class EmployeeController implements Serializable {
 		System.out.println("Check Login failed");
 		return "MainIndex?faces-redirect=true";
 	}
+	*/
 
 	public String cancelEditEmployee() {
 		return "cancelEditEmployee";
@@ -524,7 +526,7 @@ public class EmployeeController implements Serializable {
 		// else return same page
 		return "RecoveryPassed";
 	}
-
+	
 	public boolean getIsPM() {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
