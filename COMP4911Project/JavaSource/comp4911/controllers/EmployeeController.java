@@ -19,9 +19,11 @@ import javax.mail.internet.MimeMessage;
 
 import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -80,6 +82,13 @@ public class EmployeeController implements Serializable {
 
 	private String resetPassword;
 
+	private HtmlInputText inputComponent = new HtmlInputText();
+	
+	@PostConstruct
+	public void init(){
+		inputComponent.setValue(" ");
+	}
+	
 	public List<Employee> getEmpList() {
 		if (empList == null) {
 			refreshList();
@@ -444,7 +453,9 @@ public class EmployeeController implements Serializable {
 	public String GetRecoveryQuestions(String id){
 		//Employee set to entered user id to grab their question answers
 		Credential cred = credentialManager.find(credential.getUserId());
-
+		credToAdd.setRecovery1("");
+		credToAdd.setRecovery2("");
+		credToAdd.setRecovery3("");
 		if (cred != null) {
 			currentEmployee = employeeManager.findByUserId(credential.getUserId());
 			setCredential(credentialManager.find(credential.getUserId()));
@@ -463,7 +474,7 @@ public class EmployeeController implements Serializable {
 	//this method should take in 3 parameters (3 strings for questions)
 	public String SubmitRecovery(){
 		//add if statement and what not for entered values before returning.
-
+		credToAdd.setPassword("");
 		if (credToAdd.getRecovery1().equals(credential.getRecovery1()) &&
 				credToAdd.getRecovery2().equals(credential.getRecovery2()) &&
 				credToAdd.getRecovery3().equals(credential.getRecovery3()) ){

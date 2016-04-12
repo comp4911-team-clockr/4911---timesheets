@@ -42,6 +42,7 @@
 		<navigation-case>
 			<from-outcome>ForgotPasswordPage</from-outcome>
 			<to-view-id>/ForgottenPassword.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
@@ -213,6 +214,7 @@
 		<navigation-case>
 			<from-outcome>GetRecoveryQuestions</from-outcome>
 			<to-view-id>/RecoveryQuestions.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>

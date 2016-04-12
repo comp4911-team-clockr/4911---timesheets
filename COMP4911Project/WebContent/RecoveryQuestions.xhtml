@@ -21,11 +21,11 @@
 	      			<h4 class="borderBottom">Recovery Questions</h4>
 	      			<br/>
 	      			<p>Who was your childhood hero?</p>
-	      			<b:inputText placeholder=" " styleClass="sizeInput" value="#{user.credToAdd.recovery1}"></b:inputText>
+	      			<b:inputText type="password" styleClass="sizeInput" value="#{user.credToAdd.recovery1}"></b:inputText>
 	      			<p>What was the last name of your third grade teacher?</p>
-	      			<b:inputText placeholder=" " styleClass="sizeInput" value="#{user.credToAdd.recovery2}"></b:inputText>
+	      			<b:inputText type="password" styleClass="sizeInput" value="#{user.credToAdd.recovery2}"></b:inputText>
 					<p>When you were young, what did you want to be when you grew up?</p>	     
-	      			<b:inputText placeholder=" " styleClass="sizeInput" value="#{user.credToAdd.recovery3}"></b:inputText>					 			
+	      			<b:inputText type="password" styleClass="sizeInput" value="#{user.credToAdd.recovery3}"></b:inputText>					 			
 					<h:message for="submitBtn" style="color: red;" />
 					<br />
 	      			<h:commandButton id="submitBtn" styleClass="blue btn" value="Submit" action="#{user.SubmitRecovery}"></h:commandButton>
