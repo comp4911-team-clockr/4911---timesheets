@@ -11,37 +11,39 @@ USE clockr;
 
 DROP TABLE IF EXISTS Employees;
 CREATE TABLE Employees( EmpNum int,
-            EmpFname TINYTEXT,
-            EmpLname TINYTEXT,
-            UserId TINYTEXT,
+                        EmpFname TINYTEXT,
+                        EmpLname TINYTEXT,
+                        UserId TINYTEXT,
                         SupervisorEmpNum int,
-            VacationDays int,
+                        VacationDays int,
                         FlexHours double,
                         HireDate date,
-            Email TINYTEXT,
-            PayRateId TINYTEXT
-            );
+                        Email TINYTEXT,
+                        PayRateId TINYTEXT,
+                        IsActive boolean
+                        );
 
-INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 3, 10, 0, "2010-10-10", "aa@aa.aa", "P1");
-INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 3, 10, 0, "1995-01-01", "bb@bb.bb", "P5");
-INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 4, 10, 0, "2010-01-01", "cc@cc.cc", "P3");
-INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 3, 10, 0, "2011-01-01", "dd@dd.dd", "P3");
-INSERT INTO Employees VALUES (5, "Bruce", "Wayne", "000005", 3, 5, 0, "2011-10-07", "ee@ee.ee", "P4");
-INSERT INTO Employees VALUES (6, "Clark", "Kent", "000006", 4, 10, 0, "2011-11-01", "ff@ff.ff", "P3");
-INSERT INTO Employees VALUES (7, "Sally", "Sue", "000007", 3, 10, 0, "2011-12-01", "gg@hh.hh", "P2");
-INSERT INTO Employees VALUES (8, "Emily", "Doe", "000008", 3, 10, 0, "2012-01-01", "hh@hh.hh", "DS");
-INSERT INTO Employees VALUES (9, "Wally", "West", "000009", 4, 10, 0, "2012-02-05", "ii@ii.ii", "SS");
-INSERT INTO Employees VALUES (10, "Jackee", "Ma", "000010", 4, 10, 0, "1994-10-07", "jj@jj.jj", "P3");
+INSERT INTO Employees VALUES (1, "Bob", "Smith", "000001", 3, 10, 0, "2010-10-10", "aa@aa.aa", "P1", true);
+INSERT INTO Employees VALUES (2, "Jane", "Doe", "000002", 3, 10, 0, "1995-01-01", "bb@bb.bb", "P5", true);
+INSERT INTO Employees VALUES (3, "Cisco", "Ramon", "000003", 4, 10, 0, "2010-01-01", "cc@cc.cc", "P3", true);
+INSERT INTO Employees VALUES (4, "Barry", "Allen", "000004", 3, 10, 0, "2011-01-01", "dd@dd.dd", "P3", true);
+INSERT INTO Employees VALUES (5, "Bruce", "Wayne", "000005", 3, 5, 0, "2011-10-07", "ee@ee.ee", "P4", true);
+INSERT INTO Employees VALUES (6, "Clark", "Kent", "000006", 4, 10, 0, "2011-11-01", "ff@ff.ff", "P3", true);
+INSERT INTO Employees VALUES (7, "Sally", "Sue", "000007", 3, 10, 0, "2011-12-01", "gg@hh.hh", "P2", true);
+INSERT INTO Employees VALUES (8, "Emily", "Doe", "000008", 3, 10, 0, "2012-01-01", "hh@hh.hh", "DS", true);
+INSERT INTO Employees VALUES (9, "Wally", "West", "000009", 4, 10, 0, "2012-02-05", "ii@ii.ii", "SS", true);
+INSERT INTO Employees VALUES (10, "Jackee", "Ma", "000010", 4, 10, 0, "1994-10-07", "jj@jj.jj", "P3", true);
 DROP TABLE IF EXISTS Credentials;
-CREATE TABLE Credentials( UserId TINYTEXT,
-              Password TINYTEXT,
-              RoleId int,
-              UserRole TINYTEXT,
-              Email TINYTEXT,
-                          RecoveryAnswer1 TINYTEXT,
-                          RecoveryAnswer2 TINYTEXT,
-                          RecoveryAnswer3 TINYTEXT,
-              DigiSign VARCHAR(255));
+CREATE TABLE Credentials(   UserId TINYTEXT,
+                            Password TINYTEXT,
+                            RoleId int,
+                            UserRole TINYTEXT,
+                            Email TINYTEXT,
+                            RecoveryAnswer1 TINYTEXT,
+                            RecoveryAnswer2 TINYTEXT,
+                            RecoveryAnswer3 TINYTEXT,
+                            DigiSign VARCHAR(255)
+                        );
 
 INSERT INTO Credentials VALUES ("000001", "password", 001, "Employee", "aa@aa.aa",
                                 "",
@@ -104,11 +106,12 @@ INSERT INTO Credentials VALUES ("000010", "password", 001, "Employee", "jj@jj.jj
                                 "");
 
 DROP TABLE IF EXISTS PayRate;
-CREATE TABLE PayRate( PayRateId TINYTEXT,
-            CostinMD double,
-            IntRate double,
-            ExtRate double,
-                      OvertimeRate double);
+CREATE TABLE PayRate(   PayRateId TINYTEXT,
+                        CostinMD double,
+                        IntRate double,
+                        ExtRate double,
+                        OvertimeRate double
+                    );
 
 INSERT INTO PayRate VALUES ("P1", 115, 1.0, 1.5, 1.5);
 INSERT INTO PayRate VALUES ("P2", 147, 1.0, 1.5, 1.5);
@@ -121,8 +124,8 @@ INSERT INTO PayRate VALUES ("SS", 107, 1.0, 1.5, 1.5);
 
 DROP TABLE IF EXISTS TimeSheet;
 CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
-            EmpNum int,
-            WeekNum int,
+                        EmpNum int,
+                        WeekNum int,
                         WeekEnding date,
                         OverallTotalHrs double,
                         SatTotalHrs double,
@@ -184,27 +187,25 @@ INSERT INTO TimeSheetRow VALUES("10|1|1", "10|1", 2, 1, 40, 0, 0, 8, 7, 8, 8, 9,
 
 DROP TABLE IF EXISTS Project;
 CREATE TABLE Project( ProjectId int NOT NULL,
-            ProjName TINYTEXT NOT NULL,
-            EmpNum int NOT NULL,
-                      ProjAssistant int,
-                      IssueDate date,
-                      EstimatedCompletionDate date,
-
-                      CostingProposal double,
-                      InitialBudget double,
-                      RO1Budget double,
-                      RO2Budget double,
-                      FinalBudget double,
-
-                      MDP1 int NOT NULL,
-                      MDP2 int NOT NULL,
-                      MDP3 int NOT NULL,
-                      MDP4 int NOT NULL,
-                      MDP5 int NOT NULL,
-                      MDDS int NOT NULL,
-                      MDSS int NOT NULL,
-                      Descript TEXT NOT NULL,
-                      IsActive BOOL NOT NULL);
+                        ProjName TINYTEXT NOT NULL,
+                        EmpNum int NOT NULL,
+                        ProjAssistant int,
+                        IssueDate date,
+                        EstimatedCompletionDate date,
+                        CostingProposal double,
+                        InitialBudget double,
+                        RO1Budget double,
+                        RO2Budget double,
+                        FinalBudget double,
+                        MDP1 int NOT NULL,
+                        MDP2 int NOT NULL,
+                        MDP3 int NOT NULL,
+                        MDP4 int NOT NULL,
+                        MDP5 int NOT NULL,
+                        MDDS int NOT NULL,
+                        MDSS int NOT NULL,
+                        Descript TEXT NOT NULL,
+                        IsActive BOOL NOT NULL);
 
 INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", "2016-02-20",
                             10000,
@@ -238,25 +239,23 @@ INSERT INTO Project VALUES(2, "Project Beta", 2, 3, "2016-01-31", "2016-02-20",
                             TRUE);
 
 DROP TABLE IF EXISTS WorkPackage;
-CREATE TABLE WorkPackage( WpId TINYTEXT,
-              WpNum TINYTEXT,
-              WpTitle TINYTEXT,
-              Customer TINYTEXT,
-              RespEngId TINYTEXT,
-
-                          IssueDate date,
-                          PlannedCompletionDate date,
-                          ActualCompletionDate date,
-
-              MDP1 int NOT NULL,
-                          MDP2 int NOT NULL,
-                          MDP3 int NOT NULL,
-                          MDP4 int NOT NULL,
-                          MDP5 int NOT NULL,
-                          MDDS int NOT NULL,
-                          MDSS int NOT NULL,
-                          ProjectId int,
-                          IsActive BOOL);
+CREATE TABLE WorkPackage(   WpId TINYTEXT,
+                            WpNum TINYTEXT,
+                            WpTitle TINYTEXT,
+                            Customer TINYTEXT,
+                            RespEngId TINYTEXT,
+                            IssueDate date,
+                            PlannedCompletionDate date,
+                            ActualCompletionDate date,
+                            MDP1 int NOT NULL,
+                            MDP2 int NOT NULL,
+                            MDP3 int NOT NULL,
+                            MDP4 int NOT NULL,
+                            MDP5 int NOT NULL,
+                            MDDS int NOT NULL,
+                            MDSS int NOT NULL,
+                            ProjectId int,
+                            IsActive BOOL);
 
 INSERT INTO WorkPackage VALUES("1|1", "B1111", "Project Set-Up", "TEK Solutions", "000004",
                                 "2016-02-01", "2016-02-20", "2016-02-21",
@@ -358,4 +357,18 @@ INSERT INTO StatusReport VALUES(
                         0,
                         .2,
                         .2
+                        );
+                        
+DROP TABLE IF EXISTS MonthlyReport;
+CREATE TABLE MonthlyReport(
+                        MonthlyReportId TINYTEXT,
+                        EmpNum int NOT NULL,
+                        ReportDate date,
+                        ProjectBudgetMD double,
+                        ProjectBudgetCost double,
+                        ActualToDateMD double,
+                        EstimatedCompletionMD double,
+                        mdVar double,
+                        costVar double,
+                        pcCompletion double
                         );

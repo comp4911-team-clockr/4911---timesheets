@@ -48,7 +48,7 @@
 				</h:column>	
 				<h:column>
 					<f:facet name="header">Initial Budget</f:facet>
-					<h:outputText class="removeDot" value="#{proj.initBudget}"/>
+					<h:outputText class="removeDot" value="#{projectControl.calculateInitBudget(proj)}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Date Issued</f:facet>

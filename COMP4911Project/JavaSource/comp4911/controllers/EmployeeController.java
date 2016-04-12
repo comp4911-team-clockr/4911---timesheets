@@ -291,9 +291,10 @@ public class EmployeeController implements Serializable {
 
 	public String deleteEmployee(Employee e) {
 		System.out.println("Delete Employee called");
-		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
+//		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
+		e.setActive(false);
+		employeeManager.merge(e);
 		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
-
 		refreshList();
 
 		return "DisplayEmployees";
@@ -316,8 +317,11 @@ public class EmployeeController implements Serializable {
 			tempCred.setPassword(employee.getCredential().getPassword());
 			temp.setFirstName(employee.getFirstName());
 			temp.setLastName(employee.getLastName());
+			tempCred.setRecovery1(credToAdd.getRecovery1());
+			tempCred.setRecovery2(credToAdd.getRecovery2());
+			tempCred.setRecovery3(credToAdd.getRecovery3());
+			
 			temp.setCredential(tempCred);
-
 			credentialManager.merge(tempCred);
 			employeeManager.merge(temp);
 
@@ -553,4 +557,7 @@ public class EmployeeController implements Serializable {
 		return isHR;
 	}
 
+	public String getSupervisor(int id) {
+		return employeeManager.find(id).getFullName();
+	}
 }

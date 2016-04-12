@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import comp4911.models.Employee;
 import comp4911.models.TimeSheet;
+import comp4911.models.WorkPackage;
 
 @Dependent
 @Stateless
@@ -86,6 +87,14 @@ public class TimeSheetManager implements Serializable {
 				timesheets = query.getResultList();
 			}
 		}
+		return timesheets;
+	}
+	
+	public List<TimeSheet> getTotalMDsInWP(WorkPackage wp)
+	{
+		List<TimeSheet> timesheets = null;
+		
+		
 		return timesheets;
 	}
 }

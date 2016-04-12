@@ -143,6 +143,14 @@
     NAME="output4" PATH="/wp/DisplayWorkPackages.xhtml"
     TARGET="rules:#wp#DisplayWorkPackages.xhtml"
     TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="AddWorkPackage::#wp#AddWorkPackage.xhtml"
+    NAME="output5" PATH="/wp/AddWorkPackage.xhtml"
+    TARGET="rules:#wp#AddWorkPackage.xhtml" TITLE="AddWorkPackage" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayMonthlyReport::#reports#DisplayMonthlyReport.xhtml"
+    NAME="output6" PATH="/reports/DisplayMonthlyReport.xhtml"
+    TARGET="rules:#reports#DisplayMonthlyReport.xhtml"
+    TITLE="DisplayMonthlyReport" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#employees#DisplayEmployees.xhtml"
@@ -205,23 +213,15 @@
   <PROCESS-ITEM ID="rules:#wp#DisplayWorkPackages.xhtml:0" NAME="item"
    PATH="/wp/DisplayWorkPackages.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="editStatusreport::#reports#EditStatusReport.xhtml" NAME="output"
-    PATH="/reports/EditStatusReport.xhtml"
-    TARGET="rules:#reports#EditStatusReport.xhtml"
-    TITLE="editStatusreport" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="addStatusreport::#reports#AddStatusReport.xhtml" NAME="output1"
-    PATH="/reports/AddStatusReport.xhtml"
-    TARGET="rules:#reports#AddStatusReport.xhtml"
-    TITLE="addStatusreport" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="addWP::#wp#AddWorkPackage.xhtml"
-    NAME="output2" PATH="/wp/AddWorkPackage.xhtml"
-    TARGET="rules:#wp#AddWorkPackage.xhtml" TITLE="addWP" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="displayProjects::#projects#DisplayProjects.xhtml" NAME="output3"
+    ID="DisplayProjects::#projects#DisplayProjects.xhtml" NAME="output3"
     PATH="/projects/DisplayProjects.xhtml"
     TARGET="rules:#projects#DisplayProjects.xhtml"
-    TITLE="displayProjects" model-entity="JSFProcessItemOutput"/>
+    TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayStatusReport::#reports#DisplayStatusReport.xhtml"
+    NAME="output" PATH="/reports/DisplayStatusReport.xhtml"
+    TARGET="rules:#reports#DisplayStatusReport.xhtml"
+    TITLE="DisplayStatusReport" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#reports#EditStatusReport.xhtml"
@@ -301,9 +301,28 @@
   <PROCESS-ITEM ID="rules:#reports#DisplayStatusReport.xhtml:0"
    NAME="item" PATH="/reports/DisplayStatusReport.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="DisplayProjects::#wp#DisplayWorkPackages.xhtml" NAME="output"
-    PATH="/wp/DisplayWorkPackages.xhtml"
-    TARGET="rules:#wp#DisplayWorkPackages.xhtml" TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+    ID="EditStatusReport::#reports#EditStatusReport.xhtml" NAME="output"
+    PATH="/reports/EditStatusReport.xhtml"
+    TARGET="rules:#reports#EditStatusReport.xhtml"
+    TITLE="EditStatusReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="AddStatusReport::#reports#AddStatusReport.xhtml" NAME="output1"
+    PATH="/reports/AddStatusReport.xhtml"
+    TARGET="rules:#reports#AddStatusReport.xhtml"
+    TITLE="AddStatusReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkPackages::#wp#DisplayWorkPackages.xhtml"
+    NAME="output2" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reports#DisplayStatusReport.xhtml:1"
+   NAME="item1" PATH="/reports/DisplayStatusReport.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkProjects::#wp#DisplayWorkPackages.xhtml"
+    NAME="output" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkProjects" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#wp#ViewWorkPackage.xhtml"
@@ -339,4 +358,22 @@
     TARGET="rules:#RecoveryQuestions.xhtml" TITLE="GetRecoveryQuestions" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reports#DisplayMonthlyReport.xhtml"
+  PATH="/reports/DisplayMonthlyReport.xhtml" SHAPE="624,2193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reports#DisplayMonthlyReport.xhtml:0"
+   NAME="item" PATH="/reports/DisplayMonthlyReport.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="RequestMonthlyReport::#reports#RequestMonthlyReport.xhtml"
+    NAME="output" PATH="/reports/RequestMonthlyReport.xhtml"
+    TARGET="rules:#reports#RequestMonthlyReport.xhtml"
+    TITLE="RequestMonthlyReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="DisplayProjects::#wp#DisplayProjects.xhtml"
+    NAME="output2" PATH="/wp/DisplayProjects.xhtml"
+    TARGET="rules:#wp#DisplayProjects.xhtml" TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#wp#DisplayProjects.xhtml"
+  PATH="/wp/DisplayProjects.xhtml" SHAPE="1104,2721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#reports#RequestMonthlyReport.xhtml"
+  PATH="/reports/RequestMonthlyReport.xhtml" SHAPE="1088,2721,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

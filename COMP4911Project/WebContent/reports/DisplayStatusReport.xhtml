@@ -77,12 +77,6 @@
 				</h:column>
 
 				<h:column>
-					<f:facet name="header">Time Variance</f:facet>
-					<h:outputText
-						value="#{statusReportControl.getPercent(statRep.timeVariance)}" />
-				</h:column>
-
-				<h:column>
 					<f:facet name="header">Labour (Man Days) Variance</f:facet>
 					<h:outputText
 						value="#{statusReportControl.getPercent(statRep.mdVariance)}" />
@@ -105,7 +99,7 @@
 				value="Add Status Report"
 				action="#{statusReportControl.addStatusReport}" />
 			<h:commandButton styleClass="btn workPackageButtons" value="Back"
-				action="#{workPackControl.backToProjects}" />
+				action="#{statusReportControl.backToWP}" />
 			<p></p>
 		</b:container>
 		<br />

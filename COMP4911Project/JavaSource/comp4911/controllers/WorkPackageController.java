@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
 
 import comp4911.managers.EmployeeManager;
 import comp4911.managers.EmployeeWPManager;
+import comp4911.managers.PayRateManager;
 import comp4911.managers.WorkPackageManager;
 import comp4911.models.Employee;
 import comp4911.models.EmployeeWPList;
@@ -56,6 +57,9 @@ public class WorkPackageController implements Serializable {
 
 	@Inject
 	private EmployeeWPManager empWPManager;
+	
+	@Inject
+	private PayRateManager prManager;
 
 	private Employee employee;
 
@@ -139,7 +143,7 @@ public class WorkPackageController implements Serializable {
 		workPack.setProjectId(project.getProjectId());
 		//for dropdown list
 		empREList = empWPManager.listEmpByProj(workPack.getProjectId(), empManager);
-		return addNavigation;
+		return "AddWorkPackage";
 	}
 
 	public String addWPSplash(){
@@ -334,4 +338,45 @@ public class WorkPackageController implements Serializable {
 	public String cancelViewPackage(){
 		return "cancelViewPackage";
 	}
+	
+	public double calcPlannedMD(String srId)
+	{
+		WorkPackage wp = new WorkPackage();
+		double temp = 0;
+		temp += wp.getMdp1();
+		temp += wp.getMdp2();
+		temp += wp.getMdp3();
+		temp += wp.getMdp4();
+		temp += wp.getMdp5();
+		temp += wp.getMdds();
+		temp += wp.getMdss();
+		return temp;
+	}
+	
+	public double calcActualMD(WorkPackage wp)
+	{
+		double temp = 0;
+//		workPackManager.
+		return temp;
+	}
+	
+	public double calcWPPlannedBudget(WorkPackage wp) 
+	{
+		double wpPlannedTotalBudget = 0;
+		wpPlannedTotalBudget += wp.getMdp1() * prManager.find("P1").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdp2() * prManager.find("P2").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdp3() * prManager.find("P3").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdp4() * prManager.find("P4").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdp5() * prManager.find("P5").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdds() * prManager.find("DS").getCostInMD();
+		wpPlannedTotalBudget += wp.getMdss() * prManager.find("SS").getCostInMD();
+		return wpPlannedTotalBudget;
+	}
+	
+//	public double calcWPActualBudget(WorkPackage wp)
+//	{
+//		double wpActualTotalBudget = 0;
+//		wp.get
+//		return wpActualTotalBudget;
+//	}
 }

@@ -56,7 +56,7 @@ public class Employee implements Serializable {
 	@Column(name="PayRateId")
 	private String payRateId;
 
-	@Transient
+	@Column(name="IsActive")
 	private boolean active;
 	
 	public Employee() {}
@@ -97,7 +97,7 @@ public class Employee implements Serializable {
 		return firstName + " " + lastName;
 	}
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 

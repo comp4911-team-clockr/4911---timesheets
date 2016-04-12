@@ -49,5 +49,14 @@ public class ProjectManager implements Serializable {
 		java.util.List<Project> projects = query.getResultList();
 		return projects;
 	}
+	
+	// method to get all projects emp is PM of
+	public java.util.List<Project> getAllByPM(int empNum) 
+	{
+		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.isActive=TRUE "+
+				"AND p.EmpNum = " + empNum, Project.class); 
+		java.util.List<Project> projects = query.getResultList();
+		return projects;
+	}
 
 }

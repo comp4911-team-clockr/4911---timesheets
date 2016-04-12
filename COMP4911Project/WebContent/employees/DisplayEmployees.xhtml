@@ -41,12 +41,12 @@
 						action="#{user.showEmployeeToEdit(emp)}" rendered="#{user.isHR}"/>
 				</h:column>				
 				<h:column rendered="#{user.isHR}">
-					<h:commandButton styleClass="btn employeeButtons" value="Delete"
+					<h:commandButton styleClass="btn employeeButtons" value="Remove"
 						action="#{user.deleteEmployee(emp)}"
 						rendered="#{user.showDelete(emp) and user.isHR}" />
 				</h:column>
 				<h:column rendered="#{user.isPM}">
-					<f:facet name="header">Misc</f:facet>
+					<f:facet name="header">Assign to WP</f:facet>
 					<h:commandButton styleClass="btn employeeButtons" value="Assign To Work Package"
 						action="#{workPackControl.assignEmployee(emp)}"
 						rendered="#{user.isPM}" />

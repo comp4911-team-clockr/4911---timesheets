@@ -72,7 +72,8 @@ public class StatusReportController implements Serializable {
 	// get all status reports in db
 	public StatusReport getStatusReport() {
 		System.out.println("Get StatusReport called");
-		statusReportList = statusReportManager.getAll();
+//		statusReportList = statusReportManager.getAll();
+		statusReportList = statusReportManager.getAllByWorkPackage(workPack.getWpId());
 		System.out.println(statusReportList.size() + " size");
 		return statusReport;
 	}
@@ -173,4 +174,10 @@ public class StatusReportController implements Serializable {
 		refreshList();
 		return listNavigation;
 	}
+	
+	public String backToWP(){
+		return "DisplayWorkPackages";
+	}
+	
+	
 }

@@ -97,25 +97,54 @@
 			<from-outcome>DisplayWorkPackages</from-outcome>
 			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
 		</navigation-case>		
+		<navigation-case>
+			<from-outcome>AddWorkPackage</from-outcome>
+			<to-view-id>/wp/AddWorkPackage.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayMonthlyReport</from-outcome>
+			<to-view-id>/reports/DisplayMonthlyReport.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
 		<from-view-id>/wp/DisplayWorkPackages.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>editStatusreport</from-outcome>
+			<from-outcome>DisplayProjects</from-outcome>
+			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>DisplayStatusReport</from-outcome>
+			<to-view-id>/reports/DisplayStatusReport.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/reports/DisplayStatusReport.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EditStatusReport</from-outcome>
 			<to-view-id>/reports/EditStatusReport.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>addStatusreport</from-outcome>
+			<from-outcome>AddStatusReport</from-outcome>
 			<to-view-id>/reports/AddStatusReport.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>addWP</from-outcome>
-			<to-view-id>/wp/AddWorkPackage.xhtml</to-view-id>
+			<from-outcome>DisplayWorkPackages</from-outcome>
+			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/reports/DisplayMonthlyReport.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>RequestMonthlyReport</from-outcome>
+			<to-view-id>/reports/RequestMonthlyReport.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>displayProjects</from-outcome>
-			<to-view-id>/projects/DisplayProjects.xhtml</to-view-id>
+			<from-outcome>DisplayProjects</from-outcome>
+			<to-view-id>/wp/DisplayProjects.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -295,7 +324,7 @@
 	<navigation-rule>
 		<from-view-id>/reports/DisplayStatusReport.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>DisplayProjects</from-outcome>
+			<from-outcome>DisplayWorkProjects</from-outcome>
 			<to-view-id>/wp/DisplayWorkPackages.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

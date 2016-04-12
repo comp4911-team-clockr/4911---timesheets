@@ -13,6 +13,7 @@ import javax.inject.Named;
 import comp4911.managers.CredentialManager;
 import comp4911.managers.EmployeeManager;
 import comp4911.managers.EmployeeWPManager;
+import comp4911.managers.PayRateManager;
 import comp4911.managers.ProjectManager;
 import comp4911.models.Employee;
 import comp4911.models.EmployeeWPList;
@@ -46,6 +47,9 @@ public class ProjectController implements Serializable {
 
 	@Inject
 	private EmployeeManager empManager;
+	
+	@Inject
+	private PayRateManager prManager;
 
 	@Inject
 	private CredentialManager credManager;
@@ -140,6 +144,8 @@ public class ProjectController implements Serializable {
 	}
 
 	public String updateProject(){
+		double totalInit = calculateInitBudget(editProject);
+		editProject.setInitBudget(totalInit);
 		projectManager.merge(editProject);
 		//adding to the many to many table
 		String projFlag = editProject.getProjectId() + "|0|" + editProject.getSupervisor();
@@ -168,6 +174,8 @@ public class ProjectController implements Serializable {
 	}
 
 	public String addProject(){
+		double totalInit = calculateInitBudget(project);
+		project.setInitBudget(totalInit);
 		projectManager.persist(project);
 		//adding to the many to many table
 		String projFlag = project.getProjectId() + "|0|" + project.getSupervisor();
@@ -246,5 +254,18 @@ public class ProjectController implements Serializable {
 
 	public String cancelViewProject(){
 		return "cancelViewProject";
+	}
+	
+	public double calculateInitBudget(Project proj) {
+		double total = 0;
+		total += proj.getManDaysP1() * prManager.find("P1").getCostInMD(); 
+		total += proj.getManDaysP2() * prManager.find("P2").getCostInMD();
+		total += proj.getManDaysP3() * prManager.find("P3").getCostInMD();
+		total += proj.getManDaysP4() * prManager.find("P4").getCostInMD();
+		total += proj.getManDaysP5() * prManager.find("P5").getCostInMD();
+		total += proj.getManDaysDS() * prManager.find("DS").getCostInMD();
+		total += proj.getManDaysSS() * prManager.find("SS").getCostInMD();
+		proj.setInitBudget(total);
+		return proj.getInitBudget();
 	}
 }
