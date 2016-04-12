@@ -63,12 +63,10 @@ public class EmployeeWPManager implements Serializable {
 		java.util.List<Employee> empList = new java.util.ArrayList<Employee>();
 		Employee temp = null;
 		if (!listByWP(wp).isEmpty()){
-			
 			for (EmployeeWPList empWP : listByWP(wp)) {
 				if ((temp = empManager.find(empWP.getEmpNum())) != null)
 					empList.add(temp);
 			}
-		
 		}
 		return empList;
 	}

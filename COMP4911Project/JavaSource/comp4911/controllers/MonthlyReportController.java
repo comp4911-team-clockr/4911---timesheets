@@ -8,12 +8,17 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import comp4911.managers.EmployeeManager;
+import comp4911.managers.EmployeeWPManager;
 import comp4911.managers.MonthlyReportManager;
+import comp4911.managers.PayRateManager;
 import comp4911.managers.ProjectManager;
 import comp4911.managers.StatusReportManager;
+import comp4911.managers.TimeSheetManager;
 //import comp4911.managers.StatusReportManager;
 import comp4911.models.Project;
 import comp4911.models.StatusReport;
+import comp4911.models.TimeSheet;
+import comp4911.models.Employee;
 //import comp4911.models.StatusReport;
 //import comp4911.models.TimeSheet;
 import comp4911.models.MonthlyReport;
@@ -43,9 +48,21 @@ public class MonthlyReportController implements Serializable
 	
 	@Inject
 	private WorkPackageManager wpManager;
-		
+	
+	@Inject
+	private EmployeeWPManager empWPManager;
+	
+	@Inject
+	private EmployeeManager newEmp;
+	
+	@Inject
+	private TimeSheetManager tsManager; 
+	
 	@Inject
 	private MonthlyReportManager monthlyReportManager;
+	
+	@Inject
+	private PayRateManager prManager;
 	
 	private List<WorkPackage> wpList;
 	
@@ -116,6 +133,8 @@ public class MonthlyReportController implements Serializable
 		double totalMD = 0;
 		double totalCost = 0;
 		double completion = 0;
+		double totalTSHrs = 0;
+		double totalTSCost = 0;
 		
 		System.out.println(project.getProjectId() + " project id");
 		wpList = wpManager.getAllByProject(project.getProjectId());
@@ -146,23 +165,41 @@ public class MonthlyReportController implements Serializable
 		monthlyReport.setpBudgetMD(totalMD);
 		srList = srManager.getAllByProject(project.getProjectId());
 		System.out.println(srList.size() + " size of sr list");
+		
+		List<Employee> empList = new ArrayList<Employee>();
+		List<Integer> empNumList = new ArrayList<Integer>();
 		for (int i = 0; i < srList.size(); i++)
 		{
 			completion += srList.get(i).getPcComplete();
+//			empList.addAll(empWPManager.listEmpByWP(wpList.get(i).getWpId(), newEmp));
+//			empNumList.addAll(empWPManager.listEmpNumByWP(wpList.get(i).getWpId()));
 		}
 		completion /= srList.size();
 		
+//		List<TimeSheet> tsList = tsManager.getListByEmp(empNumList);
+//
+//		if (tsList.size() == empList.size())
+//		{
+//			for (int i = 0; i < empList.size(); i++)
+//			{
+//				String tempPR = empList.get(i).getPayRateId(); 
+//				totalTSHrs += tsList.get(i).getOverallTotalHrs();
+//				totalTSCost += prManager.find(tempPR).getCostInMD() * totalTSHrs;
+//			}	
+//		}
+		
 		System.out.println(completion + "% complete");
 		//srManager.getAllByWorkPackage(wpList.get(index))
-		
-		//monthlyReport.setPercentComplete()
-		//monthlyReport.setTotalMDVar(totalMDVar);
-		//monthlyReport.setTotalCostVar(totalCostVar);
-		//monthlyReport.setPercentComplete(percentComplete);
+//		double finalMD = srManager.
+		monthlyReport.setPercentComplete(completion);
+//		monthlyReport.setTotalMDVar(totalMD/(totalTSHrs/8));
+//		monthlyReport.setTotalCostVar(totalCost/totalTSCost);
 		
 		System.out.println(totalCost + " total budget");
 		System.out.println(totalMD + " total MD");
 		
+		//System.out.println(totalCost/totalTSCost + " total cost var");
+		//System.out.println(totalMD/(totalTSHrs/8) + " total MD var");
 //		monthlyReportManager.getAllByProject(project.getProjectId());
 //		temp.setMonthlyReportId("");
 //		System.out.println(mrNum);

@@ -10,8 +10,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import comp4911.models.Employee;
+import comp4911.models.StatusReport;
 import comp4911.models.TimeSheet;
 import comp4911.models.WorkPackage;
+import comp4911.models.TimeSheetRow;
 
 @Dependent
 @Stateless
@@ -90,11 +92,14 @@ public class TimeSheetManager implements Serializable {
 		return timesheets;
 	}
 	
-	public List<TimeSheet> getTotalMDsInWP(WorkPackage wp)
-	{
-		List<TimeSheet> timesheets = null;
+	public List<TimeSheet> getListByEmp(List<Integer> empNumList)
+	{	
+		TypedQuery<TimeSheet> query = em.createQuery("SELECT s FROM Timesheet s "+
+        		"WHERE s.empNum IN :empNumList", TimeSheet.class);
+		query.setParameter("empNumList", empNumList);
+        java.util.List<TimeSheet> reports = query.getResultList();
+        
+        return reports;
 		
-		
-		return timesheets;
 	}
 }
