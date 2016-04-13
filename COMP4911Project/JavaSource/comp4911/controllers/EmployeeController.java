@@ -1,20 +1,10 @@
 package comp4911.controllers;
 
 import java.io.Serializable;
-//import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-//import javax.mail.Address;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,15 +20,17 @@ import javax.inject.Named;
 
 import comp4911.managers.CredentialManager;
 import comp4911.managers.EmployeeManager;
+import comp4911.managers.PayRateManager;
 import comp4911.models.Credential;
 import comp4911.models.Employee;
+import comp4911.models.PayRate;
 
 @Named("user")
 @SessionScoped
 public class EmployeeController implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -62,6 +54,9 @@ public class EmployeeController implements Serializable {
 
 	@Inject
 	private CredentialManager credentialManager;
+	
+	@Inject
+	private PayRateManager prManager;
 
 	private boolean isPM;
 
@@ -70,6 +65,10 @@ public class EmployeeController implements Serializable {
 	List<Employee> empList;
 
 	List<Credential> credList;
+	
+	List<Employee> supList;
+	
+	List<PayRate> prList;
 
 	// The pattern used to check if password have an uppercase
 	private final static Pattern hasUppercase = Pattern.compile("[A-Z]");
@@ -94,6 +93,8 @@ public class EmployeeController implements Serializable {
 
 	public void refreshList() {
 		empList = employeeManager.getAll();
+		supList = employeeManager.getAllSupervisors();
+		prList = prManager.getAll();
 	}
 
 	public void refreshCurrentEmployee() {
@@ -108,7 +109,10 @@ public class EmployeeController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		try {
-			request.login(credential.getUserId(), credential.getPassword());
+			if (employeeManager.findByUserId(credential.getUserId()).getActive())
+				request.login(credential.getUserId(), credential.getPassword());
+			else
+				throw new ServletException();
 		} catch (ServletException e) {
 
 			context.addMessage(null, new FacesMessage("Login failed."));
@@ -123,7 +127,7 @@ public class EmployeeController implements Serializable {
 	public String logout() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-				  
+
 		try {
 			HttpSession httpSession = (HttpSession)context.getExternalContext().getSession(false);
 			httpSession.invalidate();
@@ -133,7 +137,7 @@ public class EmployeeController implements Serializable {
 		}
 		return "/MainIndex?faces-redirect=true";
 	}
-	
+
 	/*
 	public String checkLogin(String id, String password) {
 		Credential cred;
@@ -215,7 +219,7 @@ public class EmployeeController implements Serializable {
 		System.out.println("Add Employee called");
 		Employee temp = new Employee();
 		Credential tempCred = new Credential();
-		Integer empNumber = empList.size() + 1;
+		Integer empNumber = employeeManager.getNewPK();
 		String userID = empNumber.toString();
 
 		// Padding zeroes in front of userId accordingly
@@ -226,6 +230,12 @@ public class EmployeeController implements Serializable {
 		temp.setLastName(employee.getLastName());
 		temp.setActive(true);
 		temp.setEmpNumber(empNumber);
+		temp.setSupNum(employee.getSupNum());
+		temp.setEmail(credToAdd.getEmail());
+		temp.setHireDate(new java.sql.Date(java.util.Calendar
+				.getInstance().getTime().getTime()));
+		temp.setPayRateId(employee.getPayRateId());
+		
 
 		String deFaultPW = "cafebabe";
 
@@ -233,6 +243,9 @@ public class EmployeeController implements Serializable {
 		tempCred.setPassword(deFaultPW);
 		tempCred.setEmail(credToAdd.getEmail());
 		tempCred.setRole(credToAdd.getRole());
+		tempCred.setRecovery1("");
+		tempCred.setRecovery2("");
+		tempCred.setRecovery3("");
 
 		int hashFN = employee.getFirstName().hashCode();
 		int hashLN = employee.getLastName().hashCode();
@@ -273,6 +286,9 @@ public class EmployeeController implements Serializable {
 		temp.setLastName(editEmployee.getLastName());
 		temp.getCredential().setEmail(credToAdd.getEmail());
 		temp.getCredential().setRole(credToAdd.getRole());
+		temp.setSupNum(editEmployee.getSupNum());
+		temp.setEmail(credToAdd.getEmail());
+		temp.setPayRateId(editEmployee.getPayRateId());
 
 		credentialManager.merge(temp.getCredential());
 		employeeManager.merge(temp);
@@ -290,11 +306,8 @@ public class EmployeeController implements Serializable {
 	}
 
 	public String deleteEmployee(Employee e) {
-		System.out.println("Delete Employee called");
-//		employeeManager.remove(employeeManager.find(e.getEmpNumber()));
 		e.setActive(false);
 		employeeManager.merge(e);
-		credentialManager.remove(credentialManager.find(e.getCredential().getUserId()));
 		refreshList();
 
 		return "DisplayEmployees";
@@ -320,7 +333,7 @@ public class EmployeeController implements Serializable {
 			tempCred.setRecovery1(credToAdd.getRecovery1());
 			tempCred.setRecovery2(credToAdd.getRecovery2());
 			tempCred.setRecovery3(credToAdd.getRecovery3());
-			
+
 			temp.setCredential(tempCred);
 			credentialManager.merge(tempCred);
 			employeeManager.merge(temp);
@@ -414,7 +427,7 @@ public class EmployeeController implements Serializable {
 
 		//if (retVal.length() == 0) {
 			//retVal.append("Success");
-			
+
 		//}
 		return "Success";
 		//return retVal.toString();
@@ -542,7 +555,7 @@ public class EmployeeController implements Serializable {
 		// else return same page
 		return "RecoveryPassed";
 	}
-	
+
 	public boolean getIsPM() {
 		isPM = (currentEmployee.getCredential().getRole().equals("ProjectManager"));
 		return isPM;
@@ -559,5 +572,13 @@ public class EmployeeController implements Serializable {
 
 	public String getSupervisor(int id) {
 		return employeeManager.find(id).getFullName();
+	}
+
+	public List<Employee> getSupList() {
+		return supList;
+	}
+
+	public List<PayRate> getPrList() {
+		return prList;
 	}
 }

@@ -46,7 +46,6 @@ public class Employee implements Serializable {
 	@Column(name="HireDate")
 	private Date hireDate;
 	
-
 	@Column(name="FlexHours")
 	private double flexHrs;
 

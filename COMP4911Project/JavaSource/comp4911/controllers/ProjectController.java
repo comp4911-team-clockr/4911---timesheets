@@ -25,14 +25,14 @@ import comp4911.models.WorkPackage;
 public class ProjectController implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Project project;
 
-	@Inject 
+	@Inject
 	private ProjectManager projectManager;
 
 	private List<Project> projectList;
@@ -47,7 +47,7 @@ public class ProjectController implements Serializable {
 
 	@Inject
 	private EmployeeManager empManager;
-	
+
 	@Inject
 	private PayRateManager prManager;
 
@@ -156,7 +156,7 @@ public class ProjectController implements Serializable {
 			tempEmpWP.setWpID(null);
 			tempEmpWP.setWpEmpId(projFlag);
 			empWPManager.persist(tempEmpWP);
-		}		
+		}
 		editProject = null;
 		refreshList();
 		return "DisplayProjects";
@@ -165,10 +165,11 @@ public class ProjectController implements Serializable {
 	public String addProjectSetup() {
 		refreshList();
 		project = new Project();
-		int id = projectList.size() + 1;
+
 		project
-		.setIssueDate(new java.sql.Date(java.util.Calendar.getInstance().getTime().getTime()));
-		project.setProjectId(id);
+			.setIssueDate(new java.sql.Date(java.util.Calendar
+			.getInstance().getTime().getTime()));
+		project.setProjectId(projectManager.getNewPK());
 		project.setActive(true);
 		return "addProject";
 	}
@@ -202,7 +203,7 @@ public class ProjectController implements Serializable {
 	public void refreshEmpList(Project proj) {
 		empList = empWPManager.listEmpByProj(proj.getProjectId(), empManager);
 		if (empList == null)
-			empList = new ArrayList<Employee>(); 
+			empList = new ArrayList<Employee>();
 	}
 
 	public String assignEmpToProject(Project proj){
@@ -224,7 +225,7 @@ public class ProjectController implements Serializable {
 		}
 		else{
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
 							"Employee is already assigned to this Project.", null));
 		}
 		return "";
@@ -237,13 +238,13 @@ public class ProjectController implements Serializable {
 
 		return "DisplayProjects";
 	}
-	
+
 	public String removeEmployee(int empNum){
 		empWPManager.removeAllByProj(editProject, empNum);
 		refreshEmpList(editProject);
 		return "ViewProject";
 	}
-	
+
 	public String cancelNewProject(){
 		return "reloadProjects";
 	}
@@ -255,10 +256,10 @@ public class ProjectController implements Serializable {
 	public String cancelViewProject(){
 		return "cancelViewProject";
 	}
-	
+
 	public double calculateInitBudget(Project proj) {
 		double total = 0;
-		total += proj.getManDaysP1() * prManager.find("P1").getCostInMD(); 
+		total += proj.getManDaysP1() * prManager.find("P1").getCostInMD();
 		total += proj.getManDaysP2() * prManager.find("P2").getCostInMD();
 		total += proj.getManDaysP3() * prManager.find("P3").getCostInMD();
 		total += proj.getManDaysP4() * prManager.find("P4").getCostInMD();

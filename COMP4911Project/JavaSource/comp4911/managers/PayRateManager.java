@@ -23,7 +23,14 @@ public class PayRateManager implements Serializable {
 	public PayRate find(String id) {
 		return em.find(PayRate.class, id);
 	}
+	
+	public java.util.List<PayRate> getAll() {
+		TypedQuery<PayRate> query = em.createQuery("SELECT p FROM PayRate p", PayRate.class);
+		java.util.List<PayRate> payrates = query.getResultList();
 		
+		return payrates;
+	}
+	
 //	following operations not currently needed: 
 //	public void persist(PayRate payRate) {
 //		em.persist(payRate);

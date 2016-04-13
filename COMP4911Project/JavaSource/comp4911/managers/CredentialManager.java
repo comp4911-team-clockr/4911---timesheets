@@ -43,15 +43,11 @@ public class CredentialManager implements Serializable {
 		em.remove(credential);
 	}
 
-	public Credential[] getAll() {
+	public java.util.List<Credential> getAll() {
 		TypedQuery<Credential> query = em.createQuery("select c from Credential c",
 				Credential.class); 
 		java.util.List<Credential> credentials = query.getResultList();
-		Credential[] credArray = new Credential[credentials.size()];
-		for (int i=0; i < credArray.length; i++) {
-			credArray[i] = credentials.get(i);
-		}
-		return credArray;
+		return credentials;
 	}
 	
 	public java.util.List<Credential> getAllProjectManagers() {

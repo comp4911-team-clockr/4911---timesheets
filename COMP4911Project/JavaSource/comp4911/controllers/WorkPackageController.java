@@ -27,7 +27,7 @@ import comp4911.models.WorkPackage;
 public class WorkPackageController implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class WorkPackageController implements Serializable {
 
 	@Inject
 	private EmployeeWPManager empWPManager;
-	
+
 	@Inject
 	private PayRateManager prManager;
 
@@ -75,7 +75,7 @@ public class WorkPackageController implements Serializable {
 	public void SetEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
 	public WorkPackageController() {
 		System.out.println("WP Constructor called");
 		workPackList = new ArrayList<WorkPackage>();
@@ -100,7 +100,7 @@ public class WorkPackageController implements Serializable {
 		refreshList();
 		return listNavigation;
 	}
-	
+
 	public String gotoWP() {
 		workPackList = workPackManager.getAllByRE(employee.getCredential().getUserId());
 		return "/wp/" + listNavigation + "?faces-redirect=true";
@@ -120,7 +120,7 @@ public class WorkPackageController implements Serializable {
 	public void refreshEmpList(WorkPackage wp) {
 		empList = empWPManager.listEmpByWP(wp.getWpId(), empManager);
 		if (empList == null)
-			empList = new ArrayList<Employee>(); 
+			empList = new ArrayList<Employee>();
 	}
 
 	public List<WorkPackage> getWorkPackList() {
@@ -173,8 +173,7 @@ public class WorkPackageController implements Serializable {
 	public String addWP() {
 		if (validateAll()) {
 			//put this here instead so that adding from splash page still works
-			String wpID = project.getProjectId() + "|" + (workPackList.size() + 1);
-			workPack.setWpId(wpID);
+			workPack.setWpId(workPackManager.getNewPK(workPack.getProjectId()));
 			workPackManager.persist(workPack);
 			refreshList();
 
@@ -219,7 +218,7 @@ public class WorkPackageController implements Serializable {
 				empWPManager.persist(tempEmpWP);
 			}
 			//resets workPack
-			workPack = null;			
+			workPack = null;
 			return listNavigation;
 		}
 		return "";
@@ -338,7 +337,7 @@ public class WorkPackageController implements Serializable {
 		}
 		return "";
 	}
-	
+
 	public String removeEmployee(int empNum){
 		empWPManager.remove(empWPManager.find(workPack.getWpId() + "|" + empNum));
 		refreshEmpList(workPack);
@@ -352,7 +351,7 @@ public class WorkPackageController implements Serializable {
 	public String cancelViewPackage(){
 		return "cancelViewPackage";
 	}
-	
+
 	public double calcPlannedMD(String srId)
 	{
 		WorkPackage wp = new WorkPackage();
@@ -366,15 +365,15 @@ public class WorkPackageController implements Serializable {
 		temp += wp.getMdss();
 		return temp;
 	}
-	
+
 	public double calcActualMD(WorkPackage wp)
 	{
 		double temp = 0;
 //		workPackManager.
 		return temp;
 	}
-	
-	public double calcWPPlannedBudget(WorkPackage wp) 
+
+	public double calcWPPlannedBudget(WorkPackage wp)
 	{
 		double wpPlannedTotalBudget = 0;
 		wpPlannedTotalBudget += wp.getMdp1() * prManager.find("P1").getCostInMD();
@@ -386,7 +385,7 @@ public class WorkPackageController implements Serializable {
 		wpPlannedTotalBudget += wp.getMdss() * prManager.find("SS").getCostInMD();
 		return wpPlannedTotalBudget;
 	}
-	
+
 //	public double calcWPActualBudget(WorkPackage wp)
 //	{
 //		double wpActualTotalBudget = 0;

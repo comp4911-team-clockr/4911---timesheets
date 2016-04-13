@@ -22,7 +22,7 @@ public class ProjectManager implements Serializable {
 	@PersistenceContext(unitName="COMP4911ClockrProjectDatabase") EntityManager em;
 
 	/**
-	 *<p>Some Random SerialVersionUID.</p> 
+	 *<p>Some Random SerialVersionUID.</p>
 	 */
 	private static final long serialVersionUID = -7520188301250130738L;
 
@@ -45,18 +45,26 @@ public class ProjectManager implements Serializable {
 
 	public java.util.List<Project> getAll() {
 		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.isActive=TRUE",
-				Project.class); 
-		java.util.List<Project> projects = query.getResultList();
-		return projects;
-	}
-	
-	// method to get all projects emp is PM of
-	public java.util.List<Project> getAllByPM(int empNum) 
-	{
-		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.isActive=TRUE "+
-				"AND p.EmpNum = " + empNum, Project.class); 
+				Project.class);
 		java.util.List<Project> projects = query.getResultList();
 		return projects;
 	}
 
+	// method to get all projects emp is PM of
+	public java.util.List<Project> getAllByPM(int empNum)
+	{
+		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p WHERE p.isActive=TRUE "+
+				"AND p.EmpNum = " + empNum, Project.class);
+		java.util.List<Project> projects = query.getResultList();
+		return projects;
+	}
+
+	public int getNewPK() {
+		TypedQuery<Project> query = em.createQuery("SELECT p FROM Project p",
+				Project.class);
+		java.util.List<Project> projects = query.getResultList();
+		if (projects.isEmpty())
+			return 1;
+		return (projects.size() + 1);
+	}
 }

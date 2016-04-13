@@ -47,6 +47,20 @@
 				        <f:selectItem itemValue="Employee" itemLabel="Regular"></f:selectItem>
 		            </b:selectOneMenu>
 		        </b:column>
+		        <b:column col-sm="4" col-xs="12">
+	            	<h:outputLabel value="Supervisor" />
+		            <b:selectOneMenu value="#{user.editEmployee.supNum}">
+							<f:selectItems value="#{user.supList}" var="emp"
+								itemValue="#{emp.empNumber}" itemLabel="#{emp.fullName}" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column col-sm="4" col-xs="12">
+	            	<h:outputLabel value="Payrate Id" />
+		            <b:selectOneMenu value="#{user.editEmployee.payRateId}">
+							<f:selectItems value="#{user.prList}" var="payrate"
+								itemValue="#{payrate.payrateId}" itemLabel="#{payrate.payrateId}" />
+					</b:selectOneMenu>
+				</b:column>
 		    </b:row>    
 		    <br/>
       		<h:commandButton styleClass="btn employeeButtons addPadRight" value="Edit Employee" action="#{user.updateEmployee(user.editEmployee.empNumber)}"></h:commandButton>   

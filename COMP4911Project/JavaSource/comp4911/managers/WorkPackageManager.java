@@ -23,66 +23,66 @@ public class WorkPackageManager implements Serializable {
 	@PersistenceContext(unitName="COMP4911ClockrProjectDatabase") EntityManager em;
 
 	/**
-	 *<p>Some Random SerialVersionUID.</p> 
+	 *<p>Some Random SerialVersionUID.</p>
 	 */
-	
+
 	@Inject
 	private PayRateManager prManager;
-	
+
 	private static final long serialVersionUID = -7520188301250130738L;
 
 	public WorkPackage find(String id) {
 		return em.find(WorkPackage.class, id);
 	}
-	
+
 	public void persist(WorkPackage wp) {
 		em.persist(wp);
 	}
-	
+
 	public void merge(WorkPackage wp) {
 		em.merge(wp);
 	}
-	
+
 	public void remove(WorkPackage wp) {
 		wp.setActive(false);
 		merge(wp);
 	}
-	
+
 	public java.util.List<WorkPackage> getAllByRE(String respId) {
 		TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
         		"WHERE p.isActive=TRUE AND p.respId=" + respId,
-                WorkPackage.class); 
+                WorkPackage.class);
         java.util.List<WorkPackage> workPacks = query.getResultList();
         return workPacks;
 	}
-	
+
 	public java.util.List<WorkPackage> getAllByProject(int id) {
         TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
         		"WHERE p.isActive=TRUE AND p.projectId=" + id,
-                WorkPackage.class); 
+                WorkPackage.class);
         java.util.List<WorkPackage> workPacks = query.getResultList();
         return workPacks;
 	}
-	
+
 	public java.util.List<WorkPackage> getAll() {
 	        TypedQuery<WorkPackage> query = em.createQuery("SELECT p FROM WorkPackage p "+
 	        		"WHERE p.isActive=TRUE",
-	                WorkPackage.class); 
+	                WorkPackage.class);
 	        java.util.List<WorkPackage> workPacks = query.getResultList();
 	        return workPacks;
 	}
-	
-	public double getAllWorkPackMD(String id) 
+
+	public double getAllWorkPackMD(String id)
 	{
 		double total = 0;
 		Object[] query = em.createQuery("SELECT "
 				+ "p.mdp1, p.mdp2, p.mdp3, p.mdp4, p.mdp5, p.mdds, p.mdss,"
 				+ "(p.mdp1+p.mdp2+p.mdp3+p.mdp4+p.mdp5+p.mdds+p.mdss)"
-				+ " as total" 
+				+ " as total"
 				+ " FROM WorkPackage p "+
         		"WHERE p.isActive=TRUE AND" + " p.wpId = " + "'" + id + "'",
                 Object[].class)
-				.getSingleResult(); 
+				.getSingleResult();
 		String p1 = query[0].toString();
 		String p2 = query[1].toString();
 		String p3 = query[2].toString();
@@ -102,17 +102,17 @@ public class WorkPackageManager implements Serializable {
 		return total;
 	}
 
-	public double getAllWorkPackBudget(String id) 
+	public double getAllWorkPackBudget(String id)
 	{
 		double total = 0;
 		Object[] query = em.createQuery("SELECT "
 				+ "p.mdp1, p.mdp2, p.mdp3, p.mdp4, p.mdp5, p.mdds, p.mdss,"
 				+ "(p.mdp1+p.mdp2+p.mdp3+p.mdp4+p.mdp5+p.mdds+p.mdss)"
-				+ " as total" 
+				+ " as total"
 				+ " FROM WorkPackage p "+
         		"WHERE p.isActive=TRUE AND" + " p.wpId = " + "'" + id + "'",
                 Object[].class)
-				.getSingleResult(); 
+				.getSingleResult();
 		String p1md = query[0].toString();
 		String p2md = query[1].toString();
 		String p3md = query[2].toString();
@@ -127,7 +127,7 @@ public class WorkPackageManager implements Serializable {
 		Double P4 = Double.parseDouble(p4md);
 		Double P5 = Double.parseDouble(p5md);
 		Double DS = Double.parseDouble(dsmd);
-		Double SS = Double.parseDouble(ssmd);	
+		Double SS = Double.parseDouble(ssmd);
 		total += P1 * prManager.find("P1").getCostInMD();
 		total += P2 * prManager.find("P2").getCostInMD();
 		total += P3 * prManager.find("P3").getCostInMD();
@@ -136,6 +136,17 @@ public class WorkPackageManager implements Serializable {
 		total += DS * prManager.find("DS").getCostInMD();
 		total += SS * prManager.find("SS").getCostInMD();
 		return total;
-	
+
+	}
+
+	public String getNewPK(int projectId) {
+		TypedQuery<WorkPackage> query = em.createQuery("SELECT w FROM WorkPackage w " +
+			"WHERE w.projectId=:lookUp", WorkPackage.class);
+			query.setParameter("lookUp", projectId);
+		java.util.List<WorkPackage> wpList = query.getResultList();
+
+		if (wpList.isEmpty())
+			return projectId + "|1";
+		return projectId + "|" + (wpList.size() + 1);
 	}
 }
