@@ -30,6 +30,10 @@
 	margin-right: 0.5em;
 }
 
+.addPadBottom {
+	margin-bottom: 1em;
+}
+
 .projectButtons {
 	background-color: #f88f51;
 }

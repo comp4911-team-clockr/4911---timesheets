@@ -34,21 +34,21 @@
 			      		<span class="caption">Create Timesheet</span>
 			      	</div>     		
 	      		</b:column>
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isPM or user.isHR}">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
 			      	<div class="splashItem">
-						<h:commandButton action="#{projectControl.addProjectSetup}" styleClass="AddTSButton2" ></h:commandButton>
+						<h:commandButton action="#{projectControl.addProjectSetup}" styleClass="AddTSButton2" disabled="#{!user.isPM and !user.isHR}"></h:commandButton>
 			      		<span class="caption">Create Project</span>
 			      	</div>     		
 	      		</b:column>	 
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isPM or user.isHR}">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
 			      	<div class="splashItem">
-						<h:commandButton action="#{workPackControl.addWPSplash}" styleClass="AddTSButton3" ></h:commandButton>
+						<h:commandButton action="#{workPackControl.addWPSplash}" styleClass="AddTSButton3" disabled="#{!user.isPM and !user.isHR}"></h:commandButton>
 			      		<span class="caption">Create Work Package</span>
 			      	</div>     		
 	      		</b:column>	 
-	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12" rendered="#{user.isHR}">
+	      		<b:column styleClass="centerInColumn" col-md="3" col-xs="12">
 			      	<div class="splashItem">
-						<h:commandButton action="#{user.addEmployeeButton()}" styleClass="AddTSButton4" ></h:commandButton>
+						<h:commandButton action="#{user.addEmployeeButton()}" styleClass="AddTSButton4" disabled="#{!user.isPM and !user.isHR or user.isPM}"></h:commandButton>
 			      		<span class="caption">Add An Employee</span>
 			      	</div>     		
 	      		</b:column>	 	      			      		     		

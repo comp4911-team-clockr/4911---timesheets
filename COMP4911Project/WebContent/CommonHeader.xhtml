@@ -8,6 +8,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<ui:composition>
+		<b:modal id="myModal" styleClass="myModalPseudoClass">
+			<h4 styleClass="addPadBottom">Signing Out</h4>
+			<p styleClass="addPadBottom">Are you sure you want to sign out?</p>
+      		<h:commandButton styleClass="btn btn-default addPadRight" value="Yes" action="#{user.logout}"></h:commandButton>
+			<h:commandButton styleClass="btn btn-default" value="No"></h:commandButton>
+		</b:modal>	
 		<b:navBar id="headerChange" brand="Clockr" brandHref="#{request.contextPath}/welcome/Splash.xhtml">
 			<b:navbarLinks>
 				<b:navLink value="Home" href="#{request.contextPath}/welcome/Splash.xhtml" iconAwesome="home"></b:navLink>
@@ -26,7 +32,7 @@
 				<b:dropMenu value="Profile" iconAwesome="gears">
 					<b:navLink value="Update Profile" href="#{request.contextPath}/profile/ResetCreds.xhtml"></b:navLink>
 					<b:navLink value="View Details" href="#{request.contextPath}/profile/ViewDetails.xhtml"></b:navLink>
-					<b:navCommandLink class="removeDot" value="Sign Out" action="#{user.logout}"></b:navCommandLink>
+					<b:navCommandLink class="removeDot" value="Sign Out" action="#{user.logout}" onclick="$('.myModalPseudoClass').modal('show');return false;"></b:navCommandLink>
 				</b:dropMenu>
 			</b:navbarLinks>
 		</b:navBar>
