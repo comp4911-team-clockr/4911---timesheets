@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#MainIndex.xhtml" PATH="/MainIndex.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#MainIndex.xhtml:0" NAME="item"
+   PATH="/MainIndex.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="loggedin::#welcome#Splash.xhtml"
+    NAME="output" PATH="/welcome/Splash.xhtml"
+    TARGET="rules:#welcome#Splash.xhtml" TITLE="loggedin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="ForgotPasswordPage::#ForgottenPassword.xhtml" NAME="output1"
+    PATH="/ForgottenPassword.xhtml"
+    TARGET="rules:#ForgottenPassword.xhtml" TITLE="ForgotPasswordPage" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EmployeesHR.xhtml" PATH="/EmployeesHR.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EmployeesHR.xhtml:0" NAME="item"
+   PATH="/EmployeesHR.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="AddEmployee::#AddEmployee.xhtml"
+    NAME="output" PATH="/AddEmployee.xhtml"
+    TARGET="rules:#AddEmployee.xhtml" TITLE="AddEmployee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#AddEmployee.xhtml" PATH="/AddEmployee.xhtml"
+  SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#RecoveryQuestions.xhtml"
+  PATH="/RecoveryQuestions.xhtml" SHAPE="48,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#RecoveryQuestions.xhtml:0" NAME="item"
+   PATH="/RecoveryQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="RecoveryQuestionsCancel::#MainIndex.xhtml"
+    NAME="output" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="RecoveryQuestionsCancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="RecoveryPassed::#ChangePassword.xhtml"
+    NAME="output2" PATH="/ChangePassword.xhtml"
+    TARGET="rules:#ChangePassword.xhtml" TITLE="RecoveryPassed" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ChangePassword.xhtml"
+  PATH="/ChangePassword.xhtml" SHAPE="272,1185,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ChangePassword.xhtml:0" NAME="item"
+   PATH="/ChangePassword.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ChangePasswordConfirmed::#MainIndex.xhtml"
+    NAME="output" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="ChangePasswordConfirmed" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="CancelChangePassword::#MainIndex.xhtml"
+    NAME="output2" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="CancelChangePassword" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#welcome#Splash.xhtml"
+  PATH="/welcome/Splash.xhtml" SHAPE="304,945,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#welcome#Splash.xhtml:0" NAME="item"
+   PATH="/welcome/Splash.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="CreateTimesheet::#timesheets#CreateTimesheet.xhtml"
+    NAME="output" PATH="/timesheets/CreateTimesheet.xhtml"
+    TARGET="rules:#timesheets#CreateTimesheet.xhtml"
+    TITLE="CreateTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="AddEmployee::#employees#AddEmployee.xhtml"
+    NAME="output1" PATH="/employees/AddEmployee.xhtml"
+    TARGET="rules:#employees#AddEmployee.xhtml" TITLE="AddEmployee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addWPSplash::#wp#AddWorkPackage.xhtml"
+    NAME="output2" PATH="/wp/AddWorkPackage.xhtml"
+    TARGET="rules:#wp#AddWorkPackage.xhtml" TITLE="addWPSplash" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addProject::#projects#AddProject.xhtml"
+    NAME="output3" PATH="/projects/AddProject.xhtml"
+    TARGET="rules:#projects#AddProject.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkProjects::#wp#DisplayWorkPackages.xhtml"
+    NAME="output4" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkProjects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projects#AddProject.xhtml"
+  PATH="/projects/AddProject.xhtml" SHAPE="544,1185,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#projects#AddProject.xhtml:0" NAME="item"
+   PATH="/projects/AddProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="projects::#projects#DisplayProjects.xhtml"
+    NAME="output" PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml" TITLE="projects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="reloadProjects::#projects#DisplayProjects.xhtml" NAME="output1"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="reloadProjects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#wp#AddWorkPackage.xhtml"
+  PATH="/wp/AddWorkPackage.xhtml" SHAPE="544,1505,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#wp#AddWorkPackage.xhtml:0" NAME="item"
+   PATH="/wp/AddWorkPackage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayProject::#projects#DisplayProjects.xhtml" NAME="output"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="DisplayProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#employees#AddEmployee.xhtml"
+  PATH="/employees/AddEmployee.xhtml" SHAPE="544,1329,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#employees#AddEmployee.xhtml:0" NAME="item"
+   PATH="/employees/AddEmployee.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="displayEmployeeList::#employees#DisplayEmployees.xhtml"
+    NAME="output" PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="displayEmployeeList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="reloadEmpList::#employees#DisplayEmployees.xhtml" NAME="output1"
+    PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="reloadEmpList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#timesheets#CreateTimesheet.xhtml"
+  PATH="/timesheets/CreateTimesheet.xhtml" SHAPE="560,1329,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#timesheets#CreateTimesheet.xhtml:0"
+   NAME="item" PATH="/timesheets/CreateTimesheet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="CancelCreateTimesheet::#timesheets#DisplayTimesheets.xhtml"
+    NAME="output" PATH="/timesheets/DisplayTimesheets.xhtml"
+    TARGET="rules:#timesheets#DisplayTimesheets.xhtml"
+    TITLE="CancelCreateTimesheet" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projects#DisplayProjects.xhtml"
+  PATH="/projects/DisplayProjects.xhtml" SHAPE="368,1809,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#projects#DisplayProjects.xhtml:0" NAME="item"
+   PATH="/projects/DisplayProjects.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="addProject::#projects#AddProject.xhtml"
+    NAME="output" PATH="/projects/AddProject.xhtml"
+    TARGET="rules:#projects#AddProject.xhtml" TITLE="addProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="viewProject::#projects#ViewProject.xhtml"
+    NAME="output1" PATH="/projects/ViewProject.xhtml"
+    TARGET="rules:#projects#ViewProject.xhtml" TITLE="viewProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editProject::#projects#EditProject.xhtml"
+    NAME="output2" PATH="/projects/EditProject.xhtml"
+    TARGET="rules:#projects#EditProject.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayEmployees::#employees#DisplayEmployees.xhtml"
+    NAME="output3" PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="DisplayEmployees" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkPackages::#wp#DisplayWorkPackages.xhtml"
+    NAME="output4" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="AddWorkPackage::#wp#AddWorkPackage.xhtml"
+    NAME="output5" PATH="/wp/AddWorkPackage.xhtml"
+    TARGET="rules:#wp#AddWorkPackage.xhtml" TITLE="AddWorkPackage" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayMonthlyReport::#reports#DisplayMonthlyReport.xhtml"
+    NAME="output6" PATH="/reports/DisplayMonthlyReport.xhtml"
+    TARGET="rules:#reports#DisplayMonthlyReport.xhtml"
+    TITLE="DisplayMonthlyReport" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#employees#DisplayEmployees.xhtml"
+  PATH="/employees/DisplayEmployees.xhtml" SHAPE="560,2673,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#employees#DisplayEmployees.xhtml:0"
+   NAME="item" PATH="/employees/DisplayEmployees.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayEmployeeList::#employees#DisplayEmployees.xhtml"
+    NAME="output" PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="DisplayEmployeeList" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="EmployeeToProjects::#projects#DisplayProjects.xhtml"
+    NAME="output1" PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="EmployeeToProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkPackages::#wp#DisplayWorkPackages.xhtml"
+    NAME="output2" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projects#ViewProject.xhtml"
+  PATH="/projects/ViewProject.xhtml" SHAPE="560,2353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#projects#ViewProject.xhtml:0" NAME="item"
+   PATH="/projects/ViewProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelViewProject::#projects#DisplayProjects.xhtml"
+    NAME="output" PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="cancelViewProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#projects#ViewProject.xhtml:1" NAME="item1"
+   PATH="/projects/ViewProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelViewProject::#projects#DisplayProjects.xhtml"
+    NAME="output" PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="cancelViewProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projects#EditProject.xhtml"
+  PATH="/projects/EditProject.xhtml" SHAPE="560,2353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#projects#EditProject.xhtml:0" NAME="item"
+   PATH="/projects/EditProject.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelEditProject::#projects#DisplayProjects.xhtml"
+    NAME="output" PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="cancelEditProject" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editProject::#projects#DisplayProjects.xhtml" NAME="output1"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml" TITLE="editProject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#wp#DisplayWorkPackages.xhtml"
+  PATH="/wp/DisplayWorkPackages.xhtml" SHAPE="576,2353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#wp#DisplayWorkPackages.xhtml:0" NAME="item"
+   PATH="/wp/DisplayWorkPackages.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayProjects::#projects#DisplayProjects.xhtml" NAME="output3"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayStatusReport::#reports#DisplayStatusReport.xhtml"
+    NAME="output" PATH="/reports/DisplayStatusReport.xhtml"
+    TARGET="rules:#reports#DisplayStatusReport.xhtml"
+    TITLE="DisplayStatusReport" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reports#EditStatusReport.xhtml"
+  PATH="/reports/EditStatusReport.xhtml" SHAPE="832,2961,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#reports#AddStatusReport.xhtml"
+  PATH="/reports/AddStatusReport.xhtml" SHAPE="832,3169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#employees#EditEmployee.xhtml"
+  PATH="/employees/EditEmployee.xhtml" SHAPE="352,3185,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#employees#EditEmployee.xhtml:0" NAME="item"
+   PATH="/employees/EditEmployee.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelEditEmployee::#employees#DisplayEmployees.xhtml"
+    NAME="output" PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="cancelEditEmployee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayEmployees::#employees#DisplayEmployees.xhtml"
+    NAME="output1" PATH="/employees/DisplayEmployees.xhtml"
+    TARGET="rules:#employees#DisplayEmployees.xhtml"
+    TITLE="DisplayEmployees" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#timesheets#DisplayTimesheets.xhtml"
+  PATH="/timesheets/DisplayTimesheets.xhtml" SHAPE="352,1489,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#timesheets#DisplayTimesheets.xhtml:0"
+   NAME="item" PATH="/timesheets/DisplayTimesheets.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="CreateTimesheet::#timesheets#CreateTimesheet.xhtml"
+    NAME="output" PATH="/timesheets/CreateTimesheet.xhtml"
+    TARGET="rules:#timesheets#CreateTimesheet.xhtml"
+    TITLE="CreateTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelCreateTimesheet::#timesheets#DisplayTimesheets.xhtml"
+    NAME="output1" PATH="/timesheets/DisplayTimesheets.xhtml"
+    TARGET="rules:#timesheets#DisplayTimesheets.xhtml"
+    TITLE="cancelCreateTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="EditTimesheet::#timesheets#EditTimesheet.xhtml" NAME="output2"
+    PATH="/timesheets/EditTimesheet.xhtml"
+    TARGET="rules:#timesheets#EditTimesheet.xhtml" TITLE="EditTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayTimesheets::#timesheets#DisplayTimesheets.xhtml"
+    NAME="output3" PATH="/timesheets/DisplayTimesheets.xhtml"
+    TARGET="rules:#timesheets#DisplayTimesheets.xhtml"
+    TITLE="DisplayTimesheets" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#timesheets#EditTimesheet.xhtml"
+  PATH="/timesheets/EditTimesheet.xhtml" SHAPE="80,721,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#timesheets#EditTimesheet.xhtml:0" NAME="item"
+   PATH="/timesheets/EditTimesheet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelEditTimesheet::#timesheets#DisplayTimesheets.xhtml"
+    NAME="output" PATH="/timesheets/DisplayTimesheets.xhtml"
+    TARGET="rules:#timesheets#DisplayTimesheets.xhtml"
+    TITLE="cancelEditTimesheet" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="EditTimesheetReturn::#timesheets#EditTimesheet.xhtml"
+    NAME="output1" PATH="/timesheets/EditTimesheet.xhtml"
+    TARGET="rules:#timesheets#EditTimesheet.xhtml"
+    TITLE="EditTimesheetReturn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#timesheets#ViewTimesheet.xhtml"
+  PATH="/timesheets/ViewTimesheet.xhtml" SHAPE="80,1729,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#timesheets#ViewTimesheet.xhtml:0" NAME="item"
+   PATH="/timesheets/ViewTimesheet.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelViewTimesheet::#timesheets#DisplayTimesheets.xhtml"
+    NAME="output" PATH="/timesheets/DisplayTimesheets.xhtml"
+    TARGET="rules:#timesheets#DisplayTimesheets.xhtml"
+    TITLE="cancelViewTimesheet" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reports#DisplayStatusReport.xhtml"
+  PATH="/reports/DisplayStatusReport.xhtml" SHAPE="32,1329,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reports#DisplayStatusReport.xhtml:0"
+   NAME="item" PATH="/reports/DisplayStatusReport.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="EditStatusReport::#reports#EditStatusReport.xhtml" NAME="output"
+    PATH="/reports/EditStatusReport.xhtml"
+    TARGET="rules:#reports#EditStatusReport.xhtml"
+    TITLE="EditStatusReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="AddStatusReport::#reports#AddStatusReport.xhtml" NAME="output1"
+    PATH="/reports/AddStatusReport.xhtml"
+    TARGET="rules:#reports#AddStatusReport.xhtml"
+    TITLE="AddStatusReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkPackages::#wp#DisplayWorkPackages.xhtml"
+    NAME="output2" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkPackages" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#reports#DisplayStatusReport.xhtml:1"
+   NAME="item1" PATH="/reports/DisplayStatusReport.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayWorkProjects::#wp#DisplayWorkPackages.xhtml"
+    NAME="output" PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="DisplayWorkProjects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#wp#ViewWorkPackage.xhtml"
+  PATH="/wp/ViewWorkPackage.xhtml" SHAPE="352,2865,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#wp#ViewWorkPackage.xhtml:0" NAME="item"
+   PATH="/wp/ViewWorkPackage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelViewPackage::#wp#DisplayWorkPackages.xhtml" NAME="output"
+    PATH="/wp/DisplayWorkPackages.xhtml"
+    TARGET="rules:#wp#DisplayWorkPackages.xhtml"
+    TITLE="cancelViewPackage" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#profile#ViewDetails.xhtml"
+  PATH="/profile/ViewDetails.xhtml" SHAPE="80,1217,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#profile#ViewDetails.xhtml:0" NAME="item"
+   PATH="/profile/ViewDetails.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancelViewDetails::#welcome#Splash.xhtml"
+    NAME="output" PATH="/welcome/Splash.xhtml"
+    TARGET="rules:#welcome#Splash.xhtml" TITLE="cancelViewDetails" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ForgottenPassword.xhtml"
+  PATH="/ForgottenPassword.xhtml" SHAPE="80,1185,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ForgottenPassword.xhtml:0" NAME="item"
+   PATH="/ForgottenPassword.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ForgotPasswordCancel::#MainIndex.xhtml"
+    NAME="output" PATH="/MainIndex.xhtml"
+    TARGET="rules:#MainIndex.xhtml" TITLE="ForgotPasswordCancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="GetRecoveryQuestions::#RecoveryQuestions.xhtml" NAME="output1"
+    PATH="/RecoveryQuestions.xhtml"
+    TARGET="rules:#RecoveryQuestions.xhtml" TITLE="GetRecoveryQuestions" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reports#DisplayMonthlyReport.xhtml"
+  PATH="/reports/DisplayMonthlyReport.xhtml" SHAPE="624,2193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#reports#DisplayMonthlyReport.xhtml:0"
+   NAME="item" PATH="/reports/DisplayMonthlyReport.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="viewMR::#reports#DisplayMonthlyReport.xhtml"
+    NAME="output" PATH="/reports/DisplayMonthlyReport.xhtml"
+    TARGET="rules:#reports#DisplayMonthlyReport.xhtml" TITLE="viewMR" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="DisplayProjects::#projects#DisplayProjects.xhtml" NAME="output2"
+    PATH="/projects/DisplayProjects.xhtml"
+    TARGET="rules:#projects#DisplayProjects.xhtml"
+    TITLE="DisplayProjects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

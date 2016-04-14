@@ -142,7 +142,7 @@ CREATE TABLE TimeSheet( TimesheetId TINYTEXT,
                         IsActive BOOL);
 
 INSERT INTO TimeSheet VALUES("2|1", 2, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", TRUE, FALSE, TRUE);
-INSERT INTO TimeSheet VALUES("1|1", 1, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", FALSE, FALSE, TRUE);
+INSERT INTO TimeSheet VALUES("1|1", 1, 25, "2016-02-01", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", TRUE, TRUE, TRUE);
 INSERT INTO TimeSheet VALUES("3|1", 3, 25, "2016-02-01", 100, 0, 0, 20, 20, 20, 20, 20, 0, "", FALSE, FALSE, TRUE);
 INSERT INTO TimeSheet VALUES("4|1", 4, 26, "2016-02-08", 130, 0, 0, 25, 25, 25, 25, 30, 0, "", TRUE, FALSE, TRUE);
 INSERT INTO TimeSheet VALUES("5|1", 5, 26, "2016-02-08", 160, 0, 0, 32, 32, 32, 32, 32, 0, "", FALSE, FALSE, TRUE);
@@ -209,10 +209,10 @@ CREATE TABLE Project( ProjectId int NOT NULL,
 
 INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", "2016-02-20",
                             10000,
+                            11500,
                             0,
                             0,
                             0,
-                            10000,
                             100,
                             0,
                             0,
@@ -224,10 +224,10 @@ INSERT INTO Project VALUES(1, "Project Alpha", 2, 1, "2016-02-01", "2016-02-20",
                             TRUE);
 INSERT INTO Project VALUES(2, "Project Beta", 2, 3, "2016-01-31", "2016-02-20",
                             10000,
+                            11500,
                             0,
                             0,
                             0,
-                            10000,
                             100,
                             0,
                             0,
@@ -257,7 +257,18 @@ CREATE TABLE WorkPackage(   WpId TINYTEXT,
                             ProjectId int,
                             IsActive BOOL);
 
+INSERT INTO WorkPackage VALUES("1|1", "A1234", "Test Monthly Report", "Microsoft", "000004",
+                                "2016-02-01", "2016-02-20","2016-02-21",
+                                100,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1, true);
 
+                            
 INSERT INTO WorkPackage VALUES("2|1", "B1112", "Ongoing Update", "Microsoft", "000004",
                                 "2016-02-01", "2016-02-20","2016-02-21",
                                 200,
@@ -339,14 +350,14 @@ INSERT INTO StatusReport VALUES(
                         "000004",
                         "2016-01-31",
                         "100",
-                        "120",
+                        "100",
                         "Test deliverable 1. Test deliverable 2.",
                         "Test deliverable 3. Test deliverable 4.",
                         "Half dev team got the flu.",
                         "Catching up with unfinished work - need to put in more time than anticipated",
                         100,
-                        .2,
-                        .2
+                        0,
+                        0
                         );
                         
 DROP TABLE IF EXISTS MonthlyReport;
@@ -357,21 +368,8 @@ CREATE TABLE MonthlyReport(
                         ProjectBudgetMD double,
                         ProjectBudgetCost double,
                         ActualToDateMD double,
-                        EstimatedCompletionMD double,
+                        ActualToDateCost double,
                         mdVar double,
                         costVar double,
                         pcCompletion double
-                        );
-                        
-INSERT INTO MonthlyReport VALUES(
-                        "1|1",
-                        3,
-                        "2016-01-31",
-                        100,
-                        11500,
-                        100,
-                        100,
-                        0,
-                        0,
-                        100
                         );

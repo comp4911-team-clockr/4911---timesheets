@@ -35,8 +35,8 @@ public class MonthlyReport implements Serializable {
 	@Column(name="ActualToDateMD")
 	private double toDateMD;
 	
-	@Column(name="EstimatedCompletionMD")
-	private double estCompletionMD;
+	@Column(name="ActualToDateCost")
+	private double toDateCost;
 
 	@Column(name="mdVar")
 	private double totalMDVar;
@@ -95,12 +95,12 @@ public class MonthlyReport implements Serializable {
 		this.toDateMD = toDateMD;
 	}
 
-	public double getEstCompletionMD() {
-		return estCompletionMD;
+	public double getToDateCost() {
+		return toDateCost;
 	}
 
-	public void setEstCompletionMD(double estCompletionMD) {
-		this.estCompletionMD = estCompletionMD;
+	public void setToDateCost(double toDateCost) {
+		this.toDateCost = toDateCost;
 	}
 
 	public double getTotalMDVar() {

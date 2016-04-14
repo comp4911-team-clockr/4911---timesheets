@@ -119,4 +119,16 @@ public class TimeSheetManager implements Serializable {
 		else
 			return empNum + "|" + (tsList.size() + 1);
 	}
+	
+	public List<TimeSheet> getListByEmp(List<Integer> empNumList)
+	{	
+		java.util.List<TimeSheet> reports = new java.util.ArrayList<TimeSheet>();
+		for (int i: empNumList) {
+		TypedQuery<TimeSheet> query = em.createQuery("SELECT s FROM TimeSheet s "+
+        		"WHERE s.empNumber=" + i +
+        		" AND s.approval=true", TimeSheet.class);
+		reports.addAll(query.getResultList());
+		}
+        return reports;
+	}
 }

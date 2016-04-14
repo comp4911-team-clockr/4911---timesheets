@@ -30,45 +30,54 @@
 
 				<h:column>
 					<f:facet name="header">Monthly Report Id</f:facet>
-					
+					<h:outputText value="#{monthRep.monthlyReportId}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Project Manager</f:facet>
+					<h:outputText value="#{monthRep.pmEmpId}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Report Date</f:facet>
+					<h:outputText value="#{monthlyReportControl.monthlyReport.reportDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:outputText>
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Project Man Days Planned</f:facet>
-					
+					<h:outputText value="#{monthRep.pBudgetMD}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Project Man Days Actual</f:facet>
-					
+					<h:outputText value="#{monthRep.toDateMD}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Project Budget Planned</f:facet>
+					<h:outputText value="#{monthRep.pBudgetCost}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">Project Budget Actual</f:facet>
+					<h:outputText value="#{monthRep.toDateCost}" />
 				</h:column>
 
 				<h:column>
-					<f:facet name="header">Labour Cost Variance</f:facet>
+					<f:facet name="header">Labour Variance (% of planned)</f:facet>
+					<h:outputText value="#{monthRep.totalMDVar}" />
 				</h:column>
 
 				<h:column>
-					<f:facet name="header">Budget Cost Variance</f:facet>
+					<f:facet name="header">Budget Variance (% of planned)</f:facet>
+					<h:outputText value="#{monthRep.totalCostVar}" />
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header">Percent Complete</f:facet>
+					<h:outputText value="#{monthRep.percentComplete}" />
 				</h:column>
 			</h:dataTable>
 

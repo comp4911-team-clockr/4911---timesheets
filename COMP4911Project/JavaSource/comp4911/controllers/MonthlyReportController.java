@@ -1,5 +1,6 @@
 package comp4911.controllers;
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,6 +129,7 @@ public class MonthlyReportController implements Serializable
 	// generate a monthly report based on user request
 	public String generateReport()
 	{		
+		
 		monthlyReport = new MonthlyReport();
 		int mrNum = 1;
 		double totalMD = 0;
@@ -135,10 +137,38 @@ public class MonthlyReportController implements Serializable
 		double completion = 0;
 		double totalTSHrs = 0;
 		double totalTSCost = 0;
-		
-		System.out.println(project.getProjectId() + " project id");
-		wpList = wpManager.getAllByProject(project.getProjectId());
 
+		System.out.println(project.getProjectId() + " project id");
+		System.out.println(project.getInitBudget() + " project initial budget");
+		wpList = wpManager.getAllByProject(project.getProjectId());
+		List<Employee> empList = new ArrayList<Employee>();
+		List<Integer> empNumList = new ArrayList<Integer>();
+		
+		if (wpList.isEmpty())
+		{
+			System.out.println("No work packages in project");
+			return "DisplayMonthlyReport";
+		}
+		else
+		{
+			System.out.println("adding employees to empList");
+			for (int i = 0; i < wpList.size(); i++)
+			{
+				totalMD += wpManager.getAllWorkPackMD(wpList.get(i).getWpId());
+				totalCost += wpManager.getAllWorkPackBudget(wpList.get(i).getWpId());
+				empList.addAll(empWPManager.listEmpByWP(wpList.get(i).getWpId(), newEmp));
+			}
+			System.out.println(empList.size() + " empList size");
+			System.out.println(totalMD + " total MDs for all work packages");
+			
+			for (int i = 0; i < wpList.size(); i++)
+			{
+				empNumList.addAll(empWPManager.listEmpNumByWP(wpList.get(i).getWpId()));
+				System.out.println(empWPManager.listEmpNumByWP(wpList.get(i).getWpId()));
+			}
+			System.out.println(empNumList.size() + " empNumList size");
+		}
+		
 		if (monthlyReportList.size() > 0) 
 		{
 			MonthlyReport temp = monthlyReportList.get(monthlyReportList.size() - 1);
@@ -148,62 +178,107 @@ public class MonthlyReportController implements Serializable
 			mrNum = Integer.parseInt(test);
 			mrNum++;
 			System.out.println(mrNum + " MR rep num set");
-			
-			for (int i = 0; i < wpList.size(); i++)
-			{
-				totalMD += wpManager.getAllWorkPackMD(wpList.get(i).getWpId());
-				totalCost += wpManager.getAllWorkPackBudget(wpList.get(i).getWpId());
-			}
-			System.out.println(totalMD + " total MDs for all work packages");
 		}
+		//monthlyReportManager.getAllByProject(project.getProjectId());
+		//temp.setMonthlyReportId("");
+		//System.out.println(mrNum);
+
 		monthlyReport.setMonthlyReportId(project.getProjectId() + "|" + Integer.toString(mrNum));
 		monthlyReport.setPmEmpId(project.getSupervisor());
+		
 		// initial budget cost
-		monthlyReport.setpBudgetCost(totalCost);
-
+		monthlyReport.setpBudgetCost(project.getInitBudget());
+		
 		// initial MD cost
-		monthlyReport.setpBudgetMD(totalMD);
+		int plannedMD = project.getManDaysDS() 
+				+ project.getManDaysSS()
+				+ project.getManDaysP1()
+				+ project.getManDaysP2()
+				+ project.getManDaysP3()
+				+ project.getManDaysP4()
+				+ project.getManDaysP5();
+				
+		monthlyReport.setpBudgetMD(plannedMD);
 		srList = srManager.getAllByProject(project.getProjectId());
 		System.out.println(srList.size() + " size of sr list");
 		
-		List<Employee> empList = new ArrayList<Employee>();
-		List<Integer> empNumList = new ArrayList<Integer>();
-		for (int i = 0; i < srList.size(); i++)
-		{
-			completion += srList.get(i).getPcComplete();
-//			empList.addAll(empWPManager.listEmpByWP(wpList.get(i).getWpId(), newEmp));
-//			empNumList.addAll(empWPManager.listEmpNumByWP(wpList.get(i).getWpId()));
-		}
-		completion /= srList.size();
+		monthlyReport.setReportDate(new java.sql.Date(java.util.Calendar.getInstance().getTime().getTime()));
 		
-//		List<TimeSheet> tsList = tsManager.getListByEmp(empNumList);
-//
-//		if (tsList.size() == empList.size())
-//		{
-//			for (int i = 0; i < empList.size(); i++)
-//			{
-//				String tempPR = empList.get(i).getPayRateId(); 
-//				totalTSHrs += tsList.get(i).getOverallTotalHrs();
-//				totalTSCost += prManager.find(tempPR).getCostInMD() * totalTSHrs;
-//			}	
-//		}
+		if (srList.size() > 0)
+		{
+			System.out.println("getting % complete from status reports");
+			for (int i = 0; i < srList.size(); i++)
+			{
+				completion += srList.get(i).getPcComplete();
+				
+			}
+			System.out.println(completion + " total complete%");
+			completion = completion / srList.size();
+			System.out.println(completion + " complete%");
+		}
+		else
+		{
+			System.out.println("No status reports in wp");
+			return "DisplayMonthlyReport";
+		}
+		
+		List<TimeSheet> tsList = tsManager.getListByEmp(empNumList);
+		System.out.println(tsList.size() + " timesheet list size");
+		System.out.println(empList.size() + " employee list size");
+		
+		if (!tsList.isEmpty())
+		{
+			for (int i = 0; i < tsList.size(); i++)
+			{
+				int empTSNum = tsList.get(i).getEmpNumber();
+				System.out.println(empTSNum + " emp num");
+				totalTSHrs += tsList.get(i).getOverallTotalHrs();
+				System.out.println(totalTSHrs + " emp ts total hrs");
+				String prId = "";
+				for (int j = 0; j < empList.size(); j++)
+				{
+					int temp = empList.get(j).getEmpNumber();
+					if (temp == empTSNum)
+					{
+						prId = empList.get(j).getPayRateId();
+						System.out.println(prId + " PR id");	
+						if (prManager.find(prId) != null)
+						{
+							totalTSCost += prManager.find(prId).getCostInMD() * totalTSHrs;
+						}
+						System.out.println(totalTSCost + " added budget cost");
+
+					}
+				}
+			}
+			System.out.println(totalTSHrs + " total budget hrs");
+		}
+		else
+		{
+			System.out.println("No employee timesheets in wp/project");
+			return "DisplayMonthlyReport";
+		}
 		
 		System.out.println(completion + "% complete");
-		//srManager.getAllByWorkPackage(wpList.get(index))
-//		double finalMD = srManager.
+		
 		monthlyReport.setPercentComplete(completion);
-//		monthlyReport.setTotalMDVar(totalMD/(totalTSHrs/8));
-//		monthlyReport.setTotalCostVar(totalCost/totalTSCost);
+		monthlyReport.setToDateMD(totalTSHrs/8);
+		monthlyReport.setToDateCost(totalTSCost);
+		double pcCost = (totalTSCost/project.getInitBudget())*100;
+		double pcMD = ((totalTSHrs/8)/plannedMD)*100;
 		
-		System.out.println(totalCost + " total budget");
-		System.out.println(totalMD + " total MD");
+		monthlyReport.setTotalMDVar(Math.round(pcMD));
+		monthlyReport.setTotalCostVar(Math.round(pcCost));
 		
-		//System.out.println(totalCost/totalTSCost + " total cost var");
-		//System.out.println(totalMD/(totalTSHrs/8) + " total MD var");
-//		monthlyReportManager.getAllByProject(project.getProjectId());
-//		temp.setMonthlyReportId("");
-//		System.out.println(mrNum);
-//		return "RequestMonthlyReport";
+//		System.out.println(totalCost + " total budget planned");
+//		System.out.println(totalTSCost + " total budget actual");
+//		System.out.println(totalMD + " total MD planned");
+//		System.out.println((totalTSHrs/8) + " total MD actual");
+//		System.out.println(((totalTSHrs/8)/totalMD) + " total MD variance");
+//		System.out.println(totalTSCost/totalCost + " total Cost variance");
+		
+		monthlyReportManager.persist(monthlyReport);
+		refreshList();
 		return "DisplayMonthlyReport";
 	}
 	
